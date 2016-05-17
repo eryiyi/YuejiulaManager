@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.PaopaoGoodsDao">
+    <resultMap id="my_paopao_goods" type="com.liangxunwang.unimanager.model.PaopaoGoods">
+        <id column="goods_id" property="id"/>
+        <id column="goods_type_id" property="typeId"/>
+        <id column="goods_name" property="name"/>
+        <id column="goods_cover" property="cover"/>
+        <id column="goods_cont" property="cont"/>
+        <id column="sell_price" property="sellPrice"/>
+        <id column="market_price" property="marketPrice"/>
+        <id column="goods_address" property="address"/>
+        <id column="goods_person" property="person"/>
+        <id column="goods_tel" property="tel"/>
+        <id column="goods_qq" property="qq"/>
+        <id column="goods_emp_id" property="empId"/>
+        <id column="goods_school_id" property="schoolId"/>
+        <id column="goods_is_use" property="isUse"/>
+        <id column="goods_is_del" property="isDel"/>
+        <id column="up_time" property="upTime"/>
+        <id column="goods_count" property="count"/>
+        <id column="GOODS_POSITION" property="goodsPosition"/>
+    </resultMap>
+    <resultMap id="my_paopao_goods_vo" type="com.liangxunwang.unimanager.mvc.vo.PaopaoGoodsVO">
+        <id column="goods_id" property="id"/>
+        <id column="goods_type_id" property="typeId"/>
+        <id column="goods_name" property="name"/>
+        <id column="goods_cover" property="cover"/>
+        <id column="goods_cont" property="cont"/>
+        <id column="sell_price" property="sellPrice"/>
+        <id column="market_price" property="marketPrice"/>
+        <id column="goods_address" property="address"/>
+        <id column="goods_person" property="person"/>
+        <id column="goods_tel" property="tel"/>
+        <id column="goods_qq" property="qq"/>
+        <id column="goods_emp_id" property="empId"/>
+        <id column="goods_school_id" property="schoolId"/>
+        <id column="goods_is_use" property="isUse"/>
+        <id column="goods_is_del" property="isDel"/>
+        <id column="up_time" property="upTime"/>
+        <id column="goods_count" property="count"/>
+        <id column="GOODS_POSITION" property="goodsPosition"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="emp_cover" property="empCover"/>
+        <result column="mobile" property="mobile"/>
+        <result column="school_name" property="schoolName"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.PaopaoGoods">
+        INSERT INTO PAOPAO_GOODS (goods_id, GOODS_TYPE_ID, GOODS_NAME, GOODS_COVER, GOODS_CONT, SELL_PRICE,
+        MARKET_PRICE, GOODS_ADDRESS,GOODS_PERSON, GOODS_TEL, GOODS_QQ,GOODS_EMP_ID, GOODS_SCHOOL_ID, GOODS_IS_USE
+        ,GOODS_IS_DEL, UP_TIME, GOODS_COUNT, GOODS_POSITION) VALUES (#{id}, #{typeId}, #{name}, #{cover, jdbcType=VARCHAR},#{cont}, #{sellPrice}, #{marketPrice},
+        #{address}, #{person}, #{tel}, #{qq, jdbcType=VARCHAR}, #{empId}, #{schoolId}, #{isUse}, #{isDel}, #{upTime}, #{count}, 0)
+    </insert>
+
+    <select id="listByEmpSchool" resultMap="my_paopao_goods" parameterType="String">
+        SELECT * FROM PAOPAO_GOODS WHERE GOODS_EMP_ID=#{empId} AND GOODS_SCHOOL_ID=#{schoolId} AND GOODS_IS_DEL='0' AND GOODS_IS_USE='0'
+    </select>
+
+    <select id="listGoods" resultMap="my_paopao_goods_vo">
+
+        SELECT pg.*, le.emp_name as nick_name, le.emp_cover as emp_cover, le.emp_mobile as mobile, co.NAME as school_name
+        FROM PAOPAO_GOODS pg
+        LEFT JOIN lx_emp le ON pg.goods_emp_id=le.emp_id
+        LEFT JOIN COLLEGE co ON pg.GOODS_SCHOOL_ID = co.COID
+        WHERE pg.goods_is_use='0' AND le.is_use='0'
+        AND pg.goods_is_del='0'
+        <if test="typeId != null and typeId != ''">
+            AND pg.goods_type_id=#{typeId}
+        </if>
+        <if test="cont !=null and cont !=''">
+            AND (pg.goods_name like CONCAT('%',#{cont},'%') OR pg.GOODS_CONT like CONCAT('%',#{cont},'%') )
+        </if>
+        <if test="empId != null and empId != ''">
+            AND pg.goods_emp_id=#{empId}
+        </if>
+        <if test="schoolIds != null and schoolIds != ''">
+            AND pg.goods_school_id IN
+            <foreach collection="schoolIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        ORDER BY pg.GOODS_POSITION desc, pg.up_time DESC
+        limit #{index},#{size}
+    </select>
+
+    <select id="count" resultType="Long">
+        SELECT count(GOODS_ID) FROM PAOPAO_GOODS WHERE GOODS_IS_USE='0' AND GOODS_IS_DEL='0'
+        <if test="empId != null and empId != ''">
+            AND goods_emp_id=#{empId}
+        </if>
+    </select>
+    <update id="deleteById" parameterType="String">
+        UPDATE PAOPAO_GOODS SET GOODS_IS_DEL='1' WHERE GOODS_ID=#{id}
+    </update>
+
+    <select id="findById" resultMap="my_paopao_goods" parameterType="String">
+        SELECT * FROM PAOPAO_GOODS WHERE GOODS_ID=#{id}
+    </select>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.PaopaoGoods">
+        UPDATE PAOPAO_GOODS SET GOODS_NAME=#{name}, GOODS_TYPE_ID=#{typeId},GOODS_COVER=#{cover}, SELL_PRICE=#{sellPrice}, MARKET_PRICE=#{marketPrice}, GOODS_ADDRESS=#{address},
+        GOODS_PERSON=#{person}, GOODS_TEL=#{tel}, GOODS_QQ=#{qq},GOODS_COUNT=#{count}, GOODS_CONT=#{cont} WHERE GOODS_ID=#{id}
+    </update>
+
+    <select id="findGoodsVO" parameterType="String" resultMap="my_paopao_goods_vo">
+        SELECT pg.*, le.emp_name as nick_name, le.emp_cover as emp_cover, le.emp_mobile as mobile, co.NAME as school_name
+        FROM PAOPAO_GOODS pg
+        LEFT JOIN lx_emp le ON pg.goods_emp_id=le.emp_id
+        LEFT JOIN COLLEGE co ON pg.GOODS_SCHOOL_ID = co.COID
+        WHERE pg.goods_is_use='0' AND le.is_use='0'
+        AND pg.goods_is_del='0'
+        AND GOODS_ID=#{id}
+    </select>
+
+    <update id="updateCountById" parameterType="String">
+        UPDATE PAOPAO_GOODS SET GOODS_COUNT = GOODS_COUNT - #{goodsCount} WHERE GOODS_ID=#{id}
+    </update>
+
+    <update id="deleteGoodsById">
+        UPDATE PAOPAO_GOODS SET goods_is_del='1' WHERE goods_emp_id=#{empId}
+        <if test="schoolIds != null and schoolIds != ''">
+            AND goods_school_id IN
+            <foreach collection="schoolIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </update>
+
+    <update id="deleteGoodsByEmp" parameterType="String">
+        UPDATE PAOPAO_GOODS SET goods_is_del='1' WHERE GOODS_EMP_ID=#{empId} AND GOODS_SCHOOL_ID=#{schoolId}
+    </update>
+
+    <update id="updatePostionById" parameterType="String">
+        UPDATE PAOPAO_GOODS SET GOODS_POSITION= #{goodsPosition} WHERE goods_id=#{id}
+    </update>
+
+</mapper>

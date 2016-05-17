@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.ScoreRuleDao">
+    <resultMap id="my_rule" type="com.liangxunwang.unimanager.model.ScoreRule">
+        <id column="rule_id" property="id"/>
+        <result column="rule_type" property="type"/>
+        <result column="rule_name" property="name"/>
+        <result column="rule_score" property="score"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.ScoreRule">
+        INSERT INTO School_score_rule(rule_id, rule_type, rule_name, rule_score)
+        VALUES (#{id}, #{type}, #{name}, #{score})
+    </insert>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.ScoreRule">
+        UPDATE School_score_rule SET rule_type=#{type}, rule_name=#{name}, rule_score=#{score} WHERE rule_id=#{id}
+    </update>
+
+    <select id="list" resultMap="my_rule">
+        SELECT * FROM School_score_rule
+    </select>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM School_score_rule WHERE rule_id=#{ruleId}
+    </delete>
+</mapper>

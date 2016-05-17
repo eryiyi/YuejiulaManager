@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.LevelDao">
+    <resultMap id="my_level" type="com.liangxunwang.unimanager.model.Level">
+        <id column="level_id" property="levelId"/>
+        <result column="level_name" property="levelName"/>
+        <result column="level_start" property="levelStart"/>
+        <result column="level_end" property="levelEnd"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Level">
+        INSERT INTO lx_level(level_id, level_name, level_start, level_end )
+        VALUES (#{levelId}, #{levelName}, #{levelStart}, #{levelEnd})
+    </insert>
+
+    <select id="list" resultMap="my_level">
+        SELECT * from lx_level ORDER BY level_start ASC
+    </select>
+
+    <delete id="delete">
+        DELETE FROM lx_level where level_id=#{levelId}
+    </delete>
+</mapper>

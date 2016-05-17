@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.AppVideosCommentDao">
+    <resultMap id="app_my_comment" type="com.liangxunwang.unimanager.model.Comment">
+        <id column="PAOPAO_VIDEO_COMMENT_ID" property="id"/>
+        <result column="PAOPAO_VIDEO_ID" property="recordId"/>
+        <result column="COMMENT_FPLID" property="fplid"/>
+        <result column="EMP_ID" property="empId"/>
+        <result column="COMMENT_CONT" property="content"/>
+        <result column="DATELINE" property="dateline"/>
+    </resultMap>
+
+    <resultMap id="app_my_comment_vo" type="com.liangxunwang.unimanager.mvc.vo.CommentVO">
+        <id column="PAOPAO_VIDEO_COMMENT_ID" property="id"/>
+        <result column="PAOPAO_VIDEO_ID" property="recordId"/>
+        <result column="COMMENT_FPLID" property="fplid"/>
+        <result column="EMP_ID" property="empId"/>
+        <result column="COMMENT_CONT" property="content"/>
+        <result column="DATELINE" property="dateline"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="cover" property="cover"/>
+        <result column="fnick_name" property="fNickName"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Comment">
+        INSERT INTO paopao_video_comment (PAOPAO_VIDEO_COMMENT_ID, PAOPAO_VIDEO_ID, COMMENT_FPLID,EMP_ID , COMMENT_CONT, DATELINE )
+        VALUES (#{id}, #{recordId}, #{fplid, jdbcType=VARCHAR}, #{empId}, #{content}, #{dateline})
+    </insert>
+
+    <select id="list" resultMap="app_my_comment_vo">
+
+        SELECT src.*,le.emp_name as nick_name,le.emp_cover as cover,lp.emp_name as fnick_name FROM paopao_video_comment src
+        LEFT JOIN lx_emp le ON src.emp_id=le.emp_id
+        LEFT JOIN paopao_video_comment cr ON src.comment_fplid=cr.PAOPAO_VIDEO_COMMENT_ID
+        LEFT JOIN lx_emp lp ON cr.emp_id=lp.emp_id
+        WHERE src.PAOPAO_VIDEO_ID=#{recordId}
+        ORDER BY src.DATELINE ASC
+        limit #{index},#{size}
+    </select>
+</mapper>

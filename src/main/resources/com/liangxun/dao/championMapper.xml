@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.ChampionDao">
+    <resultMap id="my_champion" type="com.liangxunwang.unimanager.model.Champion">
+        <id column="champion_id" property="id"/>
+        <result column="theme_number" property="themeNumber"/>
+        <result column="theme_id" property="themeId"/>
+        <result column="emp_id" property="empId"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="zp_id" property="zpId"/>
+        <result column="type" property="type"/>
+        <result column="is_pic" property="isPic"/>
+        <result column="upload_pic" property="uploadPic"/>
+        <result column="is_sure" property="isSure"/>
+        <result column="dateline" property="dateline"/>
+    </resultMap>
+
+    <resultMap id="my_champion_vo" type="com.liangxunwang.unimanager.mvc.vo.ChampionVO">
+        <id column="champion_id" property="id"/>
+        <result column="theme_number" property="themeNumber"/>
+        <result column="theme_id" property="themeId"/>
+        <result column="emp_id" property="empId"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="zp_id" property="zpId"/>
+        <result column="type" property="type"/>
+        <result column="is_pic" property="isPic"/>
+        <result column="upload_pic" property="uploadPic"/>
+        <result column="is_sure" property="isSure"/>
+        <result column="dateline" property="dateline"/>
+
+        <result column="emp_name" property="empName"/>
+        <result column="emp_cover" property="empCover"/>
+        <result column="zp_content" property="zpContent"/>
+        <result column="school_name" property="schoolName"/>
+        <result column="pic_url" property="picUrl"/>
+        <result column="video_url" property="videoUrl"/>
+        <result column="zp_type" property="zpType"/>
+        <result column="pk_title" property="themeName"/>
+        <result column="zan_num" property="zanNum"/>
+        <result column="pl_num" property="plNum"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Champion">
+        INSERT INTO CHINA_CHAMPION (CHAMPION_ID, THEME_NUMBER, THEME_ID, EMP_ID, SCHOOL_ID, ZP_ID, TYPE, DATELINE)
+        VALUES (#{id}, #{themeNumber}, #{themeId}, #{empId}, #{schoolId}, #{zpId}, #{type}, #{dateline})
+    </insert>
+
+    <select id="getChampionById" parameterType="String" resultMap="my_champion">
+        SELECT * FROM CHINA_CHAMPION WHERE CHAMPION_ID=#{id}
+    </select>
+
+    <select id="listChampion" parameterType="String" resultMap="my_champion_vo">
+
+        SELECT cc.*,
+        (select count(ZAN_ID) from PK_ZAN zan where  zan.PK_ZP_ID = cc.ZP_ID) as zan_num,
+        (select count(PK_COMMENT_ID) from PK_COMMENT pl where  pl.PK_ZP_ID = cc.ZP_ID) as pl_num,
+        le.EMP_NAME, le.EMP_COVER, pz.ZP_TITLE as zp_content,pz.ZP_TYPE,
+        pz.ZP_PICURL as pic_url, pz.ZP_VIDEOURL as video_url,cl.NAME as school_name, pt.PK_TITLE as themeName
+         FROM  CHINA_CHAMPION cc
+        LEFT JOIN LX_EMP le on cc.EMP_ID = le.EMP_ID
+        LEFT JOIN PK_ZP pz on cc.ZP_ID=pz.ZP_ID
+        LEFT JOIN COLLEGE cl ON cc.SCHOOL_ID=cl.COID
+        LEFT JOIN PK_THEME pt ON cc.THEME_ID=pt.PK_ID
+        WHERE '1'='1'
+        <if test="schoolId !=null and schoolId !=''">
+            AND cc.TYPE='1' AND cc.SCHOOL_ID=#{schoolId}
+        </if>
+        <if test="schoolId == null or schoolId == ''">
+            AND cc.TYPE='0'
+        </if>
+        <if test="type != null and type != ''">
+            AND cc.TYPE=#{type}
+        </if>
+        ORDER BY cc.DATELINE DESC
+        limit #{index},#{size}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT count(CHAMPION_ID) from CHINA_CHAMPION
+        WHERE '1'='1'
+        <if test="type != null and type != ''">
+            AND TYPE=#{type}
+        </if>
+    </select>
+
+    <update id="updatePic" parameterType="String">
+        UPDATE CHINA_CHAMPION SET UPLOAD_PIC=#{pic} ,IS_PIC='1' WHERE CHAMPION_ID=#{id}
+    </update>
+    <update id="championSure" parameterType="String">
+        UPDATE CHINA_CHAMPION SET IS_SURE='1' WHERE CHAMPION_ID=#{id}
+    </update>
+</mapper>

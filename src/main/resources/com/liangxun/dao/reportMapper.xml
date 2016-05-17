@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.ReportDao">
+    <resultMap id="my_report" type="com.liangxunwang.unimanager.model.Report">
+        <id column="report_id" property="id"/>
+        <result column="report_empone" property="empOne"/>
+        <result column="report_emptwo" property="empTwo"/>
+        <result column="report_typeid" property="typeId"/>
+        <result column="report_cont" property="cont"/>
+        <result column="report_xxid" property="xxid"/>
+        <result column="report_isdel" property="isDel"/>
+        <result column="dateline" property="dateline"/>
+        <result column="school_id" property="schoolId"/>
+    </resultMap>
+
+    <resultMap id="my_report_vo" type="com.liangxunwang.unimanager.mvc.vo.ReportVO">
+        <id column="report_id" property="id"/>
+        <result column="report_empone" property="empOne"/>
+        <result column="report_emptwo" property="empTwo"/>
+        <result column="report_typeid" property="typeId"/>
+        <result column="report_cont" property="cont"/>
+        <result column="report_xxid" property="xxid"/>
+        <result column="report_isdel" property="isDel"/>
+        <result column="dateline" property="dateline"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="empone_nickname" property="empOneNickName"/>
+        <result column="emptwo_nickname" property="empTwoNickName"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Report">
+        INSERT INTO school_report(report_id, report_empone, report_emptwo, report_typeid, report_cont, report_xxid, report_isdel, dateline, school_id)
+         VALUES (#{id}, #{empOne}, #{empTwo}, #{typeId}, #{cont}, #{xxid}, #{isDel}, #{dateline}, #{schoolId})
+    </insert>
+
+    <select id="list" resultMap="my_report_vo" parameterType="String">
+        SELECT sr.*,le.emp_name as empone_nickname, lp.emp_name as emptwo_nickname
+        FROM school_report sr
+        LEFT JOIN lx_emp le ON sr.report_empone=le.emp_id
+        LEFT JOIN lx_emp lp ON  sr.report_emptwo=lp.emp_id
+        WHERE sr.report_isdel='0'
+        ORDER BY sr.DATELINE DESC
+    </select>
+
+    <update id="update" parameterType="String">
+        UPDATE school_report SET report_isdel='1' WHERE report_id=#{reportId}
+    </update>
+</mapper>

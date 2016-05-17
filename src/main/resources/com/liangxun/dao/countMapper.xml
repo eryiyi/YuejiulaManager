@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.CountDao">
+    <resultMap id="my_count" type="com.liangxunwang.unimanager.model.Count">
+        <id column="count_id" property="id"/>
+        <result column="emp_id" property="empId"/>
+        <result column="count" property="count"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Count">
+        INSERT INTO lx_count(count_id, emp_id, count)
+        VALUES (#{id}, #{empId}, #{count})
+    </insert>
+
+    <update id="update" parameterType="String">
+        UPDATE lx_count SET count=(count+(SELECT rule_score FROM school_score_rule WHERE rule_type=#{type}))
+        WHERE emp_id=#{empId}
+    </update>
+
+    <update id="updateScore" parameterType="String">
+        UPDATE LX_COUNT set count=(count + ${count}) WHERE EMP_ID=#{empId}
+    </update>
+</mapper>

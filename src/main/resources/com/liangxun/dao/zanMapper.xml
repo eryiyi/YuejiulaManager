@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.ZanDao">
+    <resultMap id="my_zan" type="com.liangxunwang.unimanager.model.Zan">
+        <id column="zan_id" property="id"/>
+        <result column="zan_record_id" property="recordId"/>
+        <result column="zan_emp_id" property="empId"/>
+        <result column="dateline" property="dateline"/>
+    </resultMap>
+
+    <resultMap id="my_zan_vo" type="com.liangxunwang.unimanager.mvc.vo.ZanVO">
+        <id column="zan_id" property="id"/>
+        <result column="zan_record_id" property="recordId"/>
+        <result column="zan_emp_id" property="empId"/>
+        <result column="dateline" property="dateline"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="cover" property="cover"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Zan">
+        INSERT INTO school_record_zan (zan_id, zan_record_id, zan_emp_id, dateline )
+        VALUES (#{id}, #{recordId}, #{empId}, #{dateline})
+    </insert>
+
+    <select id="findByParams" resultMap="my_zan">
+        SELECT * from school_record_zan
+        WHERE zan_record_id=#{recordId} AND zan_emp_id=#{empId}
+    </select>
+
+    <select id="listZanByRecord" resultMap="my_zan_vo" parameterType="String">
+        SELECT srz.*, le.emp_name as nick_name, le.emp_cover as cover FROM school_record_zan srz
+        LEFT JOIN lx_emp le ON srz.zan_emp_id = le.emp_id
+        WHERE srz.zan_record_id=#{recordId}
+        ORDER BY srz.dateline DESC
+    </select>
+</mapper>

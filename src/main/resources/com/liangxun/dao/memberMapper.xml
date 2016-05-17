@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.MemberDao">
+    <resultMap id="my_member" type="com.liangxunwang.unimanager.model.Member">
+        <id column="emp_id" property="empId"/>
+        <result column="emp_mobile" property="empMobile"/>
+        <result column="mobile_status" property="mobileStatus"/>
+        <result column="emp_pass" property="empPass"/>
+        <result column="emp_name" property="empName"/>
+        <result column="emp_cover" property="empCover"/>
+        <result column="emp_sex" property="empSex"/>
+        <result column="emp_sign" property="empSign"/>
+        <result column="emp_qq" property="empQQ"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="emp_typeid" property="empTypeId"/>
+        <result column="is_use" property="isUse"/>
+        <result column="dateline" property="dateline"/>
+        <result column="push_id" property="pushId"/>
+        <result column="hx_username" property="hxUsername"/>
+        <result column="is_in_group" property="isInGroup"/>
+        <result column="device_type" property="deviceType"/>
+    </resultMap>
+
+    <resultMap id="my_member_vo" type="com.liangxunwang.unimanager.mvc.vo.MemberVO">
+        <id column="emp_id" property="empId"/>
+        <result column="emp_mobile" property="empMobile"/>
+        <result column="mobile_status" property="mobileStatus"/>
+        <result column="emp_pass" property="empPass"/>
+        <result column="emp_name" property="empName"/>
+        <result column="emp_cover" property="empCover"/>
+        <result column="emp_sex" property="empSex"/>
+        <result column="emp_sign" property="empSign"/>
+        <result column="emp_qq" property="empQQ"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="emp_typeid" property="empTypeId"/>
+        <result column="is_use" property="isUse"/>
+        <result column="dateline" property="dateline"/>
+        <result column="push_id" property="pushId"/>
+        <result column="school_name" property="universityName"/>
+        <result column="level_name" property="levelName"/>
+        <result column="hx_username" property="hxUsername"/>
+        <result column="is_in_group" property="isInGroup"/>
+        <result column="device_type" property="deviceType"/>
+        <result column="jfcount" property="jfcount"/>
+        <result column="groupid" property="groupId"/>
+    </resultMap>
+
+    <select id="findByMobile" parameterType="String" resultMap="my_member_vo">
+        SELECT lp.*, ls.name as school_name, ls.groupid, (SELECT level_name FROM lx_level ll where lc.count BETWEEN ll.level_start AND ll.level_end) as level_name
+        from lx_emp lp
+         LEFT JOIN lx_count lc ON lp.emp_id=lc.emp_id
+         LEFT JOIN college ls on lp.school_id=ls.coid
+        WHERE lp.emp_mobile=#{mobile}
+    </select>
+
+    <select id="findInfoById" parameterType="String" resultMap="my_member_vo">
+        SELECT lp.*, ls.name as school_name, (SELECT level_name FROM lx_level ll where lc.count BETWEEN ll.level_start AND ll.level_end) as level_name,
+        lc.count as jfcount
+        from lx_emp lp
+         LEFT JOIN lx_count lc ON lp.emp_id=lc.emp_id
+         LEFT JOIN college ls on lp.school_id=ls.coid
+        WHERE lp.emp_id=#{empId}
+    </select>
+
+    <select id="findByPhone" resultMap="my_member" parameterType="String">
+        SELECT * FROM lx_emp WHERE emp_mobile=#{mobile}
+    </select>
+
+    <select id="findById" parameterType="String" resultMap="my_member">
+        SELECT * FROM lx_emp WHERE emp_id=#{id}
+    </select>
+
+    <select id="findByCommentFplid" parameterType="String" resultMap="my_member">
+        SELECT * FROM LX_EMP le
+        LEFT JOIN SCHOOL_RECORD_COMMENT src
+        ON src.COMMENT_EMP_ID = le.EMP_ID WHERE src.COMMENT_ID=#{fplId}
+    </select>
+
+    <select id="list" resultMap="my_member_vo">
+
+          SELECT le.*, ls.name as school_name
+            from lx_emp le
+          left join college ls on le.school_id=ls.coid
+          WHERE 1=1
+            <if test="schoolId != null and schoolId != ''">
+                and le.school_id=#{schoolId}
+            </if>
+            <if test="phoneNumber != null and phoneNumber != ''">
+                AND le.emp_mobile=#{phoneNumber}
+            </if>
+
+            <if test="keyWords != null and keyWords != ''">
+                AND le.emp_name like CONCAT('%',#{keyWords},'%')
+            </if>
+        ORDER BY le.dateline DESC
+
+        limit #{index},#{size}
+    </select>
+
+    <select id="count" resultType="long">
+        select count(le.school_id) from lx_emp le left join college ls on le.school_id=ls.coid
+        WHERE 1=1
+        <if test="schoolId != null and schoolId != ''">
+            and le.school_id=#{schoolId}
+        </if>
+        <if test="phoneNumber != null and phoneNumber != ''">
+            AND le.emp_mobile=#{phoneNumber}
+        </if>
+    </select>
+
+    <select id="memberCount" resultType="long">
+        SELECT COUNT(emp_id) FROM lx_emp
+    </select>
+
+    <select id="closeMemberCount" resultType="long">
+        SELECT COUNT(emp_id) FROM lx_emp WHERE is_use='1'
+    </select>
+
+    <update id="updateAdmin">
+        update lx_emp set emp_typeid=#{flag} where emp_id=#{empId}
+    </update>
+    <update id="changeBusiness">
+        update lx_emp set emp_typeid=#{flag} where emp_id=#{empId}
+    </update>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Member">
+        INSERT INTO lx_emp(emp_id, emp_mobile, mobile_status, emp_pass, emp_name, emp_cover, emp_sex, emp_sign, emp_qq, school_id, emp_typeid, is_use, dateline,hx_username)
+        VALUES (#{empId}, #{empMobile}, #{mobileStatus}, #{empPass}, #{empName}, #{empCover}, #{empSex,jdbcType=VARCHAR}, #{empSign,jdbcType=VARCHAR}, #{empQQ,jdbcType=VARCHAR}, #{schoolId}, #{empTypeId}, #{isUse}, #{dateline},#{hxUsername})
+    </insert>
+
+    <select id="findMemberByNickName" resultMap="my_member" parameterType="String">
+        SELECT * from lx_emp WHERE emp_name=#{nickName}
+        <if test="empId != null and empId !=''">
+        AND emp_id &lt;&gt; #{empId}
+        </if>
+    </select>
+
+    <update id="closeMember" parameterType="String">
+        UPDATE lx_emp set is_use='1' WHERE emp_id=#{empId}
+    </update>
+
+    <update id="openMember" parameterType="String">
+        UPDATE lx_emp set is_use='0' WHERE emp_id=#{empId}
+    </update>
+
+    <update id="modifyMember" parameterType="com.liangxunwang.unimanager.model.Member">
+        UPDATE lx_emp SET emp_name=#{empName}, emp_cover=#{empCover}, emp_sign=#{empSign, jdbcType=VARCHAR},
+        emp_qq=#{empQQ},emp_sex=#{empSex},mobile_status=#{mobileStatus} WHERE emp_id=#{empId}
+    </update>
+
+    <update id="modifyMemberNoCover" parameterType="com.liangxunwang.unimanager.model.Member">
+        UPDATE lx_emp SET emp_name=#{empName},emp_sign=#{empSign, jdbcType=VARCHAR},
+        emp_qq=#{empQQ},emp_sex=#{empSex},mobile_status=#{mobileStatus} WHERE emp_id=#{empId}
+    </update>
+
+    <update id="updatePassword" parameterType="String">
+        UPDATE lx_emp SET emp_pass=#{password} WHERE emp_mobile=#{mobile}
+    </update>
+
+    <select id="listMemberInfo" resultMap="my_member" parameterType="String">
+        SELECT * from lx_emp WHERE emp_mobile IN
+        <foreach collection="phoneStr" item="mobile" open="(" separator="," close=")">
+            #{mobile}
+        </foreach>
+    </select>
+    <select id="listMemberInfoByUsername" resultMap="my_member" parameterType="String">
+        SELECT * from lx_emp WHERE hx_username IN
+        <foreach collection="hxUsername" item="username" open="(" separator="," close=")">
+            #{username}
+        </foreach>
+    </select>
+
+    <update id="systemOpenEmp" >
+         UPDATE lx_emp set is_use='0' WHERE emp_id IN
+        <foreach collection="emps" item="empId" open="(" separator="," close=")">
+            #{empId}Oracle - orcl@localhost
+        </foreach>
+    </update>
+    <update id="updatePushId" parameterType="String">
+        UPDATE lx_emp set push_id=#{pushId}, device_type=#{type} WHERE emp_id=#{id}
+    </update>
+
+    <update id="resetPass" parameterType="String">
+        UPDATE lx_emp SET emp_pass=#{rePass} WHERE emp_id=#{empId}
+    </update>
+    <update id="resetMobile" parameterType="String">
+        UPDATE lx_emp SET emp_mobile=#{reMobile} WHERE emp_id=#{empId}
+    </update>
+
+    <select id="searchMember" resultMap="my_member" parameterType="String">
+        select * from lx_emp where emp_mobile=#{keyWords} or emp_name like CONCAT('%',#{keyWords},'%')
+    </select>
+
+    <select id="searchMemberByPage" resultMap="my_member">
+
+        select * from lx_emp where '1'='1'
+        <if test="keyWords != null and keyWords != ''">
+         AND emp_mobile=#{keyWords} or emp_name like CONCAT('%',#{keyWords},'%')
+        </if>
+        limit #{index},#{size}
+    </select>
+
+    <update id="updateHx" parameterType="String">
+        UPDATE lx_emp set is_in_group='1' WHERE emp_id=#{empId}
+    </update>
+
+    <update id="setContractUser" parameterType="String">
+        UPDATE lx_emp set emp_typeid=#{typeId} WHERE emp_id=#{empId}
+    </update>
+
+    <select id="listMemberBySchool" parameterType="String" resultMap="my_member">
+        SELECT EMP_ID, EMP_COVER, EMP_NAME,EMP_MOBILE,HX_USERNAME FROM LX_EMP WHERE SCHOOL_ID=#{schoolId}
+    </select>
+</mapper>

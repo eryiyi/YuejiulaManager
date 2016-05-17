@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.RecordDao">
+    <resultMap id="my_record" type="com.liangxunwang.unimanager.model.Record">
+        <id column="record_id" property="recordId"/>
+        <result column="record_type" property="recordType"/>
+        <result column="record_cont" property="recordCont"/>
+        <result column="record_picurl" property="recordPicUrl"/>
+        <result column="record_voice" property="recordVoice"/>
+        <result column="record_video" property="recordVideo"/>
+        <result column="record_emp_id" property="recordEmpId"/>
+        <result column="record_school_id" property="recordSchoolId"/>
+        <result column="record_is_use" property="recordIsUse"/>
+        <result column="record_is_del" property="recordIsDel"/>
+        <result column="dateline" property="dateLine"/>
+    </resultMap>
+
+    <resultMap id="my_record_vo" type="com.liangxunwang.unimanager.mvc.vo.RecordVO">
+        <id column="record_id" property="recordId"/>
+        <result column="record_type" property="recordType"/>
+        <result column="record_cont" property="recordCont"/>
+        <result column="record_picurl" property="recordPicUrl"/>
+        <result column="record_voice" property="recordVoice"/>
+        <result column="record_video" property="recordVideo"/>
+        <result column="record_emp_id" property="recordEmpId"/>
+        <result column="record_school_id" property="recordSchoolId"/>
+        <result column="record_is_use" property="recordIsUse"/>
+        <result column="record_is_del" property="recordIsDel"/>
+        <result column="dateline" property="dateLine"/>
+        <result column="emp_name" property="empName"/>
+        <result column="emp_cover" property="empCover"/>
+        <result column="zan_num" property="zanNum"/>
+        <result column="pl_num" property="plNum"/>
+        <result column="level_name" property="levelName"/>
+        <result column="level_count" property="levelCount"/>
+        <result column="school_name" property="schoolName"/>
+    </resultMap>
+
+
+    <select id="list" resultMap="my_record_vo">
+
+            SELECT m.*,
+            (SELECT level_name FROM lx_level ll WHERE m.level_count BETWEEN ll.level_start and ll.level_end ) as level_name
+            FROM (
+            SELECT sr.*, le.emp_name, le.emp_cover,lc.count as level_count,cl.name as school_name,
+            (select count(zan_record_id) from school_record_zan zan where  zan.zan_record_id = sr.record_id) as zan_num,
+            (select count(record_id) from school_record_comment pl where  pl.record_id = sr.record_id) as pl_num
+            FROM school_record sr
+            LEFT JOIN lx_emp le ON sr.record_emp_id=le.emp_id
+            LEFT JOIN lx_count lc ON  le.emp_id = lc.emp_id
+            LEFT JOIN college cl on sr.record_school_id=cl.coid
+            WHERE sr.record_is_del='0' AND le.is_use='0'
+            AND sr.record_type != '1'
+            <if test="schoolId != null and schoolId != ''">
+                AND sr.record_school_id=#{schoolId}
+            </if>
+            <if test="empId != null and empId != ''">
+                AND sr.record_emp_id=#{empId}
+            </if>
+            ) m
+            ORDER BY m.dateline DESC
+        limit #{index},#{size}
+    </select>
+
+    <select id="listTwo" resultMap="my_record_vo">
+
+        SELECT m.*,
+        (SELECT level_name FROM lx_level ll WHERE m.level_count BETWEEN ll.level_start and ll.level_end ) as level_name
+        FROM (
+        SELECT sr.*, le.emp_name, le.emp_cover,lc.count as level_count,cl.name as school_name,
+        (select count(zan_record_id) from school_record_zan zan where  zan.zan_record_id = sr.record_id) as zan_num,
+        (select count(record_id) from school_record_comment pl where  pl.record_id = sr.record_id) as pl_num
+        FROM school_record sr
+        LEFT JOIN lx_emp le ON sr.record_emp_id=le.emp_id
+        LEFT JOIN lx_count lc ON  le.emp_id = lc.emp_id
+        LEFT JOIN college cl on sr.record_school_id=cl.coid
+        WHERE sr.record_is_del='0' AND le.is_use='0'
+        AND sr.record_type != '1'
+        <if test="schoolId != null and schoolId != ''">
+            AND sr.record_id !=#{schoolId}
+        </if>
+
+        ) m
+        ORDER BY m.dateline DESC
+        limit #{index},#{size}
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Record">
+        INSERT INTO school_record(record_id, record_type, record_cont, record_picurl, record_voice, record_video,record_emp_id, record_school_id, record_is_use, record_is_del, dateline )
+        VALUES (#{recordId}, #{recordType}, #{recordCont}, #{recordPicUrl, jdbcType=VARCHAR}, #{recordVoice, jdbcType=VARCHAR}, #{recordVideo, jdbcType=VARCHAR}, #{recordEmpId}, #{recordSchoolId}, #{recordIsUse}, #{recordIsDel}, #{dateLine})
+    </insert>
+
+    <select id="findById" resultMap="my_record_vo" parameterType="String">
+        SELECT m.*,
+        (SELECT ll.level_name FROM lx_level ll WHERE m.level_count BETWEEN ll.level_start and ll.level_end ) as level_name
+        FROM (
+        SELECT sr.*, le.emp_name as emp_name, le.emp_cover as emp_cover,lc.count as level_count,
+        (select count(zan_record_id) from school_record_zan zan where  zan.zan_record_id = sr.record_id) as zan_num,
+        (select count(record_id) from school_record_comment pl where  pl.record_id = sr.record_id) as pl_num
+        FROM school_record sr
+        LEFT JOIN lx_emp le ON sr.record_emp_id=le.emp_id
+        LEFT JOIN lx_count lc ON  le.emp_id = lc.emp_id
+        WHERE sr.record_is_del='0'
+        AND sr.record_id=#{id}
+        ) m
+    </select>
+    <select id="findBySchoolId" resultMap="my_record_vo" parameterType="String">
+        SELECT m.*,
+        (SELECT level_name FROM lx_level ll WHERE m.level_count BETWEEN ll.level_start and ll.level_end ) as level_name
+        FROM (
+        SELECT sr.*, le.emp_name, le.emp_cover,lc.count as level_count,
+        (select count(zan_record_id) from school_record_zan zan where  zan.zan_record_id = sr.record_id) as zan_num,
+        (select count(record_id) from school_record_comment pl where  pl.record_id = sr.record_id) as pl_num
+        FROM school_record sr
+        LEFT JOIN lx_emp le ON sr.record_emp_id=le.emp_id
+        LEFT JOIN lx_count lc ON  le.emp_id = lc.emp_id
+        WHERE sr.record_is_del='0' AND sr.record_type='1'
+        AND sr.record_school_id=#{schoolId}
+        ) m
+    </select>
+    
+    <delete id="deleteById" parameterType="String">
+         DELETE FROM school_record WHERE record_id=#{id}
+    </delete>
+
+    <select id="findByEmpIdAndType" parameterType="String" resultMap="my_record">
+        SELECT * FROM school_record WHERE record_emp_id=#{empId} AND record_type=#{type}
+    </select>
+
+    <delete id="deletePromotion" parameterType="String">
+        DELETE FROM school_record WHERE record_emp_id=#{empId} AND record_type='1'
+    </delete>
+
+    <delete id="deleteBySchoolId" parameterType="String">
+        DELETE FROM SCHOOL_RECORD WHERE RECORD_TYPE='1' AND RECORD_SCHOOL_ID=#{schoolId}
+    </delete>
+</mapper>

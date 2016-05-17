@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.ManagerInfoDao">
+    <resultMap id="my_manager_info" type="com.liangxunwang.unimanager.model.ManagerInfo">
+        <id column="info_id" property="id"/>
+        <result column="manager_id" property="managerId"/>
+        <result column="real_name" property="realName"/>
+        <result column="idcard" property="idcard"/>
+        <result column="idcard_url" property="idcardUrl"/>
+        <result column="pay_number" property="payNumber"/>
+        <result column="check_name" property="checkName"/>
+        <result column="bank_card" property="bankCard"/>
+        <result column="bank_type" property="bankType"/>
+        <result column="bank_address" property="bankAddress"/>
+        <result column="bank_name" property="bankName"/>
+        <result column="mobile" property="mobile"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.ManagerInfo">
+        INSERT INTO MANAGER_INFO (INFO_ID, MANAGER_ID, REAL_NAME, IDCARD, IDCARD_URL, PAY_NUMBER, CHECK_NAME, BANK_CARD, BANK_TYPE, BANK_ADDRESS, BANK_NAME, MOBILE)
+        VALUES (#{id}, #{managerId}, #{realName}, #{idcard}, #{idcardUrl}, #{payNumber}, #{checkName}, #{bankCard}, #{bankType}, #{bankAddress}, #{bankName}, #{mobile})
+    </insert>
+
+    <select id="findById" parameterType="String" resultMap="my_manager_info">
+        SELECT * FROM MANAGER_INFO WHERE MANAGER_ID=#{id}
+    </select>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.ManagerInfo">
+        UPDATE MANAGER_INFO SET REAL_NAME=#{realName}, IDCARD=#{idcard}, IDCARD_URL=#{idcardUrl}, PAY_NUMBER=#{payNumber},CHECK_NAME=#{checkName},BANK_CARD=#{bankCard},
+        BANK_TYPE=#{bankType}, BANK_ADDRESS=#{bankAddress}, BANK_NAME=#{bankName},MOBILE=#{mobile} WHERE INFO_ID=#{id}
+    </update>
+
+
+</mapper>

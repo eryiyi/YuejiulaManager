@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.WorkDao">
+    <resultMap id="my_zp" type="com.liangxunwang.unimanager.model.PKWork">
+        <id column="zp_id" property="id"/>
+        <result column="zt_id" property="ztId"/>
+        <result column="emp_id" property="empId"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="zp_type" property="type"/>
+        <result column="zp_title" property="title"/>
+        <result column="zp_picurl" property="picUrl"/>
+        <result column="zp_videourl" property="videoUrl"/>
+        <result column="zp_isuse" property="isUse"/>
+        <result column="dateline" property="dateline"/>
+    </resultMap>
+
+    <resultMap id="my_zp_vo" type="com.liangxunwang.unimanager.mvc.vo.PkWorkVO">
+        <id column="zp_id" property="id"/>
+        <result column="zt_id" property="ztId"/>
+        <result column="emp_id" property="empId"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="zp_type" property="type"/>
+        <result column="zp_title" property="title"/>
+        <result column="zp_picurl" property="picUrl"/>
+        <result column="zp_videourl" property="videoUrl"/>
+        <result column="zp_isuse" property="isUse"/>
+        <result column="dateline" property="dateline"/>
+        <result column="emp_name" property="empName"/>
+        <result column="emp_cover" property="empCover"/>
+        <result column="zan_num" property="zanNum"/>
+        <result column="pl_num" property="plNum"/>
+        <result column="school_name" property="schoolName"/>
+    </resultMap>
+
+    <insert id="saveZp" parameterType="com.liangxunwang.unimanager.model.PKWork">
+        INSERT INTO PK_ZP(ZP_ID, ZT_ID, EMP_ID, SCHOOL_ID, ZP_TYPE, ZP_TITLE, ZP_PICURL, ZP_VIDEOURL, ZP_ISUSE, DATELINE)
+         VALUES (#{id}, #{ztId}, #{empId}, #{schoolId}, #{type}, #{title}, #{picUrl, jdbcType=VARCHAR}, #{videoUrl, jdbcType=VARCHAR}, #{isUse}, #{dateline})
+    </insert>
+
+    <select id="findByZtIdAndEmpId" resultMap="my_zp" parameterType="String">
+        SELECT * FROM PK_ZP WHERE ZT_ID=#{ztId} AND EMP_ID=#{empId}
+    </select>
+    <select id="listWork" resultMap="my_zp_vo">
+
+        SELECT pz.*, le.emp_name, le.emp_cover,cl.name as school_name,
+        (select count(PK_ZP_ID) from PK_ZAN zan where  zan.PK_ZP_ID = pz.ZP_ID) as zan_num,
+        (select count(PK_ZP_ID) from PK_COMMENT pl where  pl.PK_ZP_ID = pz.ZP_ID) as pl_num
+        FROM PK_ZP pz
+        LEFT JOIN lx_emp le ON pz.EMP_ID=le.emp_id
+        LEFT JOIN college cl on pz.SCHOOL_ID=cl.coid
+        LEFT JOIN PK_THEME pt on pz.ZT_ID = pt.PK_ID
+        WHERE pz.ZP_ISUSE='0' AND le.is_use='0'
+        <if test="themeId ==null or themeId == ''">
+            AND pt.IS_USE='1'
+        </if>
+        <if test="themeId !=null and themeId != ''">
+            AND pz.ZT_ID=#{themeId} AND pt.IS_USE='2'
+        </if>
+        <if test="schoolId != null and schoolId != ''">
+            AND pz.SCHOOL_ID=#{schoolId}
+        </if>
+        <if test="empId != null and empId != ''">
+            AND pz.emp_id=#{empId}
+        </if>
+        <if test="keyWords != null and keyWords != ''">
+            AND le.EMP_NAME like CONCAT('%',#{keyWords},'%')
+        </if>
+        <if test="zan != null and zan != ''">
+            ORDER BY zan_num DESC
+        </if>
+        <if test="time != null and time !=''">
+            ORDER BY pz.dateline DESC
+        </if>
+        limit #{index},#{size}
+    </select>
+
+
+    <select id="listWork2" resultMap="my_zp_vo">
+
+        SELECT pz.*, le.emp_name, le.emp_cover,cl.name as school_name,
+        (select count(PK_ZP_ID) from PK_ZAN zan where  zan.PK_ZP_ID = pz.ZP_ID) as zan_num,
+        (select count(PK_ZP_ID) from PK_COMMENT pl where  pl.PK_ZP_ID = pz.ZP_ID) as pl_num
+        FROM PK_ZP pz
+        LEFT JOIN lx_emp le ON pz.EMP_ID=le.emp_id
+        LEFT JOIN college cl on pz.SCHOOL_ID=cl.coid
+        LEFT JOIN PK_THEME pt on pz.ZT_ID = pt.PK_ID
+        WHERE pz.ZP_ISUSE='0' AND le.is_use='0' AND pt.IS_USE='1'
+
+        <if test="schoolId != null and schoolId != ''">
+            AND pz.SCHOOL_ID=#{schoolId}
+        </if>
+
+        <if test="keyWords != null and keyWords != ''">
+            AND le.EMP_NAME like CONCAT('%',#{keyWords},'%')
+        </if>
+        <if test="zan != null and zan != ''">
+            ORDER BY zan_num DESC
+        </if>
+        <if test="time != null and time !=''">
+            ORDER BY pz.dateline DESC
+        </if>
+        limit #{index},#{size}
+    </select>
+
+    <select id="findQueue" parameterType="String" resultMap="my_zp_vo">
+      SELECT * FROM (
+        SELECT pz.*, le.emp_name, le.emp_cover,cl.name as school_name,
+        (select count(PK_ZP_ID) from PK_ZAN zan where  zan.PK_ZP_ID = pz.ZP_ID) as zan_num,
+        (select count(PK_ZP_ID) from PK_COMMENT pl where  pl.PK_ZP_ID = pz.ZP_ID) as pl_num
+        FROM PK_ZP pz
+        LEFT JOIN lx_emp le ON pz.EMP_ID=le.emp_id
+        LEFT JOIN college cl on pz.SCHOOL_ID=cl.coid
+        WHERE pz.ZT_ID=#{themeId} AND pz.ZP_ISUSE='0' AND le.is_use='0'
+        ORDER by zan_num DESC
+      ) WHERE ROWNUM &lt; 2
+    </select>
+
+    <select id="findWorkVo" parameterType="String" resultMap="my_zp_vo">
+        SELECT pz.*, le.emp_name, le.emp_cover,cl.name as school_name,
+        (select count(PK_ZP_ID) from PK_ZAN zan where  zan.PK_ZP_ID = pz.ZP_ID) as zan_num,
+        (select count(PK_ZP_ID) from PK_COMMENT pl where  pl.PK_ZP_ID = pz.ZP_ID) as pl_num
+        FROM PK_ZP pz
+        LEFT JOIN lx_emp le ON pz.EMP_ID=le.emp_id
+        LEFT JOIN college cl on pz.SCHOOL_ID=cl.coid
+        WHERE pz.ZP_ID=#{id}
+    </select>
+
+    <select id="findAllSchoolQueue" parameterType="String" resultMap="my_zp_vo">
+        select * from
+          (select t.*, row_number() over(partition by SCHOOL_ID order by ZP_TYPE desc ) rn
+           from
+        (SELECT pz.*, le.emp_name, le.emp_cover,cl.name as school_name,
+           (select count(PK_ZP_ID) from PK_ZAN zan where  zan.PK_ZP_ID = pz.ZP_ID) as zan_num,
+           (select count(PK_ZP_ID) from PK_COMMENT pl where  pl.PK_ZP_ID = pz.ZP_ID) as pl_num
+        FROM PK_ZP pz
+          LEFT JOIN lx_emp le ON pz.EMP_ID=le.emp_id
+          LEFT JOIN college cl on pz.SCHOOL_ID=cl.coid
+        WHERE pz.ZT_ID=#{themeId} AND  pz.ZP_ISUSE='0' AND le.is_use='0') t
+          )
+        where rn=1
+    </select>
+
+    <delete id="deleteByZpId" parameterType="String">
+        DELETE FROM PK_ZP WHERE ZP_ID=#{zpId}
+    </delete>
+
+    <select id="findWorkById" resultMap="my_zp" parameterType="String">
+        SELECT * FROM PK_ZP WHERE ZP_ID=#{workId}
+    </select>
+</mapper>

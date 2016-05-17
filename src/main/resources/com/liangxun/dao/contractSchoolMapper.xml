@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.ContractSchoolDao">
+    <resultMap id="my_contract_school" type="com.liangxunwang.unimanager.model.ContractSchool">
+        <id column="id" property="id"/>
+        <result column="emp_id" property="empId"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="end_time" property="endTime"/>
+        <result column="dateline" property="dateline"/>
+    </resultMap>
+
+    <resultMap id="my_contract_school_vo" type="com.liangxunwang.unimanager.mvc.vo.ContractSchoolVO">
+        <id column="id" property="id"/>
+        <result column="emp_id" property="empId"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="end_time" property="endTime"/>
+        <result column="dateline" property="dateline"/>
+        <result column="emp_name" property="empName"/>
+        <result column="school_name" property="schoolName"/>
+        <result column="emp_cover" property="empCover"/>
+        <result column="emp_mobile" property="empMobile"/>
+    </resultMap>
+
+    <select id="listByEmpId" resultMap="my_contract_school_vo">
+        SELECT cs.*, le.emp_name, co.name as school_name FROM contract_school cs
+        LEFT JOIN lx_emp le ON  cs.emp_id=le.emp_id
+        LEFT JOIN college co on cs.school_id=co.coid
+        WHERE cs.emp_id=#{empId}
+    </select>
+
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.ContractSchool">
+        INSERT INTO contract_school(
+        id, emp_id, school_id, end_time, dateline
+        ) VALUES (#{id}, #{empId}, #{schoolId}, #{endTime}, #{dateline})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM contract_school WHERE id=#{id}
+    </delete>
+
+    <select id="findById" parameterType="String" resultMap="my_contract_school">
+        SELECT * FROM CONTRACT_SCHOOL WHERE ID=#{id}
+    </select>
+
+    <select id="findBySchoolId" resultMap="my_contract_school" parameterType="String">
+        SELECT * FROM contract_school WHERE school_id=#{schoolId}
+    </select>
+
+    <select id="findContractSchoolByEmpId" resultMap="my_contract_school" parameterType="String">
+        SELECT * FROM contract_school WHERE emp_id=#{empId}
+    </select>
+
+    <select id="listAllContract" resultMap="my_contract_school_vo">
+
+        SELECT cs.*, le.emp_name, le.EMP_COVER, le.EMP_MOBILE, co.name as school_name FROM contract_school cs
+        LEFT JOIN lx_emp le ON  cs.emp_id=le.emp_id
+        LEFT JOIN college co on cs.school_id=co.coid
+        <if test="keyWords != null and keyWords !=''">
+            where co.name like CONCAT('%',#{keyWords},'%')
+        </if>
+        limit #{index},#{size}
+    </select>
+    <select id="count" resultType="Long">
+        SELECT count(*) FROM CONTRACT_SCHOOL
+    </select>
+
+    <select id="findEndTime" parameterType="String" resultMap="my_contract_school">
+        SELECT * FROM CONTRACT_SCHOOL WHERE END_TIME &lt; #{nowTime}
+    </select>
+
+    <select id="findByEmpAndEndTime" parameterType="String" resultMap="my_contract_school">
+        SELECT * FROM CONTRACT_SCHOOL WHERE END_TIME &gt; #{nowTime} AND EMP_ID=#{empId}
+    </select>
+
+</mapper>

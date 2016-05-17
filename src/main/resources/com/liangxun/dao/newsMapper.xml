@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.NewsDao">
+    <resultMap id="my_news" type="com.liangxunwang.unimanager.model.News">
+        <id column="news_id" property="id"/>
+        <result column="news_title" property="title"/>
+        <result column="news_content" property="content"/>
+        <result column="news_emp_id" property="empId"/>
+        <result column="is_use" property="isUse"/>
+        <result column="news_type_id" property="typeId"/>
+        <result column="publish_type" property="publishType"/>
+        <result column="dateline" property="dateLine"/>
+    </resultMap>
+
+    <resultMap id="my_news_vo" type="com.liangxunwang.unimanager.mvc.vo.NewsVO">
+        <id column="news_id" property="id"/>
+        <result column="news_title" property="title"/>
+        <result column="news_content" property="content"/>
+        <result column="news_emp_id" property="empId"/>
+        <result column="is_use" property="isUse"/>
+        <result column="news_type_id" property="typeId"/>
+        <result column="dateline" property="dateLine"/>
+        <result column="publish_type" property="publishType"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="type_name" property="typeName"/>
+    </resultMap>
+
+    <select id="list" resultMap="my_news_vo">
+
+        SELECT sn.* ,lm.manager_admin as nick_name, nt.type_name from school_news sn
+        LEFT JOIN lx_manager lm ON sn.news_emp_id=lm.manager_id
+        LEFT JOIN news_type nt ON sn.news_type_id=nt.type_id
+        WHERE 1=1
+        <if test="isUse != null and isUse != ''">
+            AND sn.is_use=#{isUse}
+        </if>
+        <if test="typeId != null and typeId != ''">
+            AND sn.news_type_id=#{typeId}
+        </if>
+        ORDER BY sn.dateline DESC
+        limit #{index},#{size}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT count(news_id) FROM school_news WHERE 1=1
+        <if test="isUse != null and isUse != ''">
+            AND is_use=#{isUse}
+        </if>
+        <if test="typeId != null and typeId != ''">
+            AND news_type_id=#{typeId}
+        </if>
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.News">
+        INSERT INTO school_news(news_id, news_title, news_content, news_emp_id, is_use, news_type_id, publish_type,dateline)
+        VALUES (#{id}, #{title}, #{content}, #{empId}, #{isUse}, #{typeId}, #{publishType}, #{dateLine})
+    </insert>
+
+    <select id="findByIdType0" resultMap="my_news_vo" >
+        SELECT sn.* ,lm.manager_admin as nick_name, nt.type_name from school_news sn
+        LEFT JOIN lx_manager lm ON sn.news_emp_id=lm.manager_id
+        LEFT JOIN news_type nt ON sn.news_type_id=nt.type_id
+        WHERE sn.news_id=#{newsId}
+    </select>
+    <select id="findByIdType1" resultMap="my_news_vo">
+         SELECT sn.* ,le.emp_name as nick_name, nt.type_name from school_news sn
+            LEFT JOIN lx_emp le ON sn.news_emp_id=le.emp_id
+            LEFT JOIN news_type nt ON sn.news_type_id=nt.type_id
+            WHERE sn.news_id=#{newsId}
+    </select>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM school_news WHERE news_id=#{newsId}
+    </delete>
+
+</mapper>

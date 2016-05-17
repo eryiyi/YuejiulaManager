@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.VisitorDao">
+    <resultMap id="my_visitor" type="com.liangxunwang.unimanager.model.Visitor">
+        <id column="visitors_id" property="id"/>
+        <result column="visitors_empone" property="empOne"/>
+        <result column="visitors_emptwo" property="empTwo"/>
+        <result column="dateline" property="dateline"/>
+    </resultMap>
+
+    <resultMap id="my_visitor_vo" type="com.liangxunwang.unimanager.mvc.vo.VisitorVO">
+        <id column="visitors_id" property="id"/>
+        <result column="visitors_empone" property="empOne"/>
+        <result column="visitors_emptwo" property="empTwo"/>
+        <result column="dateline" property="dateline"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="cover" property="cover"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Visitor">
+        INSERT INTO school_visitors(visitors_id, visitors_empone, visitors_emptwo, dateline)
+        VALUES (id, empOne, empTwo, dateline)
+    </insert>
+
+    <select id="findByParam" parameterType="String" resultMap="my_visitor">
+        SELECT * from school_visitors WHERE visitors_empone=#{empOne} AND visitors_emptwo=#{empTwo}
+    </select>
+
+    <update id="updateTime">
+        UPDATE school_visitors SET dateline=#{TIME} WHERE visitors_id=#{vid}
+    </update>
+
+    <select id="listVisitor" resultMap="my_visitor_vo">
+
+        SELECT sv.*, le.emp_name as nick_name,le.emp_cover as cover FROM school_visitors sv
+        LEFT JOIN lx_emp le ON sv.visitors_empone=le.emp_id
+        WHERE sv.visitors_emptwo=#{empId}
+        ORDER BY sv.dateline DESC
+        limit #{index},#{size}
+    </select>
+</mapper>

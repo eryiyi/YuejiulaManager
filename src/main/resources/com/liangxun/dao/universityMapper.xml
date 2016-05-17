@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.UniversityDao">
+    <resultMap id="my_university" type="com.liangxunwang.unimanager.model.University">
+        <id column="school_id" property="schoolId"/>
+        <result column="school_name" property="schoolName"/>
+        <result column="is_use" property="isUse"/>
+        <result column="dateline" property="dateline"/>
+        <result column="region_code" property="regionCode"/>
+    </resultMap>
+
+    <select id="findByName" parameterType="String" resultMap="my_university">
+        SELECT * from lx_schools where school_name=#{name}
+    </select>
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.University">
+        insert into lx_schools(school_id, school_name, is_use, region_code, dateline)
+        VALUES (#{schoolId},#{schoolName},#{isUse},#{regionCode},#{dateline})
+    </insert>
+
+    <select id="list" resultMap="my_university">
+        select * from lx_schools ORDER BY dateline DESC
+    </select>
+
+    <select id="listAll" resultMap="my_university">
+        select * from lx_schools WHERE is_use='0' ORDER BY dateline DESC
+    </select>
+
+    <select id="listNearby" resultMap="my_university">
+        select * from lx_schools
+         WHERE school_id != #{schoolId} AND is_use='0'
+         ORDER BY dateline DESC
+    </select>
+
+    <select id="findById" resultMap="my_university">
+        SELECT * from lx_schools where school_id=#{schoolId}
+    </select>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.University">
+        UPDATE lx_schools SET school_name=#{schoolName},is_use=#{isUse},region_code=#{regionCode},dateline=#{dateline}
+        WHERE school_id=#{schoolId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM lx_schools WHERE school_id=#{schoolId}
+    </delete>
+
+    <select id="listIsUse" resultMap="my_university">
+        select * from lx_schools WHERE is_use='0' ORDER BY dateline DESC
+    </select>
+</mapper>

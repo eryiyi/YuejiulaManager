@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.SmsDao">
+    <resultMap id="my_sms" type="com.liangxunwang.unimanager.model.Sms">
+        <id column="sms_id" property="smsId"/>
+        <result column="sms_mobile" property="smsMobile"/>
+        <result column="sms_code" property="code"/>
+        <result column="sms_state" property="state"/>
+        <result column="sms_issuccess" property="isSuccess"/>
+        <result column="dateline" property="dateline"/>
+    </resultMap>
+
+    <select id="findByMobile" resultMap="my_sms" parameterType="String">
+      SELECT * from lx_sms where sms_issuccess='1' AND
+        sms_mobile=#{phoneNumber}
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Sms">
+        INSERT INTO lx_sms(sms_id, sms_mobile, sms_code, sms_state, sms_issuccess, dateline)
+        VALUES (#{smsId}, #{smsMobile}, #{code}, #{state}, #{isSuccess}, #{dateline})
+    </insert>
+
+    <update id="update" parameterType="String">
+        UPDATE lx_sms SET sms_issuccess='0' WHERE sms_issuccess='1' AND sms_mobile=#{phoneNumber}
+    </update>
+</mapper>

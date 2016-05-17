@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.ViewpagerDao">
+    <resultMap id="my_viewpager" type="com.liangxunwang.unimanager.model.Viewpager">
+        <id column="id" property="id"/>
+        <result column="pic_address" property="picAddress"/>
+        <result column="pic_url" property="picUrl"/>
+        <result column="pic_desc" property="desc"/>
+        <result column="goods_id" property="goodsId"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="view_type" property="type"/>
+    </resultMap>
+
+    <resultMap id="my_viewpager_vo" type="com.liangxunwang.unimanager.mvc.vo.ViewpagerVO">
+        <id column="id" property="id"/>
+        <result column="pic_address" property="picAddress"/>
+        <result column="pic_url" property="picUrl"/>
+        <result column="pic_desc" property="desc"/>
+        <result column="goods_id" property="goodsId"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="view_type" property="type"/>
+        <result column="school_name" property="schoolName"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Viewpager">
+        INSERT INTO PAOPAO_VIEWPAGER (ID, PIC_ADDRESS, PIC_URL, PIC_DESC, GOODS_ID, SCHOOL_ID, VIEW_TYPE)
+        VALUES (#{id}, #{picAddress}, #{picUrl, jdbcType=VARCHAR}, #{desc, jdbcType=VARCHAR}, #{goodsId, jdbcType=VARCHAR},#{schoolId, jdbcType=VARCHAR}, #{type})
+    </insert>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM PAOPAO_VIEWPAGER WHERE ID = #{id}
+    </delete>
+
+    <select id="list" resultMap="my_viewpager_vo">
+        SELECT pv.*, co.NAME as school_name FROM PAOPAO_VIEWPAGER pv
+        LEFT JOIN COLLEGE co ON pv.SCHOOL_ID=co.COID
+        WHERE '1'='1'
+        <if test="schoolIds != null and schoolIds != ''">
+            AND pv.SCHOOL_ID IN
+            <foreach collection="schoolIds" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            OR pv.SCHOOL_ID IS NULL
+        </if>
+    </select>
+
+</mapper>

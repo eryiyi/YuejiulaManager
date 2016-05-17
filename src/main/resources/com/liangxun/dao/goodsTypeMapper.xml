@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.GoodsTypeDao">
+    <resultMap id="my_goods_type" type="com.liangxunwang.unimanager.model.GoodsType">
+        <id column="type_id" property="typeId"/>
+        <result column="type_name" property="typeName"/>
+        <result column="type_cont" property="typeContent"/>
+        <result column="type_isuse" property="typeIsUse"/>
+        <result column="type_cover" property="typeCover"/>
+        <result column="type_is_business" property="typeIsBusiness"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.GoodsType">
+        INSERT INTO lx_goods_type(type_id, type_name, type_cont, type_isuse, type_cover , type_is_business)
+         VALUES (#{typeId}, #{typeName},#{typeContent},#{typeIsUse},#{typeCover}, #{typeIsBusiness})
+    </insert>
+
+    <select id="list" resultMap="my_goods_type">
+        SELECT * FROM lx_goods_type
+        WHERE 1=1
+        <if test="isUse != null and isUse != ''">
+            AND type_isuse=#{isUse}
+        </if>
+    </select>
+
+    <select id="findById" parameterType="String" resultMap="my_goods_type">
+        SELECT * FROM lx_goods_type where type_id=#{typeId}
+    </select>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.GoodsType">
+        UPDATE lx_goods_type SET type_name=#{typeName}, type_cont=#{typeContent},
+         type_isuse=#{typeIsUse}, type_cover=#{typeCover}, type_is_business=#{typeIsBusiness} WHERE type_id=#{typeId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM lx_goods_type WHERE type_id=#{typeId}
+    </delete>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.AppVideosZanDao">
+    <resultMap id="my_zan" type="com.liangxunwang.unimanager.model.Zan">
+        <id column="PAOPAO_VIDEO_FAVOUR_ID" property="id"/>
+        <result column="PAOPAO_VIDEO_ID" property="recordId"/>
+        <result column="EMP_ID" property="empId"/>
+        <result column="DATELINE" property="dateline"/>
+    </resultMap>
+
+    <resultMap id="my_zan_vo" type="com.liangxunwang.unimanager.mvc.vo.ZanVO">
+        <id column="PAOPAO_VIDEO_FAVOUR_ID" property="id"/>
+        <result column="PAOPAO_VIDEO_ID" property="recordId"/>
+        <result column="EMP_ID" property="empId"/>
+        <result column="DATELINE" property="dateline"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="cover" property="cover"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Zan">
+        INSERT INTO paopao_video_favour (PAOPAO_VIDEO_FAVOUR_ID, PAOPAO_VIDEO_ID, EMP_ID, DATELINE )
+        VALUES (#{id}, #{recordId}, #{empId}, #{dateline})
+    </insert>
+
+    <select id="findByParams" resultMap="my_zan">
+        SELECT * from paopao_video_favour
+        WHERE PAOPAO_VIDEO_ID=#{recordId} AND EMP_ID=#{empId}
+    </select>
+
+    <select id="listZanByRecord" resultMap="my_zan_vo" parameterType="String">
+        SELECT srz.*, le.emp_name as nick_name, le.emp_cover as cover FROM paopao_video_favour srz
+        LEFT JOIN lx_emp le ON srz.EMP_ID = le.emp_id
+        WHERE srz.PAOPAO_VIDEO_ID=#{recordId}
+        ORDER BY srz.dateline DESC
+    </select>
+</mapper>

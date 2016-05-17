@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.AppCityDao">
+    <resultMap id="my_city" type="com.liangxunwang.unimanager.model.City">
+        <id column="cid" property="cid"/>
+        <result column="cityid" property="cityid"/>
+        <result column="areaid" property="areaid"/>
+        <result column="cityName" property="cityName"/>
+    </resultMap>
+
+    <select id="list" resultMap="my_city" parameterType="String">
+        SELECT * from CITY WHERE AREAID = #{provinceid}
+    </select>
+
+</mapper>

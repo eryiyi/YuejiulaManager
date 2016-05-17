@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.ThemeDao">
+    <resultMap id="my_theme" type="com.liangxunwang.unimanager.model.PKTheme">
+        <id column="pk_id" property="id"/>
+        <result column="pk_title" property="title"/>
+        <result column="pk_number" property="number"/>
+        <result column="pk_mudi" property="mudi"/>
+        <result column="pk_start_time" property="startTime"/>
+        <result column="pk_end_time" property="endTime"/>
+        <result column="pk_content" property="content"/>
+        <result column="dateline" property="dateline"/>
+        <result column="is_use" property="isUse"/>
+        <result column="pk_pic" property="picUrl"/>
+        <result column="pk_theme_type" property="type"/>
+    </resultMap>
+
+    <insert id="saveTheme" parameterType="com.liangxunwang.unimanager.model.PKTheme">
+        INSERT INTO PK_THEME(PK_ID, PK_TITLE, PK_NUMBER, PK_MUDI, PK_START_TIME, PK_END_TIME, PK_CONTENT, DATELINE, IS_USE, PK_PIC,PK_THEME_TYPE
+        )
+        VALUES (#{id}, #{title}, #{number}, #{mudi}, #{startTime}, #{endTime}, #{content}, #{dateline}, #{isUse}, #{picUrl,jdbcType=VARCHAR}, #{type})
+    </insert>
+
+    <select id="list" resultMap="my_theme">
+
+        SELECT * FROM PK_THEME
+        WHERE '1'='1'
+        <if test="isUse != null and isUse != ''">
+            AND IS_USE=#{isUse}
+        </if>
+        ORDER BY DATELINE DESC
+        limit #{index},#{size}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT COUNT(PK_ID) FROM PK_THEME
+    </select>
+
+    <select id="findByThemeId" resultMap="my_theme">
+        SELECT * FROM PK_THEME WHERE PK_ID=#{themeId}
+    </select>
+
+    <select id="listApp" resultMap="my_theme">
+        SELECT * FROM PK_THEME WHERE IS_USE='2' ORDER BY DATELINE DESC
+    </select>
+    <select id="findTheme" resultMap="my_theme">
+        SELECT * FROM (
+        SELECT * FROM PK_THEME T
+        WHERE T.IS_USE='1'
+        ORDER BY T.DATELINE DESC
+        ) as total WHERE total.ROWNUM &lt; 2
+    </select>
+
+    <select id="findByNumber" parameterType="String" resultMap="my_theme">
+        SELECT * FROM PK_THEME WHERE PK_NUMBER = #{number}
+    </select>
+
+    <select id="findEndTheme" parameterType="String" resultMap="my_theme">
+         SELECT * FROM (
+        SELECT * FROM PK_THEME T
+        WHERE T.IS_USE='1' AND T.PK_END_TIME &lt; #{nowTime}
+        ORDER BY T.DATELINE DESC
+        ) as total WHERE total.ROWNUM &lt; 2
+    </select>
+
+    <update id="updateStatus" parameterType="String" >
+        UPDATE PK_THEME SET IS_USE=#{status} WHERE PK_ID=#{themeId}
+    </update>
+
+    <update id="startTheme" parameterType="String">
+        UPDATE PK_THEME SET IS_USE='1' WHERE PK_START_TIME &lt; #{nowTime} AND IS_USE='0'
+    </update>
+
+    <delete id="deleteById" parameterType="String">
+        DELETE FROM PK_THEME WHERE PK_ID = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.NewsTypeDao">
+    <resultMap id="my_news_type" type="com.liangxunwang.unimanager.model.NewsType">
+        <id column="type_id" property="id"/>
+        <result column="type_name" property="name"/>
+        <result column="dateline" property="dateline"/>
+    </resultMap>
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.NewsType">
+        INSERT INTO news_type(type_id, type_name, dateline) VALUES (#{id}, #{name}, #{dateline})
+    </insert>
+
+    <select id="list" resultMap="my_news_type">
+        SELECT * FROM news_type
+    </select>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.NewsType">
+        UPDATE news_type SET type_name=#{name} WHERE type_id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM news_type WHERE type_id=#{id}
+    </delete>
+
+</mapper>

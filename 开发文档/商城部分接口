@@ -1,0 +1,37 @@
+1.获取宝贝列表接口，分页
+参数：page,第几页，必须
+      schoolId 查询哪个学校的宝贝， 必须
+      type (0,2) 0是一般查询  2是查询商家的我的宝贝配合参数 isMine使用
+      isMine 查询商家我的宝贝时值用 1，其他可不传
+      empId  查询商家我的宝贝时使用
+      typeId  宝贝的类别
+      cont  关键词  商品名称或是商品内容中的
+http://localhost:8080/paopaogoods/listGoods.do?page=1&schoolId=8035&type=2&isMine=1
+
+返回 PaopaoGoodsVO集合
+
+2,根据宝贝ID查询宝贝的详细
+参数：id 必须
+http://localhost:8080/paopaogoods/findById.do?id=88463400ef2f4ee9a5f91650ee3e2528
+返回 PaopaoGoodsVO对象
+
+3.商城轮播
+/viewpager/appList.do
+
+参数  schoolId  必须
+
+返回Viewpager集合0
+
+      id;
+      picAddress;//图片地址
+      picUrl;//图片链接
+      desc;
+      schoolId;//哪个学校的
+      goodsId;//产品的ID
+      type;//1 PK  2 商品详情  3我们的广告
+
+4.商品详情页调用
+/paopaogoods/detail.do
+参数：id  必须
+
+
