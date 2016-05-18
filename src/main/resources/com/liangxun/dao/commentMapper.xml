@@ -30,7 +30,6 @@
     </insert>
 
     <select id="list" resultMap="my_comment_vo">
-
         SELECT src.*,le.emp_name as nick_name,le.emp_cover as cover,lp.emp_name as fnick_name FROM school_record_comment src
         LEFT JOIN lx_emp le ON src.comment_emp_id=le.emp_id
         LEFT JOIN school_record_comment cr ON src.comment_fplid=cr.comment_id
