@@ -9,7 +9,16 @@ public class RecordQuery {
 
     private String empId;
     private String schoolId;
-    private String schoolIdEmp;//当前登陆者的学校ID， 用于查询首页推广用
+    private String schoolIdEmp;
+    private String school_record_mood_id;
+
+    public String getSchool_record_mood_id() {
+        return school_record_mood_id;
+    }
+
+    public void setSchool_record_mood_id(String school_record_mood_id) {
+        this.school_record_mood_id = school_record_mood_id;
+    }
 
     public String getSchoolIdEmp() {
         return schoolIdEmp;

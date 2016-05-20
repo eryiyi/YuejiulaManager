@@ -65,4 +65,6 @@ public interface RecordDao {
      */
     void deleteBySchoolId(String schoolId);
 
+    long count(Map<String, Object> map);
+
 }

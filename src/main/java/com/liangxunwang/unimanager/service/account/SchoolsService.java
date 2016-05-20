@@ -27,7 +27,7 @@ import java.util.Map;
  * Created by liuzwei on 2015/2/25.
  */
 @Service("schoolsService")
-public class SchoolsService implements ListService ,UpdateService,FindService,SaveService{
+public class SchoolsService implements ListService ,UpdateService,FindService,SaveService,DeleteService{
     @Autowired
     @Qualifier("collegeDao")
     private CollegeDao collegeDao;
@@ -90,6 +90,13 @@ public class SchoolsService implements ListService ,UpdateService,FindService,Sa
         JsonNode groupid = objectNode.get("groupid");
         //获得环信的groupid，更新数据库
         collegeDao.updateGroupId(college.getCoid(), groupid.textValue());
+        return null;
+    }
+
+    @Override
+    public Object delete(Object object) throws ServiceException {
+        String coid = (String) object;
+        collegeDao.deleteById(coid);
         return null;
     }
 }

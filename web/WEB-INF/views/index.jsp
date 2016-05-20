@@ -313,14 +313,15 @@
                     </ul>
                 </li>
 				</c:if>
-				<c:if test="${um:permission('ADD_RECORD', sessionScope.powers)}">
+				<c:if test="${um:permission('ADD_RECORD', sessionScope.powers) || um:permission('LIST_RECORD_RECORD', sessionScope.powers)}">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-picture-o"></i>
-						<span class="hidden-xs">生成动态</span>
+						<span class="hidden-xs">动态管理</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('toRecord','')">生成动态</a></li>
+						<%--<li><a href="javascript:void(0);" onclick="toPage('toRecord','')">生成动态</a></li>--%>
+						<li><a href="javascript:void(0);" onclick="toPage('/schoolRecordsController/list','1')">动态列表</a></li>
 					</ul>
 				</li>
 				</c:if>
@@ -453,6 +454,19 @@
 						<%--<li><a href="javascript:void(0);"  onclick="toPage('/regHxCollege','')">添加学校</a></li>--%>
 					</ul>
 				</li>
+				</c:if>
+
+				<c:if test="${um:permission('LIST_SCHOOL_RECORD_MOOD_LIST', sessionScope.powers)|| um:permission('SCHOOL_RECORD_MOOD_ADD_LIST', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle">
+							<i class="fa fa-picture-o"></i>
+							<span class="hidden-xs">心情管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:void(0);"  onclick="toPage('/listSchoolRecordMood','1')">心情列表</a></li>
+							<li><a href="javascript:void(0);"  onclick="toPage('/toAddSchoolRecordMood','')">添加心情</a></li>
+						</ul>
+					</li>
 				</c:if>
 
 			</ul>

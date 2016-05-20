@@ -15,6 +15,15 @@ public class Record {
     private String recordIsUse;
     private String recordIsDel;
     private String dateLine;
+    private String school_record_mood_id;
+
+    public String getSchool_record_mood_id() {
+        return school_record_mood_id;
+    }
+
+    public void setSchool_record_mood_id(String school_record_mood_id) {
+        this.school_record_mood_id = school_record_mood_id;
+    }
 
     public String getRecordId() {
         return recordId;

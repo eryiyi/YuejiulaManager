@@ -72,6 +72,7 @@
                         <th>学校</th>
                         <th>所属省份</th>
                         <th>环信ID</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -81,6 +82,9 @@
                             <td>${e.name}</td>
                             <td>${e.provinceName}</td>
                             <td>${e.groupId}</td>
+                            <td>
+                                <button class="btn btn-primary" type="button" onclick="deleteCollege('${e.coid}')">删除</button>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -126,6 +130,28 @@
     </div>
 </div>
 <script type="text/javascript">
+    function deleteCollege(id){
+        if(!confirm("确定删除该学校？")){
+            return;
+        }
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url:"/deleteCollege.do",
+            data:{"id":id},
+            async: false,
+            success: function(_data) {
+                var data = $.parseJSON(_data);
+                if(data.success){
+                    alert("删除成功！");
+                    window.location.href="#module=listSchools&page=1"+"&size=10";
+                }else{
+                    var _case = {1:"删除失败"};
+                    alert(_case[data.code])
+                }
+            }
+        });
+    }
 
     function selectColleges(){
         var province = $("#s2_province").val();

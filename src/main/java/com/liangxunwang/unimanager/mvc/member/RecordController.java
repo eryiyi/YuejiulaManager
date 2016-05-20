@@ -52,7 +52,6 @@ public class RecordController extends ControllerConstants{
     private DeleteService deleteRecordService;
 
 
-
     @Autowired
     @Qualifier("commentService")
     private ListService listCommentService;

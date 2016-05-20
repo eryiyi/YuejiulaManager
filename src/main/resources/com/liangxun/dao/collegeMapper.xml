@@ -69,4 +69,10 @@
         VALUES (#{coid}, #{name}, #{provinceID}, #{groupId})
     </insert>
 
+
+    <delete id="deleteById" parameterType="String">
+        DELETE FROM college WHERE coid=#{coid}
+    </delete>
+
+
 </mapper>

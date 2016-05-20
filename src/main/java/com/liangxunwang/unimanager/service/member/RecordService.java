@@ -64,9 +64,11 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
         if (!StringUtil.isNullOrEmpty(schoolId)){
             map.put("schoolId", schoolId);
         }
+        if (!StringUtil.isNullOrEmpty(query.getSchool_record_mood_id())){
+            map.put("school_record_mood_id", query.getSchool_record_mood_id());
+        }
         List<RecordVO> list = recordDao.list(map);
-
-        RecordVO recordVO = null;
+//        RecordVO recordVO = null;
         //查询首页的推广
 //        if (!StringUtil.isNullOrEmpty(query.getSchoolIdEmp())){
 //            recordVO = recordDao.findBySchoolId(query.getSchoolIdEmp());
@@ -78,7 +80,6 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
 //        if (recordVO != null){
 //            list.add(recordVO);
 //        }
-
 
         for (RecordVO record : list){
             if (!StringUtil.isNullOrEmpty(record.getEmpCover())){

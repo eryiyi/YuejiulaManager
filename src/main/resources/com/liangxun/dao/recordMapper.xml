@@ -15,6 +15,7 @@
         <result column="record_is_use" property="recordIsUse"/>
         <result column="record_is_del" property="recordIsDel"/>
         <result column="dateline" property="dateLine"/>
+        <result column="school_record_mood_id" property="school_record_mood_id"/>
     </resultMap>
 
     <resultMap id="my_record_vo" type="com.liangxunwang.unimanager.mvc.vo.RecordVO">
@@ -29,6 +30,8 @@
         <result column="record_is_use" property="recordIsUse"/>
         <result column="record_is_del" property="recordIsDel"/>
         <result column="dateline" property="dateLine"/>
+        <result column="school_record_mood_id" property="school_record_mood_id"/>
+
         <result column="emp_name" property="empName"/>
         <result column="emp_cover" property="empCover"/>
         <result column="zan_num" property="zanNum"/>
@@ -36,21 +39,22 @@
         <result column="level_name" property="levelName"/>
         <result column="level_count" property="levelCount"/>
         <result column="school_name" property="schoolName"/>
+        <result column="school_record_mood_name" property="school_record_mood_name"/>
     </resultMap>
 
 
     <select id="list" resultMap="my_record_vo">
-
             SELECT m.*,
             (SELECT level_name FROM lx_level ll WHERE m.level_count BETWEEN ll.level_start and ll.level_end ) as level_name
             FROM (
-            SELECT sr.*, le.emp_name, le.emp_cover,lc.count as level_count,cl.name as school_name,
+            SELECT sr.*, le.emp_name, le.emp_cover,lc.count as level_count,cl.name as school_name,lmood.school_record_mood_name as school_record_mood_name,
             (select count(zan_record_id) from school_record_zan zan where  zan.zan_record_id = sr.record_id) as zan_num,
             (select count(record_id) from school_record_comment pl where  pl.record_id = sr.record_id) as pl_num
             FROM school_record sr
             LEFT JOIN lx_emp le ON sr.record_emp_id=le.emp_id
             LEFT JOIN lx_count lc ON  le.emp_id = lc.emp_id
             LEFT JOIN college cl on sr.record_school_id=cl.coid
+            LEFT JOIN school_record_mood lmood on sr.school_record_mood_id=lmood.school_record_mood_id
             WHERE sr.record_is_del='0' AND le.is_use='0'
             AND sr.record_type != '1'
             <if test="schoolId != null and schoolId != ''">
@@ -59,13 +63,31 @@
             <if test="empId != null and empId != ''">
                 AND sr.record_emp_id=#{empId}
             </if>
+            <if test="school_record_mood_id != null and school_record_mood_id != ''">
+                AND sr.school_record_mood_id=#{school_record_mood_id}
+            </if>
             ) m
             ORDER BY m.dateline DESC
         limit #{index},#{size}
     </select>
 
-    <select id="listTwo" resultMap="my_record_vo">
+    <select id="count" resultType="long">
+        SELECT count(sr.record_id) FROM school_record sr
+        LEFT JOIN lx_emp le ON sr.record_emp_id=le.emp_id
+        WHERE sr.record_is_del='0' AND le.is_use='0'
+        AND sr.record_type != '1'
+        <if test="schoolId != null and schoolId != ''">
+            AND sr.record_school_id=#{schoolId}
+        </if>
+        <if test="empId != null and empId != ''">
+            AND sr.record_emp_id=#{empId}
+        </if>
+        <if test="school_record_mood_id != null and school_record_mood_id != ''">
+            AND sr.school_record_mood_id=#{school_record_mood_id}
+        </if>
+    </select>
 
+    <select id="listTwo" resultMap="my_record_vo">
         SELECT m.*,
         (SELECT level_name FROM lx_level ll WHERE m.level_count BETWEEN ll.level_start and ll.level_end ) as level_name
         FROM (
@@ -81,15 +103,14 @@
         <if test="schoolId != null and schoolId != ''">
             AND sr.record_id !=#{schoolId}
         </if>
-
         ) m
         ORDER BY m.dateline DESC
         limit #{index},#{size}
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Record">
-        INSERT INTO school_record(record_id, record_type, record_cont, record_picurl, record_voice, record_video,record_emp_id, record_school_id, record_is_use, record_is_del, dateline )
-        VALUES (#{recordId}, #{recordType}, #{recordCont}, #{recordPicUrl, jdbcType=VARCHAR}, #{recordVoice, jdbcType=VARCHAR}, #{recordVideo, jdbcType=VARCHAR}, #{recordEmpId}, #{recordSchoolId}, #{recordIsUse}, #{recordIsDel}, #{dateLine})
+        INSERT INTO school_record(record_id, school_record_mood_id, record_type, record_cont, record_picurl, record_voice, record_video,record_emp_id, record_school_id, record_is_use, record_is_del, dateline )
+        VALUES (#{recordId},#{school_record_mood_id, jdbcType=VARCHAR}, #{recordType}, #{recordCont}, #{recordPicUrl, jdbcType=VARCHAR}, #{recordVoice, jdbcType=VARCHAR}, #{recordVideo, jdbcType=VARCHAR}, #{recordEmpId}, #{recordSchoolId}, #{recordIsUse}, #{recordIsDel}, #{dateLine})
     </insert>
 
     <select id="findById" resultMap="my_record_vo" parameterType="String">

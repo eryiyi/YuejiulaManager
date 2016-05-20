@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.SchoolRecordMoodDao">
+    <resultMap id="schoolRecordMood" type="com.liangxunwang.unimanager.model.SchoolRecordMood">
+        <id column="school_record_mood_id" property="school_record_mood_id"/>
+        <result column="school_record_mood_name" property="school_record_mood_name"/>
+        <result column="top_num" property="top_num"/>
+    </resultMap>
+
+    <select id="list" resultMap="schoolRecordMood">
+        SELECT * from school_record_mood ORDER BY top_num DESC
+    </select>
+
+    <select id="lists" resultMap="schoolRecordMood">
+        SELECT * from school_record_mood
+        ORDER BY top_num DESC
+        limit #{index},#{size}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT count(school_record_mood_id) FROM school_record_mood
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.SchoolRecordMood">
+        INSERT INTO school_record_mood(school_record_mood_id, school_record_mood_name, top_num)
+        VALUES (#{school_record_mood_id}, #{school_record_mood_name}, #{top_num})
+    </insert>
+
+    <delete id="deleteById" parameterType="String">
+        DELETE FROM school_record_mood WHERE school_record_mood_id=#{school_record_mood_id}
+    </delete>
+
+</mapper>

@@ -8,10 +8,7 @@ import com.liangxunwang.unimanager.huanxin.comm.httpclient.apidemo.EasemobChatGr
 import com.liangxunwang.unimanager.model.College;
 import com.liangxunwang.unimanager.model.Province;
 import com.liangxunwang.unimanager.query.CollegeQuery;
-import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.SaveService;
-import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.service.UpdateService;
+import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -120,6 +117,18 @@ public class SchoolsController extends ControllerConstants {
         return "/schools/regHxCollege";
     }
 
+
+
+    @Autowired
+    @Qualifier("schoolsService")
+    private DeleteService schoolsServiceDelete;
+
+    @RequestMapping("deleteCollege")
+    @ResponseBody
+    public String delete(String id){
+        schoolsServiceDelete.delete(id);
+        return toJSONString(SUCCESS);
+    }
 
 
 }

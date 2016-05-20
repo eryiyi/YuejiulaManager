@@ -33,4 +33,6 @@ public interface CollegeDao {
     //保存学校
     void save(College college);
 
+    void deleteById(String coid);
+
 }

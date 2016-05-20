@@ -91,4 +91,9 @@
         <permission id="VIDEOS_ADD_LIST" name="添加视频"/>
     </group>
 
+    <group id="SCHOOL_RECORD_MOOD_MANAGER" name="心情管理">
+        <permission id="LIST_SCHOOL_RECORD_MOOD_LIST" name="心情列表"/>
+        <permission id="SCHOOL_RECORD_MOOD_ADD_LIST" name="添加心情"/>
+    </group>
+
 </permissions>
