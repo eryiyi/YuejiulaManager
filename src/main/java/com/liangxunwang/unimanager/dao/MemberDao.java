@@ -83,6 +83,10 @@ public interface MemberDao {
      * @param member
      */
     void modifyMember(Member member);
+
+    //根据用户Id更新用户信息
+    void updateMemberById(Member member);
+
     void modifyMemberNoCover(Member member);
 
     void updatePassword(@Param(value = "mobile")String mobile, @Param(value = "password") String password);

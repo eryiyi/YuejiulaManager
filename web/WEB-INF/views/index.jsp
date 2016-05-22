@@ -436,8 +436,12 @@
 						<span class="hidden-xs">视频上传</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);"  onclick="toPage('/listVideos','1')">视频列表</a></li>
-						<li><a href="javascript:void(0);"  onclick="toPage('/toAddVideos','')">添加视频</a></li>
+						<c:if test="${um:permission('LIST_VIDEOS_LIST', sessionScope.powers)}">
+							<li><a href="javascript:void(0);" onclick="toPage('listVideos','1')">视频列表</a></li>
+						</c:if>
+						<c:if test="${um:permission('VIDEOS_ADD_LIST', sessionScope.powers)}">
+							<li><a href="javascript:void(0);" onclick="toPage('toAddVideos','')">添加视频</a></li>
+						</c:if>
 					</ul>
 				</li>
 				</c:if>
@@ -449,9 +453,17 @@
 						<span class="hidden-xs">学校管理</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);"  onclick="toPage('/listSchools','1')">学校列表</a></li>
-						<li><a href="javascript:void(0);"  onclick="toPage('/toAddSchools','')">添加学校</a></li>
-						<%--<li><a href="javascript:void(0);"  onclick="toPage('/regHxCollege','')">添加学校</a></li>--%>
+
+						<c:if test="${um:permission('ADD_SCHOOL_LIST', sessionScope.powers)}">
+							<li><a href="javascript:void(0);" onclick="toPage('toAddSchools','')">添加学校</a></li>
+						</c:if>
+						<c:if test="${um:permission('SCHOOLS_LIST_LIST', sessionScope.powers)}">
+							<li><a href="javascript:void(0);" onclick="toPage('listSchools','1')">学校列表</a></li>
+						</c:if>
+						<%--<c:if test="${um:permission('REG_HUANXIN_COLLEGE', sessionScope.powers)}">--%>
+							<%--<li><a href="javascript:void(0);" onclick="toPage('regHxCollege','')">添加学校环信</a></li>--%>
+						<%--</c:if>--%>
+
 					</ul>
 				</li>
 				</c:if>
@@ -463,12 +475,31 @@
 							<span class="hidden-xs">心情管理</span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="javascript:void(0);"  onclick="toPage('/listSchoolRecordMood','1')">心情列表</a></li>
-							<li><a href="javascript:void(0);"  onclick="toPage('/toAddSchoolRecordMood','')">添加心情</a></li>
+							<c:if test="${um:permission('LIST_SCHOOL_RECORD_MOOD_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('listSchoolRecordMood','1')">心情列表</a></li>
+							</c:if>
+							<c:if test="${um:permission('SCHOOL_RECORD_MOOD_ADD_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('toAddSchoolRecordMood','')">添加心情</a></li>
+							</c:if>
 						</ul>
 					</li>
 				</c:if>
-
+				<c:if test="${um:permission('THREE_PINGTAI_GL_LIST', sessionScope.powers)|| um:permission('THREE_PINGTAI_GL_ADD', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle">
+							<i class="fa fa-picture-o"></i>
+							<span class="hidden-xs">第三方平台管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('THREE_PINGTAI_GL_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('listThreePingtai','1')">平台列表</a></li>
+							</c:if>
+							<c:if test="${um:permission('THREE_PINGTAI_GL_ADD', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('toAddThreePingtai','')">添加平台</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
 			</ul>
 		</div>
 		<!--Start Content-->

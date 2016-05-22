@@ -21,6 +21,17 @@
         <result column="hx_username" property="hxUsername"/>
         <result column="is_in_group" property="isInGroup"/>
         <result column="device_type" property="deviceType"/>
+
+        <result column="lat" property="lat"/>
+        <result column="lng" property="lng"/>
+        <result column="lat_company" property="lat_company"/>
+        <result column="lng_company" property="lng_company"/>
+        <result column="company_address" property="company_address"/>
+        <result column="company_person" property="company_person"/>
+        <result column="company_tel" property="company_tel"/>
+        <result column="company_detail" property="company_detail"/>
+        <result column="company_name" property="company_name"/>
+
     </resultMap>
 
     <resultMap id="my_member_vo" type="com.liangxunwang.unimanager.mvc.vo.MemberVO">
@@ -43,6 +54,17 @@
         <result column="hx_username" property="hxUsername"/>
         <result column="is_in_group" property="isInGroup"/>
         <result column="device_type" property="deviceType"/>
+
+        <result column="lat" property="lat"/>
+        <result column="lng" property="lng"/>
+        <result column="lat_company" property="lat_company"/>
+        <result column="lng_company" property="lng_company"/>
+        <result column="company_address" property="company_address"/>
+        <result column="company_person" property="company_person"/>
+        <result column="company_tel" property="company_tel"/>
+        <result column="company_detail" property="company_detail"/>
+        <result column="company_name" property="company_name"/>
+
         <result column="jfcount" property="jfcount"/>
         <result column="groupid" property="groupId"/>
     </resultMap>
@@ -79,7 +101,6 @@
     </select>
 
     <select id="list" resultMap="my_member_vo">
-
           SELECT le.*, ls.name as school_name
             from lx_emp le
           left join college ls on le.school_id=ls.coid
@@ -95,7 +116,6 @@
                 AND le.emp_name like CONCAT('%',#{keyWords},'%')
             </if>
         ORDER BY le.dateline DESC
-
         limit #{index},#{size}
     </select>
 
@@ -121,6 +141,7 @@
     <update id="updateAdmin">
         update lx_emp set emp_typeid=#{flag} where emp_id=#{empId}
     </update>
+
     <update id="changeBusiness">
         update lx_emp set emp_typeid=#{flag} where emp_id=#{empId}
     </update>
@@ -178,6 +199,7 @@
             #{empId}Oracle - orcl@localhost
         </foreach>
     </update>
+
     <update id="updatePushId" parameterType="String">
         UPDATE lx_emp set push_id=#{pushId}, device_type=#{type} WHERE emp_id=#{id}
     </update>
@@ -213,4 +235,24 @@
     <select id="listMemberBySchool" parameterType="String" resultMap="my_member">
         SELECT EMP_ID, EMP_COVER, EMP_NAME,EMP_MOBILE,HX_USERNAME FROM LX_EMP WHERE SCHOOL_ID=#{schoolId}
     </select>
+
+
+    <update id="updateMemberById" parameterType="com.liangxunwang.unimanager.model.Member">
+        UPDATE lx_emp SET
+        emp_name=#{empName},
+        emp_sex=#{empSex},
+        emp_cover=#{empCover},
+        emp_sign=#{empSign, jdbcType=VARCHAR},
+        emp_qq=#{empQQ},
+        is_use=#{isUse},
+        lat_company=#{lat_company, jdbcType=VARCHAR},
+        lng_company=#{lng_company, jdbcType=VARCHAR},
+        company_address=#{company_address, jdbcType=VARCHAR},
+        company_person=#{company_person, jdbcType=VARCHAR},
+        company_tel=#{company_tel, jdbcType=VARCHAR},
+        company_detail=#{company_detail, jdbcType=VARCHAR},
+        company_name=#{company_name, jdbcType=VARCHAR}
+        WHERE emp_id=#{empId}
+    </update>
+
 </mapper>

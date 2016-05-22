@@ -22,6 +22,88 @@ public class Member {
     private String isInGroup;
     private String deviceType;
 
+    private String lat;
+    private String lng;
+    private String lat_company;
+    private String lng_company;
+    private String company_address;
+    private String company_person;
+    private String company_tel;
+    private String company_detail;
+    private String company_name;
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getLat_company() {
+        return lat_company;
+    }
+
+    public void setLat_company(String lat_company) {
+        this.lat_company = lat_company;
+    }
+
+    public String getLng_company() {
+        return lng_company;
+    }
+
+    public void setLng_company(String lng_company) {
+        this.lng_company = lng_company;
+    }
+
+    public String getCompany_address() {
+        return company_address;
+    }
+
+    public void setCompany_address(String company_address) {
+        this.company_address = company_address;
+    }
+
+    public String getCompany_person() {
+        return company_person;
+    }
+
+    public void setCompany_person(String company_person) {
+        this.company_person = company_person;
+    }
+
+    public String getCompany_tel() {
+        return company_tel;
+    }
+
+    public void setCompany_tel(String company_tel) {
+        this.company_tel = company_tel;
+    }
+
+    public String getCompany_detail() {
+        return company_detail;
+    }
+
+    public void setCompany_detail(String company_detail) {
+        this.company_detail = company_detail;
+    }
+
+    public String getCompany_name() {
+        return company_name;
+    }
+
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
+    }
+
     public String getIsInGroup() {
         return isInGroup;
     }

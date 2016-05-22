@@ -1,6 +1,7 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.Member;
+import com.liangxunwang.unimanager.model.Notice;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.MemberVO;
 import com.liangxunwang.unimanager.query.MemberQuery;
@@ -163,6 +164,28 @@ public class MemberController extends ControllerConstants {
         DataTip tip = new DataTip();
         tip.setData(member);
         return toJSONString(tip);
+    }
+
+    @RequestMapping("/toDetailEmp")
+    public String toDetailEmp(String emp_mobile, ModelMap map){
+        MemberVO member = (MemberVO) memberFindService.findById(emp_mobile);
+        map.put("empVO", member);
+        return "/member/detail";
+    }
+
+
+    @Autowired
+    @Qualifier("memberUpdateByIdService")
+    private UpdateService memberUpdateByIdService;
+    /**
+     * 更新用户数据
+     * @return
+     */
+    @RequestMapping(value = "/updateEmpById", produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String updateEmpById(Member member){
+        memberUpdateByIdService.update(member);
+        return toJSONString(SUCCESS);
     }
 
 

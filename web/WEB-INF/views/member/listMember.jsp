@@ -114,7 +114,7 @@
                             <td>${e.universityName}</td>
                             <td>${um:format(e.dateline, "yyyy-MM-dd HH:mm:ss")}</td>
                             <td>
-                                <button class="btn btn-primary" type="button" onclick="detailEmp('${e.empId}')">管理</button>
+                                <button class="btn btn-primary" type="button" onclick="detailEmp('${e.empMobile}')">管理</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -241,8 +241,8 @@
         window.location.href="#module=toAddContractSchool&empId="+_empId;
     };
 
-    function detailEmp(_empId){
-
+    function detailEmp(emp_mobile){
+        window.location.href="#module=toDetailEmp&emp_mobile="+emp_mobile;
     }
 
 </script>

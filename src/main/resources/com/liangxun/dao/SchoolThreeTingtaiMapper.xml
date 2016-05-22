@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.SchoolThreeTingtaiDao">
+    <resultMap id="schoolThreeTingtai" type="com.liangxunwang.unimanager.model.SchoolThreeTingtai">
+        <id column="school_three_pingtai_id" property="school_three_pingtai_id"/>
+        <result column="school_three_pingtai_name" property="school_three_pingtai_name"/>
+        <result column="school_three_pingtai_pic" property="school_three_pingtai_pic"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.SchoolThreeTingtai">
+        INSERT INTO school_three_pingtai(school_three_pingtai_id, school_three_pingtai_name, school_three_pingtai_pic)
+        VALUES (#{school_three_pingtai_id}, #{school_three_pingtai_name}, #{school_three_pingtai_pic})
+    </insert>
+
+    <select id="list" resultMap="schoolThreeTingtai">
+        SELECT * from school_three_pingtai
+    </select>
+
+    <select id="findById" resultMap="schoolThreeTingtai">
+        SELECT * from school_three_pingtai WHERE school_three_pingtai_id=#{school_three_pingtai_id}
+    </select>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.SchoolThreeTingtai">
+        UPDATE school_three_pingtai SET school_three_pingtai_name=#{school_three_pingtai_name}, school_three_pingtai_pic=#{school_three_pingtai_pic} WHERE school_three_pingtai_id=#{school_three_pingtai_id}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM school_three_pingtai WHERE school_three_pingtai_id=#{school_three_pingtai_id}
+    </delete>
+</mapper>
