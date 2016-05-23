@@ -10,6 +10,15 @@ public class MemberQuery {
     private String keyWords;
     private String emp_typeid;
     private String school_id;
+    private String emp_id;
+
+    public String getEmp_id() {
+        return emp_id;
+    }
+
+    public void setEmp_id(String emp_id) {
+        this.emp_id = emp_id;
+    }
 
     public String getSchool_id() {
         return school_id;

@@ -7,6 +7,7 @@ import com.liangxunwang.unimanager.model.SchoolThreeTingtaiBd;
 import com.liangxunwang.unimanager.mvc.vo.SchoolThreePtBdVO;
 import com.liangxunwang.unimanager.query.SchoolThreePtBdQuery;
 import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,17 @@ public class SchoolThreePingtaiBdService implements SaveService,ListService, Fin
         if(!StringUtil.isNullOrEmpty(query.getSchool_three_pingtai_id())){
             map.put( "school_three_pingtai_id" , query.getSchool_three_pingtai_id());
         }
-        return schoolThreeTingtaiBdDao.list(map);
+        List<SchoolThreePtBdVO> list = schoolThreeTingtaiBdDao.list(map);
+        if(list != null){
+            for(SchoolThreePtBdVO schoolThreePtBdVO:list){
+                if (schoolThreePtBdVO.getSchool_three_pingtai_pic().startsWith("upload")) {
+                    schoolThreePtBdVO.setSchool_three_pingtai_pic(Constants.URL + schoolThreePtBdVO.getSchool_three_pingtai_pic());
+                }else {
+                    schoolThreePtBdVO.setSchool_three_pingtai_pic(Constants.QINIU_URL + schoolThreePtBdVO.getSchool_three_pingtai_pic());
+                }
+            }
+        }
+        return list;
     }
 
     @Override

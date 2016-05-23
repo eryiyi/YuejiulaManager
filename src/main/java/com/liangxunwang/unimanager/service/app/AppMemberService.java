@@ -44,6 +44,9 @@ public class AppMemberService implements ListService{
         if (!StringUtil.isNullOrEmpty(query.getKeyWords())) {
             map.put("keyWords", query.getKeyWords());
         }
+        if (!StringUtil.isNullOrEmpty(query.getEmp_id())) {
+            map.put("emp_id", query.getEmp_id());
+        }
         List<EmpDianpu> list = memberDao.listDianPu(map);
         for(EmpDianpu empDianpu : list){
             if (empDianpu.getEmpCover().startsWith("upload")) {

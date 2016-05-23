@@ -1,6 +1,7 @@
 package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.ManagerInfo;
+import com.liangxunwang.unimanager.mvc.vo.ManagerInfoVo;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -26,4 +27,7 @@ public interface ManagerInfoDao {
      * @return
      */
     ManagerInfo findById(String id);
+
+    //根据用户id
+    ManagerInfoVo getEmpMsg(String emp_id);
 }

@@ -149,6 +149,9 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 +"|(^/viewVideos\\.do$)"
                 +"|(^/listsRecodMoods\\.do$)"
                 +"|(^/appGetDianPu\\.do$)"
+                +"|(^/appGetAds\\.do$)"
+                +"|(^/appGetThreesBd\\.do$)"
+                +"|(^/appGetProfileMsg\\.do$)"
                 +"|(^/getThemeApp\\.do$)"
         ) || account != null) {
             return true;
