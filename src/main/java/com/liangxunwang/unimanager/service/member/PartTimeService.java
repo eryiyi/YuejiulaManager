@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/2/7.
+ * Created by zhl on 2015/2/7.
  */
 @Service("partTimeService")
 public class PartTimeService implements SaveService, ListService, DeleteService , FindService{

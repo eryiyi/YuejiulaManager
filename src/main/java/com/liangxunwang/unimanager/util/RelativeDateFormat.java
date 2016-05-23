@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.util;
 import java.util.Date;
 
 /**
- * Created by liuzwei on 2015/2/8.
+ * Created by zhl on 2015/2/8.
  */
 public class RelativeDateFormat {
     private static final long ONE_MINUTE = 60000L;

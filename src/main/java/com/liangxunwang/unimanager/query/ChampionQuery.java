@@ -1,14 +1,14 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/4/10.
+ * Created by zhl on 2015/4/10.
  */
 public class ChampionQuery {
     private int index;
     private int size;
 
     private String schoolId;
-    private String type;// 0全国   1 学校
+    private String type;// 0全锟斤拷   1 学校
 
     public int getIndex() {
         return index;

@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.mvc.vo;
 import com.liangxunwang.unimanager.model.News;
 
 /**
- * Created by liuzwei on 2015/2/3.
+ * Created by zhl on 2015/2/3.
  */
 public class NewsVO extends News {
     private String nickName;//发布者昵称

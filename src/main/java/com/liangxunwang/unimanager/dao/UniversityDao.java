@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/1/30.
+ * Created by zhl on 2015/1/30.
  */
 @Repository("universityDao")
 public interface UniversityDao {

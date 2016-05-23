@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * Created by liuzwei on 15-4-4.
+ * Created by zhl on 15-4-4.
  */
 @Controller
 public class PkCommentController extends ControllerConstants {

@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Created by liuzwei on 2015/1/29.
+ * Created by zhl on 2015/1/29.
  */
 @Service("memberRegisterService")
 public class MemberRegisterService implements SaveService, ExecuteService {

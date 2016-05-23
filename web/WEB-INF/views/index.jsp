@@ -373,6 +373,12 @@
 						<c:if test="${um:permission('MANAGER_INFO', sessionScope.powers) || sessionScope.account.type=='3'}">
 							<li><a href="javascript:void(0);" onclick="toPage('managerinfo/add','')">信息维护</a></li>
 						</c:if>
+						<c:if test="${um:permission('MANAGER_DIANPU_INFO', sessionScope.powers) || sessionScope.account.type=='3'}">
+							<li><a href="javascript:void(0);" onclick="toPage('adObj/list','')">店铺广告列表</a></li>
+						</c:if>
+						<c:if test="${um:permission('MANAGER_DIANPU_PT_INFO', sessionScope.powers) || sessionScope.account.type=='3'}">
+							<li><a href="javascript:void(0);" onclick="toPage('listThreePingtaiBd','')">绑定第三方平台</a></li>
+						</c:if>
 					</ul>
 				</li>
 				</c:if>
@@ -402,16 +408,16 @@
 						</ul>
 					</li>
 				</c:if>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-picture-o"></i>
-						<span class="hidden-xs">营业收入</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('/income/list','1')">收入查询</a></li>
-						<li><a href="javascript:void(0);" onclick="toPage('/settlement/list','1')">结算查询</a></li>
-					</ul>
-				</li>
+				<%--<li class="dropdown">--%>
+					<%--<a href="#" class="dropdown-toggle">--%>
+						<%--<i class="fa fa-picture-o"></i>--%>
+						<%--<span class="hidden-xs">营业收入</span>--%>
+					<%--</a>--%>
+					<%--<ul class="dropdown-menu">--%>
+						<%--<li><a href="javascript:void(0);" onclick="toPage('/income/list','1')">收入查询</a></li>--%>
+						<%--<li><a href="javascript:void(0);" onclick="toPage('/settlement/list','1')">结算查询</a></li>--%>
+					<%--</ul>--%>
+				<%--</li>--%>
 				<c:if test="${um:permission('REMIT_SELLERLIST', sessionScope.powers)|| um:permission('REMIT_CONTRACTLIST', sessionScope.powers)}">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">

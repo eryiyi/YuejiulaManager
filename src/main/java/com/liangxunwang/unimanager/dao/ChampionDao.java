@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/4/9.
+ * Created by zhl on 2015/4/9.
  */
 @Repository("championDao")
 public interface ChampionDao {
     /**
-     * ±£´æÒ»Ìõ¹Ú¾ü¼ÇÂ¼
+     * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½Â¼
      * @param champion
      */
     void save(Champion champion);
@@ -24,14 +24,14 @@ public interface ChampionDao {
     long count(Map<String, Object> map);
 
     /**
-     * ¸ù¾ÝID¸üÐÂ»ñ½±Í¼Æ¬
+     * ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½Â»ï¿½Í¼Æ¬
      * @param id
      * @param pic
      */
     void updatePic(@Param(value = "id")String id, @Param(value = "pic")String pic);
 
     /**
-     * È·ÈÏÁì½±
+     * È·ï¿½ï¿½ï¿½ì½±
      * @param id
      */
     void championSure(String id);

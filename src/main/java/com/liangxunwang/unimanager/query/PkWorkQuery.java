@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 15-4-4.
+ * Created by zhl on 15-4-4.
  */
 public class PkWorkQuery {
     private int index;

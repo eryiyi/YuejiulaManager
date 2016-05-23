@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/2/25.
+ * Created by zhl on 2015/2/25.
  */
 @Repository("collegeDao")
 public interface CollegeDao {

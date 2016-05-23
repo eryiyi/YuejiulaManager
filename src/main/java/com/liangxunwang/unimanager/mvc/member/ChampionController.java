@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Observable;
 
 /**
- * Created by liuzwei on 2015/4/9.
+ * Created by zhl on 2015/4/9.
  */
 @Controller
 public class ChampionController extends ControllerConstants{

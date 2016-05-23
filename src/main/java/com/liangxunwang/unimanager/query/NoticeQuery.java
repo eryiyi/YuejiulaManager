@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/2/7.
+ * Created by zhl on 2015/2/7.
  */
 public class NoticeQuery {
     private int index;

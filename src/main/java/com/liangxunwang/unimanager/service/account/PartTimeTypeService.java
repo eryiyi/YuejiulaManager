@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/2/7.
+ * Created by zhl on 2015/2/7.
  */
 @Service("partTimeTypeService")
 public class PartTimeTypeService implements SaveService, ListService, DeleteService {

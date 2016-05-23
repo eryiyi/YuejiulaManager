@@ -49,6 +49,7 @@ public class ManagerInfoController extends ControllerConstants {
         return toJSONString(SUCCESS);
     }
 
+    //商家信息维护
     @RequestMapping("add")
     public String edit(HttpSession session, ModelMap map){
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);

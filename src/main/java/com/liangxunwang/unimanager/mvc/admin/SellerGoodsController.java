@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/3/25.
+ * Created by zhl on 2015/3/25.
  * 商家主要接口
  */
 @Controller("sellerGoodsController")
@@ -154,6 +154,7 @@ public class SellerGoodsController extends ControllerConstants {
         }
     }
 
+    //我的商家
     @RequestMapping("/listSeller")
     public String listSeller(SellerGoodsQuery query, Page page, ModelMap map, HttpSession session){
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);

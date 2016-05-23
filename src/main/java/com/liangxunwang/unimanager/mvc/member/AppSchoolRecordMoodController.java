@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/2/2.
+ * Created by zhl on 2015/2/2.
  */
 @Controller
 public class AppSchoolRecordMoodController extends ControllerConstants {

@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 15-4-3.
+ * Created by zhl on 15-4-3.
  */
 @Repository("themeDao")
 public interface ThemeDao {
     void saveTheme(PKTheme theme);
 
     /**
-     * ·ÖÒ³²é¿´ËùÓÐÖ÷Ìâ
+     * ï¿½ï¿½Ò³ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @return
      */
     List<PKTheme> list(Map<String,Object> map);
@@ -27,32 +27,32 @@ public interface ThemeDao {
     PKTheme findByNumber(String number);
 
     /**
-     * ²éÕÒ¹ýÆÚµÄPKÖ÷Ìâ
+     * ï¿½ï¿½ï¿½Ò¹ï¿½ï¿½Úµï¿½PKï¿½ï¿½ï¿½ï¿½
      * @param nowTime
      * @return
      */
     PKTheme findEndTheme(String nowTime);
 
     /**
-     * ¸ù¾ÝID²éÕÒÖ÷Ìâ
+     * ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param themeId
      * @return
      */
     PKTheme findByThemeId(String themeId);
 
     /**
-     * ¸ù¾ÝÖ÷ÌâIDÈ¥¸ü¸Ä×´Ì¬
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDÈ¥ï¿½ï¿½ï¿½ï¿½×´Ì¬
      * @param themeId
      */
     void updateStatus(@Param(value = "themeId")String themeId, @Param(value = "status")String status);
 
     /**
-     * ¿ªÆô»î¶¯
+     * ï¿½ï¿½ï¿½ï¿½ï¿½î¶¯
      */
     void startTheme(String nowTime);
 
     /**
-     * ¸ù¾ÝÖ÷ÌâIDÉ¾³ýÖ÷Ìâ
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param id
      */
     void deleteById(String id);

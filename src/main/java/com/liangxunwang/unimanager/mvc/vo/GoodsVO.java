@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.mvc.vo;
 import com.liangxunwang.unimanager.model.Goods;
 
 /**
- * Created by liuzwei on 2015/2/6.
+ * Created by zhl on 2015/2/6.
  */
 public class GoodsVO extends Goods {
     private String nickName;

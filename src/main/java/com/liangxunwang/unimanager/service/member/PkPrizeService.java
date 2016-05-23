@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 15-4-6.
+ * Created by zhl on 15-4-6.
  */
 @Service("pkPrizeService")
 public class PkPrizeService implements SaveService, DeleteService, ListService {
@@ -33,7 +33,7 @@ public class PkPrizeService implements SaveService, DeleteService, ListService {
     public Object save(Object object) throws ServiceException {
         PkPrize pkPrize = (PkPrize) object;
 
-        //ÉÌ¼ÒÌí¼Ó½±Æ·
+        //ï¿½Ì¼ï¿½ï¿½ï¿½Ó½ï¿½Æ·
         if (pkPrize.getType().equals("1")){
             String[] schoolIds = pkPrize.getSchoolId().split(",");
             for (int i=0; i<schoolIds.length; i++){
@@ -46,7 +46,7 @@ public class PkPrizeService implements SaveService, DeleteService, ListService {
                 pkPrize.setDateline(System.currentTimeMillis() + "");
                 pkPrizeDao.save(pkPrize);
             }
-        }else {//ÎÒÃÇÌí¼Ó½±Æ·
+        }else {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½Æ·
             PkPrize check = pkPrizeDao.findByThemeId(pkPrize.getThemeId(), pkPrize.getType());
             if (check != null){
                 throw new ServiceException("HAS_PRIZE");

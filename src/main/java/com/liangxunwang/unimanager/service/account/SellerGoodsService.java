@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * Created by liuzwei on 2015/3/25.
+ * Created by zhl on 2015/3/25.
  */
 @Service("sellerGoodsService")
 public class SellerGoodsService implements SaveService, DeleteService, ListService, UpdateService, ExecuteService, FindService{

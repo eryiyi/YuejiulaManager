@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by liuzwei on 2015/2/25.
+ * Created by zhl on 2015/2/25.
  */
 @Service("modifyMemberService")
 public class ModifyMemberService implements ExecuteService , UpdateService{

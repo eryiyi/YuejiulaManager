@@ -7,7 +7,7 @@ import java.text.Collator;
 import java.util.Comparator;
 
 /**
- * Created by liuzwei on 2015/3/4.
+ * Created by zhl on 2015/3/4.
  */
 public class MyComparator implements Comparator<College> {
 

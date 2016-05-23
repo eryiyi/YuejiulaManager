@@ -4,7 +4,7 @@ import com.liangxunwang.unimanager.model.Record;
 import com.liangxunwang.unimanager.model.Videos;
 
 /**
- * Created by liuzwei on 2015/2/2.
+ * Created by zhl on 2015/2/2.
  */
 public class VideosVO extends Videos {
     private String zanNum;//赞数量

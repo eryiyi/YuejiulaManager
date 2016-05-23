@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 2015/1/29.
+ * Created by zhl on 2015/1/29.
  */
 public class Sms {
     private String smsId;

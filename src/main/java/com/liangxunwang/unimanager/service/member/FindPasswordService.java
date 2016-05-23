@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by liuzwei on 2015/2/8.
+ * Created by zhl on 2015/2/8.
  */
 @Service("findPasswordService")
 public class FindPasswordService implements FindService, ExecuteService {

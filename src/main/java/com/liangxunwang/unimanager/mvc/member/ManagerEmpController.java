@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/2/4.
+ * Created by zhl on 2015/2/4.
  */
 @Controller("managerEmpController")
 public class ManagerEmpController extends ControllerConstants {

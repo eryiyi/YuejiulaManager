@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/2/8.
+ * Created by zhl on 2015/2/8.
  */
 public class RelateQuery {
     private int index;

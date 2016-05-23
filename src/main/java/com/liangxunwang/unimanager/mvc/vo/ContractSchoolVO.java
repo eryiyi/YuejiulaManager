@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.mvc.vo;
 import com.liangxunwang.unimanager.model.ContractSchool;
 
 /**
- * Created by liuzwei on 2015/3/24.
+ * Created by zhl on 2015/3/24.
  */
 public class ContractSchoolVO extends ContractSchool {
     private String empName;

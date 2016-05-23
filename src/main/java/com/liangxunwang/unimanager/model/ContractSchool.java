@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 2015/3/24.
+ * Created by zhl on 2015/3/24.
  * 商家承包学校表
  */
 public class ContractSchool {

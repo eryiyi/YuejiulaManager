@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 15-4-3.
+ * Created by zhl on 15-4-3.
  * PKComment
  */
 public class PKComment {

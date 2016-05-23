@@ -5,7 +5,7 @@ import com.liangxunwang.unimanager.model.SellerGoods;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/3/27.
+ * Created by zhl on 2015/3/27.
  */
 public class SellerGoodsDATA {
     private List<SellerGoods> list;

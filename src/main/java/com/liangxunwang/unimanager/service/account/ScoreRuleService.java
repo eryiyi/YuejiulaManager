@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/2/4.
+ * Created by zhl on 2015/2/4.
  */
 @Service("scoreRuleService")
 public class ScoreRuleService implements SaveService, ListService,UpdateService, DeleteService {

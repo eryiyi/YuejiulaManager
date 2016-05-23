@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by liuzwei on 2015/2/4.
+ * Created by zhl on 2015/2/4.
  */
 @Repository("countDao")
 public interface CountDao {

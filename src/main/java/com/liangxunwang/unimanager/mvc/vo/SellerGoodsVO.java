@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.mvc.vo;
 import com.liangxunwang.unimanager.model.SellerGoods;
 
 /**
- * Created by liuzwei on 2015/3/27.
+ * Created by zhl on 2015/3/27.
  */
 public class SellerGoodsVO extends SellerGoods {
     private String empName;//商家名称

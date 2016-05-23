@@ -1,21 +1,21 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 2015/4/9.
- * ¹Ú¾ü±í
+ * Created by zhl on 2015/4/9.
+ * ï¿½Ú¾ï¿½ï¿½ï¿½
  */
 public class Champion {
     private String id;
-    private String themeNumber;//ÆÚ´Î
-    private String themeId;//Ö÷ÌâID
-    private String empId;//»áÔ±ID
+    private String themeNumber;//ï¿½Ú´ï¿½
+    private String themeId;//ï¿½ï¿½ï¿½ï¿½ID
+    private String empId;//ï¿½ï¿½Ô±ID
     private String schoolId;//Ñ§Ð£ID
-    private String zpId;//×÷Æ·ID
-    private String type;//Àà±ð  0 È«¹ú  1Ñ§Ð£
+    private String zpId;//ï¿½ï¿½Æ·ID
+    private String type;//ï¿½ï¿½ï¿½  0 È«ï¿½ï¿½  1Ñ§Ð£
     private String dateline;
-    private String isPic;//ÊÇ·ñ´«Í¼  0Î´´«  1´«ÁË
-    private String uploadPic;//ÉÏ´«µÄÍ¼Æ¬
-    private String isSure;//ÊÇ·ñÈ·ÈÏÊÕµ½½±Æ· 0  Î´Áì½±  1ÒÑÁì½±
+    private String isPic;//ï¿½Ç·ï¿½Í¼  0Î´ï¿½ï¿½  1ï¿½ï¿½ï¿½ï¿½
+    private String uploadPic;//ï¿½Ï´ï¿½ï¿½ï¿½Í¼Æ¬
+    private String isSure;//ï¿½Ç·ï¿½È·ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ· 0  Î´ï¿½ì½±  1ï¿½ï¿½ï¿½ì½±
 
     public String getIsPic() {
         return isPic;

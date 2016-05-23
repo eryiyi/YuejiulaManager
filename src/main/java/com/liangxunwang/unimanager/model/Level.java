@@ -2,7 +2,7 @@ package com.liangxunwang.unimanager.model;
 
 /**
  * 等级维护
- * Created by liuzwei on 2015/2/1.
+ * Created by zhl on 2015/2/1.
  */
 public class Level {
     private String levelId;

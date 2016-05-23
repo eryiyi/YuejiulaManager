@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 /**
- * Created by liuzwei on 2015/3/28.
+ * Created by zhl on 2015/3/28.
  */
 public class ImageCompressUtil {
     /**

@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.mvc.vo;
 import com.liangxunwang.unimanager.model.ManagerLog;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 public class ManagerLogVO extends ManagerLog {
     private String empName;

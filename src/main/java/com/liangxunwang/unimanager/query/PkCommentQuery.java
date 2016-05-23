@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/4/9.
+ * Created by zhl on 2015/4/9.
  */
 public class PkCommentQuery {
     private int index;

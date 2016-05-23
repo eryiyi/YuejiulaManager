@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/3/24.
+ * Created by zhl on 2015/3/24.
  * 承包商主要接口
  */
 @Controller("contractSchoolController")

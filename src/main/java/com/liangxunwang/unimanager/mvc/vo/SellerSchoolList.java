@@ -1,15 +1,15 @@
 package com.liangxunwang.unimanager.mvc.vo;
 
 /**
- * Created by liuzwei on 2015/3/27.
+ * Created by zhl on 2015/3/27.
  */
 public class SellerSchoolList {
     private String id;
     private String schoolName;
     private String startTime;
     private String endTime;
-    private String empId;//商家会员ID
-    private String contractId;//承包商ID
+    private String empId;//锟教家伙拷员ID
+    private String contractId;//锟叫帮拷锟斤拷ID
     private String schoolId;//学校ID
 
 

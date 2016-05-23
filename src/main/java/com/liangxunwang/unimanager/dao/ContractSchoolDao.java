@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/3/24.
+ * Created by zhl on 2015/3/24.
  */
 @Repository("contractSchoolDao")
 public interface ContractSchoolDao {

@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by liuzwei on 2015/1/31.
+ * Created by zhl on 2015/1/31.
  */
 @Controller
 public class UploadImageController extends ControllerConstants{

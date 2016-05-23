@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 2015/2/4.
+ * Created by zhl on 2015/2/4.
  * 会员禁用记录
  */
 public class ManagerEmp {

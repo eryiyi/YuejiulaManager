@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.mvc.vo;
 import com.liangxunwang.unimanager.model.PartTime;
 
 /**
- * Created by liuzwei on 2015/2/7.
+ * Created by zhl on 2015/2/7.
  */
 public class PartTimeVO extends PartTime{
     private String empName;

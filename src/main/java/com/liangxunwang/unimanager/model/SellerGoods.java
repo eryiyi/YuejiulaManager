@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 2015/3/24.
+ * Created by zhl on 2015/3/24.
  * 商品商家表
  */
 public class SellerGoods {

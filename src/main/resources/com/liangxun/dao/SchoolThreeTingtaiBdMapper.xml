@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.SchoolThreeTingtaiBdDao">
+    <resultMap id="schoolThreeTingtaiBd" type="com.liangxunwang.unimanager.model.SchoolThreeTingtaiBd">
+        <id column="emp_pingtai_mng_id" property="emp_pingtai_mng_id"/>
+        <result column="school_three_pingtai_id" property="school_three_pingtai_id"/>
+        <result column="emp_id" property="emp_id"/>
+        <result column="pingtai_url" property="pingtai_url"/>
+    </resultMap>
+
+    <resultMap id="schoolThreeTingtaiBdVO" type="com.liangxunwang.unimanager.mvc.vo.SchoolThreePtBdVO">
+        <id column="emp_pingtai_mng_id" property="emp_pingtai_mng_id"/>
+        <result column="school_three_pingtai_id" property="school_three_pingtai_id"/>
+        <result column="emp_id" property="emp_id"/>
+        <result column="pingtai_url" property="pingtai_url"/>
+        <result column="school_three_pingtai_name" property="school_three_pingtai_name"/>
+        <result column="school_three_pingtai_pic" property="school_three_pingtai_pic"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.SchoolThreeTingtaiBd">
+        INSERT INTO emp_pingtai_mng(emp_pingtai_mng_id, school_three_pingtai_id, emp_id, pingtai_url)
+        VALUES (#{emp_pingtai_mng_id}, #{school_three_pingtai_id}, #{emp_id}, #{pingtai_url})
+    </insert>
+
+    <select id="list" resultMap="schoolThreeTingtaiBdVO">
+        SELECT sn.*,lc.school_three_pingtai_name as school_three_pingtai_name, lc.school_three_pingtai_pic as school_three_pingtai_pic from emp_pingtai_mng sn
+        LEFT JOIN school_three_pingtai lc ON sn.school_three_pingtai_id=lc.school_three_pingtai_id
+        WHERE  1 =1
+        <if test="emp_id != null and emp_id != ''">
+            and sn.emp_id=#{emp_id}
+        </if>
+        <if test="school_three_pingtai_id != null and school_three_pingtai_id != ''">
+            and sn.school_three_pingtai_id=#{school_three_pingtai_id}
+        </if>
+    </select>
+
+    <select id="findById" resultMap="schoolThreeTingtaiBd">
+        SELECT * from emp_pingtai_mng WHERE emp_pingtai_mng_id=#{emp_pingtai_mng_id}
+    </select>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.SchoolThreeTingtaiBd">
+        UPDATE emp_pingtai_mng SET pingtai_url=#{pingtai_url} WHERE emp_pingtai_mng_id=#{emp_pingtai_mng_id}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM emp_pingtai_mng WHERE emp_pingtai_mng_id=#{emp_pingtai_mng_id}
+    </delete>
+</mapper>

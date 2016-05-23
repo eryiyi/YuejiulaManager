@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by liuzwei on 2015/2/3.
+ * Created by zhl on 2015/2/3.
  */
 @Service("memberAdvertService")
 public class MemberAdvertService implements ListService, FindService{

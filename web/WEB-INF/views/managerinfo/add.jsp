@@ -1,6 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0"/>
+<script type="text/javascript"
+        src="http://webapi.amap.com/maps?v=1.3&key=6d8bfe3105c44dc4a54a930e322eaeec"></script>
+
+
 <div class="row">
   <div id="breadcrumb" class="col-xs-12">
     <a href="#" class="show-sidebar">
@@ -72,45 +77,100 @@
               </div>
             </div>
           </div>
+          <%--<div class="form-group" >--%>
+            <%--<label class="col-sm-2 control-label">支付宝账号</label>--%>
+            <%--<div class="col-sm-4">--%>
+              <%--<input type="text" id="pay_number" value="${info.payNumber}" class="form-control" placeholder="支付宝账号" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+            <%--</div>--%>
+          <%--</div>--%>
+          <%--<div class="form-group">--%>
+            <%--<label class="col-sm-2 control-label">支付宝校验姓名</label>--%>
+            <%--<div class="col-sm-4">--%>
+              <%--<input type="text" id="check_name"value="${info.checkName}" class="form-control" placeholder="支付宝校验姓名" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+            <%--</div>--%>
+          <%--</div><div class="form-group">--%>
+          <%--<label class="col-sm-2 control-label">银行卡号</label>--%>
+          <%--<div class="col-sm-4">--%>
+            <%--<input type="text" id="bank_card" value="${info.bankCard}" class="form-control" placeholder="银行卡号" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+          <%--</div>--%>
+        <%--</div><div class="form-group">--%>
+          <%--<label class="col-sm-2 control-label">开户行</label>--%>
+          <%--<div class="col-sm-4">--%>
+            <%--<input type="text" id="bank_type" value="${info.bankType}" class="form-control" placeholder="如:建设银行" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+          <%--</div>--%>
+        <%--</div><div class="form-group">--%>
+          <%--<label class="col-sm-2 control-label">开户行地址</label>--%>
+          <%--<div class="col-sm-4">--%>
+            <%--<input type="text" id="bank_address" value="${info.bankAddress}" class="form-control" placeholder="开户行的详细地址" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+          <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="form-group">--%>
+          <%--<label class="col-sm-2 control-label">开户人姓名</label>--%>
+          <%--<div class="col-sm-4">--%>
+            <%--<input type="text" id="bank_name" value="${info.bankName}" class="form-control" placeholder="银行卡持有者姓名" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+          <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="form-group">--%>
+          <%--<label class="col-sm-2 control-label">联系电话</label>--%>
+          <%--<div class="col-sm-4">--%>
+            <%--<input type="text" id="mobile" value="${info.mobile}" class="form-control" placeholder="联系电话" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+          <%--</div>--%>
+        <%--</div>--%>
+
           <div class="form-group">
-            <label class="col-sm-2 control-label">支付宝账号</label>
+            <label class="col-sm-2 control-label">*店铺名称*</label>
             <div class="col-sm-4">
-              <input type="text" id="pay_number" value="${info.payNumber}" class="form-control" placeholder="支付宝账号" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="company_name" placeholder="店铺名称" class="form-control" value="${info.company_name}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label">支付宝校验姓名</label>
+            <label class="col-sm-2 control-label">*店铺联系人*</label>
             <div class="col-sm-4">
-              <input type="text" id="check_name"value="${info.checkName}" class="form-control" placeholder="支付宝校验姓名" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="company_person" placeholder="店铺联系人" class="form-control" value="${info.company_person}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
-          </div><div class="form-group">
-          <label class="col-sm-2 control-label">银行卡号</label>
-          <div class="col-sm-4">
-            <input type="text" id="bank_card" value="${info.bankCard}" class="form-control" placeholder="银行卡号" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
           </div>
-        </div><div class="form-group">
-          <label class="col-sm-2 control-label">开户行</label>
-          <div class="col-sm-4">
-            <input type="text" id="bank_type" value="${info.bankType}" class="form-control" placeholder="如:建设银行" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">*店铺电话*</label>
+            <div class="col-sm-4">
+              <input type="text" id="company_tel" placeholder="店铺电话" class="form-control" value="${info.company_tel}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
           </div>
-        </div><div class="form-group">
-          <label class="col-sm-2 control-label">开户行地址</label>
-          <div class="col-sm-4">
-            <input type="text" id="bank_address" value="${info.bankAddress}" class="form-control" placeholder="开户行的详细地址" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">*店铺地址*</label>
+            <div class="col-sm-4">
+              <input type="text" id="company_address" placeholder="店铺地址" class="form-control" value="${info.company_address}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 control-label">开户人姓名</label>
-          <div class="col-sm-4">
-            <input type="text" id="bank_name" value="${info.bankName}" class="form-control" placeholder="银行卡持有者姓名" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">*店铺介绍*</label>
+            <div class="col-sm-4">
+              <input type="text" id="company_detail" placeholder="店铺介绍" class="form-control" value="${info.company_detail}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 control-label">联系电话</label>
-          <div class="col-sm-4">
-            <input type="text" id="mobile" value="${info.mobile}" class="form-control" placeholder="联系电话" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">*公司经纬度*</label>
+            <div class="col-sm-4">
+              <input type="text" id="lat_company" placeholder="公司经度" class="form-control" value="${info.lat_company}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="lng_company" placeholder="公司纬度" class="form-control" value="${info.lng_company}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
           </div>
-        </div>
+
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">*营业时间*</label>
+            <div class="col-sm-4">
+              <input type="text" id="yingye_time_start" placeholder="开始营业时间：例如 早8点" class="form-control" value="${info.yingye_time_start}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="yingye_time_end" placeholder="结束营业时间：例如 晚9点" class="form-control" value="${info.yingye_time_end}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">*优惠承诺*</label>
+            <div class="col-sm-4">
+              <input type="text" id="shouhui" placeholder="优惠承诺" class="form-control" value="${info.shouhui}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
           <input type="hidden" id="info_id" value="${info.id}">
 
           <div class="form-group">
@@ -122,66 +182,144 @@
       </div>
     </div>
   </div>
+  <div class="col-xs-12 col-sm-12">
+    <div class="box">
+      <div class="box-header">
+        <div class="box-icons">
+          <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+          </a>
+          <a class="expand-link">
+            <i class="fa fa-expand"></i>
+          </a>
+          <a class="close-link">
+            <i class="fa fa-times"></i>
+          </a>
+        </div>
+        <div class="no-move"></div>
+      </div>
+      <div class="box-content" style="height: 500px">
+        <h4 class="page-header">地图</h4>
+        <div id="mapContainer"></div>
+      </div>
+    </div>
+  </div>
+
 </div>
 <script type="text/javascript">
   function saveManagerInfo(){
     var infoId=$("#info_id").val();
     var realName = $("#real_name").val();
     if(realName.replace(/\s/g, '') == ''){
-        alert("请填写真是姓名");
+        alert("请填写真实姓名");
         return;
+    }
+    if(realName.length > 20){
+      alert("请填写真实姓名");
+      return;
     }
     var idcard = $("#idcard").val();
     if(idcard.replace(/\s/g, '') == ''){
         alert("请填写身份证号");
         return;
     }
+    if(idcard.length != 18){
+      alert("请填写身份证号!18位");
+      return;
+    }
     var imagePath = $("img[name='imagePath']").attr("src");
     if(imagePath== ""){
       alert("请上传身份证图片");
       return;
     }
-    var payNumber = $("#pay_number").val();
-    if(payNumber.replace(/\s/g, '') == ''){
-        alert("请填写支付宝账号");
+    var company_name= $("#company_name").val();
+    if(company_name.replace(/\s/g, '') == ''){
+        alert("请填写店铺名称");
         return;
     }
-     var checkName = $("#check_name").val();
-    if(checkName.replace(/\s/g, '') == ''){
-        alert("请填写支付宝校验姓名");
-        return;
+    if(company_name.length > 25){
+      alert("店铺名称超出字段限制");
+      return;
     }
-    var bankCard= $("#bank_card").val();
-    if(bankCard.replace(/\s/g, '') == ''){
-        alert("请填写银行卡号");
-        return;
+    var company_person= $("#company_person").val();
+    if(company_person.replace(/\s/g, '') == ''){
+      alert("请填写店铺联系人");
+      return;
     }
-    var bankType= $("#bank_type").val();
-    if(bankType.replace(/\s/g, '') == ''){
-        alert("请填写开户行");
-        return;
+    if(company_person.length > 20){
+      alert("联系人超出字段限制");
+      return;
     }
-    var bankAddress= $("#bank_address").val();
-    if(bankAddress.replace(/\s/g, '') == ''){
-        alert("请填写开户行地址");
-        return;
+    var company_tel= $("#company_tel").val();
+    if(company_tel.replace(/\s/g, '') == ''){
+      alert("请填写店铺电话");
+      return;
     }
-    var bankName= $("#bank_name").val();
-    if(bankName.replace(/\s/g, '') == ''){
-        alert("请填写开户人姓名");
-        return;
+    if(company_tel.length > 20){
+      alert("店铺电话超出字段限制");
+      return;
     }
-    var mobile= $("#mobile").val();
-    if(mobile.replace(/\s/g, '') == ''){
-        alert("请填写联系电话");
-        return;
+    var company_address= $("#company_address").val();
+    if(company_address.replace(/\s/g, '') == ''){
+      alert("请填写店铺地址");
+      return;
+    }
+    if(company_address.length > 50){
+      alert("店铺地址超出字段限制");
+      return;
+    }
+    var company_detail= $("#company_detail").val();
+    if(company_detail.replace(/\s/g, '') == ''){
+      alert("请填写店铺介绍");
+      return;
+    }
+    if(company_detail.length > 1000){
+      alert("店铺介绍超出字段限制");
+      return;
+    }
+    var lat_company= $("#lat_company").val();
+    if(lat_company.replace(/\s/g, '') == ''){
+      alert("请选择店铺位置");
+      return;
+    }
+    var lng_company= $("#lng_company").val();
+    if(lng_company.replace(/\s/g, '') == ''){
+      alert("请选择店铺位置");
+      return;
+    }
+
+    var yingye_time_start= $("#yingye_time_start").val();
+    if(yingye_time_start.replace(/\s/g, '') == ''){
+      alert("请选择开始营业时间");
+      return;
+    }
+    var yingye_time_end= $("#yingye_time_end").val();
+    if(yingye_time_end.replace(/\s/g, '') == ''){
+      alert("请选择结束营业时间");
+      return;
+    }
+    var shouhui= $("#shouhui").val();
+    if(shouhui.replace(/\s/g, '') == ''){
+      alert("请填写优惠承诺");
+      return;
+    }
+    if(shouhui.length > 100){
+      alert("优惠承诺超出字段限制");
+      return;
     }
 
     $.ajax({
       cache: true,
       type: "POST",
       url:"/managerinfo/save.do",
-      data:{"id":infoId, "realName":realName, "idcard":idcard, "idcardUrl":imagePath, "payNumber":payNumber, "checkName":checkName, "bankCard":bankCard, "bankType":bankType, "bankAddress":bankAddress, "bankName":bankName, "mobile":mobile},
+      data:{"id":infoId, "realName":realName, "idcard":idcard,
+        "idcardUrl":imagePath, "company_name":company_name,
+        "company_person":company_person, "company_tel":company_tel,
+        "company_address":company_address, "company_detail":company_detail,
+        "yingye_time_end":yingye_time_end, "shouhui":shouhui,
+        "yingye_time_start":yingye_time_start,
+        "lat_company":lat_company, "lng_company":lng_company},
+
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);
@@ -195,7 +333,6 @@
       }
     });
   };
-
 
   function uploadImage() {
     $.ajaxFileUpload(
@@ -227,4 +364,49 @@
   }
 </script>
 
+<script type="text/javascript">
+  //初始化地图对象，加载地图
+  ////初始化加载地图时，若center及level属性缺省，地图默认显示用户当前城市范围
+  var map = new AMap.Map('mapContainer', {
+    resizeEnable: true
+  });
+  //地图中添加地图操作ToolBar插件
+  map.plugin(['AMap.ToolBar'], function() {
+    //设置地位标记为自定义标记
+    var toolBar = new AMap.ToolBar();
+    map.addControl(toolBar);
+  });
 
+  var mapObj = new AMap.Map("mapContainer",{
+    rotateEnable:true,
+    dragEnable:true,
+    zoomEnable:true,
+    zooms:[3,18]
+    //二维地图显示视口
+//    view: new AMap.View2D({
+//      center:new AMap.LngLat(118.783897, 32.058875),//地图中心点
+//      zoom:15 //地图显示的缩放级别
+//    })
+  });
+  //  mapObj.plugin(["AMap.ToolBar"],function(){
+  //    toolBar = new AMap.ToolBar();
+  //    mapObj.addControl(toolBar);
+  //  });
+  var marker = new AMap.Marker({
+    position:mapObj.getCenter()
+  });
+  marker.setMap(mapObj);
+
+  //为地图注册click事件获取鼠标点击出的经纬度坐标
+  var clickEventListener=AMap.event.addListener(mapObj,'click',function(e){
+    document.getElementById("lat_company").value=e.lnglat.getLat();
+    document.getElementById("lng_company").value=e.lnglat.getLng();
+
+    marker.setMap(null);
+    mapObj.setCenter( new AMap.LngLat(e.lnglat.getLng(), e.lnglat.getLat()));
+    marker = new AMap.Marker({
+      position:new AMap.LngLat(e.lnglat.getLng(), e.lnglat.getLat())
+    });
+    marker.setMap(mapObj);
+  });
+</script>

@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/2/2.
+ * Created by zhl on 2015/2/2.
  */
 @Controller
 public class RecordController extends ControllerConstants{

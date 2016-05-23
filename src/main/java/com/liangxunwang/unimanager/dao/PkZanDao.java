@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 15-4-5.
+ * Created by zhl on 15-4-5.
  */
 @Repository("pkZanDao")
 public interface PkZanDao {

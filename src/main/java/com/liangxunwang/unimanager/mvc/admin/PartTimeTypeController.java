@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/2/7.
+ * Created by zhl on 2015/2/7.
  */
 @Controller
 public class PartTimeTypeController extends ControllerConstants{

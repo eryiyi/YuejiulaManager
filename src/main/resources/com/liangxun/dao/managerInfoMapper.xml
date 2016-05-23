@@ -16,11 +16,24 @@
         <result column="bank_address" property="bankAddress"/>
         <result column="bank_name" property="bankName"/>
         <result column="mobile" property="mobile"/>
+
+        <result column="lat_company" property="lat_company"/>
+        <result column="lng_company" property="lng_company"/>
+        <result column="company_address" property="company_address"/>
+        <result column="company_person" property="company_person"/>
+        <result column="company_tel" property="company_tel"/>
+        <result column="company_detail" property="company_detail"/>
+        <result column="company_name" property="company_name"/>
+
+        <result column="yingye_time_start" property="yingye_time_start"/>
+        <result column="yingye_time_end" property="yingye_time_end"/>
+        <result column="shouhui" property="shouhui"/>
+        <result column="company_pic" property="company_pic"/>
     </resultMap>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.ManagerInfo">
-        INSERT INTO MANAGER_INFO (INFO_ID, MANAGER_ID, REAL_NAME, IDCARD, IDCARD_URL, PAY_NUMBER, CHECK_NAME, BANK_CARD, BANK_TYPE, BANK_ADDRESS, BANK_NAME, MOBILE)
-        VALUES (#{id}, #{managerId}, #{realName}, #{idcard}, #{idcardUrl}, #{payNumber}, #{checkName}, #{bankCard}, #{bankType}, #{bankAddress}, #{bankName}, #{mobile})
+        INSERT INTO MANAGER_INFO (INFO_ID, MANAGER_ID, REAL_NAME, IDCARD, IDCARD_URL, lat_company, lng_company, company_address, company_person, company_tel, company_detail, company_name, yingye_time_start, yingye_time_end, shouhui, company_pic)
+        VALUES (#{id}, #{managerId}, #{realName}, #{idcard}, #{idcardUrl}, #{lat_company}, #{lng_company}, #{company_address}, #{company_person}, #{company_tel}, #{company_detail}, #{company_name}, #{yingye_time_start, jdbcType=VARCHAR}, #{yingye_time_end, jdbcType=VARCHAR}, #{shouhui, jdbcType=VARCHAR}, #{company_pic, jdbcType=VARCHAR})
     </insert>
 
     <select id="findById" parameterType="String" resultMap="my_manager_info">
@@ -28,8 +41,12 @@
     </select>
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.ManagerInfo">
-        UPDATE MANAGER_INFO SET REAL_NAME=#{realName}, IDCARD=#{idcard}, IDCARD_URL=#{idcardUrl}, PAY_NUMBER=#{payNumber},CHECK_NAME=#{checkName},BANK_CARD=#{bankCard},
-        BANK_TYPE=#{bankType}, BANK_ADDRESS=#{bankAddress}, BANK_NAME=#{bankName},MOBILE=#{mobile} WHERE INFO_ID=#{id}
+        UPDATE MANAGER_INFO SET REAL_NAME=#{realName}, IDCARD=#{idcard}, IDCARD_URL=#{idcardUrl}, lat_company=#{lat_company},lng_company=#{lng_company},company_address=#{company_address},
+        company_person=#{company_person}, company_tel=#{company_tel},
+        company_detail=#{company_detail},company_name=#{company_name},
+        yingye_time_start=#{yingye_time_start, jdbcType=VARCHAR},yingye_time_end=#{yingye_time_end, jdbcType=VARCHAR},
+        shouhui=#{shouhui, jdbcType=VARCHAR},company_pic=#{company_pic, jdbcType=VARCHAR}
+         WHERE INFO_ID=#{id}
     </update>
 
 

@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/1/31.
+ * Created by zhl on 2015/1/31.
  */
 public class MemberQuery {
     private int index;

@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by liuzwei on 2015/1/29.
+ * Created by zhl on 2015/1/29.
  */
 @Repository("adminDao")
 public interface AdminDao {

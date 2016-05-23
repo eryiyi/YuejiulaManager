@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 2015/2/2.
+ * Created by zhl on 2015/2/2.
  */
 public class Record {
     private String recordId;

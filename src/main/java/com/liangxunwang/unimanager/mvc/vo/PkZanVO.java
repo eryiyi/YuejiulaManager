@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.mvc.vo;
 import com.liangxunwang.unimanager.model.PKZan;
 
 /**
- * Created by liuzwei on 15-4-5.
+ * Created by zhl on 15-4-5.
  */
 public class PkZanVO extends PKZan{
     private String nickName;

@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.Notice;
 import com.liangxunwang.unimanager.model.SchoolThreeTingtai;
+import com.liangxunwang.unimanager.model.SchoolThreeTingtaiBd;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.query.NoticeQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -16,10 +17,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/2/5.
+ * Created by zhl on 2015/2/5.
  */
 @Controller
 public class SchoolThreePingtaiController extends ControllerConstants {
@@ -94,5 +96,6 @@ public class SchoolThreePingtaiController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
+
 
 }

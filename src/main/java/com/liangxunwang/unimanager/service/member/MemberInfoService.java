@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/2/8.
+ * Created by zhl on 2015/2/8.
  */
 @Service("memberInfoService")
 public class MemberInfoService implements ExecuteService, FindService, UpdateService, ListService {

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by liuzwei on 2015/3/1.
+ * Created by zhl on 2015/3/1.
  */
 @Service("newsTypeService")
 public class NewsTypeService implements SaveService, ListService, UpdateService , DeleteService{

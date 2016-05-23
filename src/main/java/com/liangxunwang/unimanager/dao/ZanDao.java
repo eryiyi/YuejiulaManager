@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/2/3.
+ * Created by zhl on 2015/2/3.
  */
 @Repository("zanDao")
 public interface ZanDao {

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/4/2.
+ * Created by zhl on 2015/4/2.
  */
 @Service("promotionService")
 public class PromotionService implements FindService, DeleteService {

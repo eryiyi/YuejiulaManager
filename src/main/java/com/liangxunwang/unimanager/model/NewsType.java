@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 2015/3/1.
+ * Created by zhl on 2015/3/1.
  */
 public class NewsType {
     private String id;

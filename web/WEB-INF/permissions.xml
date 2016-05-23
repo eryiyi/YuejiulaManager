@@ -66,6 +66,8 @@
     <group id="SYSTEM_MANAGE" name="系统管理">
         <permission id="MODIFY_PASS" name="修改密码"/>
         <permission id="MANAGER_INFO" name="信息维护"/>
+        <permission id="MANAGER_DIANPU_INFO" name="店铺广告图(商)"/>
+        <permission id="MANAGER_DIANPU_PT_INFO" name="绑定第三方平台(商)"/>
     </group>
     <group id="REMIT_MANAGER" name="汇款结算">
         <permission id="REMIT_SELLERLIST" name="商家结算"/>
@@ -75,10 +77,10 @@
         <permission id="MODIFY_RATE" name="修改费率"/>
     </group>
 
-    <group id="INCOME_MANAGER" name="营业收入">
-        <permission id="IINCOME_LIST" name="收入查询"/>
-        <permission id="SELLERLIST_LIST" name="结算查询"/>
-    </group>
+    <!--<group id="INCOME_MANAGER" name="营业收入">-->
+        <!--<permission id="IINCOME_LIST" name="收入查询"/>-->
+        <!--<permission id="SELLERLIST_LIST" name="结算查询"/>-->
+    <!--</group>-->
 
     <group id="SCHOOLS_MANAGER" name="学校管理">
         <permission id="ADD_SCHOOL_LIST" name="添加学校"/>

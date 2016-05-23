@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 2015/2/5.
+ * Created by zhl on 2015/2/5.
  *
  * 商品评论
  */

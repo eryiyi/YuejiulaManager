@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by liuzwei on 2015/1/29.
+ * Created by zhl on 2015/1/29.
  */
 @Controller
 public class AdminLoginController extends ControllerConstants {
@@ -41,11 +41,11 @@ public class AdminLoginController extends ControllerConstants {
             Admin admin = (Admin) results[0];
             session.setAttribute(ControllerConstants.ACCOUNT_KEY, admin);
             String permissions = (String) results[1];
-            if ("3".equals(admin.getType())){//ËµÃ÷ÊÇÉÌ¼ÒµÇÂ¼
+            if ("3".equals(admin.getType())){//Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ì¼Òµï¿½Â¼
                 permissions += "\\|SELLER";
             }
             if(permissions == null || permissions.isEmpty()) {
-                return toJSONString(ERROR_6);//È¨ÏÞÎª¿Õ£¬ÇëÎª´ËÕËºÅÉèÖÃÈ¨ÏÞ
+                return toJSONString(ERROR_6);//È¨ï¿½ï¿½Îªï¿½Õ£ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½
             }
             session.setAttribute(ControllerConstants.PERMISSIONS, permissions);
             return toJSONString(SUCCESS);

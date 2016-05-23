@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Created by liuzwei on 2015/2/2.
+ * Created by zhl on 2015/2/2.
  */
 @Service("schoolRecordService")
 public class SchoolRecordService implements ListService{

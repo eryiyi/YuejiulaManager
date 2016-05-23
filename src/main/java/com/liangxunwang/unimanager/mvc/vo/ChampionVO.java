@@ -3,22 +3,22 @@ package com.liangxunwang.unimanager.mvc.vo;
 import com.liangxunwang.unimanager.model.Champion;
 
 /**
- * Created by liuzwei on 2015/4/10.
+ * Created by zhl on 2015/4/10.
  */
 public class ChampionVO extends Champion{
 //    private String empId;
-    private String empName;//¹Ú¾üêÇ³Æ
-    private String empCover;//¹Ú¾ü»áÔ±Í·Ïñ
-    private String zpContent;//×÷Æ·ÄÚÈÝ
-    private String schoolName;//Ñ§Ð£Ãû³Æ
-//    private String number;//µÚ¼¸ÆÚ
+    private String empName;//ï¿½Ú¾ï¿½ï¿½Ç³ï¿½
+    private String empCover;//ï¿½Ú¾ï¿½ï¿½ï¿½Ô±Í·ï¿½ï¿½
+    private String zpContent;//ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
+    private String schoolName;//Ñ§Ð£ï¿½ï¿½ï¿½ï¿½
+//    private String number;//ï¿½Ú¼ï¿½ï¿½ï¿½
     private String picUrl;
     private String videoUrl;
-//    private String zpId;//×÷Æ·ID
-    private String zpType;//×÷Æ·ÀàÐÍ
-    private String themeName;//Ö÷ÌâÃû³Æ
-    private String zanNum;//ÔÞÊýÁ¿
-    private String plNum;//ÆÀÂÛÊýÁ¿
+//    private String zpId;//ï¿½ï¿½Æ·ID
+    private String zpType;//ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
+    private String themeName;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private String zanNum;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private String plNum;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 //    public String getEmpId() {
 //        return empId;

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * Created by liuzwei on 15-4-6.
+ * Created by zhl on 15-4-6.
  */
 @Controller
 public class PkPrizeController extends ControllerConstants {

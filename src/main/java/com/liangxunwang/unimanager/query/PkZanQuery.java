@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 15-4-5.
+ * Created by zhl on 15-4-5.
  */
 public class PkZanQuery {
     private int index;

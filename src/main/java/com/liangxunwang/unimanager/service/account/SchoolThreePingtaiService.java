@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/2/5.
+ * Created by zhl on 2015/2/5.
  */
 @Service("schoolThreePingtaiService")
 public class SchoolThreePingtaiService implements SaveService,ListService, FindService, UpdateService, DeleteService{

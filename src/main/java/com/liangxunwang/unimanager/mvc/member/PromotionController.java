@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/4/2.
+ * Created by zhl on 2015/4/2.
  */
 @Controller
 public class PromotionController extends ControllerConstants{
@@ -30,7 +30,7 @@ public class PromotionController extends ControllerConstants{
     private DeleteService promotionDeleteService;
 
     /**
-     * 根据承包商的会员ID查找推广
+     * 锟斤拷锟捷承帮拷锟教的伙拷员ID锟斤拷锟斤拷锟狡癸拷
      * @param empId
      * @return
      */
@@ -48,7 +48,7 @@ public class PromotionController extends ControllerConstants{
     }
 
     /**
-     * 根据承包商的会员ID删除推广
+     * 锟斤拷锟捷承帮拷锟教的伙拷员ID删锟斤拷锟狡癸拷
      * @param empId
      * @return
      */

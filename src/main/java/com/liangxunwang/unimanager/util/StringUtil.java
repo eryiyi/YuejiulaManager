@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * author: liuzwei
+ * author: zhl
  * Date: 2014/7/29
  * Time: 18:11
  * 类的功能、说明写在此处.

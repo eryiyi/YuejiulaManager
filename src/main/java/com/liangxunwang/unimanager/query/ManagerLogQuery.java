@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 public class ManagerLogQuery {
     private int index;

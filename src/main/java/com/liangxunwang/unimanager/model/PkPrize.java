@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 15-4-6.
+ * Created by zhl on 15-4-6.
  * PK活动奖品
  */
 public class PkPrize {

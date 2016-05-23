@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/2/2.
+ * Created by zhl on 2015/2/2.
  */
 @Service("goodsTypeService")
 public class GoodsTypeService implements SaveService, ListService, FindService , UpdateService, DeleteService{

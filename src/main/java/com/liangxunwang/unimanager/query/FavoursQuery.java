@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/2/3.
+ * Created by zhl on 2015/2/3.
  */
 public class FavoursQuery {
     private int index;

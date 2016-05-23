@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/3/27.
+ * Created by zhl on 2015/3/27.
  */
 public class SellerGoodsQuery {
     private int index;

@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/3/9.
+ * Created by zhl on 2015/3/9.
  */
 public class CollegeQuery {
     private String provinceId;

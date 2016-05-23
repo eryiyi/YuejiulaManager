@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * Created by liuzwei on 15-4-3.
+ * Created by zhl on 15-4-3.
  */
 @Controller("pkThemeController")
 public class PkThemeController extends ControllerConstants{

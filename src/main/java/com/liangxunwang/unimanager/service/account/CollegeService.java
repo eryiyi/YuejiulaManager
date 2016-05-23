@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/2/25.
+ * Created by zhl on 2015/2/25.
  */
 @Service("collegeService")
 public class CollegeService implements ListService ,UpdateService,FindService,SaveService{

@@ -3,11 +3,11 @@ package com.liangxunwang.unimanager.mvc.vo;
 import com.liangxunwang.unimanager.model.PkPrize;
 
 /**
- * Created by liuzwei on 2015/4/11.
+ * Created by zhl on 2015/4/11.
  */
 public class PkPrizeVO extends PkPrize {
-    private String themeNumber;//主题期次
-    private String schoolName;//学校名称
+    private String themeNumber;//锟斤拷锟斤拷锟节达拷
+    private String schoolName;//学校锟斤拷锟斤拷
 
     public String getThemeNumber() {
         return themeNumber;

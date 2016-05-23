@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/1/30.
+ * Created by zhl on 2015/1/30.
  */
 @Service("universityService")
 public class UniversityService implements SaveService, ListService, FindService, UpdateService, DeleteService{

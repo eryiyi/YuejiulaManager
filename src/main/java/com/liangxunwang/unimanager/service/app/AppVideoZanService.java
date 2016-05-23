@@ -30,7 +30,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/2/3.
+ * Created by zhl on 2015/2/3.
  */
 @Service("appVideoZanService")
 public class AppVideoZanService implements SaveService , ListService{

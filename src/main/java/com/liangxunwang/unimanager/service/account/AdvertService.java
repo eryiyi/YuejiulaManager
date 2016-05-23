@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/1/31.
+ * Created by zhl on 2015/1/31.
  */
 @Service("advertService")
 public class AdvertService implements SaveService, ListService , FindService, UpdateService, DeleteService{

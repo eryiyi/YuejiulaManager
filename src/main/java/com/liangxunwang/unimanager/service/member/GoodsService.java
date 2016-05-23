@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/2/2.
+ * Created by zhl on 2015/2/2.
  */
 @Service("goodsService")
 public class GoodsService implements SaveService, ListService, FindService , DeleteService, UpdateService{

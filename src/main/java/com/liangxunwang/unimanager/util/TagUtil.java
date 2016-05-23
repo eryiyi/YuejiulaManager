@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 自定义标签
- * Created by liuzwei on 2015/1/31.
+ * Created by zhl on 2015/1/31.
  */
 public class TagUtil {
     public static boolean permission(String thisPower, String ownPermission){

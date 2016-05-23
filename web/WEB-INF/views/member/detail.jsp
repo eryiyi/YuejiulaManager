@@ -87,48 +87,9 @@
             <label class="col-sm-2 control-label">QQ</label>
             <div class="col-sm-4">
               <input type="text" id="emp_qq" placeholder="用户QQ" class="form-control" value="${empVO.empQQ}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-              <font color="red">* 店铺部分只针对商家有用，普通用户和管理员、承包商请忽略！</font>
             </div>
           </div>
 
-
-          <div class="form-group">
-            <label class="col-sm-2 control-label">*店铺名称*</label>
-            <div class="col-sm-4">
-              <input type="text" id="company_name" placeholder="店铺名称" class="form-control" value="${empVO.company_name}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">*店铺联系人*</label>
-            <div class="col-sm-4">
-              <input type="text" id="company_person" placeholder="店铺联系人" class="form-control" value="${empVO.company_person}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">*店铺电话*</label>
-            <div class="col-sm-4">
-              <input type="text" id="company_tel" placeholder="店铺电话" class="form-control" value="${empVO.company_tel}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">*店铺地址*</label>
-            <div class="col-sm-4">
-              <input type="text" id="company_address" placeholder="店铺地址" class="form-control" value="${empVO.company_address}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">*店铺介绍*</label>
-            <div class="col-sm-4">
-              <input type="text" id="company_detail" placeholder="店铺介绍" class="form-control" value="${empVO.company_detail}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">*公司经纬度*</label>
-            <div class="col-sm-4">
-              <input type="text" id="lat_company" placeholder="公司经度" class="form-control" value="${empVO.lat_company}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-              <input type="text" id="lng_company" placeholder="公司纬度" class="form-control" value="${empVO.lng_company}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-            </div>
-          </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">学校</label>
@@ -194,28 +155,7 @@
     </div>
   </div>
 
-  <div class="col-xs-12 col-sm-12">
-    <div class="box">
-      <div class="box-header">
-        <div class="box-icons">
-          <a class="collapse-link">
-            <i class="fa fa-chevron-up"></i>
-          </a>
-          <a class="expand-link">
-            <i class="fa fa-expand"></i>
-          </a>
-          <a class="close-link">
-            <i class="fa fa-times"></i>
-          </a>
-        </div>
-        <div class="no-move"></div>
-      </div>
-      <div class="box-content" style="height: 500px">
-        <h4 class="page-header">地图</h4>
-        <div id="mapContainer"></div>
-      </div>
-    </div>
-  </div>
+
 
 </div>
 
@@ -229,13 +169,13 @@
     var emp_qq = $("#emp_qq").val();
     var is_use = $("#is_use").val();
 
-    var lat_company = $("#lat_company").val();
-    var lng_company = $("#lng_company").val();
-    var company_address = $("#company_address").val();
-    var company_tel = $("#company_tel").val();
-    var company_person = $("#company_person").val();
-    var company_detail = $("#company_detail").val();
-    var company_name = $("#company_name").val();
+//    var lat_company = $("#lat_company").val();
+//    var lng_company = $("#lng_company").val();
+//    var company_address = $("#company_address").val();
+//    var company_tel = $("#company_tel").val();
+//    var company_person = $("#company_person").val();
+//    var company_detail = $("#company_detail").val();
+//    var company_name = $("#company_name").val();
 
 
     if(emp_name.replace(/\s/g, '') == ''){
@@ -275,14 +215,7 @@
         "empCover":imagePath,
         "empSign":emp_sign,
         "empQQ":emp_qq,
-        "isUse":is_use,
-        "lat_company":lat_company,
-        "lng_company":lng_company,
-        "company_address":company_address,
-        "company_person":company_person,
-        "company_tel":company_tel,
-        "company_detail":company_detail,
-        "company_name":company_name
+        "isUse":is_use
       },
       async: false,
       success: function(_data) {

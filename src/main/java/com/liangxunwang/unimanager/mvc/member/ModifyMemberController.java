@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by liuzwei on 2015/2/5.
+ * Created by zhl on 2015/2/5.
  */
 @Controller
 public class ModifyMemberController extends ControllerConstants{

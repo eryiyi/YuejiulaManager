@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.model;
 import java.util.Comparator;
 
 /**
- * Created by liuzwei on 2015/2/25.
+ * Created by zhl on 2015/2/25.
  */
 public class College{
     private String coid;

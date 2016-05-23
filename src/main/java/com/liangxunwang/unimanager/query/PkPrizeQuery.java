@@ -1,14 +1,14 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/4/11.
+ * Created by zhl on 2015/4/11.
  */
 public class PkPrizeQuery {
     private int index;
     private int size;
 
-    private String themeId;//Ö÷ÌâID
-    private String empId;//´úÀíÉÌID
+    private String themeId;//ï¿½ï¿½ï¿½ï¿½ID
+    private String empId;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
     private String schoolId;
 
     public int getIndex() {

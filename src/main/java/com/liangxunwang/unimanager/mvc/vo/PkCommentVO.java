@@ -3,12 +3,12 @@ package com.liangxunwang.unimanager.mvc.vo;
 import com.liangxunwang.unimanager.model.PKComment;
 
 /**
- * Created by liuzwei on 2015/4/9.
+ * Created by zhl on 2015/4/9.
  */
 public class PkCommentVO extends PKComment {
-    private String nickName;//ÆÀÂÛÈËêÇ³Æ
-    private String cover;//ÆÀÂÛÈËÍ·Ïñ
-    private String fNickName;//¸¸ÆÀÂÛÕßêÇ³Æ
+    private String nickName;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½
+    private String cover;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½
+    private String fNickName;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½
 
     public String getNickName() {
         return nickName;

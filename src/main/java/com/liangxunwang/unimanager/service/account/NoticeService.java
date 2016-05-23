@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/2/5.
+ * Created by zhl on 2015/2/5.
  */
 @Service("noticeService")
 public class NoticeService implements SaveService,ListService, FindService, UpdateService, DeleteService{

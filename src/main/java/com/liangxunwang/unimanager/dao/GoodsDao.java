@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Observable;
 
 /**
- * Created by liuzwei on 2015/2/2.
+ * Created by zhl on 2015/2/2.
  */
 @Repository("goodsDao")
 public interface GoodsDao {
