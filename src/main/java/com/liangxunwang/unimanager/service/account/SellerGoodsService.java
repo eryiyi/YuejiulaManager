@@ -85,7 +85,7 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
                 schoolList = Arrays.asList(schoolAry);
                 dateList = Arrays.asList(dateAry);
             }
-            List<SellerGoods> list = new ArrayList<SellerGoods>();
+//            List<SellerGoods> list = new ArrayList<SellerGoods>();
 
             for (int i=0; i<schoolList.size(); i++){
                 SellerGoods sellerGoods = new SellerGoods();
@@ -95,11 +95,14 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
                 sellerGoods.setSchoolId(schoolList.get(i));
                 sellerGoods.setEndTime(DateUtil.getMs(dateList.get(i), "MM/dd/yyyy") + "");
                 sellerGoods.setDateline(System.currentTimeMillis() + "");
+//                list.add(sellerGoods);
+                List<SellerGoods> list = new ArrayList<SellerGoods>();
                 list.add(sellerGoods);
+                sellerGoodsDao.saveList(list);
             }
 
-            if (list.size()>0) {
-                sellerGoodsDao.saveList(list);
+//            if (list.size()>0) {
+//                sellerGoodsDao.saveList(list);
                 //将会员设置为商家
                 memberDao.changeBusiness(empId, "2");
 
@@ -119,7 +122,7 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
                     admin.setGoodsCount("3");//默认是三个商品
                     adminDao.add(admin);
                 }
-            }
+//            }
         }else {
             List<SellerGoods> list = (List<SellerGoods>) object;
             if (list.size() > 0) {

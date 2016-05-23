@@ -50,7 +50,7 @@
             <th>#</th>
             <th>学校名字</th>
             <th>承包到期时间</th>
-            <th>操作</th>
+            <%--<th>操作</th>--%>
           </tr>
           </thead>
           <tbody>

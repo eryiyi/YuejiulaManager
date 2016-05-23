@@ -382,7 +382,7 @@
 					</ul>
 				</li>
 				</c:if>
-				<c:if test="${um:permission('MODIFY_PASS', sessionScope.powers) || sessionScope.account.type=='3'}">
+				<c:if test="${um:permission('MODIFY_RATE', sessionScope.powers)">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle">
 							<i class="fa fa-picture-o"></i>

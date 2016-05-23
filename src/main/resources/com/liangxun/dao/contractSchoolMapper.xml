@@ -17,6 +17,7 @@
         <result column="school_id" property="schoolId"/>
         <result column="end_time" property="endTime"/>
         <result column="dateline" property="dateline"/>
+
         <result column="emp_name" property="empName"/>
         <result column="school_name" property="schoolName"/>
         <result column="emp_cover" property="empCover"/>
@@ -24,7 +25,7 @@
     </resultMap>
 
     <select id="listByEmpId" resultMap="my_contract_school_vo">
-        SELECT cs.*, le.emp_name, co.name as school_name FROM contract_school cs
+        SELECT cs.*, le.emp_name as emp_name,le.emp_cover as emp_cover, co.name as school_name FROM contract_school cs
         LEFT JOIN lx_emp le ON  cs.emp_id=le.emp_id
         LEFT JOIN college co on cs.school_id=co.coid
         WHERE cs.emp_id=#{empId}
