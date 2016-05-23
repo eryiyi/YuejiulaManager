@@ -171,6 +171,27 @@
             </div>
           </div>
 
+          <%--<div class="form-group">--%>
+            <%--<label class="col-sm-2 control-label" ></label>--%>
+            <%--<div class="col-sm-10 col-md-2">--%>
+              <%--<img class="img-thumbnail" name="" id="company_pic"   style="cursor: pointer"  src="${info.company_pic}"/>--%>
+            <%--</div>--%>
+          <%--</div>--%>
+          <input type="hidden" id="company_pic" name="company_pic" value="${info.company_pic}">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" >店铺主图</label>
+            <div class="col-sm-10 col-md-2">
+              <img class="img-thumbnail" name="imagePath1" id="imageDiv1"   style="cursor: pointer"  src="${info.company_pic}"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" ></label>
+            <div class="col-sm-10">
+              <input type="file" name="file" id="fileUpload1" style="float: left;" />
+              <input type="button" value="上传" onclick="uploadImageT('fileUpload1','imageDiv1')" style="float: left;"/><br/><br/>
+            </div>
+          </div>
+
           <input type="hidden" id="info_id" value="${info.id}">
 
           <div class="form-group">
@@ -308,6 +329,13 @@
       return;
     }
 
+    var imagePath1 = $("img[name='imagePath1']").attr("src");
+
+    if(imagePath1== "" || imagePath1==null){
+      imagePath1 = $("#company_pic").val();
+      return;
+    }
+
     $.ajax({
       cache: true,
       type: "POST",
@@ -318,6 +346,7 @@
         "company_address":company_address, "company_detail":company_detail,
         "yingye_time_end":yingye_time_end, "shouhui":shouhui,
         "yingye_time_start":yingye_time_start,
+        "company_pic":imagePath1,
         "lat_company":lat_company, "lng_company":lng_company},
 
       async: false,
@@ -347,6 +376,33 @@
                   var html = '<img style="cursor: pointer" onmousedown="deleteImage(event, this)" src="'+data.data+'" width="150" height="150" name="imagePath" title="点击右键删除"/>';
 //                  var imageDivHtml = $("#imageDiv").html() + html;
                   $("#imageDiv").html(html);
+                } else {
+                  if(data.code == 1) {
+                    alert("上传图片失败");
+                  } else if(data.code == 2) {
+                    alert("上传图片格式只能为：jpg、png、gif、bmp、jpeg");
+                  } else if(data.code == 3) {
+                    alert("请选择上传图片");
+                  }else {
+                    alert("上传失败");
+                  }
+                }
+              }
+            }
+    );
+  }
+
+  function uploadImageT(_fileUpload,_imageDiv) {
+    $.ajaxFileUpload(
+            {
+              url:"/uploadUnCompressImage.do?_t=" + new Date().getTime(),            //需要链接到服务器地址
+              secureuri:false,//是否启用安全提交，默认为false
+              fileElementId:_fileUpload,                        //文件选择框的id属性
+              dataType: 'json',                                     //服务器返回的格式，可以是json, xml
+              success: function (data, status)  //服务器成功响应处理函数
+              {
+                if(data.success) {
+                  document.getElementById(_imageDiv).src= data.data;
                 } else {
                   if(data.code == 1) {
                     alert("上传图片失败");

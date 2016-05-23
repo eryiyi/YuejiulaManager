@@ -148,6 +148,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 +"|(^/appVideoZanSave\\.do$)"
                 +"|(^/viewVideos\\.do$)"
                 +"|(^/listsRecodMoods\\.do$)"
+                +"|(^/appGetDianPu\\.do$)"
                 +"|(^/getThemeApp\\.do$)"
         ) || account != null) {
             return true;

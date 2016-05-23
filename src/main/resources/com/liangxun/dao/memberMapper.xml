@@ -49,6 +49,87 @@
         <result column="groupid" property="groupId"/>
     </resultMap>
 
+    <resultMap id="my_member_dianpu" type="com.liangxunwang.unimanager.mvc.vo.EmpDianpu">
+        <id column="emp_id" property="empId"/>
+        <result column="emp_mobile" property="empMobile"/>
+        <result column="mobile_status" property="mobileStatus"/>
+        <result column="emp_pass" property="empPass"/>
+        <result column="emp_name" property="empName"/>
+        <result column="emp_cover" property="empCover"/>
+        <result column="emp_sex" property="empSex"/>
+        <result column="emp_sign" property="empSign"/>
+        <result column="emp_qq" property="empQQ"/>
+        <result column="school_id" property="schoolId"/>
+        <result column="emp_typeid" property="empTypeId"/>
+        <result column="is_use" property="isUse"/>
+        <result column="dateline" property="dateline"/>
+        <result column="push_id" property="pushId"/>
+        <result column="school_name" property="universityName"/>
+        <result column="level_name" property="levelName"/>
+        <result column="hx_username" property="hxUsername"/>
+        <result column="is_in_group" property="isInGroup"/>
+        <result column="device_type" property="deviceType"/>
+
+        <result column="mm_ad_title" property="mm_ad_title"/>
+        <result column="mm_ad_pic" property="mm_ad_pic"/>
+        <result column="mm_ad_url" property="mm_ad_url"/>
+
+        <result column="pingtai_url" property="pingtai_url"/>
+        <result column="school_three_pingtai_pic" property="school_three_pingtai_pic"/>
+        <result column="school_three_pingtai_name" property="school_three_pingtai_name"/>
+
+        <result column="company_pic" property="company_pic"/>
+        <result column="shouhui" property="shouhui"/>
+        <result column="yingye_time_end" property="yingye_time_end"/>
+        <result column="yingye_time_start" property="yingye_time_start"/>
+        <result column="company_name" property="company_name"/>
+        <result column="company_detail" property="company_detail"/>
+        <result column="company_tel" property="company_tel"/>
+        <result column="company_person" property="company_person"/>
+        <result column="company_address" property="company_address"/>
+        <result column="lng_company" property="lng_company"/>
+        <result column="lat_company" property="lat_company"/>
+    </resultMap>
+
+    <select id="listDianPu" resultMap="my_member_dianpu">
+        SELECT le.* ,
+        lmanager.lat_company as lat_company,
+        lmanager.lng_company as lng_company,
+        lmanager.company_address as company_address,
+        lmanager.company_person as company_person,
+        lmanager.company_tel as company_tel,
+        lmanager.company_detail as company_detail,
+        lmanager.company_name as company_name,
+        lmanager.yingye_time_start as yingye_time_start,
+        lmanager.yingye_time_end as yingye_time_end,
+        lmanager.shouhui as shouhui,
+        lmanager.company_pic as company_pic
+
+--         lad.mm_ad_title as mm_ad_title,
+--         lad.mm_ad_pic as mm_ad_pic,
+--         lad.mm_ad_url as mm_ad_url,
+--
+--         lthree.pingtai_url as pingtai_url,
+--
+--         lthr.school_three_pingtai_pic as school_three_pingtai_pic,
+--         lthr.school_three_pingtai_name as school_three_pingtai_name
+
+        from lx_emp le
+        LEFT JOIN manager_info lmanager ON lmanager.emp_id = le.emp_id
+--         LEFT JOIN seller_ad lad ON lad.emp_id = le.emp_id
+--         LEFT JOIN emp_pingtai_mng lthree ON lthree.emp_id = le.emp_id
+--         LEFT JOIN school_three_pingtai lthr ON lthree.school_three_pingtai_id = lthr.school_three_pingtai_id
+        WHERE le.emp_typeid = '2'
+        <if test="school_id != null and school_id != ''">
+            and le.school_id=#{school_id}
+        </if>
+        <if test="keyWords != null and keyWords != ''">
+            AND le.emp_name like CONCAT('%',#{keyWords},'%')
+        </if>
+        limit #{index},#{size}
+    </select>
+
+
     <select id="findByMobile" parameterType="String" resultMap="my_member_vo">
         SELECT lp.*, ls.name as school_name, ls.groupid, (SELECT level_name FROM lx_level ll where lc.count BETWEEN ll.level_start AND ll.level_end) as level_name
         from lx_emp lp
@@ -98,6 +179,8 @@
         ORDER BY le.dateline DESC
         limit #{index},#{size}
     </select>
+
+
 
     <select id="count" resultType="long">
         select count(le.school_id) from lx_emp le left join college ls on le.school_id=ls.coid

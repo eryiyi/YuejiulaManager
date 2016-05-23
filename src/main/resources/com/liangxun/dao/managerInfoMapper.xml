@@ -6,6 +6,7 @@
     <resultMap id="my_manager_info" type="com.liangxunwang.unimanager.model.ManagerInfo">
         <id column="info_id" property="id"/>
         <result column="manager_id" property="managerId"/>
+        <result column="emp_id" property="emp_id"/>
         <result column="real_name" property="realName"/>
         <result column="idcard" property="idcard"/>
         <result column="idcard_url" property="idcardUrl"/>
@@ -32,8 +33,8 @@
     </resultMap>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.ManagerInfo">
-        INSERT INTO MANAGER_INFO (INFO_ID, MANAGER_ID, REAL_NAME, IDCARD, IDCARD_URL, lat_company, lng_company, company_address, company_person, company_tel, company_detail, company_name, yingye_time_start, yingye_time_end, shouhui, company_pic)
-        VALUES (#{id}, #{managerId}, #{realName}, #{idcard}, #{idcardUrl}, #{lat_company}, #{lng_company}, #{company_address}, #{company_person}, #{company_tel}, #{company_detail}, #{company_name}, #{yingye_time_start, jdbcType=VARCHAR}, #{yingye_time_end, jdbcType=VARCHAR}, #{shouhui, jdbcType=VARCHAR}, #{company_pic, jdbcType=VARCHAR})
+        INSERT INTO MANAGER_INFO (INFO_ID, MANAGER_ID,emp_id, REAL_NAME, IDCARD, IDCARD_URL, lat_company, lng_company, company_address, company_person, company_tel, company_detail, company_name, yingye_time_start, yingye_time_end, shouhui, company_pic)
+        VALUES (#{id}, #{managerId}, #{emp_id}, #{realName}, #{idcard}, #{idcardUrl}, #{lat_company}, #{lng_company}, #{company_address}, #{company_person}, #{company_tel}, #{company_detail}, #{company_name}, #{yingye_time_start, jdbcType=VARCHAR}, #{yingye_time_end, jdbcType=VARCHAR}, #{shouhui, jdbcType=VARCHAR}, #{company_pic, jdbcType=VARCHAR})
     </insert>
 
     <select id="findById" parameterType="String" resultMap="my_manager_info">

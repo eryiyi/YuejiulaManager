@@ -1,6 +1,7 @@
 package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.Member;
+import com.liangxunwang.unimanager.mvc.vo.EmpDianpu;
 import com.liangxunwang.unimanager.mvc.vo.MemberVO;
 import com.liangxunwang.unimanager.query.MemberQuery;
 import org.apache.ibatis.annotations.Param;
@@ -37,6 +38,9 @@ public interface MemberDao {
      * @return
      */
     List<MemberVO> list(Map<String,Object> map);
+
+    //查询店铺
+    List<EmpDianpu> listDianPu(Map<String,Object> map);
 
     /**
      * 根据条件查询数量

@@ -8,6 +8,24 @@ public class MemberQuery {
     private int size;
     private String phoneNumber;//手机号
     private String keyWords;
+    private String emp_typeid;
+    private String school_id;
+
+    public String getSchool_id() {
+        return school_id;
+    }
+
+    public void setSchool_id(String school_id) {
+        this.school_id = school_id;
+    }
+
+    public String getEmp_typeid() {
+        return emp_typeid;
+    }
+
+    public void setEmp_typeid(String emp_typeid) {
+        this.emp_typeid = emp_typeid;
+    }
 
     public int getIndex() {
         return index;

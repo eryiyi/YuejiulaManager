@@ -38,9 +38,9 @@ public class ManagerInfoController extends ControllerConstants {
     @RequestMapping("save")
     @ResponseBody
     private String save(ManagerInfo info, HttpSession session){
-
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         info.setManagerId(admin.getId());
+        info.setEmp_id(admin.getEmpId());
         if (StringUtil.isNullOrEmpty(info.getId())){
             managerInfoSaveService.save(info);
         }else {

@@ -24,13 +24,7 @@ public class Member {
 
     private String lat;
     private String lng;
-//    private String lat_company;
-//    private String lng_company;
-//    private String company_address;
-//    private String company_person;
-//    private String company_tel;
-//    private String company_detail;
-//    private String company_name;
+
 
     public String getLat() {
         return lat;

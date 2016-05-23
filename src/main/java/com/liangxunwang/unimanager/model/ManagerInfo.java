@@ -27,6 +27,15 @@ public class ManagerInfo {
     private String yingye_time_end;
     private String shouhui;
     private String company_pic;
+    private String emp_id;
+
+    public String getEmp_id() {
+        return emp_id;
+    }
+
+    public void setEmp_id(String emp_id) {
+        this.emp_id = emp_id;
+    }
 
     public String getYingye_time_start() {
         return yingye_time_start;
