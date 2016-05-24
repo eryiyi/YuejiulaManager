@@ -54,6 +54,8 @@
             <th>宝贝数量</th>
             <th>商家</th>
             <th>所属学校</th>
+            <th>是否下架</th>
+            <th>是否直营</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -67,6 +69,14 @@
               <td>${e.count}</td>
               <td>${e.nickName}</td>
               <td>${e.schoolName}</td>
+              <td>
+                <c:if test="${e.isUse == '0'}">否</c:if>
+                <c:if test="${e.isUse == '1'}">是</c:if>
+              </td>
+              <td>
+                <c:if test="${e.is_zhiying == '0'}">否</c:if>
+                <c:if test="${e.is_zhiying == '1'}">是</c:if>
+              </td>
               <td>
                 <a class="btn btn-default btn-sm" href="#module=/paopaogoods/edit&id=${e.id}" role="button">修改</a>
                 <button class="btn btn-primary" type="button" onclick="deletePaopaoGoods('${e.id}')">删除</button>

@@ -53,6 +53,8 @@
             <th>市场价格</th>
             <th>宝贝数量</th>
             <th>所属学校</th>
+            <th>是否下架</th>
+            <th>是否直营</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -66,8 +68,26 @@
               <td>${e.count}</td>
               <td>${e.schoolName}</td>
               <td>
-                <a class="btn btn-default btn-sm" href="#module=/paopaogoods/edit&id=${e.id}" role="button">修改</a>
-                <button class="btn btn-primary" type="button" onclick="deletePaopaoGoods('${e.id}')">删除</button>
+                <c:if test="${e.isUse == '0'}">否</c:if>
+                <c:if test="${e.isUse == '1'}">是</c:if>
+              </td>
+              <td>
+                <c:if test="${e.is_zhiying == '0'}">否</c:if>
+                <c:if test="${e.is_zhiying == '1'}">是</c:if>
+              </td>
+              <td>
+                <c:if test="${e.is_zhiying == '0'}">
+                  <a class="btn btn-default btn-sm" href="#module=/paopaogoods/edit&id=${e.id}" role="button">修改</a>
+                  <button class="btn btn-primary" type="button" onclick="deletePaopaoGoods('${e.id}')">删除</button>
+                </c:if>
+                <c:if test="${e.is_zhiying == '1'}">
+                  <c:if test="${e.is_youhuo == '0'}">
+                    <input type="checkbox" id="${e.id}" name="checkbox_one" onclick="checkOrSelect('${e.id}')">
+                  </c:if>
+                  <c:if test="${e.is_youhuo == '1'}">
+                    <input type="checkbox" id="${e.id}" name="checkbox_one" checked="true" onclick="checkOrSelect('${e.id}')">
+                  </c:if>
+                </c:if>
               </td>
             </tr>
           </c:forEach>
@@ -157,6 +177,39 @@
         }
       }
     });
+  }
+
+  function checkOrSelect(id){
+    var is_youhuo="0" ;
+    if(document.getElementById(id).checked){
+      //选中了
+      is_youhuo = '1';
+    }else{
+      //没选中
+      is_youhuo = '0';
+    }
+    $.ajax({
+      cache: true,
+      type: "POST",
+      url:"/paopaogoods/updateZhiyingYouhuo.do",
+      data:{"is_youhuo":is_youhuo,"id":id},
+      async: false,
+      success: function(_data) {
+        var data = $.parseJSON(_data);
+        if(data.success){
+          if(is_youhuo == '0'){
+            alert("不同意该商品在自己商店出售");
+          }else{
+            alert("同意该商品在自己商店出售");
+          }
+          window.location.href="#module=/paopaogoods/list&page="+${page.page}+"&_t="+new Date().getTime();
+        }else{
+          var _case = {1:"操作失败"};
+          alert(_case[data.code])
+        }
+      }
+    });
+
   }
 </script>
 

@@ -76,7 +76,7 @@
             <label class="col-sm-2 control-label">性别</label>
             <div class="col-sm-4">
               <select class="form-control" id="emp_sex">
-                <option value="">--选--</option>
+                <option value="">--选择--</option>
                 <option value="0" ${empVO.empSex=='0'?'selected':''}>男</option>
                 <option value="1" ${empVO.empSex=='1'?'selected':''}>女</option>
               </select>

@@ -60,4 +60,7 @@ public interface PaopaoGoodsDao {
 
     void updateJiaById(@Param(value = "id")String id, @Param(value = "status")String goodsPosition);
 
+
+    //商家直营产品上架或下架
+    void updateZhiying(@Param(value = "goods_id")String id, @Param(value = "is_youhuo")String goodsPosition);
 }

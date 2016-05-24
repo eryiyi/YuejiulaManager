@@ -91,7 +91,7 @@
                 #{item}
             </foreach>
         </if>
-        ORDER BY pg.GOODS_POSITION desc, pg.up_time DESC
+        ORDER BY pg.is_zhiying DESC , pg.GOODS_POSITION desc, pg.up_time DESC
         limit #{index},#{size}
     </select>
 
@@ -151,4 +151,9 @@
     <update id="updateJiaById" parameterType="String">
         UPDATE PAOPAO_GOODS SET goods_is_use= #{status} WHERE goods_id=#{id}
     </update>
+
+    <update id="updateZhiying" parameterType="String">
+        UPDATE PAOPAO_GOODS SET is_youhuo= #{is_youhuo} WHERE goods_id=#{goods_id}
+    </update>
+
 </mapper>

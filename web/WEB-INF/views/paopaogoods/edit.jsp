@@ -144,6 +144,17 @@
           <input type="hidden" id="goods_id" value="${goods.id}">
 
           <div class="form-group">
+            <label class="col-sm-2 control-label">上架下架</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="isUse">
+                <option value="">--选择--</option>
+                <option value="0" ${goods.isUse=='0'?'selected':''}>上架</option>
+                <option value="1" ${goods.isUse=='1'?'selected':''}>下架</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
             <div class="col-sm-2 col-sm-offset-2">
               <button type="button" class="btn btn-primary" onclick="savePaopaoGoods();">
                 <span><i class="fa fa-clock-o"></i></span>
@@ -165,6 +176,7 @@
 
   function savePaopaoGoods() {
     var goodsId = $("#goods_id").val();
+    var isUse = $("#isUse").val();
     var goodsTitle = $("#goods_title").val();
     var type = $("#goods_type").val();
     var sellerPrice = $("#goods_seller_price").val();
@@ -233,12 +245,16 @@
       alert("商品详细介绍不能为空");
       return;
     }
+    if(isUse.replace(/\s/g,'')==''){
+      alert("请选择是否上架");
+      return;
+    }
 
     $.ajax({
       cache: true,
       type: "POST",
       url:"/paopaogoods/update.do",
-      data:{"id":goodsId, "name":goodsTitle, "typeId":type,"cover":imagePath, "sellPrice":sellerPrice, "marketPrice":marketPrice, "address":address, "person":person,"tel":tel, "qq":qq, "count":count, "cont":content},
+      data:{"id":goodsId, "name":goodsTitle, "isUse":isUse, "typeId":type,"cover":imagePath, "sellPrice":sellerPrice, "marketPrice":marketPrice, "address":address, "person":person,"tel":tel, "qq":qq, "count":count, "cont":content},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);
@@ -246,7 +262,6 @@
           var str = data.data;
           if(str==null || str==''){
             alert("修改成功");
-            window.location.href="#module=/paopaogoods/list&page=1";
           }else{
             alert(str+" 商品数量已达上限，无法添加商品");
           }

@@ -178,18 +178,18 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
 
             String[] schoolAry = schools.split("\\|");
             for (int i=0; i<schoolAry.length; i++){
-                List<PaopaoGoods> list = paopaoGoodsDao.listByEmpSchool(goods.getEmpId(), schoolAry[i]);
-                if (list.size()< Integer.parseInt(count)) {//如果小于限制数量让发布
+//                List<PaopaoGoods> list = paopaoGoodsDao.listByEmpSchool(goods.getEmpId(), schoolAry[i]);
+//                if (list.size()< Integer.parseInt(count)) {//如果小于限制数量让发布
                     goods.setId(UUIDFactory.random());
                     goods.setIsUse("0");
                     goods.setIsDel("0");
                     goods.setUpTime(System.currentTimeMillis() + "");
                     goods.setSchoolId(schoolAry[i]);
                     paopaoGoodsDao.save(goods);
-                }else {
-                    College college = collegeDao.getGroupId(schoolAry[i]);
-                    str+= college.getName()+"  ";
-                }
+//                }else {
+//                    College college = collegeDao.getGroupId(schoolAry[i]);
+//                    str+= college.getName()+"  ";
+//                }
             }
             return str;
         }

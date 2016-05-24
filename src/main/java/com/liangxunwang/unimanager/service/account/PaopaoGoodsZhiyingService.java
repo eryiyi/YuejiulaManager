@@ -28,7 +28,7 @@ import java.util.Map;
  * Created by liuzh on 2015/8/16.
  */
 @Service("paopaoGoodsZhiyingService")
-public class PaopaoGoodsZhiyingService implements SaveService,ListService{
+public class PaopaoGoodsZhiyingService implements SaveService,ListService,UpdateService{
 
     @Autowired
     @Qualifier("paopaoGoodsDao")
@@ -99,6 +99,15 @@ public class PaopaoGoodsZhiyingService implements SaveService,ListService{
             List<PaopaoGoodsVO> list = paopaoGoodsDao.listGoods(map);
             long count = paopaoGoodsDao.count(map);
             return new Object[]{list, count};
+    }
+
+    @Override
+    public Object update(Object object) {
+        Object[] params  = (Object[]) object;
+        String goods_id = (String) params[0];
+        String is_youhuo = (String) params[1];
+        paopaoGoodsDao.updateZhiying(goods_id, is_youhuo);
+        return null;
     }
 
 }

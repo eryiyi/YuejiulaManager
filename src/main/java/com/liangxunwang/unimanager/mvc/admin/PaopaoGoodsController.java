@@ -306,4 +306,19 @@ public class PaopaoGoodsController extends ControllerConstants {
         }
         return toJSONString(SUCCESS);
     }
+
+    @Autowired
+    @Qualifier("paopaoGoodsZhiyingService")
+    private UpdateService paopaoGoodsZhiyingServiceUpdate;
+
+    @RequestMapping("updateZhiyingYouhuo")
+    @ResponseBody
+    public String updateZhiyingYouhuo(String  id,String is_youhuo){
+        Object[] params = new Object[]{id, is_youhuo};
+        paopaoGoodsZhiyingServiceUpdate.update(params);
+        return toJSONString(SUCCESS);
+    }
+
+
+
 }
