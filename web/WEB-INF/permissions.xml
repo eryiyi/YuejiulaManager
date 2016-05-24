@@ -98,9 +98,8 @@
         <permission id="SCHOOL_RECORD_MOOD_ADD_LIST" name="添加心情"/>
     </group>
 
-    <group id="SCHOOL_RECORD_MOOD_MANAGER" name="">
-        <permission id="THREE_PINGTAI_GL_LIST" name="心情列表"/>
-        <permission id="THREE_PINGTAI_GL_ADD" name="添加心情"/>
+    <group id="FIND_WWW_MANAGER" name="发现网址管理">
+        <permission id="GET_FIND_WWW_LIST" name="网址列表"/>
+        <permission id="ADD_FIND_WWW_ADD" name="添加网址"/>
     </group>
-
 </permissions>

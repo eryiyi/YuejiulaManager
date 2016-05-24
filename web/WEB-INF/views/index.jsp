@@ -518,6 +518,24 @@
 						</ul>
 					</li>
 				</c:if>
+
+				<c:if test="${um:permission('GET_FIND_WWW_LIST', sessionScope.powers)|| um:permission('ADD_FIND_WWW_ADD', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle">
+							<i class="fa fa-picture-o"></i>
+							<span class="hidden-xs">发现网址管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('GET_FIND_WWW_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('listSchoolFind','1')">网址列表</a></li>
+							</c:if>
+							<c:if test="${um:permission('ADD_FIND_WWW_ADD', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('toAddFinds','')">添加网址</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
 			</ul>
 		</div>
 		<!--Start Content-->

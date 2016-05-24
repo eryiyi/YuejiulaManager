@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.SchoolFindDao">
+    <resultMap id="school_find" type="com.liangxunwang.unimanager.model.SchoolFind">
+        <id column="school_find_id" property="school_find_id"/>
+        <result column="pic_url" property="pic_url"/>
+        <result column="title" property="title"/>
+        <result column="www_url" property="www_url"/>
+        <result column="top_num" property="top_num"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.SchoolFind">
+        INSERT INTO school_find (school_find_id, pic_url, title, www_url, top_num)
+        VALUES (#{school_find_id}, #{pic_url}, #{title}, #{www_url}, #{top_num})
+    </insert>
+
+    <select id="lists" resultMap="school_find">
+          SELECT sr.*
+            FROM school_find sr
+        ORDER BY sr.top_num DESC
+        limit #{index},#{size}
+    </select>
+    <select id="listsApp" resultMap="school_find">
+          SELECT sr.*
+            FROM school_find sr
+        ORDER BY sr.top_num DESC
+    </select>
+
+
+    <select id="count" resultType="long">
+        SELECT count(school_find_id) FROM school_find
+    </select>
+
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM school_find WHERE school_find_id=#{school_find_id}
+    </delete>
+
+    <select id="findById" resultMap="school_find">
+        SELECT * from school_find
+        WHERE school_find_id = #{school_find_id}
+    </select>
+
+</mapper>

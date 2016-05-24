@@ -152,6 +152,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 +"|(^/appGetAds\\.do$)"
                 +"|(^/appGetThreesBd\\.do$)"
                 +"|(^/appGetProfileMsg\\.do$)"
+                +"|(^/listFindsApp\\.do$)"
                 +"|(^/paopaogoods/updatePaopaoGoodsJia\\.do$)"
                 +"|(^/getThemeApp\\.do$)"
         ) || account != null) {
