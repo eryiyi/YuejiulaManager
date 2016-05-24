@@ -34,6 +34,7 @@ public interface SellerGoodsDao {
      * @return
      */
     List<SellerGoodsVO> findSellerById(Map<String,Object> map);
+    List<SellerGoodsVO> findSellerByIdAll(Map<String,Object> map);
 
 
     long count(Map<String, Object> map);

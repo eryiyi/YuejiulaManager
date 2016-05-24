@@ -72,6 +72,7 @@ public class AppOrderMakeController extends ControllerConstants{
         OrdersDATA data = new Gson().fromJson(list,OrdersDATA.class);
         try {
             OrderInfoAndSign orderInfoAndSign = (OrderInfoAndSign) appOrderMakeService.save(data.getList());
+
             DataTip tip = new DataTip();
             tip.setData(orderInfoAndSign);
             return toJSONString(tip);

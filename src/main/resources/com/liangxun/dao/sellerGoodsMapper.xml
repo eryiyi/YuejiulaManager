@@ -86,6 +86,15 @@
       limit #{index},#{size}
     </select>
 
+
+    <select id="findSellerByIdAll" resultMap="my_seller_goods_vo" parameterType="String">
+        SELECT DISTINCT sg.emp_id,sg.SCHOOL_ID,sg.CONTRACT_ID, le.emp_name, le.emp_cover, le.EMP_MOBILE,co.NAME as school_name, sg.END_TIME
+        FROM Seller_goods sg
+        LEFT JOIN lx_emp le on sg.emp_id=le.emp_id
+        LEFT JOIN college co on sg.school_id=co.coid
+        WHERE sg.contract_id=#{empId} and le.emp_id  is NOT NULL
+    </select>
+
     <select id="count" resultType="Long">
         SELECT count(sg.ID) FROM SELLER_GOODS sg
         LEFT JOIN lx_emp le on sg.emp_id=le.emp_id

@@ -22,6 +22,9 @@
         <id column="up_time" property="upTime"/>
         <id column="goods_count" property="count"/>
         <id column="GOODS_POSITION" property="goodsPosition"/>
+        <id column="is_zhiying" property="is_zhiying"/>
+        <id column="manager_id" property="manager_id"/>
+        <id column="is_youhuo" property="is_youhuo"/>
     </resultMap>
     <resultMap id="my_paopao_goods_vo" type="com.liangxunwang.unimanager.mvc.vo.PaopaoGoodsVO">
         <id column="goods_id" property="id"/>
@@ -42,6 +45,10 @@
         <id column="up_time" property="upTime"/>
         <id column="goods_count" property="count"/>
         <id column="GOODS_POSITION" property="goodsPosition"/>
+        <id column="is_zhiying" property="is_zhiying"/>
+        <id column="manager_id" property="manager_id"/>
+        <id column="is_youhuo" property="is_youhuo"/>
+
         <result column="nick_name" property="nickName"/>
         <result column="emp_cover" property="empCover"/>
         <result column="mobile" property="mobile"/>
@@ -51,8 +58,8 @@
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.PaopaoGoods">
         INSERT INTO PAOPAO_GOODS (goods_id, GOODS_TYPE_ID, GOODS_NAME, GOODS_COVER, GOODS_CONT, SELL_PRICE,
         MARKET_PRICE, GOODS_ADDRESS,GOODS_PERSON, GOODS_TEL, GOODS_QQ,GOODS_EMP_ID, GOODS_SCHOOL_ID, GOODS_IS_USE
-        ,GOODS_IS_DEL, UP_TIME, GOODS_COUNT, GOODS_POSITION) VALUES (#{id}, #{typeId}, #{name}, #{cover, jdbcType=VARCHAR},#{cont}, #{sellPrice}, #{marketPrice},
-        #{address}, #{person}, #{tel}, #{qq, jdbcType=VARCHAR}, #{empId}, #{schoolId}, #{isUse}, #{isDel}, #{upTime}, #{count}, 0)
+        ,GOODS_IS_DEL, UP_TIME, GOODS_COUNT, GOODS_POSITION,is_zhiying,manager_id,is_youhuo) VALUES (#{id}, #{typeId}, #{name}, #{cover, jdbcType=VARCHAR},#{cont}, #{sellPrice}, #{marketPrice},
+        #{address}, #{person}, #{tel}, #{qq, jdbcType=VARCHAR}, #{empId}, #{schoolId}, #{isUse}, #{isDel}, #{upTime}, #{count}, 0, #{is_zhiying, jdbcType=VARCHAR}, #{manager_id, jdbcType=VARCHAR}, #{is_youhuo,jdbcType=VARCHAR})
     </insert>
 
     <select id="listByEmpSchool" resultMap="my_paopao_goods" parameterType="String">
@@ -60,7 +67,6 @@
     </select>
 
     <select id="listGoods" resultMap="my_paopao_goods_vo">
-
         SELECT pg.*, le.emp_name as nick_name, le.emp_cover as emp_cover, le.emp_mobile as mobile, co.NAME as school_name
         FROM PAOPAO_GOODS pg
         LEFT JOIN lx_emp le ON pg.goods_emp_id=le.emp_id
@@ -76,6 +82,9 @@
         <if test="empId != null and empId != ''">
             AND pg.goods_emp_id=#{empId}
         </if>
+        <if test="manager_id != null and manager_id != ''">
+            AND pg.manager_id=#{manager_id}
+        </if>
         <if test="schoolIds != null and schoolIds != ''">
             AND pg.goods_school_id IN
             <foreach collection="schoolIds" item="item" open="(" separator="," close=")">
@@ -90,6 +99,9 @@
         SELECT count(GOODS_ID) FROM PAOPAO_GOODS WHERE GOODS_IS_USE='0' AND GOODS_IS_DEL='0'
         <if test="empId != null and empId != ''">
             AND goods_emp_id=#{empId}
+        </if>
+        <if test="manager_id != null and manager_id != ''">
+            AND manager_id=#{manager_id}
         </if>
     </select>
     <update id="deleteById" parameterType="String">
@@ -136,5 +148,7 @@
     <update id="updatePostionById" parameterType="String">
         UPDATE PAOPAO_GOODS SET GOODS_POSITION= #{goodsPosition} WHERE goods_id=#{id}
     </update>
-
+    <update id="updateJiaById" parameterType="String">
+        UPDATE PAOPAO_GOODS SET goods_is_use= #{status} WHERE goods_id=#{id}
+    </update>
 </mapper>

@@ -6,8 +6,10 @@ import com.liangxunwang.unimanager.model.PaopaoGoods;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.GoodsVO;
 import com.liangxunwang.unimanager.mvc.vo.PaopaoGoodsVO;
+import com.liangxunwang.unimanager.mvc.vo.SellerGoodsVO;
 import com.liangxunwang.unimanager.mvc.vo.SellerSchoolList;
 import com.liangxunwang.unimanager.query.PaopaoGoodsQuery;
+import com.liangxunwang.unimanager.query.SellerGoodsQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
@@ -45,8 +47,17 @@ public class PaopaoGoodsController extends ControllerConstants {
     private SaveService paopaoGoodsSaveService;
 
     @Autowired
+    @Qualifier("paopaoGoodsZhiyingService")
+    private SaveService paopaoGoodsZhiyingService;
+
+    @Autowired
     @Qualifier("paopaoGoodsService")
     private ListService paopaoGoodsListService;
+
+    @Autowired
+    @Qualifier("paopaoGoodsZhiyingService")
+    private ListService paopaoGoodsZhiyingServiceList;
+
 
     @Autowired
     @Qualifier("paopaoGoodsService")
@@ -133,6 +144,8 @@ public class PaopaoGoodsController extends ControllerConstants {
         return "/paopaogoods/list";
     }
 
+
+
     /**
      * 根据ID删除我的宝贝
      * @param id
@@ -206,4 +219,91 @@ public class PaopaoGoodsController extends ControllerConstants {
         return toJSONString(SUCCESS);
     }
 
+
+
+    @Autowired
+    @Qualifier("appPaopaoGoodsJiaService")
+    private UpdateService appPaopaoGoodsJiaService;
+    /**
+     * App上架 下架产品
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "updatePaopaoGoodsJia", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String updatePaopaoGoodsJia(String id,String status){
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("id", id);
+        map.put("status", status);
+        appPaopaoGoodsJiaService.update(map);
+        return toJSONString(SUCCESS);
+    }
+
+
+
+    /**
+     * 后台查询我的商品--承包商
+     * @param query
+     * @param page
+     * @param session
+     * @param map
+     * @return
+     */
+    @RequestMapping("listZhiying")
+    public String listZhiying(PaopaoGoodsQuery query, Page page, HttpSession session, ModelMap map){
+        Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
+        if(admin != null){
+            query.setManager_id(admin.getEmpId()==null?"":admin.getEmpId());//承包商id
+        }
+        query.setIndex(page.getPage()==0?1:page.getPage());
+        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
+        Object[] params = new Object[]{query,admin.getEmpId()};
+        Object[] results = (Object[]) paopaoGoodsZhiyingServiceList.list(params);
+        map.put("list", results[0]);
+        long count = (Long) results[1];
+        page.setCount(count);
+        page.setPageCount(calculatePageCount(query.getSize(), count));
+        map.addAttribute("page", page);
+        map.addAttribute("query", query);
+        return "/paopaogoods/listZhiying";
+    }
+
+
+    @Autowired
+    @Qualifier("mineSellerService")
+    private ExecuteService mineSellerService;
+
+
+    @RequestMapping("toAddZhiying")
+    public String toAddZhiying(ModelMap map, HttpSession session){
+        Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
+        List<GoodsType> list = (List<GoodsType>) goodsTypeListService.list("0");//商品类别
+//        List<SellerSchoolList> schools = (List<SellerSchoolList>) sellerGoodsListService.list(admin.getEmpId());
+        map.put("list", list);
+//        map.put("schools", schools);
+
+        //查询我的商家
+        List<SellerGoodsVO> listSh = (List<SellerGoodsVO>) mineSellerService.execute(admin.getEmpId());
+        map.put("listSh", listSh);
+        return "/paopaogoods/addZhiying";
+    }
+
+
+//    41425f5e51bc4bd98715c3efe888da11|1089|41425f5e51bc4bd98715c3efe888da11|1095|41425f5e51bc4bd98715c3efe888da11|1102
+    @RequestMapping(value = "saveZhiying", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String saveZhiying(PaopaoGoods goods, HttpSession session){
+        Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
+        if(admin != null){
+            goods.setManager_id(admin.getEmpId());
+        }
+        Object[] params = new Object[]{goods};
+        String str = (String) paopaoGoodsZhiyingService.save(params);
+        if (!StringUtil.isNullOrEmpty(str)){
+            DataTip tip = new DataTip();
+            tip.setData(str);
+            return toJSONString(tip);
+        }
+        return toJSONString(SUCCESS);
+    }
 }

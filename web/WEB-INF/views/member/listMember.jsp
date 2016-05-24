@@ -169,7 +169,7 @@
         var phone = $("#phone_number").val();
         var keywords = $("#keyWords").val();
         if(_index <= ${page.pageCount} && _index >= 1){
-            window.location.href="#module=ajax/listMember&page="+_index+"&size="+size+"&phoneNumber="+phone+"&keyWords="+keywords;
+            window.location.href="#module=ajax/listMember&page="+_index+"&size="+size+"&phoneNumber="+phone+"&keyWords="+keywords+"&_t="+new Date().getTime();
         }else{
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -182,7 +182,7 @@
         var keywords = $("#keyWords").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1) || schoolId !='' ) {
-            window.location.href="#module=ajax/listMember&page="+page+"&size="+size+"&schoolId="+schoolId+"&phoneNumber="+phone+"&keyWords="+keywords;
+            window.location.href="#module=ajax/listMember&page="+page+"&size="+size+"&schoolId="+schoolId+"&phoneNumber="+phone+"&keyWords="+keywords+"&_t="+new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

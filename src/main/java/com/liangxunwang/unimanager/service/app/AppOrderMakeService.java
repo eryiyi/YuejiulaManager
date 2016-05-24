@@ -147,12 +147,12 @@ public class AppOrderMakeService implements SaveService,UpdateService,ListServic
                     relate1.setOrderId(ord.getOrder_no());
                     relate1.setTypeId("2");
                     relate1.setDateline(System.currentTimeMillis()+"");
-                    relate1.setCont(member.getEmpName()+"已付款"+order.getPayable_amount()+",订单号："+ord.getOrder_no());
+                    relate1.setCont(member.getEmpName()+"生成订单" + ",订单号："+ord.getOrder_no());
                     relateDao.save(relate1);
 
                     String pushId =member.getPushId();
                     String type = member.getDeviceType();
-                    pushMsg(pushId, type, member.getEmpName() + "已付款"+ord.getPayable_amount()+",订单号："+ord.getOrder_no());
+                    pushMsg(pushId, type, member.getEmpName() + "生成订单"+ord.getPayable_amount()+",订单号："+ord.getOrder_no());
                 }
             }
         }else {
@@ -172,12 +172,12 @@ public class AppOrderMakeService implements SaveService,UpdateService,ListServic
             relate1.setOrderId(order.getOrder_no());
             relate1.setTypeId("2");
             relate1.setDateline(System.currentTimeMillis()+"");
-            relate1.setCont(member.getEmpName()+"已付款"+order.getPayable_amount()+",订单号："+order_no);
+            relate1.setCont(member.getEmpName()+"生成订单"+order.getPayable_amount()+",订单号："+order_no);
             relateDao.save(relate1);
 
             String pushId =member.getPushId();
             String type = member.getDeviceType();
-            pushMsg(pushId, type, member.getEmpName() + "已付款" + order.getPayable_amount()+",订单号："+order_no);
+            pushMsg(pushId, type, member.getEmpName() + "生成订单" + order.getPayable_amount()+",订单号："+order_no);
         }
         return null;
     }

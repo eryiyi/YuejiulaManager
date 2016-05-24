@@ -8,7 +8,7 @@
     </a>
     <ol class="breadcrumb pull-left">
       <li><a href="javaScript:void(0)">主页</a></li>
-      <li><a href="javaScript:void(0)">我是商家</a></li>
+      <li><a href="javaScript:void(0)">我是che</a></li>
       <li><a href="javaScript:void(0)">我的商品</a></li>
     </ol>
     <div id="social" class="pull-right">
@@ -52,6 +52,7 @@
             <th>销售价格</th>
             <th>市场价格</th>
             <th>宝贝数量</th>
+            <th>商家</th>
             <th>所属学校</th>
             <th>操作</th>
           </tr>
@@ -64,6 +65,7 @@
               <td>${e.sellPrice}</td>
               <td>${e.marketPrice}</td>
               <td>${e.count}</td>
+              <td>${e.nickName}</td>
               <td>${e.schoolName}</td>
               <td>
                 <a class="btn btn-default btn-sm" href="#module=/paopaogoods/edit&id=${e.id}" role="button">修改</a>
@@ -120,7 +122,7 @@
     var _index = $("#index").val();
     var size = getCookie("contract_size");
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="#module=/paopaogoods/list&page="+_index+"&size="+size+"&_t="+new Date().getTime();
+      window.location.href="#module=/paopaogoods/list&page="+_index+"&size="+size;
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -130,7 +132,7 @@
     var size = $("#size").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/paopaogoods/list&page="+page+"&size="+size+"&_t="+new Date().getTime();
+      window.location.href="#module=/paopaogoods/listZhiying&page="+page+"&size="+size+"&_t="+new Date().getTime();
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -150,7 +152,7 @@
         var data = $.parseJSON(_data);
         if(data.success){
           alert("删除成功");
-          window.location.href="#module=/paopaogoods/list&page="+${page.page}+"&_t="+new Date().getTime();
+          window.location.href="#module=/paopaogoods/listZhiying&page="+${page.page}+"&_t="+new Date().getTime();
         }else{
           var _case = {1:"删除失败"};
           alert(_case[data.code])

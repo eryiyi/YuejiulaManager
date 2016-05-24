@@ -408,6 +408,18 @@
 						</ul>
 					</li>
 				</c:if>
+				<c:if test="${sessionScope.account.type=='2'}">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle">
+							<i class="fa fa-picture-o"></i>
+							<span class="hidden-xs">直营商品</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:void(0);" onclick="toPage('/paopaogoods/listZhiying','1')">我的商品</a></li>
+							<li><a href="javascript:void(0);" onclick="toPage('/paopaogoods/toAddZhiying','')">发布商品</a></li>
+						</ul>
+					</li>
+				</c:if>
 				<%--<li class="dropdown">--%>
 					<%--<a href="#" class="dropdown-toggle">--%>
 						<%--<i class="fa fa-picture-o"></i>--%>

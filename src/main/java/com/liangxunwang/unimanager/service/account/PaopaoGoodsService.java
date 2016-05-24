@@ -157,6 +157,9 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
             map.put("index", index);
             map.put("size", size);
             map.put("empId", empId);
+            if(!StringUtil.isNullOrEmpty(query.getManager_id())){
+                map.put("manager_id", query.getManager_id());
+            }
             List<PaopaoGoodsVO> list = paopaoGoodsDao.listGoods(map);
             long count = paopaoGoodsDao.count(map);
             return new Object[]{list, count};

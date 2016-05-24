@@ -22,8 +22,8 @@
     </a>
     <ol class="breadcrumb pull-left">
       <li><a href="javaScript:void(0)">主页</a></li>
-      <li><a href="javaScript:void(0)">商品管理</a></li>
-      <li><a href="javaScript:void(0)">添加商品</a></li>
+      <li><a href="javaScript:void(0)">直营商品管理</a></li>
+      <li><a href="javaScript:void(0)">添加直营商品</a></li>
     </ol>
     <div id="social" class="pull-right">
       <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -41,7 +41,7 @@
       <div class="box-header">
         <div class="box-name">
           <i class="fa fa-search"></i>
-          <span>添加商品</span>
+          <span>添加直营商品</span>
         </div>
         <div class="box-icons">
           <a class="collapse-link">
@@ -57,14 +57,16 @@
         <div class="no-move"></div>
       </div>
       <div class="box-content">
-        <h4 class="page-header">商品详情</h4>
+        <h4 class="page-header">直营商品详情</h4>
         <form id="save_form" class="form-horizontal" method="post" role="form" >
+
           <div class="form-group">
             <label class="col-sm-2 control-label">商品名称</label>
             <div class="col-sm-4">
               <input type="text" id="goods_title" class="form-control" placeholder="商品名字" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">商品类别</label>
             <div class="col-sm-4">
@@ -76,50 +78,57 @@
               </select>
             </div>
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label" >宝贝图片</label>
             <div class="col-sm-10">
               <input type="file" name="file" id="fileUpload" style="float: left;" />
               <input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/><div id="imageDiv" style="padding: 10px"></div>
             </div>
-
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">销售价格</label>
             <div class="col-sm-4">
               <input type="text" id="goods_seller_price" class="form-control" placeholder="销售价格" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">市场价格</label>
             <div class="col-sm-4">
               <input type="text" id="goods_market_price" class="form-control" placeholder="市场价格" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">宝贝地址</label>
             <div class="col-sm-4">
               <input type="text" id="goods_address" class="form-control" placeholder="宝贝地址" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">联系人</label>
             <div class="col-sm-4">
               <input type="text" id="goods_person" class="form-control" placeholder="联系人" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">电话</label>
             <div class="col-sm-4">
               <input type="text" id="goods_tel" class="form-control" placeholder="电话" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">QQ</label>
             <div class="col-sm-4">
               <input type="text" id="goods_qq" class="form-control" placeholder="qq" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">宝贝数量</label>
             <div class="col-sm-4">
@@ -133,11 +142,21 @@
               <script id="editor" name="editor" type="text/plain" style="width:100%;height:250px;"></script>
             </div>
           </div>
+
+          <%--<div class="form-group">--%>
+            <%--<label class="col-sm-2 control-label">发布学校</label>--%>
+            <%--<c:forEach items="${schools}" var="e">--%>
+              <%--<div class="col-sm-2">--%>
+                <%--<input type="checkbox" value="${e.schoolId}" name="schools">${e.schoolName}--%>
+              <%--</div>--%>
+            <%--</c:forEach>--%>
+          <%--</div>--%>
+
           <div class="form-group">
-            <label class="col-sm-2 control-label">发布学校</label>
-            <c:forEach items="${schools}" var="e">
+            <label class="col-sm-2 control-label">我的商家</label>
+            <c:forEach items="${listSh}" var="e">
               <div class="col-sm-2">
-                <input type="checkbox" value="${e.schoolId}" name="schools">${e.schoolName}
+                <input type="checkbox" value="${e.empId}|${e.schoolId}" name="listSh">${e.empName} ${e.schoolName}
               </div>
             </c:forEach>
           </div>
@@ -150,6 +169,7 @@
               </button>
             </div>
           </div>
+
         </form>
       </div>
     </div>
@@ -173,12 +193,18 @@
     var qq = $("#goods_qq").val();
     var count = $("#goods_count").val();
     var content = UE.getEditor('editor').getContent();
-    var schools_ary = new Array();
+//    var schools_ary = new Array();
+    var listSh_ary = new Array();
 
-    $('input[name="schools"]:checked').each(function () {
-      schools_ary.push($(this).val());//向数组中添加元素
+//    $('input[name="schools"]:checked').each(function () {
+//      schools_ary.push($(this).val());//向数组中添加元素
+//    });
+//    var schools = schools_ary.join('|');//将数组元素连接起来以构建一个字符串
+
+    $('input[name="listSh"]:checked').each(function () {
+      listSh_ary.push($(this).val());//向数组中添加元素
     });
-    var schools = schools_ary.join('|');//将数组元素连接起来以构建一个字符串
+    var emp_ids = listSh_ary.join('|');//将数组元素连接起来以构建一个字符串
 
     if (goodsTitle.replace(/\s/g, '') == '') {
       alert("商品名称不能为空");
@@ -238,15 +264,15 @@
       alert("商品详细介绍不能为空");
       return;
     }
-    if (schools == null || schools == '') {
-      alert("请选择商品要发布的学校");
-      return;
-    }
+//    if (schools == null || schools == '') {
+//      alert("请选择商品要发布的学校");
+//      return;
+//    }
 
     $.ajax({
       cache: true,
       type: "POST",
-      url:"/paopaogoods/save.do",
+      url:"/paopaogoods/saveZhiying.do",
       data:{"name":goodsTitle,
         "typeId":type,
         "cover":imagePath,
@@ -258,9 +284,10 @@
         "qq":qq,
         "count":count,
         "cont":content,
-        "schools":schools,
-        "is_zhiying":"0",
+//        "schools":schools,
+        "is_zhiying":"1",
         "manager_id":"",
+        "empId":emp_ids,
         "is_youhuo":"0"
       },
       async: false,
@@ -270,7 +297,7 @@
           var str = data.data;
           if(str==null || str==''){
             alert("添加成功");
-            window.location.href="#module=/paopaogoods/list&page=1";
+            window.location.href="#module=/paopaogoods/listZhiying&page=1";
           }else{
             alert(str+" 商品数量已达上限，无法添加商品");
           }

@@ -58,4 +58,6 @@ public interface PaopaoGoodsDao {
 
     void updatePostionById(@Param(value = "id")String id, @Param(value = "goodsPosition")String goodsPosition);
 
+    void updateJiaById(@Param(value = "id")String id, @Param(value = "status")String goodsPosition);
+
 }
