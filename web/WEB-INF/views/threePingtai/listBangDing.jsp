@@ -100,7 +100,7 @@
         var data = $.parseJSON(_data);
         if(data.success){
           alert("删除成功");
-            window.location.href="#module=listThreePingtaiBd&page=1";
+            window.location.href="#module=listThreePingtaiBd&page=1"+"&_t="+new Date().getTime();
         }else{
           var _case = {1:"删除失败"};
           alert(_case[data.code])

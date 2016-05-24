@@ -86,7 +86,7 @@
         var data = $.parseJSON(_data);
         if(data.success){
           alert("删除成功");
-            window.location.href="#module=ajax/listLevel";
+            window.location.href="#module=ajax/listLevel"+"&_t="+new Date().getTime();
 //          $.ajax({
 //            type: "GET",
 //            url: "/listLevel.do",

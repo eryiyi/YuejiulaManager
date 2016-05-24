@@ -118,7 +118,7 @@
                 var data = $.parseJSON(_data);
                 if(data.success){
                     alert("删除成功！");
-                    window.location.href="#module=listSchoolRecordMood&page=1"+"&size=10";
+                    window.location.href="#module=listSchoolRecordMood&page=1"+"&size=10"+"&_t="+new Date().getTime();
                 }else{
                     var _case = {1:"删除失败"};
                     alert(_case[data.code])

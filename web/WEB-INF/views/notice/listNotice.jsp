@@ -98,7 +98,7 @@
         var data = $.parseJSON(_data);
         if(data.success){
           alert("删除成功");
-            window.location.href="#module=listNotice";
+            window.location.href="#module=listNotice"+"&_t="+new Date().getTime();
 //          $.ajax({
 //            type: "GET",
 //            url: "/listNotice.do",

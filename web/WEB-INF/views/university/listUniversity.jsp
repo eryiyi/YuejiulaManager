@@ -103,7 +103,7 @@
         var data = $.parseJSON(_data);
         if(data.success){
           alert("删除成功");
-            window.location.href="#module=ajax/listUniversity"
+            window.location.href="#module=ajax/listUniversity"+"&_t="+new Date().getTime();
 //          $.ajax({
 //            type: "GET",
 //            url: "/ajax/listUniversity.do",

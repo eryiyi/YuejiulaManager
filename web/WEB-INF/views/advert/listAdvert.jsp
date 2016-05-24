@@ -130,7 +130,7 @@
     var _index = $("#index").val();
     var size = getCookie("contract_size");
     if(_index <= ${page.pageCount} && _index >= 1){
-        window.location.href="#module=ajax/listAdvert&page="+_index+"&size="+size;
+        window.location.href="#module=ajax/listAdvert&page="+_index+"&size="+size+"&_t="+new Date().getTime();
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -141,7 +141,7 @@
     var schoolId = $("#s2_country").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-        window.location.href="#module=ajax/listAdvert&page="+page+"&size="+size+"&schoolId="+schoolId;
+        window.location.href="#module=ajax/listAdvert&page="+page+"&size="+size+"&schoolId="+schoolId+"&_t="+new Date().getTime();
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
