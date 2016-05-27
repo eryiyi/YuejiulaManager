@@ -237,7 +237,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("修改成功");
-                    window.location.href = "#module=ajax/listAdvert&page=1";
+                    window.location.href = "#module=ajax/listAdvert&page=1"+ "&_t="+ new Date().getTime();
 //          $.ajax({
 //            type: "GET",
 //            data:{"page":'1'},

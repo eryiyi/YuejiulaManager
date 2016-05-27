@@ -255,12 +255,12 @@
     }
 
     function changeContract(_empId) {
-        window.location.href = "#module=toAddContractSchool&empId=" + _empId;
+        window.location.href = "#module=toAddContractSchool&empId=" + _empId+ "&_t="+ new Date().getTime();
     }
     ;
 
     function detailEmp(emp_mobile) {
-        window.location.href = "#module=toDetailEmp&emp_mobile=" + emp_mobile;
+        window.location.href = "#module=toDetailEmp&emp_mobile=" + emp_mobile+ "&_t="+ new Date().getTime();
     }
 
 </script>

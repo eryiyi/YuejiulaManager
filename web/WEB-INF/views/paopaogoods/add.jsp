@@ -295,7 +295,7 @@
                     var str = data.data;
                     if (str == null || str == '') {
                         alert("添加成功");
-                        window.location.href = "#module=/paopaogoods/list&page=1";
+                        window.location.href = "#module=/paopaogoods/list&page=1"+ "&_t="+ new Date().getTime();
                     } else {
                         alert(str + " 商品数量已达上限，无法添加商品");
                     }

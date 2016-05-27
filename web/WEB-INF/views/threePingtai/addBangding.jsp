@@ -133,7 +133,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("添加成功");
-                    window.location.href = "#module=listThreePingtaiBd";
+                    window.location.href = "#module=listThreePingtaiBd"+ "&_t="+ new Date().getTime();
                 } else {
                     var _case = {1: "添加失败", 2: "已经绑定该平台,不能重复绑定！"};
                     alert(_case[data.code])

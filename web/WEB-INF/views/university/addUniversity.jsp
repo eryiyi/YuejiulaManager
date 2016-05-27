@@ -123,7 +123,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("添加成功");
-                    window.location.href = "#module=ajax/listUniversity&page=1"
+                    window.location.href = "#module=ajax/listUniversity&page=1"+ "&_t="+ new Date().getTime();
                 } else {
                     var _case = {1: "学校名称不能为空", 2: "请选择学校地区", 3: "添加失败", 4: "该学校已添加"};
                     alert(_case[data.code])

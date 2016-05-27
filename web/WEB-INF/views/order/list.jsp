@@ -203,7 +203,7 @@
         var payStatus = $("#pay_status").val();
         var distributionStatus = $("#distribution_status").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&empName=" + empName + "&empPhone=" + empPhone + "&orderStatus=" + orderStatus + "&payStatus=" + payStatus + "&distribStatus=" + distributionStatus;
+            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&empName=" + empName + "&empPhone=" + empPhone + "&orderStatus=" + orderStatus + "&payStatus=" + payStatus + "&distribStatus=" + distributionStatus+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -218,7 +218,7 @@
         var distributionStatus = $("#distribution_status").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&empName=" + empName + "&empPhone=" + empPhone + "&orderStatus=" + orderStatus + "&payStatus=" + payStatus + "&distribStatus=" + distributionStatus;
+            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&empName=" + empName + "&empPhone=" + empPhone + "&orderStatus=" + orderStatus + "&payStatus=" + payStatus + "&distribStatus=" + distributionStatus+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -234,7 +234,7 @@
         var distributionStatus = $("#distribution_status").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&empName=" + empName + "&empPhone=" + empPhone + "&orderStatus=" + orderStatus + "&payStatus=" + payStatus + "&distribStatus=" + distributionStatus;
+            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&empName=" + empName + "&empPhone=" + empPhone + "&orderStatus=" + orderStatus + "&payStatus=" + payStatus + "&distribStatus=" + distributionStatus+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

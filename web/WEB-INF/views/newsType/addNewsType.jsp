@@ -81,7 +81,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("添加成功");
-                    window.location.href = "#module=listNewsType";
+                    window.location.href = "#module=listNewsType"+ "&_t="+ new Date().getTime();
                 } else {
                     var _case = {1: "类别名称不能为空", 2: "保存失败"};
                     alert(_case[data.code])

@@ -73,7 +73,7 @@
 
 <script type="text/javascript">
     function changeContract(_empId) {
-        window.location.href = "#module=toAddContractSchool&empId=" + _empId;
+        window.location.href = "#module=toAddContractSchool&empId=" + _empId+ "&_t="+ new Date().getTime();
     }
     ;
 </script>

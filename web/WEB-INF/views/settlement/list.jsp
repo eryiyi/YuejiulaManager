@@ -96,7 +96,7 @@
     function searchSettlement(_page) {
         var page = parseInt(_page);
         var date = $("#search_date").val();
-        window.location.href = "#module=/settlement/list&page=" + page + "&date=" + date;
+        window.location.href = "#module=/settlement/list&page=" + page + "&date=" + date+ "&_t="+ new Date().getTime();
     }
 
     function clearSearch() {

@@ -145,11 +145,11 @@
     }
 
     function changeContract(_empId) {
-        window.location.href = "#module=toAddContractSchool&empId=" + _empId;
+        window.location.href = "#module=toAddContractSchool&empId=" + _empId+ "&_t="+ new Date().getTime();
     }
     ;
     function selectPermission(_empId) {
-        window.location.href = "#module=toSelectPermission&empId=" + _empId;
+        window.location.href = "#module=toSelectPermission&empId=" + _empId+ "&_t="+ new Date().getTime();
     }
     ;
 </script>

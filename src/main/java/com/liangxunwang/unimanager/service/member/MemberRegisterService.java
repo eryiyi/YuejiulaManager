@@ -60,10 +60,7 @@ public class MemberRegisterService implements SaveService, ExecuteService {
     @Override
     public Object save(Object object) {
         Member member = (Member) object;
-        Member checkMember = memberDao.findByMobile(member.getEmpMobile());
-        if (checkMember != null){
-            throw new ServiceException("MobileIsUse");
-        }
+
 
         member.setEmpId(UUIDFactory.random());//设置ID
         member.setDateline(System.currentTimeMillis()+"");//时间戳
@@ -75,7 +72,13 @@ public class MemberRegisterService implements SaveService, ExecuteService {
         member.setMobileStatus("0");//默认手机号不公开
         member.setHxUsername(member.getDateline()+member.getEmpMobile());
         try {
-            memberDao.save(member);
+            Member checkMember = memberDao.findByMobile(member.getEmpMobile());
+            if (checkMember != null){
+                throw new ServiceException("MobileIsUse");
+            }else {
+                memberDao.save(member);
+            }
+
             Count count = new Count();
             count.setId(UUIDFactory.random());
             count.setEmpId(member.getEmpId());

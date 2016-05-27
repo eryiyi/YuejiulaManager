@@ -37,7 +37,7 @@
 
     </dl>
     <a href="http://www.liangxunwang.com/paopao/index.html" class="share-link">
-        <img src="/img/share_download.png" alt="下载约酒啦"></a>
+        <img src="/img/share_download.png" alt="下载童心堂"></a>
 </div>
 </body>
 </html>

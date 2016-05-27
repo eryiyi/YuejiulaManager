@@ -121,7 +121,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("添加成功");
-                    window.location.href = "#module=listNotice";
+                    window.location.href = "#module=listNotice"+ "&_t="+ new Date().getTime();
                 } else {
                     var _case = {1: "添加失败"};
                     alert(_case[data.code])

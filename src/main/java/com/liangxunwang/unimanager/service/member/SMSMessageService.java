@@ -47,7 +47,7 @@ public class SMSMessageService implements SaveService , ExecuteService{
         //生成随机六位验证码
         String code = String.valueOf((int)((Math.random()*9+1)*100000));
         //拼接发送信息
-        String content = "【良讯网】约酒啦注册验证码："+code+",如非本人操作，请忽略该短信。";
+        String content = "【良讯网】童心堂注册验证码："+code+",如非本人操作，请忽略该短信。";
         //发送后的返回信息
         String state = smsMessage.sendMobileMessageByURL(phoneNumber, content);
 

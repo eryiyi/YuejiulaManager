@@ -115,7 +115,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("添加成功");
-                    window.location.href = "#module=listLevel"
+                    window.location.href = "#module=listLevel"+ "&_t="+ new Date().getTime();
                 } else {
                     var _case = {1: "等级名称不能为空", 2: "请输入正确的起始分数", 3: "请输入正确的结束分数", 4: "起始分数不能大于结束分数", 5: "保存失败"};
                     alert(_case[data.code])

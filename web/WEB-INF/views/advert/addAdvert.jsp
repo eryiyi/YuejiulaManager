@@ -232,7 +232,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("添加成功");
-                    window.location.href = "#module=ajax/listAdvert&page=1";
+                    window.location.href = "#module=ajax/listAdvert&page=1"+ "&_t="+ new Date().getTime();
                 } else {
                     var _case = {1: "添加失败", 2: "请上传图片", 3: "广告链接地址不能为空"};
                     alert(_case[data.code])

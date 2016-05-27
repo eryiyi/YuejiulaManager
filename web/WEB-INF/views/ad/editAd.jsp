@@ -146,7 +146,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("执行成功");
-                    window.location.href = "#module=adObj/list";
+                    window.location.href = "#module=adObj/list"+ "&_t="+ new Date().getTime();
                 } else {
                     alert("执行失败，请检查")
                 }

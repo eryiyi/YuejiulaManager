@@ -168,7 +168,7 @@
         var province = $("#s2_province").val();
         var keyWords = $("#keyWords").val();
         var size = $("#size").val();
-        window.location.href = "#module=listSchools&page=1" + "&size=" + size + "&keyWords=" + keyWords + "&provinceId=" + province;
+        window.location.href = "#module=listSchools&page=1" + "&size=" + size + "&keyWords=" + keyWords + "&provinceId=" + province+ "&_t="+ new Date().getTime();
     }
     ;
 
@@ -179,7 +179,7 @@
         var keyWords = $("#keyWords").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=listSchools&page=" + page + "&size=" + size + "&keyWords=" + keyWords + "&provinceId=" + province;
+            window.location.href = "#module=listSchools&page=" + page + "&size=" + size + "&keyWords=" + keyWords + "&provinceId=" + province+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -192,7 +192,7 @@
         var province = $("#s2_province").val();
         var keyWords = $("#keyWords").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "#module=listSchools&page=" + _index + "&size=" + size + "&keyWords=" + keyWords + "&provinceId=" + province;
+            window.location.href = "#module=listSchools&page=" + _index + "&size=" + size + "&keyWords=" + keyWords + "&provinceId=" + province+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>约酒啦后台登陆</title>
+    <title>童心堂后台登陆</title>
     <meta name="description" content="description">
     <meta name="author" content="Evgeniya">
     <meta name="keyword" content="keywords">
@@ -26,7 +26,7 @@
             <div class="box">
                 <div class="box-content">
                     <div class="text-center">
-                        <h3 class="page-header">约酒啦后台登陆</h3>
+                        <h3 class="page-header">童心堂后台登陆</h3>
                     </div>
                     <div class="form-group">
                         <label class="control-label">用户名</label>

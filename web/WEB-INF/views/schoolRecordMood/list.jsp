@@ -120,7 +120,7 @@
             cache: true,
             type: "POST",
             url: "/deleteSchoolRecordMood.do",
-            data: {"school_record_mood_id": school_record_mood_id},
+            data: {"school_record_mood_id": id},
             async: false,
             success: function (_data) {
                 var data = $.parseJSON(_data);
@@ -142,7 +142,7 @@
         var province = $("#s2_province").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=listSchoolRecordMood&page=" + page + "&size=" + size + "&keyWords=" + keyWords + "&provinceId=" + province;
+            window.location.href = "#module=listSchoolRecordMood&page=" + page + "&size=" + size + "&keyWords=" + keyWords + "&provinceId=" + province+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -155,7 +155,7 @@
         var province = $("#s2_province").val();
         var keyWords = $("#keyWords").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "#module=listSchools&page=" + _index + "&size=" + size + "&keyWords=" + keyWords + "&provinceId=" + province;
+            window.location.href = "#module=listSchools&page=" + _index + "&size=" + size + "&keyWords=" + keyWords + "&provinceId=" + province+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

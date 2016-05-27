@@ -88,7 +88,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("删除成功");
-                    window.location.href = "#module=listPartTimeType"
+                    window.location.href = "#module=listPartTimeType"+ "&_t="+ new Date().getTime();
 //          $.ajax({
 //            type: "GET",
 //            url: "/listPartTimeType.do",

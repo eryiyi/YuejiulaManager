@@ -399,7 +399,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("信息维护成功");
-                    window.location.href = "#module=/managerinfo/add";
+                    window.location.href = "#module=/managerinfo/add"+ "&_t="+ new Date().getTime();
                 } else {
                     var _case = {1: "类别名称不能为空", 2: "保存失败"};
                     alert(_case[data.code])

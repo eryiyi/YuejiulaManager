@@ -143,7 +143,7 @@
         var page = parseInt(_page);
         var size = $("#size").val();
         var date = $("#search_date").val();
-        window.location.href = "#module=/settlement/sellerlist&page=" + page + "&size=" + size + "&date=" + date;
+        window.location.href = "#module=/settlement/sellerlist&page=" + page + "&size=" + size + "&date=" + date+ "&_t="+ new Date().getTime();
     }
 
     function clearSearch() {
@@ -157,7 +157,7 @@
         var size = getCookie("contract_size");
         var date = $("#search_date").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "#module=ajax/listMember&page=" + _index + "&size=" + size + "&date=" + date;
+            window.location.href = "#module=ajax/listMember&page=" + _index + "&size=" + size + "&date=" + date+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -169,7 +169,7 @@
         var date = $("#search_date").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1) || schoolId != '') {
-            window.location.href = "#module=ajax/listMember&page=" + _index + "&size=" + size + "&date=" + date;
+            window.location.href = "#module=ajax/listMember&page=" + _index + "&size=" + size + "&date=" + date+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

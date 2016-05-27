@@ -140,7 +140,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("执行成功");
-                    window.location.href = "#module=adObj/list";
+                    window.location.href = "#module=adObj/list"+ "&_t="+ new Date().getTime();
                 } else {
                     var _case = {1: "添加失败，请检查", 2: "广告最多6条，请删除之后再添加！"};
                     alert(_case[data.code])

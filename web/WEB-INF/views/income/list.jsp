@@ -206,7 +206,7 @@
         var startTime = $("#start_time").val();
         var endTime = $("#end_time").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "#module=/income/list&page=" + page + "&size=" + size + "&startTime=" + startTime + "&endTime=" + endTime;
+            window.location.href = "#module=/income/list&page=" + page + "&size=" + size + "&startTime=" + startTime + "&endTime=" + endTime+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -218,7 +218,7 @@
         var endTime = $("#end_time").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/income/list&page=" + page + "&size=" + size + "&startTime=" + startTime + "&endTime=" + endTime;
+            window.location.href = "#module=/income/list&page=" + page + "&size=" + size + "&startTime=" + startTime + "&endTime=" + endTime+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -231,7 +231,7 @@
         var endTime = $("#end_time").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/income/list&page=" + page + "&size=" + size + "&startTime=" + startTime + "&endTime=" + endTime;
+            window.location.href = "#module=/income/list&page=" + page + "&size=" + size + "&startTime=" + startTime + "&endTime=" + endTime+ "&_t="+ new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
