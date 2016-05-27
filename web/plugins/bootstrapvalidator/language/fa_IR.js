@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     /**
      * Persian (Farsi) Language package.
      * Translated by @i0
@@ -36,7 +36,7 @@
             'default': 'لطفا یک مقدار متفاوت وارد فرمایید'
         },
         digits: {
-             'default': 'لطفا فقط عدد وارد فرمایید'
+            'default': 'لطفا فقط عدد وارد فرمایید'
         },
         ean: {
             'default': 'لطفا یک شماره EAN معتبر وارد فرمایید'

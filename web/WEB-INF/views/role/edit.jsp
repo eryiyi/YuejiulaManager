@@ -33,16 +33,22 @@
             </div>
             <div class="box-content">
                 <h4 class="page-header">角色</h4>
+
                 <form class="form-horizontal" role="form">
                     <input type="hidden" value="${role.id}" name="id" id="role_id"/>
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">角色名称</label>
+
                         <div class="col-sm-4">
-                            <input type="text" value="${role.name}" id="role_name" class="form-control" placeholder="角色名称" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+                            <input type="text" value="${role.name}" id="role_name" class="form-control"
+                                   placeholder="角色名称" data-toggle="tooltip" data-placement="bottom"
+                                   title="Tooltip for name">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">拥有权限</label>
+
                         <div class="col-lg-8">
                             <div id="permissions"></div>
                         </div>
@@ -61,40 +67,42 @@
 <script type="text/javascript">
     Window.Permission = '${role.permissions}';
     $.ajax({
-        url:'/permission/list.do',
-        type:'post',
-        success:function(_data){
+        url: '/permission/list.do',
+        type: 'post',
+        success: function (_data) {
             var data = $.parseJSON(_data);
-            if(data){
+            if (data) {
                 //console.info(data);
                 var ownPermission = "${sessionScope.powers}";
                 var permissions = Window.Permission;
                 var newNode = "";
-                for(var i = 0; i < data.length; i ++){
+                for (var i = 0; i < data.length; i++) {
                     var per = data[i];
                     var childNode = "";
                     var has = "false";
                     var isAll = "true";
-                    if(per.child){
-                        for(var j = 0; j < per.child.length; j++){
-                            if(permissions.indexOf(per.child[j].id) != -1 && (ownPermission.indexOf(per.child[j].id) != -1 || ownPermission.replace("/\s/g", "") == "all")){
+                    if (per.child) {
+                        for (var j = 0; j < per.child.length; j++) {
+                            if (permissions.indexOf(per.child[j].id) != -1 && (ownPermission.indexOf(per.child[j].id) != -1 || ownPermission.replace("/\s/g", "") == "all")) {
                                 has = "true";
-                                childNode += "<input type='checkbox' checked name='permissions' id='" + per.id +j +"' value='" + per.child[j].id + "'>" + per.child[j].name;
-                            } else if(permissions.indexOf(per.child[j].id) != -1){
+                                childNode += "<input type='checkbox' checked name='permissions' id='" + per.id + j + "' value='" + per.child[j].id + "'>" + per.child[j].name;
+                            } else if (permissions.indexOf(per.child[j].id) != -1) {
                                 childNode += "<input type='hidden' name='permissions' value='" + per.child[j].id + "'>";
-                            } else if(ownPermission.indexOf(per.child[j].id) != -1 || ownPermission.replace("/\s/g", "") == "all" ){
+                            } else if (ownPermission.indexOf(per.child[j].id) != -1 || ownPermission.replace("/\s/g", "") == "all") {
                                 has = "true";
                                 isAll = "false";
-                                childNode += "<input type='checkbox'  name='permissions' id='" + per.id +j +"' value='" + per.child[j].id + "'>" + per.child[j].name;
+                                childNode += "<input type='checkbox'  name='permissions' id='" + per.id + j + "' value='" + per.child[j].id + "'>" + per.child[j].name;
                             }
                         }
                     }
-                    if(childNode != ""){
+                    if (childNode != "") {
                         newNode += "";
-                        if(has == "true"){
+                        if (has == "true") {
                             newNode += "<span><input name='permission'  type='checkbox'";
-                            if(isAll == "true"){newNode += " checked";}
-                            newNode += " id='"+ per.id +"' onclick=\"checkChild(this)\" value='" + per.id + "'>" + per.name;
+                            if (isAll == "true") {
+                                newNode += " checked";
+                            }
+                            newNode += " id='" + per.id + "' onclick=\"checkChild(this)\" value='" + per.id + "'>" + per.name;
                             newNode += childNode;
                             newNode += "</span><br/>";
                         } else {
@@ -106,37 +114,37 @@
             }
         }
     });
-    function checkChild(_node){
+    function checkChild(_node) {
         var id = $(_node).val();
-        if($(_node).attr("checked")){
-            $("input[id^='" + id + "']").attr("checked",false);
-        }else{
-            $("input[id^='" + id + "']").attr("checked",true);
+        if ($(_node).attr("checked")) {
+            $("input[id^='" + id + "']").attr("checked", false);
+        } else {
+            $("input[id^='" + id + "']").attr("checked", true);
         }
     }
     function updateRole() {
-        $("#add_button").attr("disabled","disabled");
+        $("#add_button").attr("disabled", "disabled");
         var roleName = $("#role_name").val();
-        if(roleName.replace(/\s/g, '') == ''){
+        if (roleName.replace(/\s/g, '') == '') {
             alert("角色名称不能为空");
             return;
         }
-        var permission_ary=new Array();
-        $('input[name="permissions"]:checked').each(function(){
+        var permission_ary = new Array();
+        $('input[name="permissions"]:checked').each(function () {
             permission_ary.push($(this).val());//向数组中添加元素
         });
-        var permissions=permission_ary.join('|');//将数组元素连接起来以构建一个字符串
-        if(permissions == null || permissions == ''){
+        var permissions = permission_ary.join('|');//将数组元素连接起来以构建一个字符串
+        if (permissions == null || permissions == '') {
             alert("请选择权限");
             return;
         }
 
         var roleId = $("#role_id").val();
         $.ajax({
-            url:"/role/update.do?_t=" + new Date().getTime(),
-            data:{"id":roleId, "name":roleName, "permissions":permissions},
-            type:"post",
-            success:function(_data) {
+            url: "/role/update.do?_t=" + new Date().getTime(),
+            data: {"id": roleId, "name": roleName, "permissions": permissions},
+            type: "post",
+            success: function (_data) {
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("修改角色成功");

@@ -104,9 +104,9 @@
             <version>1.1.1</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>log4j</groupId>-->
-            <!--<artifactId>log4j</artifactId>-->
-            <!--<version>1.2.16</version>-->
+        <!--<groupId>log4j</groupId>-->
+        <!--<artifactId>log4j</artifactId>-->
+        <!--<version>1.2.16</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -136,7 +136,8 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.2.1</version><!--其他版本冲突，如果更换后报错，多找几个版本测试-->
+            <version>4.2.1</version>
+            <!--其他版本冲突，如果更换后报错，多找几个版本测试-->
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -160,21 +161,21 @@
         </dependency>
 
         <!-- log4j2 -->
-         <dependency>
-             <groupId>org.apache.logging.log4j</groupId>
-             <artifactId>log4j-api</artifactId>
-             <version>${log4j2.version}</version>
-         </dependency>
-         <dependency>
-             <groupId>org.apache.logging.log4j</groupId>
-             <artifactId>log4j-core</artifactId>
-             <version>${log4j2.version}</version>
-         </dependency>
-         <dependency>
-             <groupId>org.apache.logging.log4j</groupId>
-             <artifactId>log4j-web</artifactId>
-             <version>2.0.2</version>
-         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>2.0.2</version>
+        </dependency>
 
         <!-- 时间解析 -->
         <dependency>

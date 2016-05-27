@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     /**
      * Serbian Latin language package
      * Translated by @markocrni
@@ -36,7 +36,7 @@
             'default': 'Molimo da unesete drugu vrednost'
         },
         digits: {
-             'default': 'Molimo da unesete samo cifre'
+            'default': 'Molimo da unesete samo cifre'
         },
         ean: {
             'default': 'Molimo da unesete ispravan EAN broj'

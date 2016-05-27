@@ -78,8 +78,8 @@
     </group>
 
     <!--<group id="INCOME_MANAGER" name="营业收入">-->
-        <!--<permission id="IINCOME_LIST" name="收入查询"/>-->
-        <!--<permission id="SELLERLIST_LIST" name="结算查询"/>-->
+    <!--<permission id="IINCOME_LIST" name="收入查询"/>-->
+    <!--<permission id="SELLERLIST_LIST" name="结算查询"/>-->
     <!--</group>-->
 
     <group id="SCHOOLS_MANAGER" name="学校管理">

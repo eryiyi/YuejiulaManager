@@ -1,12 +1,12 @@
 var Util = {};
-Util.formParams = function(formId) {
+Util.formParams = function (formId) {
     var nodes = $("#" + formId).find("input[type='text'],input[type='password'],input[type='hidden'],input[type='radio']:checked," +
-        "input[type='checkbox']:checked,textarea,select");
+    "input[type='checkbox']:checked,textarea,select");
     var params = {};
     for (var i = 0; i < nodes.length; i++) {
         var e = $(nodes[i]);
         var name = e.attr("name");
-        if(name == undefined) continue;
+        if (name == undefined) continue;
         if (params[name] == undefined) {
             params[name] = e.attr("value");
         } else {
