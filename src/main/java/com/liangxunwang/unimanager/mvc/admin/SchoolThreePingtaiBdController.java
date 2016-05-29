@@ -55,6 +55,7 @@ public class SchoolThreePingtaiBdController extends ControllerConstants {
     public String toBangdingThreePT(ModelMap map){
         List<SchoolThreeTingtai> listpt = (List<SchoolThreeTingtai>)schoolThreePingtaiServiceList.list("");
         map.put("listpt", listpt);
+        map.put("listCitysAll", toJSONString(listpt));
         return "/threePingtai/addBangding";
     }
 

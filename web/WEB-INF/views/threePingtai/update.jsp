@@ -96,6 +96,17 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-sm-2 control-label">平台域名关键字</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" id="school_three_key"
+                                   value="${schoolThreeTingtai.school_three_key}"
+                                   name="school_three_key" class="form-control" placeholder="平台域名关键字"
+                                   data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="col-sm-2 col-sm-offset-2">
                             <button type="button" class="btn btn-primary" onclick="save();">
                                 <span><i class="fa fa-clock-o"></i></span>
@@ -149,9 +160,13 @@
     function save() {
         var school_three_pingtai_id = $("#school_three_pingtai_id").val();
         var school_three_pingtai_name = $("#school_three_pingtai_name").val();
+        var school_three_key = $("#school_three_key").val();
 
         if (school_three_pingtai_name.replace(/\s/g, '') == '') {
             alert("请输入第三方平台名称");
+            return;
+        }  if (school_three_key.replace(/\s/g, '') == '') {
+            alert("请输入第三方平台域名关键字");
             return;
         }
 
@@ -169,6 +184,7 @@
             data: {
                 "school_three_pingtai_id": school_three_pingtai_id,
                 "school_three_pingtai_name": school_three_pingtai_name,
+                "school_three_key": school_three_key,
                 "school_three_pingtai_pic": imagePath
             },
             async: false,
@@ -176,6 +192,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("修改成功");
+                    window.location.href = "#module=listThreePingtai&page=1" + "&_t=" + new Date().getTime();
                 } else {
                     var _case = {1: "修改失败"};
                     alert(_case[data.code])

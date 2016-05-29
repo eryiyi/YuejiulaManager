@@ -7,6 +7,15 @@ public class SchoolThreeTingtai {
     private String school_three_pingtai_id;
     private String school_three_pingtai_name;
     private String school_three_pingtai_pic;
+    private String school_three_key;
+
+    public String getSchool_three_key() {
+        return school_three_key;
+    }
+
+    public void setSchool_three_key(String school_three_key) {
+        this.school_three_key = school_three_key;
+    }
 
     public String getSchool_three_pingtai_id() {
         return school_three_pingtai_id;

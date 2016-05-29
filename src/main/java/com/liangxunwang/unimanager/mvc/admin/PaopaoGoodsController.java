@@ -321,4 +321,29 @@ public class PaopaoGoodsController extends ControllerConstants {
 
 
 
+    /**
+     * 后台查询商品列表
+     * @param query
+     * @param page
+     * @param session
+     * @param map
+     * @return
+     */
+    @RequestMapping("listsgoods")
+    public String listsgoods(PaopaoGoodsQuery query, Page page, HttpSession session, ModelMap map){
+        Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
+        query.setIndex(page.getPage()==0?1:page.getPage());
+        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
+        Object[] params = new Object[]{query,""};
+        Object[] results = (Object[]) paopaoGoodsListService.list(params);
+        map.put("list", results[0]);
+        long count = (Long) results[1];
+        page.setCount(count);
+        page.setPageCount(calculatePageCount(query.getSize(), count));
+        map.addAttribute("page", page);
+        map.addAttribute("query", query);
+        return "/paopaogoods/listAll";
+    }
+
+
 }

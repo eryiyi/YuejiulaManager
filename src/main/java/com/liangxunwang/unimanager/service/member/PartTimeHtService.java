@@ -20,8 +20,8 @@ import java.util.Map;
 /**
  * Created by zhl on 2015/2/7.
  */
-@Service("partTimeService")
-public class PartTimeService implements SaveService, ListService, DeleteService , FindService{
+@Service("partTimeHtService")
+public class PartTimeHtService implements  ListService {
     @Autowired
     @Qualifier("partTimeDao")
     private PartTimeDao partTimeDao;
@@ -53,46 +53,9 @@ public class PartTimeService implements SaveService, ListService, DeleteService 
             vo.setDateline(RelativeDateFormat.format(Long.parseLong(vo.getDateline())));
             vo.setTypeCover(Constants.URL+vo.getTypeCover());
         }
-        return list;
+
+        long count = partTimeDao.count(map);
+        return new Object[]{list, count};
     }
 
-    @Override
-    public Object save(Object object) throws ServiceException {
-        PartTime partTime = (PartTime) object;
-        if (!StringUtil.isValidInteger(partTime.getPeopleNumber())){
-            throw new ServiceException("NO_VALID_NUMBER");
-        }
-        partTime.setId(UUIDFactory.random());
-        partTime.setDateline(System.currentTimeMillis() + "");
-        partTime.setIsDel("0");
-        partTime.setIsUse("0");
-        partTimeDao.save(partTime);
-        return partTime;
-    }
-
-    @Override
-    public Object delete(Object object) throws ServiceException {
-        Object[] params = (Object[]) object;
-        String id = (String) params[0];
-        String type= (String) params[1];
-        if (type.equals("1")){
-            partTimeDao.notUse(id);
-        }else {
-            partTimeDao.delete(id);
-        }
-        return null;
-    }
-
-    @Override
-    public Object findById(Object object) throws ServiceException {
-        PartTimeVO vo = partTimeDao.findById((String) object);
-        if(vo != null){
-            if (vo.getEmpCover().startsWith("upload")) {
-                vo.setEmpCover(Constants.URL + vo.getEmpCover());
-            }else {
-                vo.setEmpCover(Constants.QINIU_URL + vo.getEmpCover());
-            }
-        }
-        return vo;
-    }
 }

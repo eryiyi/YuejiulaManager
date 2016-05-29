@@ -65,8 +65,8 @@ public class PartTimeController extends ControllerConstants {
     @RequestMapping(value = "/listPartTime", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String listPartTime(PartTimeQuery query, Page page){
-        query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
-        query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
+        query.setIndex(page.getPage()==0?1:page.getPage());
+        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {
             List<PartTimeVO> list = (List<PartTimeVO>) partTimeListService.list(query);
             DataTip tip = new DataTip();

@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>后台管理系统</title>
+    <title>童心堂后台管理系统</title>
     <meta name="description" content="description">
     <meta name="author" content="DevOOPS">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -208,11 +208,11 @@
                         </ul>
                     </li>
                 </c:if>
-                <c:if test="${um:permission('LIST_CLASS', sessionScope.powers)||um:permission('ADD_CLASS', sessionScope.powers)}">
+                <c:if test="${um:permission('LIST_CLASS', sessionScope.powers)||um:permission('ADD_CLASS', sessionScope.powers)||um:permission('GOODS_LIST_CLASS', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-list"></i>
-                            <span class="hidden-xs">集市分类</span>
+                            <span class="hidden-xs">商城管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('LIST_CLASS', sessionScope.powers)}">
@@ -220,6 +220,9 @@
                             </c:if>
                             <c:if test="${um:permission('ADD_CLASS', sessionScope.powers)}">
                                 <li><a href="javascript:void(0);" onclick="toPage('toAddGoodsType','')">添加列表</a></li>
+                            </c:if>
+                            <c:if test="${um:permission('GOODS_LIST_CLASS', sessionScope.powers)}">
+                                <li><a href="javascript:void(0);" onclick="toPage('/paopaogoods/listsgoods','1')">商品列表</a></li>
                             </c:if>
                         </ul>
                     </li>
@@ -288,18 +291,22 @@
                         </ul>
                     </li>
                 </c:if>
-                <c:if test="${um:permission('PART_TIME_LIST_CLASS', sessionScope.powers)||um:permission('PART_TIME_ADD_CLASS', sessionScope.powers)}">
+                <c:if test="${um:permission('PART_TIME_LIST_CLASS', sessionScope.powers)||um:permission('PART_TIME_ADD_CLASS', sessionScope.powers)||um:permission('PART_TIME_ADD_CLASS_LIST', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-picture-o"></i>
-                            <span class="hidden-xs">兼职类别</span>
+                            <span class="hidden-xs">招聘管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('PART_TIME_LIST_CLASS', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('listPartTimeType','')">类别列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('listPartTimeType','')">招聘类别列表</a></li>
                             </c:if>
                             <c:if test="${um:permission('PART_TIME_ADD_CLASS', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('toAddType','')">添加类别</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('toAddType','')">添加招聘类别</a></li>
+                            </c:if>
+
+                            <c:if test="${um:permission('PART_TIME_ADD_CLASS_LIST', sessionScope.powers)}">
+                                <li><a href="javascript:void(0);" onclick="toPage('listPartTimeList','1')">招聘列表</a></li>
                             </c:if>
                         </ul>
                     </li>

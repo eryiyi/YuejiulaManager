@@ -10,6 +10,15 @@ public class PartTimeVO extends PartTime{
     private String empCover;
     private String typeName;
     private String typeCover;
+    private String schoolName;
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
 
     public String getEmpName() {
         return empName;

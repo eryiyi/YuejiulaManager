@@ -24,4 +24,7 @@ public interface PartTimeDao {
     void notUse(String id);
 
     void deletePartTimeByEmp(@Param(value = "empId")String empId, @Param(value = "schoolId")String schoolId);
+
+    public long count(Map<String, Object> map);
+
 }

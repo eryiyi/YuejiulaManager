@@ -24,13 +24,14 @@
         <permission id="LEVEL_LIST" name="等级列表"/>
         <permission id="ADD_LEVEL" name="添加等级"/>
     </group>
-    <group id="MARKET_CLASS" name="集市分类">
+    <group id="MARKET_CLASS" name="商城管理">
         <permission id="LIST_CLASS" name="分类列表"/>
         <permission id="ADD_CLASS" name="添加分类"/>
     </group>
     <group id="NEWS_CLASS" name="新闻类别">
         <permission id="NEWS_LIST_CLASS" name="类别列表"/>
         <permission id="NEWS_ADD_CLASS" name="添加类别"/>
+        <permission id="GOODS_LIST_CLASS" name="商品列表"/>
     </group>
     <group id="NEWS_MANAGE" name="新闻管理">
         <permission id="NEWS_LIST" name="新闻列表"/>
@@ -44,9 +45,10 @@
         <permission id="NOTICE_LIST" name="公告列表"/>
         <permission id="ADD_NOTICE" name="添加公告"/>
     </group>
-    <group id="PART_TIME_CLASS" name="兼职类别">
-        <permission id="PART_TIME_LIST_CLASS" name="类别列表"/>
-        <permission id="PART_TIME_ADD_CLASS" name="添加类别"/>
+    <group id="PART_TIME_CLASS" name="招聘管理">
+        <permission id="PART_TIME_LIST_CLASS" name="招聘类别列表"/>
+        <permission id="PART_TIME_ADD_CLASS" name="添加招聘类别"/>
+        <permission id="PART_TIME_ADD_CLASS_LIST" name="招聘列表"/>
     </group>
     <group id="LOG_MANAGE" name="日志记录">
         <permission id="LOG_LIST" name="记录列表"/>

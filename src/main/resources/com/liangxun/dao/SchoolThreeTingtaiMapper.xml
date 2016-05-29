@@ -7,11 +7,12 @@
         <id column="school_three_pingtai_id" property="school_three_pingtai_id"/>
         <result column="school_three_pingtai_name" property="school_three_pingtai_name"/>
         <result column="school_three_pingtai_pic" property="school_three_pingtai_pic"/>
+        <result column="school_three_key" property="school_three_key"/>
     </resultMap>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.SchoolThreeTingtai">
-        INSERT INTO school_three_pingtai(school_three_pingtai_id, school_three_pingtai_name, school_three_pingtai_pic)
-        VALUES (#{school_three_pingtai_id}, #{school_three_pingtai_name}, #{school_three_pingtai_pic})
+        INSERT INTO school_three_pingtai(school_three_pingtai_id, school_three_pingtai_name, school_three_pingtai_pic, school_three_key)
+        VALUES (#{school_three_pingtai_id}, #{school_three_pingtai_name}, #{school_three_pingtai_pic}, #{school_three_key})
     </insert>
 
     <select id="list" resultMap="schoolThreeTingtai">
@@ -23,7 +24,7 @@
     </select>
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.SchoolThreeTingtai">
-        UPDATE school_three_pingtai SET school_three_pingtai_name=#{school_three_pingtai_name}, school_three_pingtai_pic=#{school_three_pingtai_pic} WHERE school_three_pingtai_id=#{school_three_pingtai_id}
+        UPDATE school_three_pingtai SET school_three_pingtai_name=#{school_three_pingtai_name}, school_three_pingtai_pic=#{school_three_pingtai_pic}, school_three_key=#{school_three_key} WHERE school_three_pingtai_id=#{school_three_pingtai_id}
     </update>
 
     <delete id="delete" parameterType="String">

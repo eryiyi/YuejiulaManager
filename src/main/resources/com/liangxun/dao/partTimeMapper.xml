@@ -41,6 +41,7 @@
         <result column="emp_cover" property="empCover"/>
         <result column="type_name" property="typeName"/>
         <result column="type_cover" property="typeCover"/>
+        <result column="schoolName" property="schoolName"/>
     </resultMap>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.PartTime">
@@ -49,10 +50,10 @@
     </insert>
 
     <select id="list" resultMap="my_part_time_vo">
-
-          SELECT pt.*, le.emp_name, ptt.type_name, ptt.type_cover FROM part_time  pt
+          SELECT pt.*, le.emp_name as empName,le.emp_cover as empCover, ptt.type_name as typeName, ptt.type_cover as typeCover, lcollege.name as schoolName FROM part_time  pt
           LEFT JOIN lx_emp le ON pt.emp_id=le.emp_id
-        LEFT JOIN part_time_type ptt ON pt.type_id=ptt.type_id
+          LEFT JOIN part_time_type ptt ON pt.type_id=ptt.type_id
+          LEFT JOIN college lcollege ON pt.school_id=lcollege.coid
           WHERE pt.is_del='0'
           AND pt.is_use='0'
           <if test="schoolId != null and schoolId != ''">
@@ -69,6 +70,24 @@
         </if>
         ORDER BY pt.dateline DESC
          limit #{index},#{size}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT count(pt.id) FROM part_time pt
+        WHERE pt.is_del='0'
+        AND pt.is_use='0'
+        <if test="schoolId != null and schoolId != ''">
+            AND pt.school_id=#{schoolId}
+        </if>
+        <if test="typeId != null and typeId != ''">
+            AND pt.type_id=#{typeId}
+        </if>
+        <if test="keyWords != null and keyWords != ''">
+            AND pt.title  like CONCAT('%',#{keyWords},'%')
+        </if>
+        <if test="empId != null and empId != ''">
+            AND pt.emp_id=#{empId}
+        </if>
     </select>
 
     <select id="findById" resultMap="my_part_time_vo" parameterType="String">

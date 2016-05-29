@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
-
 <script type="text/javascript" src="/js/Util.js"></script>
 
 <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
@@ -67,24 +67,22 @@
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">第三方平台</label>
-
+                        <input type="hidden" id="school_three_key" name="school_three_key">
                         <div class="col-sm-4">
-                            <select class="populate placeholder" name="school_three_pingtai_id"
-                                    id="school_three_pingtai_id">
-                                <option value="">-- 选择平台 --</option>
-                                <c:forEach items="${listpt}" var="s">
-                                    <option value="${s.school_three_pingtai_id}">${s.school_three_pingtai_name}</option>
+                            <select class="form-control" id="school_three_pingtai_id"  onchange="selectCitys()">
+                                <option value="">--选择平台--</option>
+                                <c:forEach items="${listpt}" var="e" varStatus="st">
+                                    <option value="${e.school_three_pingtai_id}">${e.school_three_pingtai_name}</option>
                                 </c:forEach>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">平台链接</label>
-
+                        <label class="col-sm-2 control-label">平台域名链接</label>
                         <div class="col-sm-4">
                             <input type="text" id="pingtai_url" name="school_three_pingtai_name" class="form-control"
-                                   placeholder="平台链接" data-toggle="tooltip" data-placement="bottom"
+                                   placeholder="平台域名链接" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>
                     </div>
@@ -109,8 +107,19 @@
 </div>
 
 <script type="text/javascript">
+    function selectCitys(){
+        var citys = ${listCitysAll};
+        var school_three_pingtai_id = $("#school_three_pingtai_id").val();
+        for(var i= citys.length-1; i>=0; i-- ){
+            if(citys[i].school_three_pingtai_id==school_three_pingtai_id){
+                document.getElementById("school_three_key").value = citys[i].school_three_key;
+            }
+        }
+    };
+
     function save() {
         var school_three_pingtai_id = $("#school_three_pingtai_id").val();
+        var school_three_key = $("#school_three_key").val();//域名关键字
 
         if (school_three_pingtai_id.replace(/\s/g, '') == '') {
             alert("请选择第三方平台");
@@ -120,6 +129,14 @@
         var pingtai_url = $("#pingtai_url").val();
         if (pingtai_url.replace(/\s/g, '') == '') {
             alert("请输入平台链接");
+            return;
+        }
+
+        var bool = pingtai_url.indexOf(school_three_key);
+        //返回大于等于0的整数值，若不包含"Text"则返回"-1。
+        if(bool>0){
+        }else{
+            alert("输入的域名不合法");
             return;
         }
 

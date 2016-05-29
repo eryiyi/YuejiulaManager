@@ -54,7 +54,7 @@ public class AppCommentService implements SaveService, ListService {
     @Override
     public Object list(Object object) throws ServiceException {
         CommentQuery query = (CommentQuery) object;
-        int index = ((query.getIndex()-1)*query.getSize())+1;
+        int index = (query.getIndex() - 1) * query.getSize();
         int size = query.getIndex()*query.getSize();
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("index", index);

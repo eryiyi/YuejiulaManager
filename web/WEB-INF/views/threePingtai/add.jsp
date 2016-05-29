@@ -90,6 +90,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-sm-2 control-label">平台域名关键字</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" id="school_three_key" name="school_three_key"
+                                   class="form-control" placeholder="平台关键字，例如：百度，就是baidu.com，糯米，就是nuomi.com" data-toggle="tooltip" data-placement="bottom"
+                                   title="Tooltip for name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="col-sm-2 col-sm-offset-2">
                             <button type="button" class="btn btn-primary" onclick="save();">
                                 <span><i class="fa fa-clock-o"></i></span>
@@ -142,9 +152,13 @@
 
     function save() {
         var school_three_pingtai_name = $("#school_three_pingtai_name").val();
+        var school_three_key = $("#school_three_key").val();
 
         if (school_three_pingtai_name.replace(/\s/g, '') == '') {
             alert("请输入第三方平台名称");
+            return;
+        } if (school_three_key.replace(/\s/g, '') == '') {
+            alert("请输入第三方平台域名关键字");
             return;
         }
 
@@ -159,7 +173,7 @@
             cache: true,
             type: "POST",
             url: "/saveThreePingtai.do",
-            data: {"school_three_pingtai_name": school_three_pingtai_name, "school_three_pingtai_pic": imagePath},
+            data: {"school_three_pingtai_name": school_three_pingtai_name, "school_three_pingtai_pic": imagePath, "school_three_key": school_three_key},
             async: false,
             success: function (_data) {
                 var data = $.parseJSON(_data);
