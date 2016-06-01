@@ -60,8 +60,6 @@ public class MemberRegisterService implements SaveService, ExecuteService {
     @Override
     public Object save(Object object) {
         Member member = (Member) object;
-
-
         member.setEmpId(UUIDFactory.random());//设置ID
         member.setDateline(System.currentTimeMillis()+"");//时间戳
         member.setEmpCover(Constants.PHOTOURLS[new Random().nextInt(61)]);//头像
@@ -78,7 +76,6 @@ public class MemberRegisterService implements SaveService, ExecuteService {
             }else {
                 memberDao.save(member);
             }
-
             Count count = new Count();
             count.setId(UUIDFactory.random());
             count.setEmpId(member.getEmpId());
@@ -87,13 +84,13 @@ public class MemberRegisterService implements SaveService, ExecuteService {
         }catch (Exception e){
             throw new ServiceException(Constants.SAVE_ERROR);
         }
-        Boolean suc=ChatUtils.register(member.getHxUsername(),member.getEmpPass());
-        if(suc) {
-            College college=collegeDao.getGroupId(member.getSchoolId());
-            GroupUtils.addGroup(college.getGroupId(), member.getDateline() + member.getEmpMobile());
-        }else {
-            throw new ServiceException(Constants.HX_ERROR);
-        }
+        Boolean suc=ChatUtils.register(member.getHxUsername(), member.getEmpPass());
+//        if(suc) {
+//            College college=collegeDao.getGroupId(member.getSchoolId());
+//            GroupUtils.addGroup(college.getGroupId(), member.getDateline() + member.getEmpMobile());
+//        }else {
+//            throw new ServiceException(Constants.HX_ERROR);
+//        }
         return member;
     }
 
