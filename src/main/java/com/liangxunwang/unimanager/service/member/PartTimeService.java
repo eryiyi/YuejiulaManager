@@ -86,7 +86,7 @@ public class PartTimeService implements SaveService, ListService, DeleteService 
     @Override
     public Object findById(Object object) throws ServiceException {
         PartTimeVO vo = partTimeDao.findById((String) object);
-        if(vo != null){
+        if(vo != null && vo.getEmpCover() != null){
             if (vo.getEmpCover().startsWith("upload")) {
                 vo.setEmpCover(Constants.URL + vo.getEmpCover());
             }else {

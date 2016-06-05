@@ -299,7 +299,7 @@
     </update>
 
     <select id="listMemberBySchool" parameterType="String" resultMap="my_member">
-        SELECT EMP_ID, EMP_COVER, EMP_NAME,EMP_MOBILE,HX_USERNAME FROM LX_EMP WHERE SCHOOL_ID=#{schoolId}
+        SELECT EMP_ID, EMP_COVER, EMP_NAME,EMP_MOBILE,HX_USERNAME FROM LX_EMP
     </select>
 
 

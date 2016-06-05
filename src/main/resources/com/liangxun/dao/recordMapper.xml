@@ -117,12 +117,16 @@
         SELECT m.*,
         (SELECT ll.level_name FROM lx_level ll WHERE m.level_count BETWEEN ll.level_start and ll.level_end ) as level_name
         FROM (
-        SELECT sr.*, le.emp_name as emp_name, le.emp_cover as emp_cover,lc.count as level_count,
+        SELECT sr.*, le.emp_name as emp_name, le.emp_cover as emp_cover,lc.count as level_count,cl.name as school_name,lmood.school_record_mood_name as school_record_mood_name,
         (select count(zan_record_id) from school_record_zan zan where  zan.zan_record_id = sr.record_id) as zan_num,
         (select count(record_id) from school_record_comment pl where  pl.record_id = sr.record_id) as pl_num
         FROM school_record sr
         LEFT JOIN lx_emp le ON sr.record_emp_id=le.emp_id
         LEFT JOIN lx_count lc ON  le.emp_id = lc.emp_id
+
+        LEFT JOIN college cl on sr.record_school_id=cl.coid
+        LEFT JOIN school_record_mood lmood on sr.school_record_mood_id=lmood.school_record_mood_id
+
         WHERE sr.record_is_del='0'
         AND sr.record_id=#{id}
         ) m

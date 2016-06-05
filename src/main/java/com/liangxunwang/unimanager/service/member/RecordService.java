@@ -116,6 +116,10 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
                     record.setRecordVideo(Constants.QINIU_URL + record.getRecordVideo());
                 }
             }
+            if(StringUtil.isNullOrEmpty(record.getSchool_record_mood_name())){
+                //如果是空的话
+                record.setSchool_record_mood_name("无");
+            }
             record.setDateLine(RelativeDateFormat.format(Long.parseLong(record.getDateLine())));
         }
         return list;

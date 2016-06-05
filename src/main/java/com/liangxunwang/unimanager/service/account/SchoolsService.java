@@ -75,21 +75,21 @@ public class SchoolsService implements ListService ,UpdateService,FindService,Sa
         college.setCoid(String.valueOf(StringUtil.getFiveInt()));//随机生成一个5位数
         college.setGroupId(UUIDFactory.random());
         collegeDao.save(college);
-        ObjectNode dataObjectNode = JsonNodeFactory.instance.objectNode();
-        dataObjectNode.put("groupname", college.getName());
-        dataObjectNode.put("desc", college.getName());
-        dataObjectNode.put("approval", true);
-        dataObjectNode.put("public", true);
-        dataObjectNode.put("maxusers", 2000);
-        dataObjectNode.put("owner", "12345678910");//12345678910 超级管理员 密码 0123456
-        ArrayNode arrayNode = JsonNodeFactory.instance.arrayNode();
-        dataObjectNode.put("members", arrayNode);
-        ObjectNode creatChatGroupNode = EasemobChatGroups.creatChatGroups(dataObjectNode);
-        //处理数据
-        ObjectNode objectNode = (ObjectNode) creatChatGroupNode.get("data");//解析数据
-        JsonNode groupid = objectNode.get("groupid");
-        //获得环信的groupid，更新数据库
-        collegeDao.updateGroupId(college.getCoid(), groupid.textValue());
+//        ObjectNode dataObjectNode = JsonNodeFactory.instance.objectNode();
+//        dataObjectNode.put("groupname", college.getName());
+//        dataObjectNode.put("desc", college.getName());
+//        dataObjectNode.put("approval", true);
+//        dataObjectNode.put("public", true);
+//        dataObjectNode.put("maxusers", 2000);
+//        dataObjectNode.put("owner", "12345678910");//12345678910 超级管理员 密码 0123456
+//        ArrayNode arrayNode = JsonNodeFactory.instance.arrayNode();
+//        dataObjectNode.put("members", arrayNode);
+//        ObjectNode creatChatGroupNode = EasemobChatGroups.creatChatGroups(dataObjectNode);
+//        //处理数据
+//        ObjectNode objectNode = (ObjectNode) creatChatGroupNode.get("data");//解析数据
+//        JsonNode groupid = objectNode.get("groupid");
+//        //获得环信的groupid，更新数据库
+//        collegeDao.updateGroupId(college.getCoid(), groupid.textValue());
         return null;
     }
 

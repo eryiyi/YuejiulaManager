@@ -75,6 +75,7 @@ public class MemberController extends ControllerConstants {
     @ResponseBody
     public String listMemberBySchool(String schoolId){
         try {
+            schoolId = "";
             List<Member> list = (List<Member>) memberListService.list(schoolId);
             DataTip tip = new DataTip();
             tip.setData(list);
