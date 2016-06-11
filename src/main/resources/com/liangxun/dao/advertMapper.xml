@@ -12,6 +12,7 @@
         <result column="dateline" property="dateline"/>
         <result column="ad_url" property="adUrl"/>
         <result column="end_time" property="endTime"/>
+        <result column="emp_id" property="emp_id"/>
     </resultMap>
 
     <resultMap id="my_advert_vo" type="com.liangxunwang.unimanager.mvc.vo.AdvertVO">
@@ -23,15 +24,16 @@
         <result column="dateline" property="dateline"/>
         <result column="ad_url" property="adUrl"/>
         <result column="end_time" property="endTime"/>
+        <result column="emp_id" property="emp_id"/>
         <result column="school_name" property="schoolName"/>
     </resultMap>
 
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Advert">
         INSERT INTO school_ad
-        (ad_id, ad_pic, ad_typeid, ad_isuse, ad_school_id, dateline, ad_url, end_time)
+        (ad_id, ad_pic, ad_typeid, ad_isuse, ad_school_id, dateline, ad_url, end_time, emp_id)
         VALUES
-        (#{adId}, #{adPic}, #{adTypeId}, #{adIsUse}, #{adSchoolId}, #{dateline}, #{adUrl}, #{endTime})
+        (#{adId}, #{adPic}, #{adTypeId}, #{adIsUse}, #{adSchoolId}, #{dateline}, #{adUrl}, #{endTime}, #{emp_id, jdbcType=VARCHAR})
     </insert>
 
     <select id="list" resultMap="my_advert_vo">
@@ -39,12 +41,21 @@
         SELECT sa.*, ls.name as school_name
         from school_ad sa
         left join college ls on sa.ad_school_id=ls.coid
+        WHERE 1=1
+        <if test="emp_id != null and emp_id != ''">
+            AND sa.emp_id=#{emp_id}
+        </if>
         ORDER BY sa.dateline DESC
         limit #{index},#{size}
     </select>
 
     <select id="count" resultType="long">
-        select count(sa.ad_school_id) from school_ad sa left join college ls on sa.ad_school_id=ls.coid
+        select count(sa.ad_school_id) from school_ad sa
+        left join college ls on sa.ad_school_id=ls.coid
+        WHERE 1=1
+        <if test="emp_id != null and emp_id != ''">
+            AND sa.emp_id=#{emp_id}
+        </if>
     </select>
 
     <select id="findById" resultMap="my_advert" parameterType="String">
@@ -61,11 +72,11 @@
     </delete>
 
     <select id="getBig" resultMap="my_advert" parameterType="String">
-        SELECT * FROM school_ad WHERE ad_isuse='0' AND ad_typeId=#{typeId}
+        SELECT * FROM school_ad WHERE ad_isuse='0' AND ad_typeId=#{typeId} AND ad_typeid='1'
     </select>
 
     <select id="getSmall" resultMap="my_advert" parameterType="String">
-        SELECT * FROM school_ad WHERE ad_isuse='0' AND ad_school_id=#{schoolId}
+        SELECT * FROM school_ad WHERE ad_isuse='0' AND ad_school_id=#{schoolId} AND ad_typeid='0'
     </select>
 
     <update id="updateOverTime">

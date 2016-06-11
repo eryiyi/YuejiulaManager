@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javaScript:void(0)">广告管理</a></li>
-            <li><a href="javaScript:void(0)">添加广告</a></li>
+            <li><a href="javascript:void (0);">商城第三方网址</a></li>
+            <li><a href="javascript:void (0);">添加商城第三方网址</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name">
                     <i class="fa fa-search"></i>
-                    <span>添加广告</span>
+                    <span>添加商城第三方网址</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -43,43 +43,31 @@
                 <div class="no-move"></div>
             </div>
             <div class="box-content">
-                <h4 class="page-header">广告详情</h4>
+                <h4 class="page-header">商城第三方网址详情</h4>
 
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">省份名称</label>
+                        <label class="col-sm-2 control-label">第三方网址名称</label>
 
                         <div class="col-sm-4">
-                            <select class="populate placeholder" name="university" id="s2_province"
-                                    onchange="selectCollege()">
-                                <option value="">-- 选择省份 --</option>
-                                <c:forEach items="${provinces}" var="s">
-                                    <option value="${s.provinceId}" ${query.schoolId==s.provinceId?'selected':''} >${s.pname}</option>
-                                </c:forEach>
-                            </select>
+                            <input type="text" id="type_name" class="form-control" placeholder="第三方网址名称"
+                                   data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">学校名称</label>
+                        <label class="col-sm-2 control-label">第三方网址介绍</label>
 
-                        <div class="col-sm-4">
-                            <select class="populate placeholder" name="university" id="s2_country">
-                                <option value="">-- 选择学校 --</option>
-                            </select>
+                        <div class="col-sm-6">
+                            <input type="text" id="type_content" class="form-control" placeholder="第三方网址介绍"
+                                   data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">是否大图</label>
+                        <label class="col-sm-2 control-label">第三方网址链接</label>
 
-                        <div class="col-sm-2">
-                            <div class="toggle-switch toggle-switch-success">
-                                <label>
-                                    <input id="isBigImage" name="isUse" type="checkbox">
-
-                                    <div class="toggle-switch-inner"></div>
-                                    <div class="toggle-switch-switch"><i class="fa fa-check"></i></div>
-                                </label>
-                            </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="lx_goods_type_url" class="form-control" placeholder="第三方网址链接"
+                                   data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
                         </div>
                     </div>
                     <div class="form-group">
@@ -96,35 +84,38 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group has-feedback">
-                        <label class="col-sm-2 control-label">过期时间</label>
+                    <%--<div class="form-group">--%>
+                        <%--<label class="col-sm-2 control-label">是否商家</label>--%>
 
-                        <div class="col-sm-2">
-                            <input type="text" id="input_date" class="form-control" placeholder="Date">
-                            <span class="fa fa-calendar txt-danger form-control-feedback"></span>
-                        </div>
-                    </div>
+                        <%--<div class="col-sm-2">--%>
+                            <%--<div class="toggle-switch toggle-switch-success">--%>
+                                <%--<label>--%>
+                                    <%--<input id="isBusiness" name="isBusiness" type="checkbox" checked>--%>
+
+                                    <%--<div class="toggle-switch-inner"></div>--%>
+                                    <%--<div class="toggle-switch-switch"><i class="fa fa-check"></i></div>--%>
+                                <%--</label>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">选择图片</label>
-
+                        <label class="col-sm-2 control-label">第三方网址图片</label>
                         <div class="col-sm-10">
                             <input type="file" name="file" id="fileUpload" style="float: left;"/>
                             <input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>
 
                             <div id="imageDiv" style="padding: 10px"></div>
                         </div>
-
                     </div>
+
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">广告链接</label>
-
-                        <div class="col-sm-6">
-                            <input type="text" id="ad_net" class="form-control" placeholder="链接网址" data-toggle="tooltip"
-                                   data-placement="bottom" title="Tooltip for name">
-                        </div>
+                        <label class="col-sm-2 control-label">发布学校</label>
+                        <c:forEach items="${schools}" var="e">
+                            <div class="col-sm-2">
+                                <input type="checkbox" value="${e.schoolId}" name="schools">${e.schoolName}
+                            </div>
+                        </c:forEach>
                     </div>
-
-                    *如果选择大图 是：软件开屏页广告；如果选择大图 否：动态心情详细页的广告
 
                     <div class="form-group">
                         <div class="col-sm-9 col-sm-offset-3">
@@ -138,11 +129,6 @@
 </div>
 <%--<div class="col-xs-4 col-sm-4">--%>
 <script type="text/javascript">
-    $(document).ready(function () {
-        // Initialize datepicker
-        $('#input_date').datepicker({setDate: new Date()});
-        WinMove();
-    });
 
     function uploadImage() {
         $.ajaxFileUpload(
@@ -183,79 +169,89 @@
     ;
 
     function saveAdvert() {
-        var schoolId = $("#s2_country").val();
-        if (schoolId == "") {
-            alert("请选择学校");
+        var typeName = $("#type_name").val();
+        if (typeName.replace(/\s/g, '') == '') {
+            alert("第三方网址名称不能为空");
             return;
         }
-        var isUse = '';
+        var typeContent = $("#type_content").val()
+        if (typeContent.replace(/\s/g, '') == '') {
+            alert("第三方网址介绍不能为空");
+            return;
+        }
 
+        var lx_goods_type_url = $("#lx_goods_type_url").val()
+        if (lx_goods_type_url.replace(/\s/g, '') == '') {
+            alert("第三方网址链接不能为空");
+            return;
+        }
+
+        var isUse = '';
         if ($('#isUse').is(':checked')) {
             isUse = '1';
         } else {
             isUse = '0';
         }
-        var isBigImage = '';
-        if ($('#isBigImage').is(':checked')) {
-            isBigImage = '1';
-        } else {
-            isBigImage = '0';
-        }
-        var endTime = $("#input_date").val();
-        if (endTime == "") {
-            alert("请选择过期时间");
-            return;
-        }
+//        var isBusiness = '';
+//        if ($('#isBusiness').is(':checked')) {
+//            isBusiness = '1';
+//        } else {
+//            isBusiness = '0';
+//        }
         var imagePath = $("img[name='imagePath']").attr("src");
         if (imagePath == "") {
             alert("请上传图片");
             return;
         }
-        var adUrl = $("#ad_net").val();
-        if (adUrl == "") {
-            alert("请填写广告链接");
+
+        var schools_ary = new Array();
+
+        $('input[name="schools"]:checked').each(function () {
+            schools_ary.push($(this).val());//向数组中添加元素
+        });
+        var schools = schools_ary.join('|');//将数组元素连接起来以构建一个字符串
+
+        if (schools == null || schools == '') {
+            alert("请选择要添加第三方网址的学校");
             return;
         }
-
         $.ajax({
             cache: true,
             type: "POST",
-            url: "/addAdvert.do",
+            url: "/addGoodsTypeThree.do",
             data: {
-                "adSchoolId": schoolId,
-                "adIsUse": isUse,
-                "adTypeId": isBigImage,
-                "adUrl": adUrl,
-                "endTime": endTime,
-                "adPic": imagePath
-            },// 你的formid
+                "typeName": typeName,
+                "typeIsBusiness": '0',
+                "typeIsUse": isUse,
+                "typeContent": typeContent,
+                "lx_goods_type_type": '1',
+                "lx_goods_type_url": lx_goods_type_url,
+                "schools": schools,
+                "typeCover": imagePath
+            },
             async: false,
             success: function (_data) {
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("添加成功");
-                    window.location.href = "#module=ajax/listAdvert&page=1"+ "&_t="+ new Date().getTime();
+                    window.location.href = "#module=listType&lx_goods_type_type=1";
+//            $.ajax({
+//                type: "GET",
+//                url: "/listType.do",
+//                success: function(response){
+//                    $("#content").html(response);
+//                }
+//
+//            });
+//            history.pushState('', 'New URL: '+"/listType.do", "/#/listType.do");
                 } else {
-                    var _case = {1: "添加失败", 2: "请上传图片", 3: "广告链接地址不能为空"};
+                    var _case = {1: "网址名称不能为空", 2: "网址介绍不能为空", 3: "网址图片不能为空", 4: "您不是承包商，不能设置第三方网址", 5:"保存失败"};
                     alert(_case[data.code])
                 }
             }
         });
 
 
-    }
-    ;
-
-    function selectCollege() {
-        var colleges =${colleges};
-        var province = $("#s2_province").val();
-        var ret = '';
-        for (var i = colleges.length - 1; i >= 0; i--) {
-            if (colleges[i].provinceID == province) {
-                ret += "<option value='" + colleges[i].coid + "'>" + colleges[i].name + "</option>";
-            }
-        }
-        $("#s2_country").html(ret);
     }
     ;
 

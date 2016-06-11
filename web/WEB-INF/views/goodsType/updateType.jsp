@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javascript:void (0);">集市分类</a></li>
-            <li><a href="javascript:void (0);">修改分类</a></li>
+            <li><a href="javascript:void (0);">商城分类</a></li>
+            <li><a href="javascript:void (0);">修改商城分类</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name">
                     <i class="fa fa-search"></i>
-                    <span>修改分类</span>
+                    <span>修改商城分类</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -43,24 +43,24 @@
                 <div class="no-move"></div>
             </div>
             <div class="box-content">
-                <h4 class="page-header">分类详情</h4>
+                <h4 class="page-header">商城分类详情</h4>
 
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">类别名称</label>
+                        <label class="col-sm-2 control-label">商城类别名称</label>
 
                         <div class="col-sm-4">
                             <input type="text" id="type_name" value="${type.typeName}" class="form-control"
-                                   placeholder="类别名称" data-toggle="tooltip" data-placement="bottom"
+                                   placeholder="商城类别名称" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">类别介绍</label>
+                        <label class="col-sm-2 control-label">商城类别介绍</label>
 
                         <div class="col-sm-6">
                             <input type="text" id="type_content" value="${type.typeContent}" class="form-control"
-                                   placeholder="类别介绍" data-toggle="tooltip" data-placement="bottom"
+                                   placeholder="商城类别介绍" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>
                     </div>

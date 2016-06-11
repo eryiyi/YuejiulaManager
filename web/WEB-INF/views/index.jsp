@@ -153,7 +153,7 @@
                         </ul>
                     </li>
                 </c:if>
-                <c:if test="${um:permission('ADVERT_LIST', sessionScope.powers)||um:permission('ADD_ADVERT', sessionScope.powers)||um:permission('LX_ADVERT', sessionScope.powers)}">
+                <c:if test="${um:permission('ADVERT_LIST', sessionScope.powers)||um:permission('ADD_ADVERT_MANAGER', sessionScope.powers)||um:permission('ADD_ADVERT_CHENGBAO', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-pencil-square-o"></i>
@@ -161,15 +161,18 @@
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADVERT_LIST', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('ajax/listAdvert','1')">广告列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('ajax/listAdvert','1')">广告列表(管/承)</a></li>
                             </c:if>
-                            <c:if test="${um:permission('ADD_ADVERT', sessionScope.powers)}">
+                            <c:if test="${um:permission('ADD_ADVERT_MANAGER', sessionScope.powers)}">
                                 <li><a href="javascript:void(0);" onclick="toPage('ajax/toAddAdvert','')">添加广告</a></li>
                             </c:if>
-                            <c:if test="${um:permission('LX_ADVERT', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);"
-                                       onclick="toPage('ajax/toAddDefaultAdvert','')">良讯广告</a></li>
+                            <c:if test="${um:permission('ADD_ADVERT_CHENGBAO', sessionScope.powers)}">
+                                <li><a href="javascript:void(0);" onclick="toPage('ajax/toAddAdvertCheng','')">添加广告(承)</a></li>
                             </c:if>
+                            <%--<c:if test="${um:permission('LX_ADVERT', sessionScope.powers)}">--%>
+                                <%--<li><a href="javascript:void(0);"--%>
+                                       <%--onclick="toPage('ajax/toAddDefaultAdvert','')">良讯广告</a></li>--%>
+                            <%--</c:if>--%>
                         </ul>
                     </li>
                 </c:if>
@@ -208,7 +211,7 @@
                         </ul>
                     </li>
                 </c:if>
-                <c:if test="${um:permission('LIST_CLASS', sessionScope.powers)||um:permission('ADD_CLASS', sessionScope.powers)||um:permission('GOODS_LIST_CLASS', sessionScope.powers)}">
+                <c:if test="${um:permission('LIST_CLASS', sessionScope.powers)||um:permission('ADD_CLASS', sessionScope.powers)||um:permission('GOODS_LIST_CLASS', sessionScope.powers)||um:permission('ADD_GOODS_SHOP_THREE', sessionScope.powers)||um:permission('LIST_GOODS_SHOP_THREE', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-list"></i>
@@ -216,13 +219,20 @@
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('LIST_CLASS', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('listType','')">分类列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('listType','1')">商城分类列表</a></li>
                             </c:if>
                             <c:if test="${um:permission('ADD_CLASS', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('toAddGoodsType','')">添加列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('toAddGoodsType','')">添加商城分类</a></li>
                             </c:if>
                             <c:if test="${um:permission('GOODS_LIST_CLASS', sessionScope.powers)}">
                                 <li><a href="javascript:void(0);" onclick="toPage('/paopaogoods/listsgoods','1')">商品列表</a></li>
+                            </c:if>
+
+                            <c:if test="${um:permission('ADD_GOODS_SHOP_THREE', sessionScope.powers)}">
+                                <li><a href="javascript:void(0);" onclick="toPage('toAddGoodsTypeThree','')">添加商城第三方网址（承）</a></li>
+                            </c:if>
+                            <c:if test="${um:permission('LIST_GOODS_SHOP_THREE', sessionScope.powers)}">
+                                <li><a href="javascript:void(0);" onclick="toPage('listType','1')">商城第三方网址列表（承）</a></li>
                             </c:if>
                         </ul>
                     </li>

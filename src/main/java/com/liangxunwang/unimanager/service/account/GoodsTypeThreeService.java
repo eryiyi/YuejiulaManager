@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.GoodsTypeDao;
 import com.liangxunwang.unimanager.model.GoodsType;
+import com.liangxunwang.unimanager.model.PaopaoGoods;
 import com.liangxunwang.unimanager.query.GoodsTypeThreeQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -17,8 +18,8 @@ import java.util.Map;
 /**
  * Created by zhl on 2015/2/2.
  */
-@Service("goodsTypeService")
-public class GoodsTypeService implements SaveService, ListService, FindService , UpdateService, DeleteService{
+@Service("goodsTypeThreeService")
+public class GoodsTypeThreeService implements SaveService, ListService, FindService , UpdateService, DeleteService{
 
     @Autowired
     @Qualifier("goodsTypeDao")
@@ -26,27 +27,42 @@ public class GoodsTypeService implements SaveService, ListService, FindService ,
 
     @Override
     public Object save(Object object) throws ServiceException {
-        GoodsType type = (GoodsType) object;
-        type.setTypeId(UUIDFactory.random());
-        goodsTypeDao.save(type);
+        if (object instanceof Object[]){
+            String str = "";
+            Object[] params = (Object[]) object;
+            GoodsType type = (GoodsType) params[0];
+            String schools = (String) params[1];
+
+            String[] schoolAry = schools.split("\\|");
+            for (int i=0; i<schoolAry.length; i++){
+                type.setTypeId(UUIDFactory.random());
+                type.setSchool_id(schoolAry[i]);
+                goodsTypeDao.save(type);
+            }
+            return str;
+        }
         return null;
     }
 
     @Override
     public Object list(Object object) throws ServiceException {
+        //先查找商城分类
         GoodsTypeThreeQuery query = (GoodsTypeThreeQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
-        if(!StringUtil.isNullOrEmpty(query.getLx_goods_type_type())){
-            map.put("lx_goods_type_type", query.getLx_goods_type_type());
+        map.put("lx_goods_type_type", "0");
+        map.put("isUse", "0");
+        List<GoodsType> list1 = goodsTypeDao.list(map);
+
+        //再查找第三方平台  承包商添加的
+        map.put("lx_goods_type_type", "1");
+        map.put("school_id", query.getSchool_id());
+        List<GoodsType> list2 = goodsTypeDao.list(map);
+        if(list2 != null){
+            for(GoodsType goodsType:list2){
+                list1.add(goodsType);
+            }
         }
-        if(!StringUtil.isNullOrEmpty(query.getType_isuse())){
-            map.put("isUse", query.getType_isuse());
-        }
-        if(!StringUtil.isNullOrEmpty(query.getEmp_id())){
-            map.put("emp_id", query.getEmp_id());
-        }
-        List<GoodsType> list = goodsTypeDao.list(map);
-        return list;
+        return list1;
     }
 
     @Override

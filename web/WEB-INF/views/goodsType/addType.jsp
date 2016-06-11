@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javascript:void (0);">集市分类</a></li>
-            <li><a href="javascript:void (0);">添加分类</a></li>
+            <li><a href="javascript:void (0);">商城分类</a></li>
+            <li><a href="javascript:void (0);">添加商城分类</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -189,6 +189,7 @@
                 "typeIsBusiness": isBusiness,
                 "typeIsUse": isUse,
                 "typeContent": typeContent,
+                "lx_goods_type_type": '0',
                 "typeCover": imagePath
             },
             async: false,

@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javascript:void (0);">集市分类</a></li>
-            <li><a href="javascript:void (0);">分类列表</a></li>
+            <li><a href="javascript:void (0);">商城分类</a></li>
+            <li><a href="javascript:void (0);">商城分类列表</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name ui-draggable-handle">
                     <i class="fa fa-table"></i>
-                    <span>分类列表</span>
+                    <span>商城分类列表</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -48,11 +48,14 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>分类图片</th>
-                        <th>分类名称</th>
-                        <th>分类介绍</th>
+                        <th>商城分类图片</th>
+                        <th>商城分类名称</th>
+                        <th>商城分类介绍</th>
                         <th>是否禁用</th>
-                        <th>是否商家</th>
+                        <th>仅商家可用</th>
+                        <th>是否第三方网址</th>
+                        <th>网址链接</th>
+                        <th>学校</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -72,10 +75,20 @@
                                 <c:if test="${e.typeIsBusiness == '1'}">商家可用</c:if>
                             </td>
                             <td>
-                                <button class="btn btn-info" type="button" onclick="toUpdate('${e.typeId}')">修改</button>
+                                <c:if test="${e.lx_goods_type_type == '0'}">
+                                    否
+                                </c:if>
+                                <c:if test="${e.lx_goods_type_type == '1'}">是</c:if>
+                            </td>
+                            <td>${e.lx_goods_type_url}</td>
+                            <td>${e.schoolName}</td>
+
+                            <td>
+                                <c:if test="${e.lx_goods_type_type == '0'}"><button class="btn btn-info" type="button" onclick="toUpdate('${e.typeId}')">修改</button></c:if>
                                 <button class="btn btn-primary" type="button" onclick="deleteType('${e.typeId}')">删除
                                 </button>
                             </td>
+
                         </tr>
                     </c:forEach>
                     </tbody>

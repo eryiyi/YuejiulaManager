@@ -14,6 +14,16 @@ public class Advert {
 //    private String startTime;//开始时间
     private String endTime;//过期时间
 
+    private String emp_id;
+
+    public String getEmp_id() {
+        return emp_id;
+    }
+
+    public void setEmp_id(String emp_id) {
+        this.emp_id = emp_id;
+    }
+
     public String getAdId() {
         return adId;
     }

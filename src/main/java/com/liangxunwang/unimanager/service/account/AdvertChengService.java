@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.AdvertDao;
 import com.liangxunwang.unimanager.model.Advert;
+import com.liangxunwang.unimanager.model.GoodsType;
 import com.liangxunwang.unimanager.mvc.vo.AdvertVO;
 import com.liangxunwang.unimanager.query.AdvertQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -20,31 +21,38 @@ import java.util.Map;
 /**
  * Created by zhl on 2015/1/31.
  */
-@Service("advertService")
-public class AdvertService implements SaveService, ListService , FindService, UpdateService, DeleteService{
+@Service("advertChengService")
+public class AdvertChengService implements SaveService, ListService , FindService, UpdateService, DeleteService{
     @Autowired
     @Qualifier("advertDao")
     private AdvertDao advertDao;
 
     @Override
     public Object save(Object object) throws ServiceException {
-        Advert advert = (Advert) object;
-        advert.setAdId(UUIDFactory.random());
-        advert.setDateline(System.currentTimeMillis()+"");
-        advert.setEndTime(DateUtil.getMs(advert.getEndTime(), "MM/dd/yyyy") + "");
-        if (StringUtil.isNullOrEmpty(advert.getAdSchoolId())){
-            advert.setAdSchoolId("99999999999");
-            if ("1".equals(advert.getAdTypeId())){
-                advert.setAdTypeId("3");
-            }else {
-                advert.setAdTypeId("4");
+        Object[] params = (Object[]) object;
+        Advert advert = (Advert) params[0];
+        String schools = (String) params[1];
+
+        String[] schoolAry = schools.split("\\|");
+        for (int i=0; i<schoolAry.length; i++){
+            advert.setAdId(UUIDFactory.random());
+            advert.setDateline(System.currentTimeMillis()+"");
+            advert.setEndTime(DateUtil.getMs(advert.getEndTime(), "MM/dd/yyyy") + "");
+            if (StringUtil.isNullOrEmpty(advert.getAdSchoolId())){
+                advert.setAdSchoolId(schoolAry[i]);
+//                if ("1".equals(advert.getAdTypeId())){
+//                    advert.setAdTypeId("3");
+//                }else {
+//                    advert.setAdTypeId("4");
+//                }
+            }
+            try {
+                advertDao.save(advert);
+            }catch (ServiceException e){
+                throw new ServiceException(Constants.SAVE_ERROR);
             }
         }
-        try {
-            advertDao.save(advert);
-        }catch (ServiceException e){
-            throw new ServiceException(Constants.SAVE_ERROR);
-        }
+
         return advert;
     }
 
@@ -57,9 +65,6 @@ public class AdvertService implements SaveService, ListService , FindService, Up
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("index", index);
         map.put("size", size);
-        if(!StringUtil.isNullOrEmpty(query.getEmp_id())){
-            map.put("emp_id", query.getEmp_id());
-        }
 
         List<AdvertVO> list = advertDao.list(map);
         long count = advertDao.count(map);

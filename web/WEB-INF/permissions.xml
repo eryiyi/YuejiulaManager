@@ -11,9 +11,10 @@
         <permission id="CONTRACT_LIST" name="承包商列表"/>
     </group>
     <group id="ADVERT_MANAGE" name="广告管理">
-        <permission id="ADVERT_LIST" name="广告列表"/>
-        <permission id="ADD_ADVERT" name="增加广告"/>
-        <permission id="LX_ADVERT" name="良讯广告"/>
+        <permission id="ADVERT_LIST" name="广告列表(管/承)"/>
+        <permission id="ADD_ADVERT_MANAGER" name="添加广告"/>
+        <permission id="ADD_ADVERT_CHENGBAO" name="添加广告（承）"/>
+        <!--<permission id="LX_ADVERT" name="良讯广告"/>-->
     </group>
     <group id="PK_ACTIVE_MANAGE" name="PK活动管理">
         <permission id="ACTIVE_LIST" name="活动列表"/>
@@ -25,13 +26,15 @@
         <permission id="ADD_LEVEL" name="添加等级"/>
     </group>
     <group id="MARKET_CLASS" name="商城管理">
-        <permission id="LIST_CLASS" name="分类列表"/>
-        <permission id="ADD_CLASS" name="添加分类"/>
+        <permission id="LIST_CLASS" name="商城分类列表"/>
+        <permission id="ADD_CLASS" name="添加商城分类"/>
+        <permission id="GOODS_LIST_CLASS" name="商品列表"/>
+        <permission id="ADD_GOODS_SHOP_THREE" name="添加商城第三方网址（承）"/>
+        <permission id="LIST_GOODS_SHOP_THREE" name="商城第三方网址列表（承）"/>
     </group>
     <group id="NEWS_CLASS" name="新闻类别">
         <permission id="NEWS_LIST_CLASS" name="类别列表"/>
         <permission id="NEWS_ADD_CLASS" name="添加类别"/>
-        <permission id="GOODS_LIST_CLASS" name="商品列表"/>
     </group>
     <group id="NEWS_MANAGE" name="新闻管理">
         <permission id="NEWS_LIST" name="新闻列表"/>
