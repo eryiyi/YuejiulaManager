@@ -54,4 +54,7 @@ public interface ContractSchoolDao {
     List<ContractSchool> findByEmpAndEndTime(@Param(value = "empId")String empId,@Param(value = "nowTime") String nowTime);
 
     long count(Map<String, Object> map);
+
+    //根据学校id查询承包商
+    List<ContractSchoolVO> getManagerById(String school_id);
 }

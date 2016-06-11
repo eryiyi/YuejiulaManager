@@ -106,6 +106,11 @@ public interface MemberDao {
      */
     void updatePushId(@Param(value = "id") String id, @Param(value = "pushId") String pushId, @Param(value = "type")String type);
 
+    //封号 解封号
+    void updateFenghao(@Param(value = "is_fenghao") String is_fenghao, @Param(value = "emp_id") String emp_id);
+    //封群
+    void updateFengQun(@Param(value = "is_fengqun") String is_fengqun, @Param(value = "emp_id") String emp_id);
+
     /**
      * 修改密码
      * @param empId
@@ -160,4 +165,9 @@ public interface MemberDao {
      * @return
      */
     List<Member> listMemberBySchool(String schoolId);
+
+    //查询封号的
+    List<MemberVO> getFenghaos();
+    //查询封群的
+    List<MemberVO> getFengquns();
 }

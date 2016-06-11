@@ -76,4 +76,13 @@
         SELECT * FROM CONTRACT_SCHOOL WHERE END_TIME &gt; #{nowTime} AND EMP_ID=#{empId}
     </select>
 
+
+
+    <select id="getManagerById" resultMap="my_contract_school_vo">
+        SELECT cs.*, le.emp_name as emp_name,le.emp_cover as emp_cover, co.name as school_name FROM contract_school cs
+        LEFT JOIN lx_emp le ON  cs.emp_id=le.emp_id
+        LEFT JOIN college co on cs.school_id=co.coid
+        WHERE cs.school_id=#{school_id}
+    </select>
+
 </mapper>

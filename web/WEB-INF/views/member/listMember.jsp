@@ -81,6 +81,8 @@
                         <th>是否承包商</th>
                         <th>是否商家</th>
                         <th>是否禁用</th>
+                        <th>是否封号</th>
+                        <th>是否封群</th>
                         <th>所属学校</th>
                         <th>注册时间</th>
                         <th>管理</th>
@@ -121,6 +123,16 @@
                                 <c:if test="${e.isUse == '0'}">否</c:if>
                                 <c:if test="${e.isUse == '1'}">是</c:if>
                             </td>
+
+                            <td>
+                                <c:if test="${e.is_fenghao == '0'}">否</c:if>
+                                <c:if test="${e.is_fenghao == '1'}">是</c:if>
+                            </td>
+                            <td>
+                                <c:if test="${e.is_fengqun == '0'}">否</c:if>
+                                <c:if test="${e.is_fengqun == '1'}">是</c:if>
+                            </td>
+
                             <td>${e.universityName}</td>
                             <td>${um:format(e.dateline, "yyyy-MM-dd HH:mm:ss")}</td>
                             <td>

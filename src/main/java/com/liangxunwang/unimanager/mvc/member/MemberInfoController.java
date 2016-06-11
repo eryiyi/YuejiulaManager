@@ -2,8 +2,12 @@ package com.liangxunwang.unimanager.mvc.member;
 
 import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.model.tip.DataTip;
+import com.liangxunwang.unimanager.mvc.vo.ContractSchoolVO;
 import com.liangxunwang.unimanager.mvc.vo.MemberVO;
+import com.liangxunwang.unimanager.mvc.vo.RecordVO;
+import com.liangxunwang.unimanager.query.FenghaofengqunQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
+import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
@@ -109,4 +113,76 @@ public class MemberInfoController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
+
+
+    @Autowired
+    @Qualifier("contractSchoolMemberService")
+    private ListService contractSchoolMemberService;
+    @RequestMapping(value = "/getManagerById", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String getManagerById(String school_id){
+        try {
+            List<ContractSchoolVO> list= (List<ContractSchoolVO>) contractSchoolMemberService.list(school_id);
+            DataTip tip = new DataTip();
+            tip.setData(list);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
+
+    @Autowired
+    @Qualifier("memberUpdateFenghaoService")
+    private UpdateService memberUpdateFenghaoService;
+
+    @RequestMapping("/updateEmpIsFenghao")
+    @ResponseBody
+    public String updateEmpIsFenghao(@RequestParam String is_fenghao, @RequestParam String emp_id){
+        if (StringUtil.isNullOrEmpty(is_fenghao) || StringUtil.isNullOrEmpty(emp_id)){
+            return toJSONString(ERROR_1);
+        }
+        Object[] params = new Object[]{is_fenghao, emp_id , "1"};//1封号 2封群
+        try {
+            memberUpdateFenghaoService.update(params);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+    @RequestMapping("/updateEmpIsFengQun")
+    @ResponseBody
+    public String updateEmpIsFengQun(@RequestParam String is_fengqun, @RequestParam String emp_id){
+        if (StringUtil.isNullOrEmpty(is_fengqun) || StringUtil.isNullOrEmpty(emp_id)){
+            return toJSONString(ERROR_1);
+        }
+        Object[] params = new Object[]{is_fengqun, emp_id , "2"};//1封号 2封群
+        try {
+            memberUpdateFenghaoService.update(params);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
+
+
+    @Autowired
+    @Qualifier("memberFenghfqService")
+    private ListService memberFenghfqService;
+
+    //获得封群封号
+    @RequestMapping(value = "/getFenghaofengquns", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String getFenghaofengquns(FenghaofengqunQuery query){
+        try {
+            List<MemberVO> list = (List<MemberVO>) memberFenghfqService.list(query);
+            DataTip tip = new DataTip();
+            tip.setData(list);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
 }

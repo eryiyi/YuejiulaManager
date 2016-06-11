@@ -22,6 +22,9 @@
         <result column="is_in_group" property="isInGroup"/>
         <result column="device_type" property="deviceType"/>
 
+        <result column="is_fenghao" property="is_fenghao"/>
+        <result column="is_fengqun" property="is_fengqun"/>
+
     </resultMap>
 
     <resultMap id="my_member_vo" type="com.liangxunwang.unimanager.mvc.vo.MemberVO">
@@ -44,6 +47,8 @@
         <result column="hx_username" property="hxUsername"/>
         <result column="is_in_group" property="isInGroup"/>
         <result column="device_type" property="deviceType"/>
+        <result column="is_fenghao" property="is_fenghao"/>
+        <result column="is_fengqun" property="is_fengqun"/>
 
         <result column="jfcount" property="jfcount"/>
         <result column="groupid" property="groupId"/>
@@ -69,6 +74,8 @@
         <result column="hx_username" property="hxUsername"/>
         <result column="is_in_group" property="isInGroup"/>
         <result column="device_type" property="deviceType"/>
+        <result column="is_fenghao" property="is_fenghao"/>
+        <result column="is_fengqun" property="is_fengqun"/>
 
         <result column="mm_ad_title" property="mm_ad_title"/>
         <result column="mm_ad_pic" property="mm_ad_pic"/>
@@ -132,7 +139,6 @@
         limit #{index},#{size}
     </select>
 
-
     <select id="findByMobile" parameterType="String" resultMap="my_member_vo">
         SELECT lp.*, ls.name as school_name, ls.groupid, (SELECT level_name FROM lx_level ll where lc.count BETWEEN ll.level_start AND ll.level_end) as level_name
         from lx_emp lp
@@ -182,8 +188,6 @@
         ORDER BY le.dateline DESC
         limit #{index},#{size}
     </select>
-
-
 
     <select id="count" resultType="long">
         select count(le.school_id) from lx_emp le left join college ls on le.school_id=ls.coid
@@ -266,8 +270,16 @@
         </foreach>
     </update>
 
+
     <update id="updatePushId" parameterType="String">
         UPDATE lx_emp set push_id=#{pushId}, device_type=#{type} WHERE emp_id=#{id}
+    </update>
+
+    <update id="updateFenghao" parameterType="String">
+        UPDATE lx_emp set is_fenghao=#{is_fenghao} WHERE emp_id=#{emp_id}
+    </update>
+    <update id="updateFengQun" parameterType="String">
+        UPDATE lx_emp set is_fengqun=#{is_fengqun} WHERE emp_id=#{emp_id}
     </update>
 
     <update id="resetPass" parameterType="String">
@@ -313,5 +325,20 @@
         is_use=#{isUse}
         WHERE emp_id=#{empId}
     </update>
+
+
+    <select id="getFenghaos" resultMap="my_member_vo">
+        SELECT le.*, ls.name as school_name
+        from lx_emp le
+        left join college ls on le.school_id=ls.coid
+        WHERE 1=1 AND  le.is_fenghao ='1'
+    </select>
+
+    <select id="getFengquns" resultMap="my_member_vo">
+        SELECT le.*, ls.name as school_name
+        from lx_emp le
+        left join college ls on le.school_id=ls.coid
+        WHERE 1=1 AND  le.is_fengqun ='1'
+    </select>
 
 </mapper>

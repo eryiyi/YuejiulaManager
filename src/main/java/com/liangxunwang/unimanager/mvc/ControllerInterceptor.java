@@ -93,6 +93,10 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 "|(^/findSchoolList\\.do$)"+
                 "|(^/deleteSellerGoodsById\\.do$)"+
                 "|(^/updateSellerGoods\\.do$)"+
+                "|(^/getManagerById\\.do$)"+
+                "|(^/updateEmpIsFenghao\\.do$)"+
+                "|(^/updateEmpIsFengQun\\.do$)"+
+                "|(^/getFenghaofengquns\\.do$)"+
                 "|(^/getAllContract\\.do$)"+ "|(^/getTheme\\.do$)"+
                         "|(^/addPkComment\\.do$)"+
                         "|(^/addPkZanApp\\.do$)"+
