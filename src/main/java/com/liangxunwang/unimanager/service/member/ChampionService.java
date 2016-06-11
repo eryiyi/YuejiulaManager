@@ -34,8 +34,8 @@ public class ChampionService implements SaveService, ListService, ExecuteService
     @Override
     public Object list(Object object) throws ServiceException {
         ChampionQuery query = (ChampionQuery) object;
-        int index = ((query.getIndex()-1)*query.getSize())+1;
-        int size = query.getIndex()*query.getSize();
+        int index = (query.getIndex() - 1) * query.getSize();
+        int size = query.getIndex() * query.getSize();
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("index", index);
         map.put("size", size);
@@ -86,8 +86,8 @@ public class ChampionService implements SaveService, ListService, ExecuteService
     public Object execute(Object object) throws ServiceException {
         ChampionQuery query = (ChampionQuery) object;
 
-        int index = ((query.getIndex()-1)*query.getSize())+1;
-        int size = query.getIndex()*query.getSize();
+        int index = (query.getIndex() - 1) * query.getSize();
+        int size = query.getIndex() * query.getSize();
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("index", index);
         map.put("size", size);

@@ -391,9 +391,9 @@
     <div class="recommends-content clearfix">
 
         <c:forEach items="${listRecord}" var="e" varStatus="st">
-            <a href="http://www.liangxunwang.com/paopao/index.html" class="recommends-item clearfix">
+            <a href="${baseurl}viewRecord.do?recordId=${e.recordId}" class="recommends-item clearfix">
                 <div class="img-holder">
-                    <img src="${e.recordPicUrl}" alt="动态图片">
+                    <img src="${e.recordPicUrl}">
                 </div>
                 <p>${e.recordCont}</p>
             </a>

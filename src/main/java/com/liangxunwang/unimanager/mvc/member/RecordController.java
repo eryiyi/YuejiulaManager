@@ -293,7 +293,7 @@ public class RecordController extends ControllerConstants{
                 }
             }
             map.put("listRecord", listRecord);
-
+            map.put("baseurl", Constants.URL);
             return "/record/viewRecord";
         }catch (ServiceException e){
             return toJSONString(ERROR_1);

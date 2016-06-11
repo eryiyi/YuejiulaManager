@@ -48,8 +48,8 @@ public class CommentController extends ControllerConstants {
     @RequestMapping(value = "/getCommentsByRecord", produces = "text/plain;charset=utf-8")
     @ResponseBody
     public String getCommentByRecord(CommentQuery query, Page page){
-        query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
-        query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
+        query.setIndex(page.getPage()==0?1:page.getPage());
+        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {
             List<CommentVO> list = (List<CommentVO>) listCommentService.list(query);
             DataTip tip = new DataTip();
