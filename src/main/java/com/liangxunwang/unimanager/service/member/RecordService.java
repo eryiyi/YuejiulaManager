@@ -129,6 +129,10 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
     public Object save(Object object) throws ServiceException {
         Record record = (Record) object;
         record.setRecordCont(CommonUtil.replaceBlank(record.getRecordCont()));
+        if(StringUtil.isNullOrEmpty(record.getIs_paimai())){
+            //如果是空或者null 说明不是拍卖
+            record.setIs_paimai("0");
+        }
         //如果是推广
         if ("1".equals(record.getRecordType())){
             List<Record> recordList = recordDao.findByEmpIdAndType(record.getRecordEmpId(), "1");

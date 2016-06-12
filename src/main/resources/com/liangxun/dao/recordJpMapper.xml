@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.RecordJpDao">
+    <resultMap id="recordObj" type="com.liangxunwang.unimanager.model.RecordJp">
+        <id column="school_record_jp_id" property="school_record_jp_id"/>
+        <result column="record_id" property="record_id"/>
+        <result column="record_emp_id" property="record_emp_id"/>
+        <result column="emp_id" property="emp_id"/>
+        <result column="money" property="money"/>
+        <result column="dateline" property="dateline"/>
+    </resultMap>
+
+    <resultMap id="recordObj_vo" type="com.liangxunwang.unimanager.mvc.vo.RecordJpVO">
+        <id column="school_record_jp_id" property="school_record_jp_id"/>
+        <result column="record_id" property="record_id"/>
+        <result column="record_emp_id" property="record_emp_id"/>
+        <result column="emp_id" property="emp_id"/>
+        <result column="money" property="money"/>
+        <result column="dateline" property="dateline"/>
+
+        <result column="empName" property="empName"/>
+        <result column="empNameJp" property="empNameJp"/>
+        <result column="empCover" property="empCover"/>
+        <result column="empCoverJp" property="empCoverJp"/>
+        <result column="recordTitle" property="recordTitle"/>
+        <result column="recordMoney" property="recordMoney"/>
+    </resultMap>
+
+
+    <select id="lists" resultMap="recordObj_vo">
+        SELECT sn.*,le.emp_name as empName,le.emp_cover as empCover,lee.emp_name as empNameJp,lee.emp_cover as empCoverJp ,sr.record_cont as recordTitle,sr.money as recordMoney
+        from school_record_jingpai sn
+        LEFT JOIN lx_emp le ON sn.record_emp_id=le.emp_id
+        LEFT JOIN lx_emp lee ON sn.emp_id=lee.emp_id
+        LEFT JOIN school_record sr ON sr.record_id=sn.record_id
+        WHERE 1=1
+        <if test="emp_id != null and emp_id != ''">
+            AND  sn.emp_id = #{emp_id}
+        </if>
+        <if test="record_emp_id != null and record_emp_id != ''">
+            AND sn.record_emp_id = #{record_emp_id}
+        </if>
+        <if test="record_id != null and record_id != ''">
+            AND  sn.record_id = #{record_id}
+        </if>
+        ORDER BY  sn.dateline DESC
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.RecordJp">
+        INSERT INTO school_record_jingpai(school_record_jp_id, record_id, record_emp_id, emp_id, money, dateline)
+        VALUES (#{school_record_jp_id}, #{record_id}, #{record_emp_id}, #{emp_id}, #{money}, #{dateline})
+    </insert>
+
+    <select id="findById" parameterType="String" resultMap="recordObj">
+        SELECT * FROM school_record_jingpai where school_record_jp_id=#{school_record_jp_id}
+    </select>
+
+</mapper>

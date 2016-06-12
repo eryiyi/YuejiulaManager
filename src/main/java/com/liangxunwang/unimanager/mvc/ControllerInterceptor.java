@@ -97,6 +97,11 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 "|(^/updateEmpIsFenghao\\.do$)"+
                 "|(^/updateEmpIsFengQun\\.do$)"+
                 "|(^/getFenghaofengquns\\.do$)"+
+
+                "|(^/saveRecordJp\\.do$)"+
+                "|(^/listRecordJps\\.do$)"+
+                "|(^/getSingleRecordJpById\\.do$)"+
+
                 "|(^/getAllContract\\.do$)"+ "|(^/getTheme\\.do$)"+
                         "|(^/addPkComment\\.do$)"+
                         "|(^/addPkZanApp\\.do$)"+

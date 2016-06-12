@@ -514,15 +514,15 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-picture-o"></i>
-                            <span class="hidden-xs">心情管理</span>
+                            <span class="hidden-xs">动态分类管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('LIST_SCHOOL_RECORD_MOOD_LIST', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('listSchoolRecordMood','1')">心情列表</a>
+                                <li><a href="javascript:void(0);" onclick="toPage('listSchoolRecordMood','1')">动态分类列表</a>
                                 </li>
                             </c:if>
                             <c:if test="${um:permission('SCHOOL_RECORD_MOOD_ADD_LIST', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('toAddSchoolRecordMood','')">添加心情</a>
+                                <li><a href="javascript:void(0);" onclick="toPage('toAddSchoolRecordMood','')">添加动态分类</a>
                                 </li>
                             </c:if>
                         </ul>

@@ -16,6 +16,8 @@
         <result column="record_is_del" property="recordIsDel"/>
         <result column="dateline" property="dateLine"/>
         <result column="school_record_mood_id" property="school_record_mood_id"/>
+        <result column="money" property="money"/>
+        <result column="is_paimai" property="is_paimai"/>
     </resultMap>
 
     <resultMap id="my_record_vo" type="com.liangxunwang.unimanager.mvc.vo.RecordVO">
@@ -31,6 +33,8 @@
         <result column="record_is_del" property="recordIsDel"/>
         <result column="dateline" property="dateLine"/>
         <result column="school_record_mood_id" property="school_record_mood_id"/>
+        <result column="money" property="money"/>
+        <result column="is_paimai" property="is_paimai"/>
 
         <result column="emp_name" property="empName"/>
         <result column="emp_cover" property="empCover"/>
@@ -109,8 +113,8 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Record">
-        INSERT INTO school_record(record_id, school_record_mood_id, record_type, record_cont, record_picurl, record_voice, record_video,record_emp_id, record_school_id, record_is_use, record_is_del, dateline )
-        VALUES (#{recordId},#{school_record_mood_id, jdbcType=VARCHAR}, #{recordType}, #{recordCont}, #{recordPicUrl, jdbcType=VARCHAR}, #{recordVoice, jdbcType=VARCHAR}, #{recordVideo, jdbcType=VARCHAR}, #{recordEmpId}, #{recordSchoolId}, #{recordIsUse}, #{recordIsDel}, #{dateLine})
+        INSERT INTO school_record(record_id, school_record_mood_id, record_type, record_cont, record_picurl, record_voice, record_video,record_emp_id, record_school_id, record_is_use, record_is_del, dateline , money , is_paimai )
+        VALUES (#{recordId},#{school_record_mood_id, jdbcType=VARCHAR}, #{recordType}, #{recordCont}, #{recordPicUrl, jdbcType=VARCHAR}, #{recordVoice, jdbcType=VARCHAR}, #{recordVideo, jdbcType=VARCHAR}, #{recordEmpId}, #{recordSchoolId}, #{recordIsUse}, #{recordIsDel}, #{dateLine}, #{money, jdbcType=VARCHAR}, #{is_paimai, jdbcType=VARCHAR})
     </insert>
 
     <select id="findById" resultMap="my_record_vo" parameterType="String">
@@ -161,4 +165,8 @@
     <delete id="deleteBySchoolId" parameterType="String">
         DELETE FROM SCHOOL_RECORD WHERE RECORD_TYPE='1' AND RECORD_SCHOOL_ID=#{schoolId}
     </delete>
+
+    <update id="update" parameterType="String">
+        UPDATE SCHOOL_RECORD SET money=#{money} WHERE record_id=#{record_id}
+    </update>
 </mapper>

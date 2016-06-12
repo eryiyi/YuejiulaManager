@@ -98,9 +98,9 @@
         <permission id="VIDEOS_ADD_LIST" name="添加视频"/>
     </group>
 
-    <group id="SCHOOL_RECORD_MOOD_MANAGER" name="心情管理">
-        <permission id="LIST_SCHOOL_RECORD_MOOD_LIST" name="心情列表"/>
-        <permission id="SCHOOL_RECORD_MOOD_ADD_LIST" name="添加心情"/>
+    <group id="SCHOOL_RECORD_MOOD_MANAGER" name="动态分类管理">
+        <permission id="LIST_SCHOOL_RECORD_MOOD_LIST" name="动态分类列表"/>
+        <permission id="SCHOOL_RECORD_MOOD_ADD_LIST" name="动态分类心情"/>
     </group>
 
     <group id="FIND_WWW_MANAGER" name="发现网址管理">

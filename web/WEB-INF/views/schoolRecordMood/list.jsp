@@ -47,7 +47,8 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>心情</th>
+                        <th>分类标题</th>
+                        <th>所属大分类</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -56,6 +57,11 @@
                         <tr>
                             <td>${st.index+1}</td>
                             <td>${e.school_record_mood_name}</td>
+                            <td>
+                                <c:if test="${e.school_record_mood_type == '0'}">心情</c:if>
+                                <c:if test="${e.school_record_mood_type == '1'}">求助</c:if>
+                                <c:if test="${e.school_record_mood_type == '2'}">拍卖</c:if>
+                            </td>
                             <td>
                                 <button class="btn btn-primary" type="button"
                                         onclick="deleteCollege('${e.school_record_mood_id}')">删除

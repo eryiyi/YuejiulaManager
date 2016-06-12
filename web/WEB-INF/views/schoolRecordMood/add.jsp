@@ -44,15 +44,15 @@
             </div>
             <div class="box-content">
 
-                <h4 class="page-header">添加心情</h4>
+                <h4 class="page-header">添加动态分类</h4>
 
                 <form id="save_form" class="form-horizontal" method="post" role="form">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">心情标签</label>
+                        <label class="col-sm-2 control-label">分类名称</label>
 
                         <div class="col-sm-4">
                             <input type="text" id="school_record_mood_name" name="school_record_mood_name"
-                                   class="form-control" placeholder="心情标签" data-toggle="tooltip" data-placement="bottom"
+                                   class="form-control" placeholder="分类名称" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>
                     </div>
@@ -63,6 +63,18 @@
                             <input type="text" id="top_num" name="top_num" class="form-control" value="0"
                                    placeholder="置顶数字，越大越靠前" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">性别</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" id="school_record_mood_type">
+                                <option value="">--选择--</option>
+                                <option value="0" >心情</option>
+                                <option value="1" >求助</option>
+                                <option value="2" >拍卖</option>
+                            </select>
                         </div>
                     </div>
 
@@ -85,9 +97,14 @@
 
     function save() {
         var school_record_mood_name = $("#school_record_mood_name").val();
+        var school_record_mood_type = $("#school_record_mood_type").val();
         var top_num = $("#top_num").val();
         if (school_record_mood_name.replace(/\s/g, '') == '') {
-            alert("心情标签不能为空");
+            alert("分类名称不能为空");
+            return;
+        }
+        if (school_record_mood_type.replace(/\s/g, '') == '') {
+            alert("请选择大分类");
             return;
         }
 
@@ -96,7 +113,7 @@
             cache: true,
             type: "POST",
             url: "/saveSchoolRecordMood.do",
-            data: {"school_record_mood_name": school_record_mood_name, "top_num": top_num},
+            data: {"school_record_mood_name": school_record_mood_name, "top_num": top_num, "school_record_mood_type": school_record_mood_type},
             async: false,
             success: function (_data) {
                 var data = $.parseJSON(_data);

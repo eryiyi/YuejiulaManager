@@ -67,4 +67,13 @@ public interface RecordDao {
 
     long count(Map<String, Object> map);
 
+
+    /**
+     * 更新价格
+     * @param empId
+     * @param type
+     * @return
+     */
+    void update(@Param(value = "record_id")String empId, @Param(value = "money")String type);
+
 }

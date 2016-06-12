@@ -7,6 +7,7 @@
         <id column="school_record_mood_id" property="school_record_mood_id"/>
         <result column="school_record_mood_name" property="school_record_mood_name"/>
         <result column="top_num" property="top_num"/>
+        <result column="school_record_mood_type" property="school_record_mood_type"/>
     </resultMap>
 
     <select id="list" resultMap="schoolRecordMood">
@@ -24,8 +25,8 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.SchoolRecordMood">
-        INSERT INTO school_record_mood(school_record_mood_id, school_record_mood_name, top_num)
-        VALUES (#{school_record_mood_id}, #{school_record_mood_name}, #{top_num})
+        INSERT INTO school_record_mood(school_record_mood_id, school_record_mood_name, top_num, school_record_mood_type)
+        VALUES (#{school_record_mood_id}, #{school_record_mood_name}, #{top_num}, #{school_record_mood_type})
     </insert>
 
     <delete id="deleteById" parameterType="String">
