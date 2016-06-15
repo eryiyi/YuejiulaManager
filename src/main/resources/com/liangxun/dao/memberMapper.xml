@@ -182,6 +182,10 @@
                 AND le.emp_mobile=#{phoneNumber}
             </if>
 
+            <if test="school_id != null and school_id != ''">
+                AND le.school_id=#{school_id}
+            </if>
+
             <if test="keyWords != null and keyWords != ''">
                 AND le.emp_name like CONCAT('%',#{keyWords},'%')
             </if>
@@ -322,6 +326,8 @@
         emp_cover=#{empCover},
         emp_sign=#{empSign, jdbcType=VARCHAR},
         emp_qq=#{empQQ},
+        is_fenghao=#{is_fenghao},
+        is_fengqun=#{is_fengqun},
         is_use=#{isUse}
         WHERE emp_id=#{empId}
     </update>

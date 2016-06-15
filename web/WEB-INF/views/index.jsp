@@ -138,7 +138,7 @@
                             <span class="hidden-xs">会员管理</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);" onclick="toPage('ajax/listMember','1')">会员列表</a></li>
+                            <li><a href="javascript:void(0);" onclick="toPage('ajax/listMember','1')">会员列表(管/承)</a></li>
                         </ul>
                     </li>
                 </c:if>
@@ -345,22 +345,22 @@
                         </ul>
                     </li>
                 </c:if>
-                <c:if test="${um:permission('VIEWPAGER_ADD', sessionScope.powers) || um:permission('VIEWPAGER_LIST', sessionScope.powers)}">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">
-                            <i class="fa fa-picture-o"></i>
-                            <span class="hidden-xs">轮播管理</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <c:if test="${um:permission('VIEWPAGER_LIST', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/viewpager/list','')">轮播列表</a></li>
-                            </c:if>
-                            <c:if test="${um:permission('VIEWPAGER_ADD', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/viewpager/toSave','')">添加轮播</a></li>
-                            </c:if>
-                        </ul>
-                    </li>
-                </c:if>
+                <%--<c:if test="${um:permission('VIEWPAGER_ADD', sessionScope.powers) || um:permission('VIEWPAGER_LIST', sessionScope.powers)}">--%>
+                    <%--<li class="dropdown">--%>
+                        <%--<a href="#" class="dropdown-toggle">--%>
+                            <%--<i class="fa fa-picture-o"></i>--%>
+                            <%--<span class="hidden-xs">轮播管理</span>--%>
+                        <%--</a>--%>
+                        <%--<ul class="dropdown-menu">--%>
+                            <%--<c:if test="${um:permission('VIEWPAGER_LIST', sessionScope.powers)}">--%>
+                                <%--<li><a href="javascript:void(0);" onclick="toPage('/viewpager/list','')">轮播列表</a></li>--%>
+                            <%--</c:if>--%>
+                            <%--<c:if test="${um:permission('VIEWPAGER_ADD', sessionScope.powers)}">--%>
+                                <%--<li><a href="javascript:void(0);" onclick="toPage('/viewpager/toSave','')">添加轮播</a></li>--%>
+                            <%--</c:if>--%>
+                        <%--</ul>--%>
+                    <%--</li>--%>
+                <%--</c:if>--%>
                 <c:if test="${sessionScope.account.type!='1' && (um:permission('SCHOOL_LIST', sessionScope.powers)||um:permission('MINE_MERCHANT', sessionScope.powers)||um:permission('OPEN_MERCHANT', sessionScope.powers))}">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">

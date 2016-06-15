@@ -113,6 +113,8 @@
                         <div class="col-sm-4">
                             <input type="text" readonly="true" class="form-control" value="${empVO.universityName}">
                         </div>
+
+
                     </div>
 
                     <div class="form-group">
@@ -148,12 +150,33 @@
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">是否禁用</label>
-
                         <div class="col-sm-4">
-                            <select class="form-control" id="is_use" disabled="disabled">
+                            <select class="form-control" id="is_use">
                                 <option value="">--请选择--</option>
                                 <option value="0" ${empVO.isUse=='0'?'selected':''}>否</option>
                                 <option value="1" ${empVO.isUse=='1'?'selected':''}>是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">是否封号</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" id="is_fenghao">
+                                <option value="">--请选择--</option>
+                                <option value="0" ${empVO.is_fenghao=='0'?'selected':''}>否</option>
+                                <option value="1" ${empVO.is_fenghao=='1'?'selected':''}>是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">是否封群</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" id="is_fengqun">
+                                <option value="">--请选择--</option>
+                                <option value="0" ${empVO.is_fengqun=='0'?'selected':''}>否</option>
+                                <option value="1" ${empVO.is_fengqun=='1'?'selected':''}>是</option>
                             </select>
                         </div>
                     </div>
@@ -196,6 +219,8 @@
         var emp_sign = $("#emp_sign").val();
         var emp_qq = $("#emp_qq").val();
         var is_use = $("#is_use").val();
+        var is_fenghao = $("#is_fenghao").val();
+        var is_fengqun = $("#is_fengqun").val();
 
 //    var lat_company = $("#lat_company").val();
 //    var lng_company = $("#lng_company").val();
@@ -215,15 +240,18 @@
             return;
         }
 
-        if (emp_sign.replace(/\s/g, '') == '') {
-            alert("请输入签名");
-            return;
-        }
-
         if (is_use.replace(/\s/g, '') == '') {
             alert("请选择是否禁用");
             return;
         }
+        if (is_fenghao.replace(/\s/g, '') == '') {
+            alert("请选择是否封号");
+            return;
+        }
+        if (is_fengqun.replace(/\s/g, '') == '') {
+            alert("请选择是否封群");
+            return;
+         }
 
         var imagePath = $("img[name='imagePath']").attr("src");
 
@@ -243,6 +271,8 @@
                 "empCover": imagePath,
                 "empSign": emp_sign,
                 "empQQ": emp_qq,
+                "is_fenghao": is_fenghao,
+                "is_fengqun": is_fengqun,
                 "isUse": is_use
             },
             async: false,

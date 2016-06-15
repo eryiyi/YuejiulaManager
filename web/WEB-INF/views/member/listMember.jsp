@@ -60,6 +60,17 @@
                                placeholder="昵称">
                     </div>
                 </div>
+                    <div class="col-sm-3 col-xs-3">
+                        <label class="col-sm-3 control-label">选择学校</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="school_id">
+                                <c:forEach items="${contractSchoolVOs}" var="e" varStatus="st">
+                                    <option value="${e.schoolId}" ${e.schoolId==query.school_id?'selected':''}>${e.schoolName}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+
                 <%--<div class="col-sm-3 col-xs-3">--%>
                 <%--<label class="col-sm-3 control-label">类别</label>--%>
                 <%--<div class="col-sm-6">--%>
@@ -195,10 +206,11 @@
         if (e.keyCode != 13) return;
         var _index = $("#index").val();
         var size = getCookie("contract_size");
+        var school_id = $("#school_id").val();
         var phone = $("#phone_number").val();
         var keywords = $("#keyWords").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "#module=ajax/listMember&page=" + _index + "&size=" + size + "&phoneNumber=" + phone + "&keyWords=" + keywords + "&_t=" + new Date().getTime();
+            window.location.href = "#module=ajax/listMember&page=" + _index + "&size=" + size + "&school_id=" + school_id + "&phoneNumber=" + phone + "&keyWords=" + keywords + "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -206,12 +218,12 @@
     function nextPage(_page) {
         var page = parseInt(_page);
         var size = $("#size").val();
-        var schoolId = $("#s2_country").val();
+        var school_id = $("#school_id").val();
         var phone = $("#phone_number").val();
         var keywords = $("#keyWords").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1) || schoolId != '') {
-            window.location.href = "#module=ajax/listMember&page=" + page + "&size=" + size + "&schoolId=" + schoolId + "&phoneNumber=" + phone + "&keyWords=" + keywords + "&_t=" + new Date().getTime();
+            window.location.href = "#module=ajax/listMember&page=" + page + "&size=" + size + "&school_id=" + school_id + "&phoneNumber=" + phone + "&keyWords=" + keywords + "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

@@ -8,6 +8,7 @@ import com.liangxunwang.unimanager.mvc.vo.GoodsVO;
 import com.liangxunwang.unimanager.mvc.vo.PaopaoGoodsVO;
 import com.liangxunwang.unimanager.mvc.vo.SellerGoodsVO;
 import com.liangxunwang.unimanager.mvc.vo.SellerSchoolList;
+import com.liangxunwang.unimanager.query.GoodsTypeThreeQuery;
 import com.liangxunwang.unimanager.query.PaopaoGoodsQuery;
 import com.liangxunwang.unimanager.query.SellerGoodsQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -75,9 +76,11 @@ public class PaopaoGoodsController extends ControllerConstants {
     private UpdateService appPaopaoGoodsUpdateService;
     
     @RequestMapping("toAdd")
-    public String toAdd(ModelMap map, HttpSession session){
+    public String toAdd(GoodsTypeThreeQuery query,ModelMap map, HttpSession session){
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
-        List<GoodsType> list = (List<GoodsType>) goodsTypeListService.list("0");
+        List<GoodsType> list = (List<GoodsType>) goodsTypeListService.list(query);
+        query.setLx_goods_type_type("0");
+        query.setType_isuse("0");
         List<SellerSchoolList> schools = (List<SellerSchoolList>) sellerGoodsListService.list(admin.getEmpId());
         map.put("list", list);
         map.put("schools", schools);
@@ -275,13 +278,11 @@ public class PaopaoGoodsController extends ControllerConstants {
 
 
     @RequestMapping("toAddZhiying")
-    public String toAddZhiying(ModelMap map, HttpSession session){
+    public String toAddZhiying( GoodsTypeThreeQuery query, ModelMap map, HttpSession session){
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
-        List<GoodsType> list = (List<GoodsType>) goodsTypeListService.list("0");//商品类别
-//        List<SellerSchoolList> schools = (List<SellerSchoolList>) sellerGoodsListService.list(admin.getEmpId());
+        query.setLx_goods_type_type("0");//管理员用户只能查看商城分类
+        List<GoodsType> list = (List<GoodsType>) goodsTypeListService.list(query);//商品类别
         map.put("list", list);
-//        map.put("schools", schools);
-
         //查询我的商家
         List<SellerGoodsVO> listSh = (List<SellerGoodsVO>) mineSellerService.execute(admin.getEmpId());
         map.put("listSh", listSh);

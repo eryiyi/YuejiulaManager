@@ -40,6 +40,9 @@ public class MemberService implements ListService , UpdateService, ExecuteServic
             if (!StringUtil.isNullOrEmpty(query.getKeyWords())) {
                 map.put("keyWords", query.getKeyWords());
             }
+            if (!StringUtil.isNullOrEmpty(query.getSchool_id()) && query.getSchool_id() != null && !"null".equals(query.getSchool_id())) {
+                map.put("school_id", query.getSchool_id());
+            }
 
             List<MemberVO> list = memberDao.list(map);
             long count = memberDao.count(map);

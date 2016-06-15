@@ -30,7 +30,7 @@
 
 
     <select id="lists" resultMap="recordObj_vo">
-        SELECT sn.*,le.emp_name as empName,le.emp_cover as empCover,lee.emp_name as empNameJp,lee.emp_cover as empCoverJp ,sr.record_cont as recordTitle,sr.money as recordMoney
+        SELECT sn.*,le.emp_name as empName,le.emp_cover as empCover,lee.emp_name as empNameJp,lee.emp_cover as empCoverJp ,sr.record_cont as recordTitle
         from school_record_jingpai sn
         LEFT JOIN lx_emp le ON sn.record_emp_id=le.emp_id
         LEFT JOIN lx_emp lee ON sn.emp_id=lee.emp_id

@@ -10,6 +10,7 @@ import com.liangxunwang.unimanager.query.AdQuery;
 import com.liangxunwang.unimanager.query.RecordJpQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.Constants;
+import com.liangxunwang.unimanager.util.RelativeDateFormat;
 import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,7 @@ public class RecordJpService implements ListService,SaveService,ExecuteService {
                         recordJpVO.setEmpCoverJp(Constants.QINIU_URL + recordJpVO.getEmpCoverJp());
                     }
                 }
+                recordJpVO.setDateline(RelativeDateFormat.format(Long.parseLong(recordJpVO.getDateline())));
             }
         }
         return lists;

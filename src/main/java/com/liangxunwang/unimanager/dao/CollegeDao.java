@@ -35,4 +35,7 @@ public interface CollegeDao {
 
     void deleteById(String coid);
 
+    //查询所有学校
+
+
 }

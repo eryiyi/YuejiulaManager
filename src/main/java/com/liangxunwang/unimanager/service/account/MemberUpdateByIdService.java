@@ -25,6 +25,9 @@ public class MemberUpdateByIdService implements UpdateService{
     @Override
     public Object update(Object object) {
         Member member = (Member) object;
+        if(StringUtil.isNullOrEmpty(member.getEmpSign()) || "null".equals(member.getEmpSign())){
+            member.setEmpSign("老年大学我的家");
+        }
         memberDao.updateMemberById(member);
         return null;
     }

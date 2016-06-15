@@ -5,7 +5,7 @@
         <permission id="ADD_ROLE" name="添加角色"/>
     </group>
     <group id="EMPLOYEE_MANAGE" name="会员管理">
-        <permission id="LIST_EMPLOYEE" name="会员列表"/>
+        <permission id="LIST_EMPLOYEE" name="会员列表(管/承)"/>
     </group>
     <group id="CONTRACT_MANAGE" name="承包商管理">
         <permission id="CONTRACT_LIST" name="承包商列表"/>
@@ -64,10 +64,10 @@
         <permission id="MINE_MERCHANT" name="我的商家"/>
         <permission id="OPEN_MERCHANT" name="开通商家"/>
     </group>
-    <group id="VIEWPAGER_MANAGE" name="轮播管理">
-        <permission id="VIEWPAGER_ADD" name="添加轮播"/>
-        <permission id="VIEWPAGER_LIST" name="轮播列表"/>
-    </group>
+    <!--<group id="VIEWPAGER_MANAGE" name="轮播管理">-->
+        <!--<permission id="VIEWPAGER_ADD" name="添加轮播"/>-->
+        <!--<permission id="VIEWPAGER_LIST" name="轮播列表"/>-->
+    <!--</group>-->
     <group id="SYSTEM_MANAGE" name="系统管理">
         <permission id="MODIFY_PASS" name="修改密码"/>
         <permission id="MANAGER_INFO" name="信息维护"/>

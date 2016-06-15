@@ -1,13 +1,17 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
+import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.model.Notice;
 import com.liangxunwang.unimanager.model.tip.DataTip;
+import com.liangxunwang.unimanager.mvc.vo.ContractSchoolVO;
 import com.liangxunwang.unimanager.mvc.vo.MemberVO;
 import com.liangxunwang.unimanager.query.MemberQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
+import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.Page;
+import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -48,21 +53,49 @@ public class MemberController extends ControllerConstants {
     @Qualifier("hxMemberService")
     private UpdateService hxMemberUpdateService;
 
+
+    @Autowired
+    @Qualifier("contractSchoolService")
+    private ListService contractSchoolListService;
+
+
     @RequestMapping("/ajax/listMember")
-    public String listMember(ModelMap map, MemberQuery query, Page page){
-        query.setIndex(page.getPage()==0?1:page.getPage());
-        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
+    public String listMember(ModelMap map, MemberQuery query, Page page, HttpSession session){
+        Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
+        if("2".equals(admin.getType())){
+            //承包商
+            List<ContractSchoolVO> contractSchoolVOs = (List<ContractSchoolVO>) contractSchoolListService.list(admin.getEmpId());
+            for (ContractSchoolVO vo : contractSchoolVOs){
+                vo.setEndTime(DateUtil.getDate(vo.getEndTime(), "yyyy-MM-dd"));
+            }
+            if(contractSchoolVOs != null && contractSchoolVOs.size()>0 && StringUtil.isNullOrEmpty(query.getSchool_id())){
+                //有学校  并且没有选择学校
+                query.setSchool_id(contractSchoolVOs.get(0).getSchoolId());
+            }
+            map.put("contractSchoolVOs", contractSchoolVOs);
 
-        Object[] result = (Object[]) memberListService.list(query);
-        map.put("list", result[0]);
-        long count = (Long) result[1];
-        page.setCount(count);
-        page.setPageCount(calculatePageCount(query.getSize(), count));
-        map.addAttribute("page", page);
-        map.addAttribute("query", query);
-//        List<University> universityList = (List<University>) universityListService.list(null);
-//        map.put("schools", universityList);
+            query.setIndex(page.getPage()==0?1:page.getPage());
+            query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
 
+            Object[] result = (Object[]) memberListService.list(query);
+            map.put("list", result[0]);
+            long count = (Long) result[1];
+            page.setCount(count);
+            page.setPageCount(calculatePageCount(query.getSize(), count));
+            map.addAttribute("page", page);
+            map.addAttribute("query", query);
+        }else {
+            query.setIndex(page.getPage()==0?1:page.getPage());
+            query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
+
+            Object[] result = (Object[]) memberListService.list(query);
+            map.put("list", result[0]);
+            long count = (Long) result[1];
+            page.setCount(count);
+            page.setPageCount(calculatePageCount(query.getSize(), count));
+            map.addAttribute("page", page);
+            map.addAttribute("query", query);
+        }
         return "/member/listMember";
     }
 
@@ -171,6 +204,8 @@ public class MemberController extends ControllerConstants {
     public String toDetailEmp(String emp_mobile, ModelMap map){
         MemberVO member = (MemberVO) memberFindService.findById(emp_mobile);
         map.put("empVO", member);
+        //查询学校
+
         return "/member/detail";
     }
 
