@@ -307,7 +307,7 @@
     <!-- 广告 -->
     <div class="ad">
         <a href="http://www.liangxunwang.com/paopao/index.html" class="conta1">
-            <img src="upload/20150504/1430681974978.jpg" alt="下载泡泡客户端">
+            <img src="upload/20150504/1430681974978.jpg" alt="下载童心堂客户端">
         </a>
     </div>
     <!-- ADD IN 2015-12-17 BY KYLE -->
@@ -333,7 +333,7 @@
 </div>
 <!-- 悬浮下载按钮 -->
 <a href="http://www.liangxunwang.com/paopao/index.html">
-    <img class="download-button" src="/img/share_download.png" alt="下载泡泡手机客户端">
+    <img class="download-button" src="/img/share_download.png" alt="下载童心堂手机客户端">
 </a>
 </body>
 </html>

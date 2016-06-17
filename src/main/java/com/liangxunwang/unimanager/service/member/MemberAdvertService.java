@@ -61,7 +61,12 @@ public class MemberAdvertService implements ListService, FindService{
         if (adverts.size()>0) {
             return adverts.get(0);
         }else {
-            return advertDao.getBig("3").get(0);
+            List<Advert> list = advertDao.getBig("3");
+            if(list != null && list.size()>0){
+                return list.get(0);
+            }else {
+                return null;
+            }
         }
     }
 }

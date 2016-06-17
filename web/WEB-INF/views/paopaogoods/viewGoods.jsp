@@ -44,14 +44,13 @@
 
         <h3 class="address clearfix"><img src="/img/dizhi.png"><span>${vo.address}</span></h3>
 
-        <p class="notice">友情提示：本商城为您提供第三方保障，请勿线下交易，否则您的消费权益将无法保障！<br>
-            欢迎各位小主对本店服务提出宝贵的建议与意见，您的满意就是对我们最大的支持！</p>
+        <p class="notice"></p>
     </div>
     <div class="goods-detail">${vo.cont}</div>
     <div class="blank" style="height: 100px"><br></div>
 </div>
 <a href="http://www.liangxunwang.com/paopao/index.html">
-    <img class="download-button" src="/img/share_download.png" alt="下载泡泡手机客户端">
+    <img class="download-button" src="/img/share_download.png" alt="下载童心堂手机客户端">
 </a>
 </body>
 </html>

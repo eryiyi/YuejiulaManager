@@ -5,7 +5,6 @@
 <script type="text/javascript"
         src="http://webapi.amap.com/maps?v=1.3&key=6d8bfe3105c44dc4a54a930e322eaeec"></script>
 
-
 <div class="row">
     <div id="breadcrumb" class="col-xs-12">
         <a href="#" class="show-sidebar">
@@ -175,26 +174,20 @@
                         <label class="col-sm-2 control-label">*公司经纬度*</label>
 
                         <div class="col-sm-4">
-                            <input type="text" id="lat_company" placeholder="公司经度" class="form-control"
+                            <input type="text" id="lat_company" placeholder="公司经度" class="form-control" readonly="true"
                                    value="${info.lat_company}" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
-                            <input type="text" id="lng_company" placeholder="公司纬度" class="form-control"
+                            <input type="text" id="lng_company" placeholder="公司纬度" class="form-control"  readonly="true"
                                    value="${info.lng_company}" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         <label class="col-sm-2 control-label">*营业时间*</label>
-
                         <div class="col-sm-4">
-                            <input type="text" id="yingye_time_start" placeholder="开始营业时间：例如 早8点" class="form-control"
-                                   value="${info.yingye_time_start}" data-toggle="tooltip" data-placement="bottom"
-                                   title="Tooltip for name">
-                            <input type="text" id="yingye_time_end" placeholder="结束营业时间：例如 晚9点" class="form-control"
-                                   value="${info.yingye_time_end}" data-toggle="tooltip" data-placement="bottom"
-                                   title="Tooltip for name">
+                            早：<input type="text" id="yingye_time_start" value="${info.yingye_time_start}" class="form-control" placeholder="开始时间（24小时格式）： 只能填入数字，例如：8 "   data-toggle="tooltip" data-placement="bottom">
+                            晚：<input type="text" id="yingye_time_end" value="${info.yingye_time_end}" class="form-control" placeholder="结束时间（24小时格式）： 只能填入数字，例如：9" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
                         </div>
                     </div>
 
@@ -271,6 +264,13 @@
 
 </div>
 <script type="text/javascript">
+//    $(document).ready(function () {
+//        // Initialize datepicker
+//        $('#yingye_time_start').datepicker({setDate: new Date()});
+//        $('#yingye_time_end').datepicker({setDate: new Date()});
+//        WinMove();
+//    });
+
     function saveManagerInfo() {
         var infoId = $("#info_id").val();
         var realName = $("#real_name").val();
@@ -351,16 +351,26 @@
             alert("请选择店铺位置");
             return;
         }
-
+        var regInt = /^([1-9]\d*)$/;
         var yingye_time_start = $("#yingye_time_start").val();
         if (yingye_time_start.replace(/\s/g, '') == '') {
             alert("请选择开始营业时间");
             return;
+        }else{
+            if (!regInt.test(yingye_time_start)) {
+                alert("开始营业时间必须是整点，大于0！");
+                return;
+            }
         }
         var yingye_time_end = $("#yingye_time_end").val();
         if (yingye_time_end.replace(/\s/g, '') == '') {
             alert("请选择结束营业时间");
             return;
+        }else{
+            if (!regInt.test(yingye_time_end)) {
+                alert("结束营业时间必须是整点，大于0！");
+                return;
+            }
         }
         var shouhui = $("#shouhui").val();
         if (shouhui.replace(/\s/g, '') == '') {

@@ -32,6 +32,7 @@ public class AdObjService implements ListService,SaveService,DeleteService,Execu
             map.put("emp_id", query.getEmp_id());
         }
         List<AdObj> lists = leveldDao.lists(map);
+
         if(lists != null){
             for(AdObj adObj:lists){
                 if(!StringUtil.isNullOrEmpty(adObj.getMm_ad_pic())){
