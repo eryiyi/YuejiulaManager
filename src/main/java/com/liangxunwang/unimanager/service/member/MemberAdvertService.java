@@ -59,11 +59,27 @@ public class MemberAdvertService implements ListService, FindService{
     public Object findById(Object object) throws ServiceException {
         List<Advert> adverts = advertDao.getBig("1");
         if (adverts.size()>0) {
-            return adverts.get(0);
+            Advert advert = adverts.get(0);
+            if(advert != null){
+                if (advert.getAdPic().startsWith("upload")) {
+                    advert.setAdPic(Constants.URL + advert.getAdPic());
+                }else {
+                    advert.setAdPic(Constants.QINIU_URL + advert.getAdPic());
+                }
+            }
+            return advert;
         }else {
             List<Advert> list = advertDao.getBig("3");
             if(list != null && list.size()>0){
-                return list.get(0);
+                Advert advert = list.get(0);
+                if(advert != null){
+                    if (advert.getAdPic().startsWith("upload")) {
+                        advert.setAdPic(Constants.URL + advert.getAdPic());
+                    }else {
+                        advert.setAdPic(Constants.QINIU_URL + advert.getAdPic());
+                    }
+                }
+                return advert;
             }else {
                 return null;
             }

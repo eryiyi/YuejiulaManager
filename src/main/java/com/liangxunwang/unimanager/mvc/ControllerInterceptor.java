@@ -102,6 +102,10 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 "|(^/listRecordJps\\.do$)"+
                 "|(^/getSingleRecordJpById\\.do$)"+
 
+                "|(^/deleteDianpuFavour\\.do$)"+
+                "|(^/saveDianpuFavour\\.do$)"+
+                "|(^/appGetDianpuFavour\\.do$)"+
+
                 "|(^/getAllContract\\.do$)"+ "|(^/getTheme\\.do$)"+
                         "|(^/addPkComment\\.do$)"+
                         "|(^/addPkZanApp\\.do$)"+

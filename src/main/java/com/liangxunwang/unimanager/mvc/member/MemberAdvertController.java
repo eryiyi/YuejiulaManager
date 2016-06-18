@@ -34,7 +34,7 @@ public class MemberAdvertController extends ControllerConstants{
     public String bigAdvert(){
         try {
             Advert advert = (Advert) advertFindService.findById(null);
-            advert.setAdPic(Constants.URL+advert.getAdPic());
+
             DataTip tip = new DataTip();
             tip.setData(advert);
             return toJSONString(tip);
