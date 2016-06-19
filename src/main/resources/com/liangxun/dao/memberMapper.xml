@@ -286,6 +286,10 @@
         UPDATE lx_emp set is_fengqun=#{is_fengqun} WHERE emp_id=#{emp_id}
     </update>
 
+    <update id="updateCollegeById" parameterType="String">
+        UPDATE lx_emp set school_id=#{school_id} WHERE emp_id=#{emp_id}
+    </update>
+
     <update id="resetPass" parameterType="String">
         UPDATE lx_emp SET emp_pass=#{rePass} WHERE emp_id=#{empId}
     </update>
@@ -346,5 +350,7 @@
         left join college ls on le.school_id=ls.coid
         WHERE 1=1 AND  le.is_fengqun ='1'
     </select>
+
+
 
 </mapper>

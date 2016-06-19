@@ -170,4 +170,7 @@ public interface MemberDao {
     List<MemberVO> getFenghaos();
     //查询封群的
     List<MemberVO> getFengquns();
+
+    //更换学校
+    void updateCollegeById(@Param(value = "emp_id") String is_fengqun, @Param(value = "school_id") String emp_id);
 }

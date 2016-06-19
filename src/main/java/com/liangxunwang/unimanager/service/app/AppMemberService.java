@@ -5,6 +5,7 @@ import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.mvc.vo.EmpDianpu;
 import com.liangxunwang.unimanager.mvc.vo.MemberVO;
 import com.liangxunwang.unimanager.query.MemberQuery;
+import com.liangxunwang.unimanager.query.UpdateCollegeQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -20,7 +21,7 @@ import java.util.Map;
  * Created by zhl on 2015/1/31.
  */
 @Service("appMemberService")
-public class AppMemberService implements ListService{
+public class AppMemberService implements ListService,UpdateService{
     @Autowired
     @Qualifier("memberDao")
     private MemberDao memberDao;
@@ -64,4 +65,10 @@ public class AppMemberService implements ListService{
     }
 
 
+    @Override
+    public Object update(Object object) {
+        UpdateCollegeQuery query = (UpdateCollegeQuery) object;
+        memberDao.updateCollegeById(query.getEmp_id(), query.getSchool_id());
+        return null;
+    }
 }
