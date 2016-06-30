@@ -1,7 +1,9 @@
 package com.liangxunwang.unimanager.mvc.member;
 
+import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.model.SchoolRecordMood;
 import com.liangxunwang.unimanager.model.tip.DataTip;
+import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.ControllerConstants;
@@ -36,4 +38,22 @@ public class AppSchoolRecordMoodController extends ControllerConstants {
         }
     }
 
+
+
+    @Autowired
+    @Qualifier("appEmpExeByIdService")
+    private ExecuteService appEmpExeByIdService;
+    //查询会员学校的承包商的信息
+    @RequestMapping(value = "/getManagerCollegeByEmpId", produces = "text/plain; charset=UTF-8")
+    @ResponseBody
+    public String getManagerCollegeByEmpId(String school_id){
+        try {
+            Member member = (Member) appEmpExeByIdService.execute(school_id);
+            DataTip tip = new DataTip();
+            tip.setData(member);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
 }

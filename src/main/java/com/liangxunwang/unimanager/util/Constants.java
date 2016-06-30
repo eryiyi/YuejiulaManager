@@ -5,8 +5,8 @@ package com.liangxunwang.unimanager.util;
  */
 public class Constants {
         //服务器地址
-        public static final String URL = "http://120.27.41.21:8070/";
-//        public static final String URL = "http://192.168.0.224:8080/";
+//        public static final String URL = "http://120.27.41.21:8070/";
+        public static final String URL = "http://192.168.0.224:8080/";
 
         //七牛云存储
         public static final String QINIU_URL = "http://7xt74j.com1.z0.glb.clouddn.com/";

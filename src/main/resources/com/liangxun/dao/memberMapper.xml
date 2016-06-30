@@ -351,6 +351,11 @@
         WHERE 1=1 AND  le.is_fengqun ='1'
     </select>
 
-
+    <select id="findEmpByManagerEmpId" parameterType="String" resultMap="my_member">
+        SELECT lemp.*
+         FROM lx_emp lemp
+           left join contract_school ls on ls.emp_id=lemp.emp_id
+        WHERE ls.school_id=#{school_id}
+    </select>
 
 </mapper>

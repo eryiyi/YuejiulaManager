@@ -107,6 +107,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 "|(^/appGetDianpuFavour\\.do$)"+
 
                 "|(^/updateCollegeById\\.do$)"+
+                "|(^/getManagerCollegeByEmpId\\.do$)"+
 
                 "|(^/getAllContract\\.do$)"+ "|(^/getTheme\\.do$)"+
                         "|(^/addPkComment\\.do$)"+

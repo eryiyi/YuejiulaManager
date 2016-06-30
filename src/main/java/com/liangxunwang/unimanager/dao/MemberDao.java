@@ -26,6 +26,8 @@ public interface MemberDao {
 
     Member findById(String id);
 
+    Member findEmpByManagerEmpId(String school_id);
+
     Member findByCommentFplid(String fplId);
 
     MemberVO findInfoById(String empId);
