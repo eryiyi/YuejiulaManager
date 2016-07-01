@@ -66,22 +66,22 @@
                             <font color="red">*为了实现最佳的展现效果，图片最佳尺寸：1000（宽）*360（高）</font>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">链接</label>
+                    <%--<div class="form-group">--%>
+                        <%--<label class="col-sm-2 control-label">链接</label>--%>
 
-                        <div class="col-sm-4">
-                            <input type="text" id="mm_ad_url" class="form-control" placeholder="链接"
-                                   data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">广告语</label>
+                        <%--<div class="col-sm-4">--%>
+                            <%--<input type="text" id="mm_ad_url" class="form-control" placeholder="链接"--%>
+                                   <%--data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                        <%--<label class="col-sm-2 control-label">广告语</label>--%>
 
-                        <div class="col-sm-4">
-                            <input type="text" id="mm_ad_title" class="form-control" placeholder="广告语"
-                                   data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-                        </div>
-                    </div>
+                        <%--<div class="col-sm-4">--%>
+                            <%--<input type="text" id="mm_ad_title" class="form-control" placeholder="广告语"--%>
+                                   <%--data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">排序</label>
@@ -108,9 +108,9 @@
 
 <script type="text/javascript">
     function saveP() {
-        var mm_ad_url = $("#mm_ad_url").val();
+//        var mm_ad_url = $("#mm_ad_url").val();
         var mm_ad_num = $("#mm_ad_num").val();
-        var mm_ad_title = $("#mm_ad_title").val();
+//        var mm_ad_title = $("#mm_ad_title").val();
 
         var imagePath = $("img[name='imagePath']").attr("src");
 
@@ -119,20 +119,14 @@
             return;
         }
 
-        if (mm_ad_url.replace(/\s/g, '') == '') {
-            alert("请输入链接");
-            return;
-        }
-
-
         $.ajax({
             cache: true,
             type: "POST",
             url: "/adObj/addAd.do",
             data: {
                 "mm_ad_pic": imagePath,
-                "mm_ad_title": mm_ad_title,
-                "mm_ad_url": mm_ad_url,
+                "mm_ad_title": "",
+                "mm_ad_url": "",
                 "mm_ad_num": mm_ad_num
             },
             async: false,

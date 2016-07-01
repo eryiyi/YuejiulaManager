@@ -51,8 +51,8 @@
                     <thead>
                     <tr>
                         <th>广告图片</th>
-                        <th>广告链接</th>
-                        <th>广告语</th>
+                        <%--<th>广告链接</th>--%>
+                        <%--<th>广告语</th>--%>
                         <th>操作</th>
                         <th>操作</th>
                     </tr>
@@ -61,8 +61,8 @@
                     <c:forEach items="${list}" var="e" varStatus="st">
                         <tr>
                             <td>${e.mm_ad_pic}</td>
-                            <td>${e.mm_ad_url}</td>
-                            <td>${e.mm_ad_title}</td>
+                            <%--<td>${e.mm_ad_url}</td>--%>
+                            <%--<td>${e.mm_ad_title}</td>--%>
                             <td>
                                 <a class="btn btn-default btn-sm" href="javascript:void (0)"
                                    onclick="editRole('${e.mm_ad_id}')" role="button">编辑</a>

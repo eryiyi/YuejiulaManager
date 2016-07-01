@@ -52,7 +52,7 @@
                     <tr>
                         <th>平台名称</th>
                         <th>平台图标</th>
-                        <th>平台链接</th>
+                        <%--<th>平台链接</th>--%>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -61,11 +61,11 @@
                         <tr>
                             <td>${e.school_three_pingtai_name}</td>
                             <td><img src="${e.school_three_pingtai_pic}"></td>
-                            <td>${e.pingtai_url}</td>
+                            <%--<td>${e.pingtai_url}</td>--%>
                             <td>
-                                <button class="btn btn-info" type="button"
-                                        onclick="toUpdate('${e.emp_pingtai_mng_id}')">修改
-                                </button>
+                                <%--<button class="btn btn-info" type="button"--%>
+                                        <%--onclick="toUpdate('${e.emp_pingtai_mng_id}')">修改--%>
+                                <%--</button>--%>
                                 <button class="btn btn-primary" type="button"
                                         onclick="deleteUniversity('${e.emp_pingtai_mng_id}')">删除
                                 </button>
