@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.MsgAdDao">
+    <resultMap id="msgAdObj" type="com.liangxunwang.unimanager.model.MsgAd">
+        <id column="msg_ad_no" property="msg_ad_no"/>
+        <result column="msg_ad_title" property="msg_ad_title"/>
+        <result column="emp_id" property="emp_id"/>
+        <result column="school_id" property="school_id"/>
+        <result column="dateline" property="dateline"/>
+        <result column="schoolName" property="schoolName"/>
+    </resultMap>
+
+    <select id="lists" resultMap="msgAdObj">
+        SELECT sn.*, co.name as schoolName from manager_msg_ad sn
+        LEFT JOIN college co on sn.school_id=co.coid
+        WHERE 1=1
+        <if test="emp_id != null and emp_id != ''">
+            AND sn.emp_id = #{emp_id}
+        </if> <if test="school_id != null and school_id != ''">
+            AND sn.school_id = #{school_id}
+        </if>
+        ORDER BY sn.dateline DESC
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.MsgAd">
+        INSERT INTO manager_msg_ad(msg_ad_no, msg_ad_title, emp_id, school_id, dateline)
+        VALUES (#{msg_ad_no}, #{msg_ad_title}, #{emp_id}, #{school_id}, #{dateline})
+    </insert>
+
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM manager_msg_ad where msg_ad_no = #{msg_ad_no}
+    </delete>
+
+    <select id="findById" parameterType="String" resultMap="msgAdObj">
+        SELECT * FROM manager_msg_ad where msg_ad_no=#{msg_ad_no}
+    </select>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.MsgAd">
+        UPDATE manager_msg_ad SET msg_ad_title=#{msg_ad_title}
+         WHERE msg_ad_no=#{msg_ad_no}
+    </update>
+</mapper>

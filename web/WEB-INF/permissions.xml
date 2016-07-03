@@ -107,4 +107,7 @@
         <permission id="GET_FIND_WWW_LIST" name="网址列表"/>
         <permission id="ADD_FIND_WWW_ADD" name="添加网址"/>
     </group>
+    <group id="MAANGER_AD_MANAGER" name="承包商广告语">
+        <permission id="ADD_MAANGER_AD_LIST" name="承包商广告语"/>
+    </group>
 </permissions>

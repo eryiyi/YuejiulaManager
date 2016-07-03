@@ -562,6 +562,20 @@
                     </li>
                 </c:if>
 
+                <c:if test="${um:permission('ADD_MAANGER_AD_LIST', sessionScope.powers)}">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-picture-o"></i>
+                            <span class="hidden-xs">承包商广告语</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <c:if test="${um:permission('ADD_MAANGER_AD_LIST', sessionScope.powers)}">
+                                <li><a href="javascript:void(0);" onclick="toPage('/msgAdController/list','1')">承包商广告语</a></li>
+                            </c:if>
+                        </ul>
+                    </li>
+                </c:if>
+
             </ul>
         </div>
         <!--Start Content-->
