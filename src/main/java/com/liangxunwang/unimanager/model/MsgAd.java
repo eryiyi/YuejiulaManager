@@ -9,7 +9,17 @@ public class MsgAd {
     private String emp_id;
     private String school_id;
     private String dateline;
+
     private String schoolName;
+    private String numberEmp;
+
+    public String getNumberEmp() {
+        return numberEmp;
+    }
+
+    public void setNumberEmp(String numberEmp) {
+        this.numberEmp = numberEmp;
+    }
 
     public String getSchoolName() {
         return schoolName;

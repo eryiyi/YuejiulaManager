@@ -92,6 +92,10 @@ public class RecordController extends ControllerConstants{
         }catch (ServiceException e){
             if (e.getMessage().equals("HAS_PUBLISH")){
                 return toJSONString(ERROR_2);
+            }else if(e.getMessage().equals("HAS_FENGHAO")){
+                return toJSONString(ERROR_3);//封好了
+            }else if(e.getMessage().equals("NO_EMP")){
+                return toJSONString(ERROR_4);//没有该会员
             }else {
                 return toJSONString(ERROR_1);
             }

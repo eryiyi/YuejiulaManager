@@ -3,6 +3,7 @@ package com.liangxunwang.unimanager.service.member;
 import com.liangxunwang.unimanager.dao.*;
 import com.liangxunwang.unimanager.model.Advert;
 import com.liangxunwang.unimanager.model.ContractSchool;
+import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.model.Record;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
@@ -47,6 +48,9 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
     @Autowired
     @Qualifier("relateDao")
     private RelateDao relateDao;
+    @Autowired
+    @Qualifier("memberDao")
+    private MemberDao memberDao;
 
     @Override
     public Object list(Object object) throws ServiceException {
@@ -151,19 +155,30 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
                 recordDao.save(record);
             }
         }else {
-            record.setDateLine(System.currentTimeMillis() + "");
-            record.setRecordIsDel("0");
-            record.setRecordIsUse("0");
-            if ("2".equals(record.getRecordType())){//说明发表的是视频
-                if (!record.getRecordVideo().startsWith("upload")) {
-                    String picName = getVideoPic(record.getRecordVideo());
-                    record.setRecordPicUrl(picName);
-//                    record.setRecordPicUrl("upload/video_fail.jpg");
+            //判断是否被封号
+            Member member = memberDao.findById(record.getRecordEmpId());
+            if(member != null){
+                if("1".equals(member.getIs_fenghao())){
+                    //说明被封号了
+                    throw new ServiceException("HAS_FENGHAO");
                 }
+                record.setDateLine(System.currentTimeMillis() + "");
+                record.setRecordIsDel("0");
+                record.setRecordIsUse("0");
+                if ("2".equals(record.getRecordType())){//说明发表的是视频
+                    if (!record.getRecordVideo().startsWith("upload")) {
+                        String picName = getVideoPic(record.getRecordVideo());
+                        record.setRecordPicUrl(picName);
+//                    record.setRecordPicUrl("upload/video_fail.jpg");
+                    }
+                }
+                recordDao.save(record);
+                //更新积分分数
+                countDao.update(record.getRecordEmpId(), record.getRecordType());
+            }else {
+                throw new ServiceException("NO_EMP");
             }
-            recordDao.save(record);
-            //更新积分分数
-            countDao.update(record.getRecordEmpId(), record.getRecordType());
+
         }
         return null;
     }

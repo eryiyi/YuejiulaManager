@@ -186,8 +186,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">*营业时间*</label>
                         <div class="col-sm-4">
-                            早：<input type="text" id="yingye_time_start" value="${info.yingye_time_start}" class="form-control" placeholder="开始时间（24小时格式）： 只能填入数字，例如：8 "   data-toggle="tooltip" data-placement="bottom">
-                            晚：<input type="text" id="yingye_time_end" value="${info.yingye_time_end}" class="form-control" placeholder="结束时间（24小时格式）： 只能填入数字，例如：9" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+                            早：<input type="time" id="yingye_time_start" value="${info.yingye_time_start}" class="form-control" placeholder="开始时间（24小时格式）"   data-toggle="tooltip" data-placement="bottom">
+                            晚：<input type="time" id="yingye_time_end" value="${info.yingye_time_end}" class="form-control" placeholder="结束时间（24小时格式）" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
                         </div>
                     </div>
 
@@ -356,21 +356,11 @@
         if (yingye_time_start.replace(/\s/g, '') == '') {
             alert("请选择开始营业时间");
             return;
-        }else{
-            if (!regInt.test(yingye_time_start)) {
-                alert("开始营业时间必须是整点，大于0！");
-                return;
-            }
         }
         var yingye_time_end = $("#yingye_time_end").val();
         if (yingye_time_end.replace(/\s/g, '') == '') {
             alert("请选择结束营业时间");
             return;
-        }else{
-            if (!regInt.test(yingye_time_end)) {
-                alert("结束营业时间必须是整点，大于0！");
-                return;
-            }
         }
         var shouhui = $("#shouhui").val();
         if (shouhui.replace(/\s/g, '') == '') {
