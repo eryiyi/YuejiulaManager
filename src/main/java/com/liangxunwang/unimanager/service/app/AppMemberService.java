@@ -48,6 +48,12 @@ public class AppMemberService implements ListService,UpdateService{
         if (!StringUtil.isNullOrEmpty(query.getEmp_id())) {
             map.put("emp_id", query.getEmp_id());
         }
+        if (!StringUtil.isNullOrEmpty(query.getLat())) {
+            map.put("lat", query.getLat());
+        }
+        if (!StringUtil.isNullOrEmpty(query.getLng())) {
+            map.put("lng", query.getLng());
+        }
         List<EmpDianpu> list = memberDao.listDianPu(map);
         for(EmpDianpu empDianpu : list){
             if(!StringUtil.isNullOrEmpty(empDianpu.getEmpCover())){

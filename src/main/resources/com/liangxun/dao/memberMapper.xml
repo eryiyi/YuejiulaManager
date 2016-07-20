@@ -125,16 +125,21 @@
 --         LEFT JOIN seller_ad lad ON lad.emp_id = le.emp_id
 --         LEFT JOIN emp_pingtai_mng lthree ON lthree.emp_id = le.emp_id
 --         LEFT JOIN school_three_pingtai lthr ON lthree.school_three_pingtai_id = lthr.school_three_pingtai_id
-        WHERE le.emp_typeid = '2' and lmanager.lat_company != null
-        <if test="school_id != null and school_id != ''">
-            and le.school_id=#{school_id}
-        </if>
+        WHERE le.emp_typeid = '2' and lmanager.lat_company != ''
+        <!--<if test="school_id != null and school_id != ''">-->
+            <!--and le.school_id=#{school_id}-->
+        <!--</if>-->
         <if test="emp_id != null and emp_id != ''">
             and le.emp_id=#{emp_id}
         </if>
         <if test="keyWords != null and keyWords != ''">
             AND le.emp_name like CONCAT('%',#{keyWords},'%')
         </if>
+
+        <if test="lat != null and lat != '' and lng != null and lng != ''">
+            order by ACOS(SIN((#{lat} * 3.1415) / 180 ) *SIN((lat_company * 3.1415) / 180 ) +COS((#{lat} * 3.1415) / 180 ) * COS((lat_company * 3.1415) / 180 ) *COS((#{lng}* 3.1415) / 180 - (lng_company * 3.1415) / 180 ) ) * 6380 asc
+        </if>
+
         limit #{index},#{size}
     </select>
 
