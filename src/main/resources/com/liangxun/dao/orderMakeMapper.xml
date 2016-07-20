@@ -100,40 +100,69 @@
         VALUES (#{out_trade_no},#{trade_prices},#{pay_status},#{dateline})
     </insert>
 
-    <insert id="saveList" parameterType="java.util.List">
+    <insert id="saveList" parameterType="com.liangxunwang.unimanager.model.Order">
         insert into PAOPAO_SHOPPING_ORDER (order_no, goods_id, emp_id,seller_emp_id, PROVINCEID, CITYID, AREAID, address_id, goods_count, payable_amount,create_time, pay_time, send_time, accept_time,completion_time, status, pay_status, distribution_type, distribution_status,postscript,point,trade_no,invoice,invoice_title,taxes,out_trade_no,schoolId,isAccount)
-        <foreach close=")" collection="list" item="item" index="index" open="(" separator="union all">
-            select
-            #{item.order_no,jdbcType=VARCHAR},
-            #{item.goods_id,jdbcType=VARCHAR},
-            #{item.emp_id,jdbcType=VARCHAR},
-            #{item.seller_emp_id,jdbcType=VARCHAR},
-            #{item.provinceId,jdbcType=VARCHAR},
-            #{item.cityId,jdbcType=VARCHAR},
-            #{item.areaId,jdbcType=VARCHAR},
-            #{item.address_id,jdbcType=VARCHAR},
-            #{item.goods_count,jdbcType=VARCHAR},
-            #{item.payable_amount,jdbcType=VARCHAR},
-            #{item.create_time,jdbcType=VARCHAR},
-            #{item.pay_time,jdbcType=VARCHAR},
-            #{item.send_time,jdbcType=VARCHAR},
-            #{item.accept_time,jdbcType=VARCHAR},
-            #{item.completion_time,jdbcType=VARCHAR},
-            #{item.status,jdbcType=VARCHAR},
-            #{item.pay_status,jdbcType=VARCHAR},
-            #{item.distribution_type,jdbcType=VARCHAR},
-            #{item.distribution_status,jdbcType=VARCHAR},
-            #{item.postscript,jdbcType=VARCHAR},
-            #{item.point,jdbcType=VARCHAR},
-            #{item.trade_no,jdbcType=VARCHAR},
-            #{item.invoice,jdbcType=VARCHAR},
-            #{item.invoice_title,jdbcType=VARCHAR},
-            #{item.taxes,jdbcType=VARCHAR},
-            #{item.out_trade_no,jdbcType=VARCHAR},
-            #{item.schoolId,jdbcType=VARCHAR},
-            #{item.isAccount,jdbcType=VARCHAR}
-            from dual
-        </foreach>
+        VALUES(#{order_no,jdbcType=VARCHAR},
+            #{goods_id,jdbcType=VARCHAR},
+            #{emp_id,jdbcType=VARCHAR},
+            #{seller_emp_id,jdbcType=VARCHAR},
+            #{provinceId,jdbcType=VARCHAR},
+            #{cityId,jdbcType=VARCHAR},
+            #{areaId,jdbcType=VARCHAR},
+            #{address_id,jdbcType=VARCHAR},
+            #{goods_count,jdbcType=VARCHAR},
+            #{payable_amount,jdbcType=VARCHAR},
+            #{create_time,jdbcType=VARCHAR},
+            #{pay_time,jdbcType=VARCHAR},
+            #{send_time,jdbcType=VARCHAR},
+            #{accept_time,jdbcType=VARCHAR},
+            #{completion_time,jdbcType=VARCHAR},
+            #{status,jdbcType=VARCHAR},
+            #{pay_status,jdbcType=VARCHAR},
+            #{distribution_type,jdbcType=VARCHAR},
+            #{distribution_status,jdbcType=VARCHAR},
+            #{postscript,jdbcType=VARCHAR},
+            #{point,jdbcType=VARCHAR},
+            #{trade_no,jdbcType=VARCHAR},
+            #{invoice,jdbcType=VARCHAR},
+            #{invoice_title,jdbcType=VARCHAR},
+            #{taxes,jdbcType=VARCHAR},
+            #{out_trade_no,jdbcType=VARCHAR},
+            #{schoolId,jdbcType=VARCHAR},
+            #{isAccount,jdbcType=VARCHAR})
+
+        <!--<foreach close=")" collection="list" item="item" index="index" open="(" separator="union all">-->
+            <!--select-->
+            <!--#{item.order_no,jdbcType=VARCHAR},-->
+            <!--#{item.goods_id,jdbcType=VARCHAR},-->
+            <!--#{item.emp_id,jdbcType=VARCHAR},-->
+            <!--#{item.seller_emp_id,jdbcType=VARCHAR},-->
+            <!--#{item.provinceId,jdbcType=VARCHAR},-->
+            <!--#{item.cityId,jdbcType=VARCHAR},-->
+            <!--#{item.areaId,jdbcType=VARCHAR},-->
+            <!--#{item.address_id,jdbcType=VARCHAR},-->
+            <!--#{item.goods_count,jdbcType=VARCHAR},-->
+            <!--#{item.payable_amount,jdbcType=VARCHAR},-->
+            <!--#{item.create_time,jdbcType=VARCHAR},-->
+            <!--#{item.pay_time,jdbcType=VARCHAR},-->
+            <!--#{item.send_time,jdbcType=VARCHAR},-->
+            <!--#{item.accept_time,jdbcType=VARCHAR},-->
+            <!--#{item.completion_time,jdbcType=VARCHAR},-->
+            <!--#{item.status,jdbcType=VARCHAR},-->
+            <!--#{item.pay_status,jdbcType=VARCHAR},-->
+            <!--#{item.distribution_type,jdbcType=VARCHAR},-->
+            <!--#{item.distribution_status,jdbcType=VARCHAR},-->
+            <!--#{item.postscript,jdbcType=VARCHAR},-->
+            <!--#{item.point,jdbcType=VARCHAR},-->
+            <!--#{item.trade_no,jdbcType=VARCHAR},-->
+            <!--#{item.invoice,jdbcType=VARCHAR},-->
+            <!--#{item.invoice_title,jdbcType=VARCHAR},-->
+            <!--#{item.taxes,jdbcType=VARCHAR},-->
+            <!--#{item.out_trade_no,jdbcType=VARCHAR},-->
+            <!--#{item.schoolId,jdbcType=VARCHAR},-->
+            <!--#{item.isAccount,jdbcType=VARCHAR}-->
+            <!--from dual-->
+        <!--</foreach>-->
     </insert>
 
     <update id="updateOrderById" parameterType="com.liangxunwang.unimanager.model.Order">

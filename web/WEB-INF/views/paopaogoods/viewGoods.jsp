@@ -42,7 +42,7 @@
     <div class="seller-info">
         <h3 class="name clearfix"><img src="/img/lianxiren.png"><span>${vo.person}</span></h3>
 
-        <h3 class="address clearfix"><img src="/img/dizhi.png"><span>${vo.address}</span></h3>
+        <%--<h3 class="address clearfix"><img src="/img/dizhi.png"><span>${vo.address}</span></h3>--%>
 
         <p class="notice"></p>
     </div>

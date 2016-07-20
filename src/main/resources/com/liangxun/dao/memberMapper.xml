@@ -24,7 +24,6 @@
 
         <result column="is_fenghao" property="is_fenghao"/>
         <result column="is_fengqun" property="is_fengqun"/>
-
     </resultMap>
 
     <resultMap id="my_member_vo" type="com.liangxunwang.unimanager.mvc.vo.MemberVO">
@@ -126,7 +125,7 @@
 --         LEFT JOIN seller_ad lad ON lad.emp_id = le.emp_id
 --         LEFT JOIN emp_pingtai_mng lthree ON lthree.emp_id = le.emp_id
 --         LEFT JOIN school_three_pingtai lthr ON lthree.school_three_pingtai_id = lthr.school_three_pingtai_id
-        WHERE le.emp_typeid = '2'
+        WHERE le.emp_typeid = '2' and lmanager.lat_company != null
         <if test="school_id != null and school_id != ''">
             and le.school_id=#{school_id}
         </if>
@@ -206,6 +205,10 @@
 
     <select id="memberCount" resultType="long">
         SELECT COUNT(emp_id) FROM lx_emp
+    </select>
+
+    <select id="memberCountById" resultType="long">
+        SELECT COUNT(emp_id) FROM lx_emp  WHERE school_id= #{school_id}
     </select>
 
     <select id="closeMemberCount" resultType="long">

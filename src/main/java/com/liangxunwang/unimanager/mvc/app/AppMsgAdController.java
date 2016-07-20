@@ -29,8 +29,8 @@ public class AppMsgAdController extends ControllerConstants{
     private ListService levelService;
 
     @Autowired
-    @Qualifier("indexService")
-    private ListService indexListService;
+    @Qualifier("appMsgAdService")
+    private ListService appMsgAdService;
 
     //查询列表
     @RequestMapping(value = "/listsMsgAds", produces = "text/plain; charset=UTF-8")
@@ -42,9 +42,8 @@ public class AppMsgAdController extends ControllerConstants{
         if(list != null && list.size()>0){
             msgAd  = list.get(0);
             //查询用户数量
-            List<Object> listAll = (List<Object>) indexListService.list(null);
             //总共会员数量
-            Long memberCount = (Long) listAll.get(0);
+            Long memberCount = (Long) appMsgAdService.list(query);
             msgAd.setNumberEmp(String.valueOf(memberCount));
         }
         DataTip tip = new DataTip();

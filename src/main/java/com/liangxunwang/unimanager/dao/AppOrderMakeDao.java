@@ -21,7 +21,7 @@ public interface AppOrderMakeDao {
     /**
      * 保存订单
      */
-    void saveList(List<Order> list);
+    void saveList(Order order);
     /**
      * �保存订单 交易号  和支付宝关联��
      * */

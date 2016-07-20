@@ -175,4 +175,10 @@ public interface MemberDao {
 
     //更换学校
     void updateCollegeById(@Param(value = "emp_id") String is_fengqun, @Param(value = "school_id") String emp_id);
+
+    /**
+     * 注册会员数量
+     * @return
+     */
+    long memberCountById(String schoolId);
 }

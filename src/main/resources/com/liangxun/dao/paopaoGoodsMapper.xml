@@ -74,7 +74,7 @@
         WHERE pg.goods_is_use='0' AND le.is_use='0'
         AND pg.goods_is_del='0'
         <if test="typeId != null and typeId != ''">
-            AND pg.goods_type_id=#{typeId}
+            AND pg.goods_type_id=#{typeId} AND  pg.is_zhiying='0'
         </if>
         <if test="cont !=null and cont !=''">
             AND (pg.goods_name like CONCAT('%',#{cont},'%') OR pg.GOODS_CONT like CONCAT('%',#{cont},'%') )
@@ -85,6 +85,13 @@
         <if test="manager_id != null and manager_id != ''">
             AND pg.manager_id=#{manager_id}
         </if>
+        <!--<if test="schoolIds != null and schoolIds != ''">-->
+            <!--AND pg.goods_school_id IN-->
+            <!--<foreach collection="schoolIds" item="item" open="(" separator="," close=")">-->
+                <!--#{item}-->
+            <!--</foreach>-->
+        <!--</if>-->
+
         <if test="schoolIds != null and schoolIds != ''">
             AND pg.goods_school_id IN
             <foreach collection="schoolIds" item="item" open="(" separator="," close=")">

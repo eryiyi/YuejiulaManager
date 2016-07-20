@@ -101,7 +101,10 @@ public class AppOrderMakeService implements SaveService,UpdateService,ListServic
             }
         }
         //保存订单
-        appOrderMakeSaveDao.saveList(lists);
+        for(Order order:lists){
+            appOrderMakeSaveDao.saveList(order);
+        }
+
         //商品数量要减去已购买的数量
         for(Order order:lists){
             order.getGoods_count();//订单数量

@@ -118,15 +118,15 @@
                                    title="Tooltip for name">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">宝贝地址</label>
+                    <%--<div class="form-group">--%>
+                        <%--<label class="col-sm-2 control-label">宝贝地址</label>--%>
 
-                        <div class="col-sm-4">
-                            <input type="text" id="goods_address" value="${goods.address}" class="form-control"
-                                   placeholder="宝贝地址" data-toggle="tooltip" data-placement="bottom"
-                                   title="Tooltip for name">
-                        </div>
-                    </div>
+                        <%--<div class="col-sm-4">--%>
+                            <%--<input type="text" id="goods_address" value="${goods.address}" class="form-control"--%>
+                                   <%--placeholder="宝贝地址" data-toggle="tooltip" data-placement="bottom"--%>
+                                   <%--title="Tooltip for name">--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">联系人</label>
 
@@ -211,7 +211,7 @@
         var type = $("#goods_type").val();
         var sellerPrice = $("#goods_seller_price").val();
         var marketPrice = $("#goods_market_price").val();
-        var address = $("#goods_address").val();
+//        var address = $("#goods_address").val();
         var person = $("#goods_person").val();
         var tel = $("#goods_tel").val();
         var qq = $("#goods_qq").val();
@@ -249,10 +249,10 @@
                 return;
             }
         }
-        if (address.replace(/\s/g, '') == '') {
-            alert("地址不能为空");
-            return;
-        }
+//        if (address.replace(/\s/g, '') == '') {
+//            alert("地址不能为空");
+//            return;
+//        }
         if (person.replace(/\s/g, '') == '') {
             alert("联系人不能为空");
             return;
@@ -292,7 +292,7 @@
                 "cover": imagePath,
                 "sellPrice": sellerPrice,
                 "marketPrice": marketPrice,
-                "address": address,
+                "address": "",
                 "person": person,
                 "tel": tel,
                 "qq": qq,

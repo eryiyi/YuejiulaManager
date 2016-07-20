@@ -78,6 +78,7 @@ public class PaopaoGoodsController extends ControllerConstants {
     @RequestMapping("toAdd")
     public String toAdd(GoodsTypeThreeQuery query,ModelMap map, HttpSession session){
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
+        query.setLx_goods_type_type("0");
         List<GoodsType> list = (List<GoodsType>) goodsTypeListService.list(query);
         query.setLx_goods_type_type("0");
         query.setType_isuse("0");

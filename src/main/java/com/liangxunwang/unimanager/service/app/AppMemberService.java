@@ -50,16 +50,20 @@ public class AppMemberService implements ListService,UpdateService{
         }
         List<EmpDianpu> list = memberDao.listDianPu(map);
         for(EmpDianpu empDianpu : list){
-            if (empDianpu.getEmpCover().startsWith("upload")) {
-                empDianpu.setEmpCover(Constants.URL + empDianpu.getEmpCover());
-            }else {
-                empDianpu.setEmpCover(Constants.QINIU_URL + empDianpu.getEmpCover());
+            if(!StringUtil.isNullOrEmpty(empDianpu.getEmpCover())){
+                if (empDianpu.getEmpCover().startsWith("upload")) {
+                    empDianpu.setEmpCover(Constants.URL + empDianpu.getEmpCover());
+                }else {
+                    empDianpu.setEmpCover(Constants.QINIU_URL + empDianpu.getEmpCover());
+                }
             }
-            if (empDianpu.getCompany_pic().startsWith("upload")) {
-                empDianpu.setCompany_pic(Constants.URL + empDianpu.getCompany_pic());
-            }else {
-                empDianpu.setCompany_pic(Constants.QINIU_URL + empDianpu.getCompany_pic());
-            }
+               if(!StringUtil.isNullOrEmpty(empDianpu.getCompany_pic())){
+                   if (empDianpu.getCompany_pic().startsWith("upload")) {
+                       empDianpu.setCompany_pic(Constants.URL + empDianpu.getCompany_pic());
+                   }else {
+                       empDianpu.setCompany_pic(Constants.QINIU_URL + empDianpu.getCompany_pic());
+                   }
+               }
         }
         return list;
     }

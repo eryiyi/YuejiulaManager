@@ -5,7 +5,7 @@ package com.liangxunwang.unimanager.util;
  */
 public class Constants {
         //服务器地址
-//        public static final String URL = "http://120.27.41.21:8070/";
+//        public static final String URL = "http://120.27.108.66:8081/";
         public static final String URL = "http://192.168.0.224:8080/";
 
         //七牛云存储
@@ -14,8 +14,8 @@ public class Constants {
         public static final String FILE_PATH = "D://recordfile";
 
         //百度推送
-        public static final String API_KEY = "9rc4UmyvXfVgniywpipcbxYW";
-        public static final String SECRET_KEY = "hDbXD0tV5SDgUs6zHQG7DnD456bjUCLY";
+        public static final String API_KEY = "ncthb8SBWQXKh80vGeGfkcHT";
+        public static final String SECRET_KEY = "8PZUr37HZrvynvXeu1k6R1IyBtfraQRh";
         public static final String IOS_API_KEY = "";
         public static final String IOS_SECRET_KEY = "";
 
