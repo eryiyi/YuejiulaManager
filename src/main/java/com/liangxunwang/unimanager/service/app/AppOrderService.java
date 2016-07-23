@@ -21,21 +21,14 @@ import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.service.UpdateService;
 import com.liangxunwang.unimanager.util.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
 
 /**
  * Created by Administrator on 2015/8/15.

@@ -5,7 +5,6 @@ import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.service.FindService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

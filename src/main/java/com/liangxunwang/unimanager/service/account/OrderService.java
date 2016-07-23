@@ -1,6 +1,9 @@
 package com.liangxunwang.unimanager.service.account;
 
-import com.liangxunwang.unimanager.dao.*;
+import com.liangxunwang.unimanager.dao.AdminDao;
+import com.liangxunwang.unimanager.dao.ManagerInfoDao;
+import com.liangxunwang.unimanager.dao.OrderDao;
+import com.liangxunwang.unimanager.dao.RateDao;
 import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.ManagerInfo;
 import com.liangxunwang.unimanager.model.Rate;

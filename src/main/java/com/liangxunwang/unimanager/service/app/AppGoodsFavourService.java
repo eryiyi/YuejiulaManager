@@ -1,14 +1,13 @@
 package com.liangxunwang.unimanager.service.app;
 
 import com.liangxunwang.unimanager.dao.AppGoodsFavourDao;
-import com.liangxunwang.unimanager.dao.GoodsDao;
-import com.liangxunwang.unimanager.model.Goods;
 import com.liangxunwang.unimanager.model.GoodsFavour;
 import com.liangxunwang.unimanager.mvc.vo.GoodsFavourVO;
-import com.liangxunwang.unimanager.mvc.vo.GoodsVO;
 import com.liangxunwang.unimanager.query.FavoursQuery;
-import com.liangxunwang.unimanager.query.GoodsQuery;
-import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.service.DeleteService;
+import com.liangxunwang.unimanager.service.ListService;
+import com.liangxunwang.unimanager.service.SaveService;
+import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.RelativeDateFormat;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -17,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.ListView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

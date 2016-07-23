@@ -1,12 +1,9 @@
 package com.liangxunwang.unimanager.mvc.app;
 
-import com.liangxunwang.unimanager.model.Goods;
 import com.liangxunwang.unimanager.model.GoodsFavour;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.GoodsFavourVO;
-import com.liangxunwang.unimanager.mvc.vo.GoodsVO;
 import com.liangxunwang.unimanager.query.FavoursQuery;
-import com.liangxunwang.unimanager.query.GoodsQuery;
 import com.liangxunwang.unimanager.service.DeleteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.SaveService;

@@ -3,7 +3,6 @@ package com.liangxunwang.unimanager.dao;
 import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.mvc.vo.EmpDianpu;
 import com.liangxunwang.unimanager.mvc.vo.MemberVO;
-import com.liangxunwang.unimanager.query.MemberQuery;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

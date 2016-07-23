@@ -1,13 +1,10 @@
 package com.liangxunwang.unimanager.dao;
 
-import com.liangxunwang.unimanager.model.GoodsFavour;
 import com.liangxunwang.unimanager.model.ShoppingAddress;
-import com.liangxunwang.unimanager.mvc.vo.GoodsFavourVO;
 import com.liangxunwang.unimanager.mvc.vo.ShoppingAddressVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2015/8/11.

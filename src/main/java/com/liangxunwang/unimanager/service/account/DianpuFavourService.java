@@ -1,12 +1,8 @@
 package com.liangxunwang.unimanager.service.account;
 
-import com.liangxunwang.unimanager.dao.AdDao;
 import com.liangxunwang.unimanager.dao.DianpuFavourDao;
-import com.liangxunwang.unimanager.model.AdObj;
 import com.liangxunwang.unimanager.model.DianPuFavour;
-import com.liangxunwang.unimanager.model.GoodsFavour;
 import com.liangxunwang.unimanager.mvc.vo.DianpuFavourVO;
-import com.liangxunwang.unimanager.query.AdQuery;
 import com.liangxunwang.unimanager.query.DianpuFavourQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.Constants;

@@ -2,15 +2,12 @@ package com.liangxunwang.unimanager.mvc.member;
 
 import com.liangxunwang.unimanager.model.PartTime;
 import com.liangxunwang.unimanager.model.tip.DataTip;
-import com.liangxunwang.unimanager.mvc.vo.GoodsVO;
 import com.liangxunwang.unimanager.mvc.vo.PartTimeVO;
 import com.liangxunwang.unimanager.query.PartTimeQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import com.liangxunwang.unimanager.util.RelativeDateFormat;
-import com.liangxunwang.unimanager.util.StringUtil;
-import org.apache.ibatis.annotations.Param;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

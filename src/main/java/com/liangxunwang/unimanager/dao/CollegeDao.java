@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.College;
 import com.liangxunwang.unimanager.mvc.vo.SchoolVO;
-import com.liangxunwang.unimanager.mvc.vo.VideosVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

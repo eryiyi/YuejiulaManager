@@ -1,7 +1,6 @@
 package com.liangxunwang.unimanager.mvc.app;
 
 import com.liangxunwang.unimanager.model.Area;
-import com.liangxunwang.unimanager.model.City;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;

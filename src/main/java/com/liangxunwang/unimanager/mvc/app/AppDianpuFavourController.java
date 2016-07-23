@@ -1,8 +1,6 @@
 package com.liangxunwang.unimanager.mvc.app;
 
-import com.liangxunwang.unimanager.model.Area;
 import com.liangxunwang.unimanager.model.DianPuFavour;
-import com.liangxunwang.unimanager.model.GoodsFavour;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.DianpuFavourVO;
 import com.liangxunwang.unimanager.query.DianpuFavourQuery;
@@ -11,7 +9,6 @@ import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.ControllerConstants;
-import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

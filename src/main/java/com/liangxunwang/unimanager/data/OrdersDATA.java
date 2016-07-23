@@ -1,12 +1,11 @@
 package com.liangxunwang.unimanager.data;
 
 import com.liangxunwang.unimanager.model.Order;
-import com.liangxunwang.unimanager.model.SellerGoods;
 
 import java.util.List;
 
 /**
- * ÉÌÆ·¶©µ¥¼¯ºÏ
+ * ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public class OrdersDATA {
     private List<Order> list;

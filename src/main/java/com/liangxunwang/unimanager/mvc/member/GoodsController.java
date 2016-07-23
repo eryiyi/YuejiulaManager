@@ -4,10 +4,8 @@ import com.liangxunwang.unimanager.model.Goods;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.GoodsVO;
 import com.liangxunwang.unimanager.mvc.vo.PaopaoGoodsVO;
-import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.GoodsQuery;
 import com.liangxunwang.unimanager.service.*;
-import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

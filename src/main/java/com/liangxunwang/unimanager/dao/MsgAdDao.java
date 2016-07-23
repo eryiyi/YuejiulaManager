@@ -1,6 +1,5 @@
 package com.liangxunwang.unimanager.dao;
 
-import com.liangxunwang.unimanager.model.AdObj;
 import com.liangxunwang.unimanager.model.MsgAd;
 import org.springframework.stereotype.Repository;
 

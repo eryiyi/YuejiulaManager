@@ -1,6 +1,5 @@
 package com.liangxunwang.unimanager.dao;
 
-import com.liangxunwang.unimanager.model.SchoolThreeTingtai;
 import com.liangxunwang.unimanager.model.SchoolThreeTingtaiBd;
 import com.liangxunwang.unimanager.mvc.vo.SchoolThreePtBdVO;
 import org.springframework.stereotype.Repository;

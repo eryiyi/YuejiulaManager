@@ -1,7 +1,6 @@
 package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.GoodsType;
-import com.liangxunwang.unimanager.service.ListService;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

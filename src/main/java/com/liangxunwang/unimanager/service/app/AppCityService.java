@@ -1,7 +1,6 @@
 package com.liangxunwang.unimanager.service.app;
 
 import com.liangxunwang.unimanager.dao.AppCityDao;
-import com.liangxunwang.unimanager.dao.ProvinceDao;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;

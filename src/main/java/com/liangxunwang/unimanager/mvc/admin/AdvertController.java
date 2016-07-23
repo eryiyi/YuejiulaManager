@@ -1,6 +1,9 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
-import com.liangxunwang.unimanager.model.*;
+import com.liangxunwang.unimanager.model.Admin;
+import com.liangxunwang.unimanager.model.Advert;
+import com.liangxunwang.unimanager.model.College;
+import com.liangxunwang.unimanager.model.Province;
 import com.liangxunwang.unimanager.mvc.vo.ContractSchoolVO;
 import com.liangxunwang.unimanager.query.AdvertQuery;
 import com.liangxunwang.unimanager.query.CollegeQuery;

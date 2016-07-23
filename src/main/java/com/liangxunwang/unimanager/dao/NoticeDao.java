@@ -1,7 +1,6 @@
 package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.Notice;
-import com.liangxunwang.unimanager.mvc.vo.NoticeVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

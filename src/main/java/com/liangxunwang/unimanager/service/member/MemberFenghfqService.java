@@ -1,25 +1,11 @@
 package com.liangxunwang.unimanager.service.member;
 
-import com.liangxunwang.unimanager.baidu.channel.auth.ChannelKeyPair;
-import com.liangxunwang.unimanager.baidu.channel.client.BaiduChannelClient;
-import com.liangxunwang.unimanager.baidu.channel.exception.ChannelClientException;
-import com.liangxunwang.unimanager.baidu.channel.exception.ChannelServerException;
-import com.liangxunwang.unimanager.baidu.channel.model.PushUnicastMessageRequest;
-import com.liangxunwang.unimanager.baidu.channel.model.PushUnicastMessageResponse;
-import com.liangxunwang.unimanager.baidu.log.YunLogEvent;
-import com.liangxunwang.unimanager.baidu.log.YunLogHandler;
-import com.liangxunwang.unimanager.dao.*;
-import com.liangxunwang.unimanager.model.ManagerEmp;
-import com.liangxunwang.unimanager.model.ManagerLog;
-import com.liangxunwang.unimanager.model.Member;
-import com.liangxunwang.unimanager.mvc.vo.ManagerEmpVO;
+import com.liangxunwang.unimanager.dao.MemberDao;
 import com.liangxunwang.unimanager.mvc.vo.MemberVO;
 import com.liangxunwang.unimanager.query.FenghaofengqunQuery;
 import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.service.UpdateService;
-import com.liangxunwang.unimanager.util.*;
+import com.liangxunwang.unimanager.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

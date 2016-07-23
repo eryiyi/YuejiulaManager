@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
 
 /**
  * Created by zhl on 2015/2/2.

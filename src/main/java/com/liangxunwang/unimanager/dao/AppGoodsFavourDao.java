@@ -1,7 +1,5 @@
 package com.liangxunwang.unimanager.dao;
 
-import com.liangxunwang.unimanager.model.Advert;
-import com.liangxunwang.unimanager.model.Goods;
 import com.liangxunwang.unimanager.model.GoodsFavour;
 import com.liangxunwang.unimanager.mvc.vo.GoodsFavourVO;
 import org.springframework.stereotype.Repository;
@@ -15,22 +13,22 @@ import java.util.Map;
 @Repository("appGoodsFavourDao")
 public interface AppGoodsFavourDao {
     /**
-     * ±£´æÉÌÆ·ÊÕ²Ø
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½Õ²ï¿½
      * @param goodsFavour
      */
     void save(GoodsFavour goodsFavour);
     /**
-     * ²éÑ¯Ä³¸öÉÌÆ·ÊÇ·ñÒÑ¾­ÊÕ²Ø¹ý
+     * ï¿½ï¿½Ñ¯Ä³ï¿½ï¿½ï¿½ï¿½Æ·ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½Õ²Ø¹ï¿½
      * */
     GoodsFavour isMineFavour(Map<String, Object> map);
 
     /**
-     * ²éÑ¯ÊÕ²ØÁÐ±í
+     * ï¿½ï¿½Ñ¯ï¿½Õ²ï¿½ï¿½Ð±ï¿½
      * */
     List<GoodsFavourVO> findList(Map<String, Object> map);
 
     /**
-     * ¸ù¾ÝÊÕ²ØUUIDÉ¾³ýÊÕ²Ø
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Õ²ï¿½UUIDÉ¾ï¿½ï¿½ï¿½Õ²ï¿½
      * */
     void deleteFavourById(String favourId);
  }

@@ -1,7 +1,6 @@
 package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.Area;
-import com.liangxunwang.unimanager.model.City;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

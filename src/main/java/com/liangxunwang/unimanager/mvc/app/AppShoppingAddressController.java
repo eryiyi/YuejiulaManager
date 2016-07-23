@@ -1,15 +1,10 @@
 package com.liangxunwang.unimanager.mvc.app;
 
-import com.liangxunwang.unimanager.model.GoodsFavour;
 import com.liangxunwang.unimanager.model.ShoppingAddress;
 import com.liangxunwang.unimanager.model.tip.DataTip;
-import com.liangxunwang.unimanager.mvc.vo.GoodsFavourVO;
 import com.liangxunwang.unimanager.mvc.vo.ShoppingAddressVO;
-import com.liangxunwang.unimanager.query.FavoursQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
-import com.liangxunwang.unimanager.util.Page;
-import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

@@ -2,12 +2,8 @@ package com.liangxunwang.unimanager.service.member;
 
 import com.liangxunwang.unimanager.dao.SchoolRecordMoodDao;
 import com.liangxunwang.unimanager.model.SchoolRecordMood;
-import com.liangxunwang.unimanager.query.SchoolRecordMoodQuery;
-import com.liangxunwang.unimanager.service.DeleteService;
 import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

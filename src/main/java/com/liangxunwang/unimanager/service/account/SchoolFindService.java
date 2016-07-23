@@ -1,15 +1,10 @@
 package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.SchoolFindDao;
-import com.liangxunwang.unimanager.dao.VideosDao;
 import com.liangxunwang.unimanager.model.SchoolFind;
-import com.liangxunwang.unimanager.model.Videos;
-import com.liangxunwang.unimanager.mvc.vo.VideosVO;
 import com.liangxunwang.unimanager.query.VideosQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.Constants;
-import com.liangxunwang.unimanager.util.RelativeDateFormat;
-import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

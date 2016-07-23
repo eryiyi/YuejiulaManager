@@ -6,7 +6,6 @@ import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.Role;
 import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

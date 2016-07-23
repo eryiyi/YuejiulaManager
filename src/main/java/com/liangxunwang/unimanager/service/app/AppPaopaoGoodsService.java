@@ -1,13 +1,11 @@
 package com.liangxunwang.unimanager.service.app;
 
 import com.liangxunwang.unimanager.dao.PaopaoGoodsDao;
-import com.liangxunwang.unimanager.model.PaopaoGoods;
 import com.liangxunwang.unimanager.service.UpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**

@@ -1,6 +1,5 @@
 package com.liangxunwang.unimanager.dao;
 
-import com.liangxunwang.unimanager.model.AdObj;
 import com.liangxunwang.unimanager.model.RecordJp;
 import com.liangxunwang.unimanager.mvc.vo.RecordJpVO;
 import org.springframework.stereotype.Repository;

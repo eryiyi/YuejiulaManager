@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.Member;
-import com.liangxunwang.unimanager.model.Notice;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.ContractSchoolVO;
 import com.liangxunwang.unimanager.mvc.vo.MemberVO;
@@ -15,7 +14,6 @@ import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

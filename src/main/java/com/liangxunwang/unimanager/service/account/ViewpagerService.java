@@ -1,9 +1,7 @@
 package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.ContractSchoolDao;
-import com.liangxunwang.unimanager.dao.SellerGoodsDao;
 import com.liangxunwang.unimanager.dao.ViewpagerDao;
-import com.liangxunwang.unimanager.model.SellerGoods;
 import com.liangxunwang.unimanager.model.Viewpager;
 import com.liangxunwang.unimanager.mvc.vo.ContractSchoolVO;
 import com.liangxunwang.unimanager.mvc.vo.ViewpagerVO;
@@ -19,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.View;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

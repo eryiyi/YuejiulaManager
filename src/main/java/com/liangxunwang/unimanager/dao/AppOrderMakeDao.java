@@ -1,11 +1,7 @@
 package com.liangxunwang.unimanager.dao;
 
-import com.liangxunwang.unimanager.model.GoodsFavour;
 import com.liangxunwang.unimanager.model.Order;
-import com.liangxunwang.unimanager.model.SellerGoods;
 import com.liangxunwang.unimanager.model.ShoppingTrade;
-import com.liangxunwang.unimanager.mvc.vo.GoodsFavourVO;
-import com.liangxunwang.unimanager.mvc.vo.GoodsVO;
 import com.liangxunwang.unimanager.mvc.vo.OrderVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

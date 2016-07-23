@@ -1,6 +1,5 @@
 package com.liangxunwang.unimanager.mvc.vo;
 
-import com.liangxunwang.unimanager.model.SchoolThreeTingtai;
 import com.liangxunwang.unimanager.model.SchoolThreeTingtaiBd;
 
 /**

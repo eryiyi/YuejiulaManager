@@ -4,11 +4,9 @@ import com.liangxunwang.unimanager.dao.CollegeDao;
 import com.liangxunwang.unimanager.dao.ContractSchoolDao;
 import com.liangxunwang.unimanager.dao.PaopaoGoodsDao;
 import com.liangxunwang.unimanager.dao.SellerGoodsDao;
-import com.liangxunwang.unimanager.model.College;
 import com.liangxunwang.unimanager.model.ContractSchool;
 import com.liangxunwang.unimanager.model.PaopaoGoods;
 import com.liangxunwang.unimanager.model.SellerGoods;
-import com.liangxunwang.unimanager.mvc.vo.GoodsVO;
 import com.liangxunwang.unimanager.mvc.vo.PaopaoGoodsVO;
 import com.liangxunwang.unimanager.query.PaopaoGoodsQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -91,6 +89,9 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
             }
             if (!StringUtil.isNullOrEmpty(query.getCont())) {
                 map.put("cont", query.getCont());
+            }
+            if (!StringUtil.isNullOrEmpty(query.getEmpId())) {
+                map.put("empId", query.getEmpId());
             }
             //查询的是我的商品
             if (!StringUtil.isNullOrEmpty(query.getIsMine()) && query.getIsMine().equals("1")) {

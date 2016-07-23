@@ -6,7 +6,6 @@ import com.liangxunwang.unimanager.service.DeleteService;
 import com.liangxunwang.unimanager.service.FindService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.ControllerConstants;
-import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

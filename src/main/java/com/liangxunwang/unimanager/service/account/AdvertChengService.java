@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.AdvertDao;
 import com.liangxunwang.unimanager.model.Advert;
-import com.liangxunwang.unimanager.model.GoodsType;
 import com.liangxunwang.unimanager.mvc.vo.AdvertVO;
 import com.liangxunwang.unimanager.query.AdvertQuery;
 import com.liangxunwang.unimanager.service.*;

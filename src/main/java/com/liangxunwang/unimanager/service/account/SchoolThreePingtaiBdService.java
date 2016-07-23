@@ -1,8 +1,6 @@
 package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.SchoolThreeTingtaiBdDao;
-import com.liangxunwang.unimanager.dao.SchoolThreeTingtaiDao;
-import com.liangxunwang.unimanager.model.SchoolThreeTingtai;
 import com.liangxunwang.unimanager.model.SchoolThreeTingtaiBd;
 import com.liangxunwang.unimanager.mvc.vo.SchoolThreePtBdVO;
 import com.liangxunwang.unimanager.query.SchoolThreePtBdQuery;

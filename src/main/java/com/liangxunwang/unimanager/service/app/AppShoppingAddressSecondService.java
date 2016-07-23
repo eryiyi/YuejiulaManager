@@ -1,11 +1,9 @@
 package com.liangxunwang.unimanager.service.app;
 
 import com.liangxunwang.unimanager.dao.AppShoppingAddressDao;
-import com.liangxunwang.unimanager.model.ShoppingAddress;
 import com.liangxunwang.unimanager.mvc.vo.ShoppingAddressVO;
 import com.liangxunwang.unimanager.service.FindService;
 import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.service.UpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

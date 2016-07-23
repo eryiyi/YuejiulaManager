@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.AdObj;
 import com.liangxunwang.unimanager.model.Admin;
-import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.query.AdQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;

@@ -4,7 +4,6 @@ import com.liangxunwang.unimanager.dao.MemberDao;
 import com.liangxunwang.unimanager.dao.SmsDao;
 import com.liangxunwang.unimanager.huanxin.comm.httpclient.utils.ChatUtils;
 import com.liangxunwang.unimanager.model.Member;
-import com.liangxunwang.unimanager.model.Sms;
 import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.service.UpdateService;

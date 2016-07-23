@@ -1,12 +1,9 @@
 package com.liangxunwang.unimanager.mvc.member;
 
-import com.liangxunwang.unimanager.dao.WorkDao;
 import com.liangxunwang.unimanager.model.PKWork;
 import com.liangxunwang.unimanager.model.tip.DataTip;
-import com.liangxunwang.unimanager.mvc.vo.CommentVO;
 import com.liangxunwang.unimanager.mvc.vo.PkCommentVO;
 import com.liangxunwang.unimanager.mvc.vo.PkWorkVO;
-import com.liangxunwang.unimanager.query.CommentQuery;
 import com.liangxunwang.unimanager.query.PkCommentQuery;
 import com.liangxunwang.unimanager.query.PkWorkQuery;
 import com.liangxunwang.unimanager.service.*;

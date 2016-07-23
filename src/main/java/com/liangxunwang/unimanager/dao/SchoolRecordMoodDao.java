@@ -1,9 +1,6 @@
 package com.liangxunwang.unimanager.dao;
 
-import com.liangxunwang.unimanager.model.College;
 import com.liangxunwang.unimanager.model.SchoolRecordMood;
-import com.liangxunwang.unimanager.mvc.vo.SchoolVO;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

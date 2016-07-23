@@ -11,7 +11,6 @@ import com.liangxunwang.unimanager.query.CollegeQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
-import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

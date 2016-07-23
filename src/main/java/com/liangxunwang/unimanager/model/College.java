@@ -1,7 +1,5 @@
 package com.liangxunwang.unimanager.model;
 
-import java.util.Comparator;
-
 /**
  * Created by zhl on 2015/2/25.
  */

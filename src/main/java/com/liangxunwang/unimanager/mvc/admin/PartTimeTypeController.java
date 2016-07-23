@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.PartTimeType;
 import com.liangxunwang.unimanager.model.tip.DataTip;
-import com.liangxunwang.unimanager.mvc.vo.PartTimeVO;
 import com.liangxunwang.unimanager.query.PartTimeQuery;
 import com.liangxunwang.unimanager.service.DeleteService;
 import com.liangxunwang.unimanager.service.ListService;

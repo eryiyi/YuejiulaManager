@@ -1,8 +1,6 @@
 package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.SchoolFind;
-import com.liangxunwang.unimanager.model.Videos;
-import com.liangxunwang.unimanager.mvc.vo.VideosVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

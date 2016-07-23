@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.mvc;
 
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.util.ControllerConstants;
-import com.liangxunwang.unimanager.util.ImageCompressUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,15 +1,10 @@
 package com.liangxunwang.unimanager.service.app;
 
 import com.liangxunwang.unimanager.dao.ManagerInfoDao;
-import com.liangxunwang.unimanager.model.ManagerInfo;
 import com.liangxunwang.unimanager.mvc.vo.ManagerInfoVo;
 import com.liangxunwang.unimanager.service.FindService;
-import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.service.UpdateService;
 import com.liangxunwang.unimanager.util.Constants;
-import com.liangxunwang.unimanager.util.StringUtil;
-import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

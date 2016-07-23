@@ -1,6 +1,5 @@
 package com.liangxunwang.unimanager.mvc.vo;
 
-import com.liangxunwang.unimanager.model.Record;
 import com.liangxunwang.unimanager.model.Videos;
 
 /**

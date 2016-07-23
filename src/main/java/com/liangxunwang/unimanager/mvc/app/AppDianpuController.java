@@ -1,16 +1,13 @@
 package com.liangxunwang.unimanager.mvc.app;
 
 import com.liangxunwang.unimanager.model.AdObj;
-import com.liangxunwang.unimanager.model.Province;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.EmpDianpu;
 import com.liangxunwang.unimanager.mvc.vo.ManagerInfoVo;
-import com.liangxunwang.unimanager.mvc.vo.MemberVO;
 import com.liangxunwang.unimanager.mvc.vo.SchoolThreePtBdVO;
 import com.liangxunwang.unimanager.query.AdQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
 import com.liangxunwang.unimanager.query.SchoolThreePtBdQuery;
-import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.FindService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;

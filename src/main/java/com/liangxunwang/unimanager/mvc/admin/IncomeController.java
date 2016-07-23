@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.query.IncomeQuery;
-import com.liangxunwang.unimanager.query.OrdersQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
@@ -13,8 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by liuzh on 2015/8/22.

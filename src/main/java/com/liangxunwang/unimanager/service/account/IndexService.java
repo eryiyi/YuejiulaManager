@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.AdvertDao;
 import com.liangxunwang.unimanager.dao.MemberDao;
-import com.liangxunwang.unimanager.model.Advert;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by zhl on 2015/3/3.

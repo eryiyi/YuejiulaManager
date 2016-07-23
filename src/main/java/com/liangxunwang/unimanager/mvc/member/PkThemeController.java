@@ -2,9 +2,7 @@ package com.liangxunwang.unimanager.mvc.member;
 
 import com.liangxunwang.unimanager.model.PKTheme;
 import com.liangxunwang.unimanager.model.tip.DataTip;
-import com.liangxunwang.unimanager.mvc.vo.CommentVO;
 import com.liangxunwang.unimanager.mvc.vo.PkPrizeVO;
-import com.liangxunwang.unimanager.mvc.vo.ZanVO;
 import com.liangxunwang.unimanager.query.PkPrizeQuery;
 import com.liangxunwang.unimanager.query.PkThemeQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -16,7 +14,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;

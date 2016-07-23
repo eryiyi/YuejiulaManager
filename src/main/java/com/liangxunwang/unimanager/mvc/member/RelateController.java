@@ -1,6 +1,5 @@
 package com.liangxunwang.unimanager.mvc.member;
 
-import com.liangxunwang.unimanager.model.Relate;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.RelateVO;
 import com.liangxunwang.unimanager.query.RelateQuery;

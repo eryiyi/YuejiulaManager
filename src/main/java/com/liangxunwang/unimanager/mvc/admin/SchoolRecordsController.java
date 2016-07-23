@@ -1,18 +1,12 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
-import com.liangxunwang.unimanager.model.Admin;
-import com.liangxunwang.unimanager.model.GoodsType;
-import com.liangxunwang.unimanager.model.PaopaoGoods;
-import com.liangxunwang.unimanager.model.tip.DataTip;
-import com.liangxunwang.unimanager.mvc.vo.PaopaoGoodsVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
-import com.liangxunwang.unimanager.mvc.vo.SellerSchoolList;
-import com.liangxunwang.unimanager.query.PaopaoGoodsQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
-import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.service.DeleteService;
+import com.liangxunwang.unimanager.service.FindService;
+import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
-import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -21,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/schoolRecordsController")

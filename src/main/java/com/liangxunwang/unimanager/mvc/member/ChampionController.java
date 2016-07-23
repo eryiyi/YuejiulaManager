@@ -3,8 +3,10 @@ package com.liangxunwang.unimanager.mvc.member;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.ChampionVO;
 import com.liangxunwang.unimanager.query.ChampionQuery;
-import com.liangxunwang.unimanager.service.*;
-import com.liangxunwang.unimanager.service.member.ChampionService;
+import com.liangxunwang.unimanager.service.ExecuteService;
+import com.liangxunwang.unimanager.service.ListService;
+import com.liangxunwang.unimanager.service.ServiceException;
+import com.liangxunwang.unimanager.service.UpdateService;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.Observable;
 
 /**
  * Created by zhl on 2015/4/9.

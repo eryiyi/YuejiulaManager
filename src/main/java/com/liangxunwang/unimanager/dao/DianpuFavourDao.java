@@ -1,6 +1,5 @@
 package com.liangxunwang.unimanager.dao;
 
-import com.liangxunwang.unimanager.model.AdObj;
 import com.liangxunwang.unimanager.model.DianPuFavour;
 import com.liangxunwang.unimanager.mvc.vo.DianpuFavourVO;
 import org.springframework.stereotype.Repository;

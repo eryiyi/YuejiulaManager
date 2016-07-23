@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.mvc.member;
 
 import com.liangxunwang.unimanager.model.PKComment;
 import com.liangxunwang.unimanager.model.tip.DataTip;
-import com.liangxunwang.unimanager.mvc.vo.CommentVO;
 import com.liangxunwang.unimanager.mvc.vo.PkCommentVO;
 import com.liangxunwang.unimanager.query.PkCommentQuery;
 import com.liangxunwang.unimanager.service.ListService;

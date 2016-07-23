@@ -2,11 +2,8 @@ package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.CollegeDao;
 import com.liangxunwang.unimanager.model.College;
-import com.liangxunwang.unimanager.mvc.vo.SchoolVO;
-import com.liangxunwang.unimanager.query.CollegeQuery;
-import com.liangxunwang.unimanager.service.*;
-import com.liangxunwang.unimanager.util.StringUtil;
-import com.liangxunwang.unimanager.util.UUIDFactory;
+import com.liangxunwang.unimanager.service.ListService;
+import com.liangxunwang.unimanager.service.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

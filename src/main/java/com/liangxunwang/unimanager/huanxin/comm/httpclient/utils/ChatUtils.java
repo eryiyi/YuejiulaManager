@@ -2,8 +2,8 @@ package com.liangxunwang.unimanager.huanxin.comm.httpclient.utils;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.liangxunwang.unimanager.huanxin.comm.HxConstants;
 import com.liangxunwang.unimanager.huanxin.comm.HTTPMethod;
+import com.liangxunwang.unimanager.huanxin.comm.HxConstants;
 import com.liangxunwang.unimanager.huanxin.comm.httpclient.vo.EndPoints;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

@@ -7,7 +7,6 @@ import com.liangxunwang.unimanager.mvc.vo.MemberVO;
 import com.liangxunwang.unimanager.query.CollegeQuery;
 import com.liangxunwang.unimanager.query.ContractQuery;
 import com.liangxunwang.unimanager.service.*;
-import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.Page;

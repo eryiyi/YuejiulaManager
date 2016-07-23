@@ -1,10 +1,7 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.SchoolFind;
-import com.liangxunwang.unimanager.model.Videos;
 import com.liangxunwang.unimanager.model.tip.DataTip;
-import com.liangxunwang.unimanager.mvc.vo.CommentVO;
-import com.liangxunwang.unimanager.query.CommentQuery;
 import com.liangxunwang.unimanager.query.VideosQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;

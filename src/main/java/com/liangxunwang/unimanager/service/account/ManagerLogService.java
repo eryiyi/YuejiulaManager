@@ -1,13 +1,10 @@
 package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.ManagerLogDao;
-import com.liangxunwang.unimanager.model.ManagerLog;
 import com.liangxunwang.unimanager.mvc.vo.ManagerLogVO;
 import com.liangxunwang.unimanager.query.ManagerLogQuery;
 import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
