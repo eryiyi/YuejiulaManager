@@ -1,8 +1,10 @@
 package com.liangxunwang.unimanager.mvc.member;
 
+import com.liangxunwang.unimanager.model.FhFqObj;
 import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.ContractSchoolVO;
+import com.liangxunwang.unimanager.mvc.vo.FhFqObjVO;
 import com.liangxunwang.unimanager.mvc.vo.MemberVO;
 import com.liangxunwang.unimanager.query.FenghaofengqunQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
@@ -136,13 +138,9 @@ public class MemberInfoController extends ControllerConstants {
 
     @RequestMapping("/updateEmpIsFenghao")
     @ResponseBody
-    public String updateEmpIsFenghao(@RequestParam String is_fenghao, @RequestParam String emp_id){
-        if (StringUtil.isNullOrEmpty(is_fenghao) || StringUtil.isNullOrEmpty(emp_id)){
-            return toJSONString(ERROR_1);
-        }
-        Object[] params = new Object[]{is_fenghao, emp_id , "1"};//1封号 2封群
+    public String updateEmpIsFenghao(FhFqObj fhFqObj){
         try {
-            memberUpdateFenghaoService.update(params);
+            memberUpdateFenghaoService.update(fhFqObj);
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);
@@ -150,13 +148,9 @@ public class MemberInfoController extends ControllerConstants {
     }
     @RequestMapping("/updateEmpIsFengQun")
     @ResponseBody
-    public String updateEmpIsFengQun(@RequestParam String is_fengqun, @RequestParam String emp_id){
-        if (StringUtil.isNullOrEmpty(is_fengqun) || StringUtil.isNullOrEmpty(emp_id)){
-            return toJSONString(ERROR_1);
-        }
-        Object[] params = new Object[]{is_fengqun, emp_id , "2"};//1封号 2封群
+    public String updateEmpIsFengQun(FhFqObj fhFqObj){
         try {
-            memberUpdateFenghaoService.update(params);
+            memberUpdateFenghaoService.update(fhFqObj);
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);
@@ -174,7 +168,7 @@ public class MemberInfoController extends ControllerConstants {
     @ResponseBody
     public String getFenghaofengquns(FenghaofengqunQuery query){
         try {
-            List<MemberVO> list = (List<MemberVO>) memberFenghfqService.list(query);
+            List<FhFqObjVO> list = (List<FhFqObjVO>) memberFenghfqService.list(query);
             DataTip tip = new DataTip();
             tip.setData(list);
             return toJSONString(tip);

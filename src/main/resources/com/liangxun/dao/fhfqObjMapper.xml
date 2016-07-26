@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.FqfhObjDao">
+    <resultMap id="fhfqobj" type="com.liangxunwang.unimanager.model.FhFqObj">
+        <id column="fhfq_id" property="fhfq_id"/>
+        <result column="emp_id" property="emp_id"/>
+        <result column="emp_id_m" property="emp_id_m"/>
+        <result column="school_id" property="school_id"/>
+        <result column="istype" property="istype"/>
+    </resultMap>
+
+    <resultMap id="fhFqObjVO" type="com.liangxunwang.unimanager.mvc.vo.FhFqObjVO">
+        <id column="fhfq_id" property="fhfq_id"/>
+        <result column="emp_id" property="emp_id"/>
+        <result column="emp_id_m" property="emp_id_m"/>
+        <result column="school_id" property="school_id"/>
+        <result column="istype" property="istype"/>
+
+        <result column="emp_name" property="emp_name"/>
+        <result column="emp_cover" property="emp_cover"/>
+        <result column="emp_mobile" property="emp_mobile"/>
+    </resultMap>
+
+    <select id="lists" resultMap="fhFqObjVO">
+        SELECT sn.*,le.emp_name as emp_name ,le.emp_cover as emp_cover ,le.emp_mobile as emp_mobile from school_fhfq sn
+        LEFT JOIN lx_emp le ON sn.emp_id = le.emp_id
+        WHERE 1=1
+        <if test="emp_id != null and emp_id != ''">
+            AND sn.emp_id = #{emp_id}
+        </if>
+        <if test="emp_id_m != null and emp_id_m != ''">
+            AND sn.emp_id_m = #{emp_id_m}
+        </if>
+        <if test="school_id != null and school_id != ''">
+            AND sn.school_id = #{school_id}
+        </if>
+        <if test="istype != null and istype != ''">
+            AND sn.istype = #{istype}
+        </if>
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.FhFqObj">
+        INSERT INTO school_fhfq(fhfq_id, emp_id, emp_id_m, school_id, istype)
+        VALUES (#{fhfq_id}, #{emp_id}, #{emp_id_m}, #{school_id}, #{istype})
+    </insert>
+
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM school_fhfq where fhfq_id = #{fhfq_id}
+    </delete>
+
+    <delete id="deleteByEmpid"  parameterType="com.liangxunwang.unimanager.model.FhFqObj">
+        DELETE FROM school_fhfq where emp_id = #{emp_id} AND emp_id_m = #{emp_id_m}  AND istype = #{istype}
+    </delete>
+
+    <select id="findById" parameterType="String" resultMap="fhfqobj">
+        SELECT * FROM school_fhfq where fhfq_id=#{fhfq_id}
+    </select>
+
+</mapper>

@@ -4,11 +4,18 @@ package com.liangxunwang.unimanager.query;
  * Created by zhl on 2015/2/2.
  */
 public class FenghaofengqunQuery {
-
     private String emp_id;
+    private String emp_id_m;
     private String schoolds;
-    private String type;
+    private String istype;
 
+    public String getEmp_id_m() {
+        return emp_id_m;
+    }
+
+    public void setEmp_id_m(String emp_id_m) {
+        this.emp_id_m = emp_id_m;
+    }
 
     public String getEmp_id() {
         return emp_id;
@@ -26,11 +33,11 @@ public class FenghaofengqunQuery {
         this.schoolds = schoolds;
     }
 
-    public String getType() {
-        return type;
+    public String getIstype() {
+        return istype;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setIstype(String istype) {
+        this.istype = istype;
     }
 }
