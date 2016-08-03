@@ -1,11 +1,14 @@
 package com.liangxunwang.unimanager.mvc.member;
 
+import com.liangxunwang.unimanager.model.DailiObj;
 import com.liangxunwang.unimanager.model.FhFqObj;
 import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.ContractSchoolVO;
+import com.liangxunwang.unimanager.mvc.vo.DailiObjVO;
 import com.liangxunwang.unimanager.mvc.vo.FhFqObjVO;
 import com.liangxunwang.unimanager.mvc.vo.MemberVO;
+import com.liangxunwang.unimanager.query.DailiObjQuery;
 import com.liangxunwang.unimanager.query.FenghaofengqunQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -178,6 +181,77 @@ public class MemberInfoController extends ControllerConstants {
     }
 
 
+    @RequestMapping(value = "/listsMineFhFq", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String listsMineFhFq(FenghaofengqunQuery query){
+        try {
+            List<FhFqObjVO> list = (List<FhFqObjVO>) memberFenghfqService.list(query);
+            DataTip tip = new DataTip();
+            tip.setData(list);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
 
+
+
+    @Autowired
+    @Qualifier("dailiObjObjService")
+    private SaveService dailiObjObjService;
+
+    @RequestMapping("/saveDaili")
+    @ResponseBody
+    public String saveDaili(DailiObj dailiObj){
+        try {
+            dailiObjObjService.save(dailiObj);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            String emsg = e.getMessage();
+            if (emsg.equals("adIsTooMuch")){
+                return toJSONString(ERROR_2);
+            }else{
+                return toJSONString(ERROR_1);
+            }
+        }
+    }
+
+
+    @Autowired
+    @Qualifier("dailiObjObjService")
+    private ListService dailiObjObjServiceLst;
+
+    @RequestMapping(value = "/listDaili", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String listDaili(DailiObjQuery query){
+        try {
+            List<DailiObjVO> list = (List<DailiObjVO>) dailiObjObjServiceLst.list(query);
+            DataTip tip = new DataTip();
+            tip.setData(list);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
+    @Autowired
+    @Qualifier("dailiObjObjService")
+    private DeleteService dailiObjObjServiceDel;
+
+    @RequestMapping("/deleDaili")
+    @ResponseBody
+    public String deleDaili(DailiObj dailiObj){
+        try {
+            dailiObjObjServiceDel.delete(dailiObj);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            String emsg = e.getMessage();
+            if (emsg.equals("adIsTooMuch")){
+                return toJSONString(ERROR_2);
+            }else{
+                return toJSONString(ERROR_1);
+            }
+        }
+    }
 
 }

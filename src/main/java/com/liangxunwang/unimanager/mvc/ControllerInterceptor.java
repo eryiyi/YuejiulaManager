@@ -110,6 +110,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 "|(^/getManagerCollegeByEmpId\\.do$)"+
 
                 "|(^/listsMsgAds\\.do$)"+
+                "|(^/listsMineFhFq\\.do$)"+
 
                 "|(^/getAllContract\\.do$)"+ "|(^/getTheme\\.do$)"+
                         "|(^/addPkComment\\.do$)"+
@@ -171,6 +172,9 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 +"|(^/appGetThreesBd\\.do$)"
                 +"|(^/appGetProfileMsg\\.do$)"
                 +"|(^/listFindsApp\\.do$)"
+                +"|(^/listDaili\\.do$)"
+                +"|(^/saveDaili\\.do$)"
+                +"|(^/deleDaili\\.do$)"
                 +"|(^/paopaogoods/updatePaopaoGoodsJia\\.do$)"
                 +"|(^/getThemeApp\\.do$)"
         ) || account != null) {

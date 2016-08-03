@@ -9,6 +9,7 @@ import com.liangxunwang.unimanager.query.FenghaofengqunQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.Constants;
+import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -35,42 +36,16 @@ public class MemberFenghfqService implements  ListService{
     public Object list(Object object) throws ServiceException {
         FenghaofengqunQuery query = (FenghaofengqunQuery) object;
         Map<String,Object> map = new HashMap<String, Object>();
-        map.put("emp_id_m", query.getEmp_id_m());
-        map.put("istype", query.getIstype());
+        if(StringUtil.isNullOrEmpty( query.getEmp_id())){
+            map.put("emp_id", query.getEmp_id());
+        }
+        if(StringUtil.isNullOrEmpty( query.getEmp_id_m())){
+            map.put("emp_id_m", query.getEmp_id_m());
+        }
+        if(StringUtil.isNullOrEmpty( query.getIstype())){
+            map.put("istype", query.getIstype());
+        }
         List<FhFqObjVO> list = fqfhObjDao.lists(map);
-
-//        List<MemberVO> list = new ArrayList<MemberVO>();
-//        String schools = query.getSchoolds();
-//       if(query.getType().equals("0")){
-//           //封号
-//           list = memberDao.getFenghaos();
-//       }
-//        if(query.getType().equals("1")){
-//            //封群
-//            list = memberDao.getFengquns();
-//        }
-//        String[] arrSchools = schools.split(",");
-//        List<MemberVO> lastLists = new ArrayList<MemberVO>();
-//        if(list != null && list.size()>0){
-//            //筛选符合该承包商的会员
-//            for (MemberVO member : list){
-//
-//                //这个会员是否存在承包商的学校之内
-//                for (int i=0;i<arrSchools.length;i++) {
-//                    if (arrSchools[i].equals(member.getSchoolId())) {
-//                        //说明这个会员是符合要求的
-//                        if (member.getEmpCover().startsWith("upload")) {
-//                            member.setEmpCover(Constants.URL + member.getEmpCover());
-//                        }else {
-//                            member.setEmpCover(Constants.QINIU_URL + member.getEmpCover());
-//                        }
-//                        lastLists.add(member);
-//                        break;
-//                    }
-//                }
-//
-//            }
-//        }
         return list ;
     }
 

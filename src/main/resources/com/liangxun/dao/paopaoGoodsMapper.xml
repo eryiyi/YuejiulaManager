@@ -25,6 +25,7 @@
         <id column="is_zhiying" property="is_zhiying"/>
         <id column="manager_id" property="manager_id"/>
         <id column="is_youhuo" property="is_youhuo"/>
+        <id column="daili_price" property="daili_price"/>
     </resultMap>
     <resultMap id="my_paopao_goods_vo" type="com.liangxunwang.unimanager.mvc.vo.PaopaoGoodsVO">
         <id column="goods_id" property="id"/>
@@ -48,6 +49,7 @@
         <id column="is_zhiying" property="is_zhiying"/>
         <id column="manager_id" property="manager_id"/>
         <id column="is_youhuo" property="is_youhuo"/>
+        <id column="daili_price" property="daili_price"/>
 
         <result column="nick_name" property="nickName"/>
         <result column="emp_cover" property="empCover"/>
@@ -58,8 +60,9 @@
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.PaopaoGoods">
         INSERT INTO PAOPAO_GOODS (goods_id, GOODS_TYPE_ID, GOODS_NAME, GOODS_COVER, GOODS_CONT, SELL_PRICE,
         MARKET_PRICE, GOODS_ADDRESS,GOODS_PERSON, GOODS_TEL, GOODS_QQ,GOODS_EMP_ID, GOODS_SCHOOL_ID, GOODS_IS_USE
-        ,GOODS_IS_DEL, UP_TIME, GOODS_COUNT, GOODS_POSITION,is_zhiying,manager_id,is_youhuo) VALUES (#{id}, #{typeId}, #{name}, #{cover, jdbcType=VARCHAR},#{cont}, #{sellPrice}, #{marketPrice},
-        #{address}, #{person}, #{tel}, #{qq, jdbcType=VARCHAR}, #{empId}, #{schoolId}, #{isUse}, #{isDel}, #{upTime}, #{count}, 0, #{is_zhiying, jdbcType=VARCHAR}, #{manager_id, jdbcType=VARCHAR}, #{is_youhuo,jdbcType=VARCHAR})
+        ,GOODS_IS_DEL, UP_TIME, GOODS_COUNT, GOODS_POSITION,is_zhiying,manager_id,is_youhuo,daili_price)
+        VALUES (#{id}, #{typeId}, #{name}, #{cover, jdbcType=VARCHAR},#{cont}, #{sellPrice}, #{marketPrice},
+        #{address}, #{person}, #{tel}, #{qq, jdbcType=VARCHAR}, #{empId}, #{schoolId}, #{isUse}, #{isDel}, #{upTime}, #{count}, 0, #{is_zhiying, jdbcType=VARCHAR}, #{manager_id, jdbcType=VARCHAR}, #{is_youhuo,jdbcType=VARCHAR}, #{daili_price,jdbcType=VARCHAR})
     </insert>
 
     <select id="listByEmpSchool" resultMap="my_paopao_goods" parameterType="String">

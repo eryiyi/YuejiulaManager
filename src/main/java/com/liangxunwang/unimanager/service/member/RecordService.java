@@ -5,6 +5,7 @@ import com.liangxunwang.unimanager.model.Advert;
 import com.liangxunwang.unimanager.model.ContractSchool;
 import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.model.Record;
+import com.liangxunwang.unimanager.mvc.vo.FhFqObjVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -51,6 +52,10 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
     @Autowired
     @Qualifier("memberDao")
     private MemberDao memberDao;
+
+    @Autowired
+    @Qualifier("fqfhObjDao")
+    private FqfhObjDao fqfhObjDao;
 
     @Override
     public Object list(Object object) throws ServiceException {
@@ -160,7 +165,16 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
             if(member != null){
                 if("1".equals(member.getIs_fenghao())){
                     //说明被封号了
-                    throw new ServiceException("HAS_FENGHAO");
+                    //查询是否封的这个学校
+                    Map<String, Object> map = new HashMap<String, Object>();
+                    map.put("emp_id", member.getEmpId());
+                    map.put("istype", "0");
+                    map.put("school_id", member.getSchoolId());
+                    List<FhFqObjVO>  lists = fqfhObjDao.lists(map);
+                    if(lists != null && lists.size()>0){
+                        throw new ServiceException("HAS_FENGHAO");
+                    }
+
                 }
                 record.setDateLine(System.currentTimeMillis() + "");
                 record.setRecordIsDel("0");

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.DailiObjDao">
+    <resultMap id="my_daili" type="com.liangxunwang.unimanager.model.DailiObj">
+        <id column="daili_id" property="daili_id"/>
+        <result column="emp_id" property="emp_id"/>
+        <result column="emp_id_d" property="emp_id_d"/>
+    </resultMap>
+
+    <resultMap id="my_daili_vo" type="com.liangxunwang.unimanager.mvc.vo.DailiObjVO">
+        <id column="daili_id" property="daili_id"/>
+        <result column="emp_id" property="emp_id"/>
+        <result column="emp_id_d" property="emp_id_d"/>
+
+        <result column="emp_name" property="emp_name"/>
+        <result column="emp_cover" property="emp_cover"/>
+        <result column="emp_mobile" property="emp_mobile"/>
+    </resultMap>
+
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.DailiObj">
+        INSERT INTO school_daili
+        (daili_id, emp_id, emp_id_d)
+        VALUES
+        (#{daili_id}, #{emp_id}, #{emp_id_d})
+    </insert>
+
+    <select id="list" resultMap="my_daili_vo">
+        SELECT sa.*, ls.emp_mobile as emp_mobile, ls.emp_name as emp_name, ls.emp_cover as emp_cover
+        from school_daili sa
+        left join lx_emp ls on sa.emp_id_d = ls.emp_id
+        WHERE 1=1
+        <if test="emp_id != null and emp_id != ''">
+            AND sa.emp_id=#{emp_id}
+        </if>
+        <if test="emp_id_d != null and emp_id_d != ''">
+            AND sa.emp_id_d=#{emp_id_d}
+        </if>
+    </select>
+
+
+    <!--<select id="findById" resultMap="my_daili" parameterType="String">-->
+        <!--SELECT * from school_daili where daili_id=#{daili_id}-->
+    <!--</select>-->
+
+    <delete id="deleteById" parameterType="com.liangxunwang.unimanager.model.DailiObj">
+        DELETE FROM school_daili
+        WHERE 1=1
+        <if test="emp_id != null and emp_id != ''">
+            AND emp_id=#{emp_id}
+        </if>
+        <if test="emp_id_d != null and emp_id_d != ''">
+            AND emp_id_d=#{emp_id_d}
+        </if>
+    </delete>
+
+</mapper>
