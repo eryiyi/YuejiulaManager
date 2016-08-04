@@ -107,6 +107,13 @@
                             <input type="text" id="goods_market_price" class="form-control" placeholder="市场价格"
                                    data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
                         </div>
+                    </div>  <div class="form-group">
+                        <label class="col-sm-2 control-label">代理价格</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" id="daili_price" class="form-control" placeholder="代理价格"
+                                   data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+                        </div>
                     </div>
                     <%--<div class="form-group">--%>
                         <%--<label class="col-sm-2 control-label">宝贝地址</label>--%>
@@ -191,6 +198,7 @@
         var type = $("#goods_type").val();
         var sellerPrice = $("#goods_seller_price").val();
         var marketPrice = $("#goods_market_price").val();
+        var daili_price = $("#daili_price").val();
 //        var address = $("#goods_address").val();
         var person = $("#goods_person").val();
         var tel = $("#goods_tel").val();
@@ -212,6 +220,7 @@
             alert("请选择商品类别");
             return;
         }
+
         var imagePath = $("img[name='imagePath']").attr("src");
         if (imagePath == "") {
             alert("请上传图片");
@@ -233,6 +242,15 @@
         } else {
             if (!reg.test(marketPrice)) {
                 alert("市场价格必须为合法数字(正数，最多两位小数)！");
+                return;
+            }
+        }
+        if (daili_price.replace(/\s/g, '') == '') {
+            alert("代理价格不能为空");
+            return;
+        } else {
+            if (!reg.test(daili_price)) {
+                alert("代理价格必须为合法数字(正数，最多两位小数)！");
                 return;
             }
         }
@@ -277,6 +295,7 @@
                 "cover": imagePath,
                 "sellPrice": sellerPrice,
                 "marketPrice": marketPrice,
+                "daili_price": daili_price,
                 "address": "",
                 "person": person,
                 "tel": tel,

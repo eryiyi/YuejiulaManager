@@ -124,7 +124,7 @@
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.PaopaoGoods">
         UPDATE PAOPAO_GOODS SET GOODS_NAME=#{name}, GOODS_TYPE_ID=#{typeId},GOODS_COVER=#{cover}, SELL_PRICE=#{sellPrice}, MARKET_PRICE=#{marketPrice}, GOODS_ADDRESS=#{address},
-        GOODS_PERSON=#{person}, GOODS_TEL=#{tel}, GOODS_QQ=#{qq},GOODS_COUNT=#{count}, GOODS_CONT=#{cont} WHERE GOODS_ID=#{id}
+        GOODS_PERSON=#{person}, GOODS_TEL=#{tel}, GOODS_QQ=#{qq},GOODS_COUNT=#{count}, GOODS_CONT=#{cont}, daili_price=#{daili_price} WHERE GOODS_ID=#{id}
     </update>
 
     <select id="findGoodsVO" parameterType="String" resultMap="my_paopao_goods_vo">

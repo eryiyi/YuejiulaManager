@@ -161,7 +161,8 @@ public class PaopaoGoodsController extends ControllerConstants {
 
     @RequestMapping("edit")
     public String edit(String id, ModelMap map){
-        List<GoodsType> list = (List<GoodsType>) goodsTypeListService.list("0");
+        GoodsTypeThreeQuery query = new GoodsTypeThreeQuery();
+        List<GoodsType> list = (List<GoodsType>) goodsTypeListService.list(query);
         PaopaoGoods goods = (PaopaoGoods) paopaoGoodsFindService.findById(id);
         map.put("list", list);
         map.put("goods", goods);

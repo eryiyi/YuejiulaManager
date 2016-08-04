@@ -28,7 +28,10 @@ public class DateUtil {
             return 0;
         }
     }
-
+    /**
+     * 根据毫秒值获得日期
+     * @return
+     */
     public static String getDate(String time, String format){
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         Date date = new Date(Long.parseLong(time));
