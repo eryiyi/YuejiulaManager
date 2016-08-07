@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.BigAreaDao">
+    <resultMap id="bigAreaObj" type="com.liangxunwang.unimanager.model.BigAreaObj">
+        <id column="area_id" property="area_id"/>
+        <result column="area_pic" property="area_pic"/>
+        <result column="area_title" property="area_title"/>
+        <result column="area_content" property="area_content"/>
+        <result column="area_url" property="area_url"/>
+    </resultMap>
+
+    <select id="lists" resultMap="bigAreaObj">
+        SELECT * from big_area
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.BigAreaObj">
+        INSERT INTO big_area(area_id, area_pic, area_title, area_content, area_url)
+        VALUES (#{area_id}, #{area_pic}, #{area_title}, #{area_content}, #{area_url})
+    </insert>
+
+
+    <select id="findById" parameterType="String" resultMap="bigAreaObj">
+        SELECT * FROM  big_area where area_id=#{area_id}
+    </select>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.BigAreaObj">
+        UPDATE big_area SET area_pic=#{area_pic},
+         area_title=#{area_title} ,
+         area_content=#{area_content},
+         area_url=#{area_url}
+         WHERE area_id=#{area_id}
+    </update>
+
+</mapper>

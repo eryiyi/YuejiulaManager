@@ -110,4 +110,8 @@
     <group id="MAANGER_AD_MANAGER" name="承包商广告语">
         <permission id="ADD_MAANGER_AD_LIST" name="承包商广告语"/>
     </group>
+    <group id="BIG_AREA_MANAGER" name="分区管理">
+        <permission id="BIG_AREA_LIST" name="分区列表"/>
+        <permission id="BIG_AREA_ADD" name="添加分区"/>
+    </group>
 </permissions>

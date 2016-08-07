@@ -120,6 +120,22 @@
                         <span class="hidden-xs">主页</span>
                     </a>
                 </li>
+                <c:if test="${um:permission('BIG_AREA_LIST', sessionScope.powers)||um:permission('BIG_AREA_ADD', sessionScope.powers)}">
+                    <li class="dropdown">
+                        <a href="javascript:void (0);" class="dropdown-toggle">
+                            <i class="fa fa-table"></i>
+                            <span class="hidden-xs">分区管理</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <c:if test="${um:permission('BIG_AREA_ADD', sessionScope.powers)}">
+                                <li><a href="javascript:void(0);" onclick="toPage('/bigAreaObjController/toAdd','')">添加分区</a></li>
+                            </c:if>
+                            <c:if test="${um:permission('BIG_AREA_LIST', sessionScope.powers)}">
+                                <li><a href="javascript:void(0);" onclick="toPage('/bigAreaObjController/list','')">分区列表</a></li>
+                            </c:if>
+                        </ul>
+                    </li>
+                </c:if>
                 <c:if test="${um:permission('LIST_ROLE', sessionScope.powers)||um:permission('ADD_ROLE', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
