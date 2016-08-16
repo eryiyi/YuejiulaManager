@@ -49,6 +49,7 @@
                         <th>#</th>
                         <th>标题</th>
                         <th>链接</th>
+                        <th>打开方式</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -58,6 +59,10 @@
                             <td>${st.index+1}</td>
                             <td>${e.title}</td>
                             <td>${e.www_url}</td>
+                            <td>
+                                <c:if test="${e.istype == '0'}">内部</c:if>
+                                <c:if test="${e.istype == '1'}">外部</c:if>
+                            </td>
                             <td>
                                 <button class="btn btn-primary" type="button"
                                         onclick="deleteNews('${e.school_find_id}')">删除

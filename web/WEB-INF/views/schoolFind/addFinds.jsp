@@ -86,6 +86,26 @@
 
 
                     <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+
+                        <div class="col-sm-4">
+                            <input type="text" id="" class="form-control" placeholder="标题" data-toggle="tooltip"
+                                   data-placement="bottom" title="Tooltip for name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">打开方式</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" id="istype">
+                                <option value="0">软件内部浏览器</option>
+                                <option value="1">软件外部浏览器</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="col-sm-2 col-sm-offset-2">
                             <button type="button" class="btn btn-primary" onclick="save();">
                                 <span><i class="fa fa-clock-o"></i></span>
@@ -154,10 +174,18 @@
         }
 
         var top_num = $("#top_num").val();
+
         if (top_num.replace(/\s/g, '') == '') {
             alert("置顶数字不能为空");
             return;
         }
+
+        var istype = $("#istype").val();
+        if (istype.replace(/\s/g, '') == '') {
+            alert("请选择打开方式");
+            return;
+        }
+
         var imagePath = $("img[name='imagePath']").attr("src");
         if (imagePath == "") {
             alert("请上传图片");
@@ -168,7 +196,7 @@
             cache: true,
             type: "POST",
             url: "/saveFinds.do",
-            data: {"title": title, "www_url": www_url, "pic_url": imagePath, "top_num": top_num},// 你的formid
+            data: {"title": title, "www_url": www_url, "pic_url": imagePath, "top_num": top_num, "istype": istype},// 你的formid
             async: false,
             success: function (_data) {
                 var data = $.parseJSON(_data);

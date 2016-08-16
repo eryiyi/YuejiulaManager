@@ -25,17 +25,12 @@
     <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
     <link rel="stylesheet" href="/ueditor/themes/default/css/ueditor.css" type="text/css">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-            <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
-            <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
-    <![endif]-->
+    <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
+    <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
 
-    <%--<link href="/umeditor/themes/default/css/umeditor.min.css" type="text/css" rel="stylesheet">--%>
-    <%--<script src="/umeditor/third-party/jquery.min.js"></script>--%>
-    <%--<script type="text/javascript" charset="utf-8" src="/umeditor/umeditor.config.js"></script>--%>
-    <%--<script type="text/javascript" charset="utf-8" src="/umeditor/umeditor.min.js"></script>--%>
-    <%--<script type="text/javascript" src="/umeditor/lang/zh-cn/zh-cn.js"></script>--%>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0"/>
+    <script type="text/javascript"
+            src="http://webapi.amap.com/maps?v=1.3&key=6d8bfe3105c44dc4a54a930e322eaeec"></script>
 
 </head>
 <body>

@@ -9,11 +9,12 @@
         <result column="title" property="title"/>
         <result column="www_url" property="www_url"/>
         <result column="top_num" property="top_num"/>
+        <result column="istype" property="istype"/>
     </resultMap>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.SchoolFind">
-        INSERT INTO school_find (school_find_id, pic_url, title, www_url, top_num)
-        VALUES (#{school_find_id}, #{pic_url}, #{title}, #{www_url}, #{top_num})
+        INSERT INTO school_find (school_find_id, pic_url, title, www_url, top_num, istype)
+        VALUES (#{school_find_id}, #{pic_url}, #{title}, #{www_url}, #{top_num}, #{istype})
     </insert>
 
     <select id="lists" resultMap="school_find">

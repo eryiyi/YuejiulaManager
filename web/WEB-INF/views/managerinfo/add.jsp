@@ -1,9 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
-<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0"/>
-<script type="text/javascript"
-        src="http://webapi.amap.com/maps?v=1.3&key=6d8bfe3105c44dc4a54a930e322eaeec"></script>
 
 <div class="row">
     <div id="breadcrumb" class="col-xs-12">
