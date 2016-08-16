@@ -1,8 +1,6 @@
 package com.liangxunwang.unimanager.dao;
 
-import com.liangxunwang.unimanager.model.Advert;
 import com.liangxunwang.unimanager.model.DailiObj;
-import com.liangxunwang.unimanager.mvc.vo.AdvertVO;
 import com.liangxunwang.unimanager.mvc.vo.DailiObjVO;
 import org.springframework.stereotype.Repository;
 

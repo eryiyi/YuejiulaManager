@@ -218,8 +218,10 @@ public class PaopaoGoodsController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
         Object[] params = new Object[]{id};
-        PaopaoGoodsVO vo = (PaopaoGoodsVO) paopaoGoodsFindService.findById(params);
-        map.put("vo", vo);
+        Object[] paramsa = (Object[]) paopaoGoodsFindService.findById(params);
+//        PaopaoGoodsVO vo = (PaopaoGoodsVO) paopaoGoodsFindService.findById(params);
+        map.put("vo", paramsa[0]);
+        map.put("listPics", paramsa[1]);
         return "/paopaogoods/detail";
     }
 

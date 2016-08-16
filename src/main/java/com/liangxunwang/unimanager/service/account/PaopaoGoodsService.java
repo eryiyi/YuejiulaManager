@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,14 +64,33 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
             Object[] params = (Object[]) object;
             String id = (String) params[0];
             PaopaoGoodsVO vo =  paopaoGoodsDao.findGoodsVO(id);
-            if (vo.getEmpCover().startsWith("upload")) {
-                vo.setEmpCover(Constants.URL + vo.getEmpCover());
-            }else {
-                vo.setEmpCover(Constants.QINIU_URL + vo.getEmpCover());
+            //处理图片URL链接
+//            StringBuffer buffer = new StringBuffer();
+            List<String> listPics = new ArrayList<String>();
+            String[] pics = new String[]{};
+            if(vo!=null && vo.getCover()!= null){
+                pics = vo.getCover().split(",");
             }
+            for (int i=0; i<pics.length; i++){
+                if (pics[i].startsWith("upload")) {
+                    listPics.add(Constants.URL + pics[i]);
+//                    buffer.append(Constants.URL + pics[i]);
+//                    if (i < pics.length - 1) {
+//                        buffer.append(",");
+//                    }
+                }else {
+                    listPics.add(Constants.QINIU_URL + pics[i]);
+//                    buffer.append(Constants.QINIU_URL + pics[i]);
+//                    if (i < pics.length - 1) {
+//                        buffer.append(",");
+//                    }
+                }
+            }
+//            vo.setCover(buffer.toString());
+
             vo.setUpTime(RelativeDateFormat.format(Long.parseLong(vo.getUpTime())));
             vo.setCont(vo.getCont().replaceAll("\\swidth=.*?;\"", ""));
-            return vo;
+            return new Object[]{vo, listPics};
         }
         return null;
     }
@@ -134,9 +154,27 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
             }
             List<PaopaoGoodsVO> list = paopaoGoodsDao.listGoods(map);
             for (PaopaoGoodsVO vo : list){
-                if (!StringUtil.isNullOrEmpty(vo.getCover())){
-                    vo.setCover(Constants.URL + vo.getCover());
+                //处理图片URL链接
+                StringBuffer buffer = new StringBuffer();
+                String[] pics = new String[]{};
+                if(vo!=null && vo.getCover()!= null){
+                    pics = vo.getCover().split(",");
                 }
+                for (int i=0; i<pics.length; i++){
+                    if (pics[i].startsWith("upload")) {
+                        buffer.append(Constants.URL + pics[i]);
+                        if (i < pics.length - 1) {
+                            buffer.append(",");
+                        }
+                    }else {
+                        buffer.append(Constants.QINIU_URL + pics[i]);
+                        if (i < pics.length - 1) {
+                            buffer.append(",");
+                        }
+                    }
+                }
+                vo.setCover(buffer.toString());
+
                 if (!StringUtil.isNullOrEmpty(vo.getEmpCover())) {
                     if (vo.getEmpCover().startsWith("upload")) {
                         vo.setEmpCover(Constants.URL + vo.getEmpCover());
@@ -162,6 +200,28 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
                 map.put("manager_id", query.getManager_id());
             }
             List<PaopaoGoodsVO> list = paopaoGoodsDao.listGoods(map);
+            for(PaopaoGoodsVO vo:list){
+                //处理图片URL链接
+                StringBuffer buffer = new StringBuffer();
+                String[] pics = new String[]{};
+                if(vo!=null && vo.getCover()!= null){
+                    pics = vo.getCover().split(",");
+                }
+                for (int i=0; i<pics.length; i++){
+                    if (pics[i].startsWith("upload")) {
+                        buffer.append(Constants.URL + pics[i]);
+                        if (i < pics.length - 1) {
+                            buffer.append(",");
+                        }
+                    }else {
+                        buffer.append(Constants.QINIU_URL + pics[i]);
+                        if (i < pics.length - 1) {
+                            buffer.append(",");
+                        }
+                    }
+                }
+                vo.setCover(buffer.toString());
+            }
             long count = paopaoGoodsDao.count(map);
             return new Object[]{list, count};
         }

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html>
@@ -47,6 +49,10 @@
             <%--欢迎各位小主对本店服务提出宝贵的建议与意见，您的满意就是对我们最大的支持！</p>--%>
     </div>
     <div class="goods-detail">${vo.cont}</div>
+    <c:forEach items="${listPics}" var="eee" varStatus="st">
+        <img src="${eee}">
+    </c:forEach>
+    <%--<img src="http://7xt74j.com1.z0.glb.clouddn.com/97da00883bee48f19d476fe2e5ff3d97">--%>
     <div class="blank" style="height: 100px"><br></div>
 </div>
 </body>

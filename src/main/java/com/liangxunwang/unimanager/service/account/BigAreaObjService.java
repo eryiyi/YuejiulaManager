@@ -1,10 +1,7 @@
 package com.liangxunwang.unimanager.service.account;
 
-import com.liangxunwang.unimanager.dao.AdDao;
 import com.liangxunwang.unimanager.dao.BigAreaDao;
-import com.liangxunwang.unimanager.model.AdObj;
 import com.liangxunwang.unimanager.model.BigAreaObj;
-import com.liangxunwang.unimanager.query.AdQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.StringUtil;

@@ -2,19 +2,15 @@ package com.liangxunwang.unimanager.service.member;
 
 import com.liangxunwang.unimanager.dao.FqfhObjDao;
 import com.liangxunwang.unimanager.dao.MemberDao;
-import com.liangxunwang.unimanager.model.FhFqObj;
 import com.liangxunwang.unimanager.mvc.vo.FhFqObjVO;
-import com.liangxunwang.unimanager.mvc.vo.MemberVO;
 import com.liangxunwang.unimanager.query.FenghaofengqunQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
