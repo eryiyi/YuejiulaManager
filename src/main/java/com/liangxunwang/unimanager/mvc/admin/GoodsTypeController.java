@@ -187,4 +187,20 @@ public class GoodsTypeController extends ControllerConstants{
         return toJSONString(tip);
     }
 
+    @Autowired
+    @Qualifier("goodsTypeThreeService2")
+    private ListService goodsTypeThreeService2;
+
+    @RequestMapping(value = "/goodsTypeList2", produces = "text/plain; charset=utf-8")
+    @ResponseBody
+    public String goodsTypeList2(GoodsTypeThreeQuery query){
+        List<GoodsType> list = (List<GoodsType>) goodsTypeThreeService2.list(query);
+        for (GoodsType type : list){
+            type.setTypeCover(Constants.URL+type.getTypeCover());
+        }
+        DataTip tip  = new DataTip();
+        tip.setData(list);
+        return toJSONString(tip);
+    }
+
 }

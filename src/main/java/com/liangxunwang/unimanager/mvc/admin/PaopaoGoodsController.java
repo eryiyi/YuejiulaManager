@@ -75,7 +75,6 @@ public class PaopaoGoodsController extends ControllerConstants {
     @RequestMapping("toAdd")
     public String toAdd(GoodsTypeThreeQuery query,ModelMap map, HttpSession session){
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
-        query.setLx_goods_type_type("0");
         List<GoodsType> list = (List<GoodsType>) goodsTypeListService.list(query);
         query.setLx_goods_type_type("0");
         query.setType_isuse("0");
@@ -91,6 +90,19 @@ public class PaopaoGoodsController extends ControllerConstants {
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         goods.setEmpId(admin.getEmpId());
         Object[] params = new Object[]{goods, schools, admin.getGoodsCount()};
+        String str = (String) paopaoGoodsSaveService.save(params);
+        if (!StringUtil.isNullOrEmpty(str)){
+            DataTip tip = new DataTip();
+            tip.setData(str);
+            return toJSONString(tip);
+        }
+        return toJSONString(SUCCESS);
+    }
+
+    @RequestMapping(value = "saveAppGoods", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String saveAppGoods(PaopaoGoods goods, String schools){
+        Object[] params = new Object[]{goods, schools, "0"};
         String str = (String) paopaoGoodsSaveService.save(params);
         if (!StringUtil.isNullOrEmpty(str)){
             DataTip tip = new DataTip();

@@ -26,6 +26,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 "|(^/uploadUnCompressImage\\.do$)" +
                 "|(^/recordList\\.do$)" +
                 "|(^/goodsTypeList\\.do$)" +
+                "|(^/goodsTypeList2\\.do$)" +
                 "|(^/zanRecord\\.do$)" +
                 "|(^/checkCode\\.do$)" +
                 "|(^/checkNickName\\.do$)" +
@@ -177,6 +178,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 +"|(^/deleDaili\\.do$)"
                 +"|(^/getDefaultBigAreas\\.do$)"
                 +"|(^/paopaogoods/updatePaopaoGoodsJia\\.do$)"
+                +"|(^/paopaogoods/saveAppGoods\\.do$)"
                 +"|(^/getThemeApp\\.do$)"
         ) || account != null) {
             return true;

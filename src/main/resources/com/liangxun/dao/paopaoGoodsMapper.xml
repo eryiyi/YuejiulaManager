@@ -62,7 +62,7 @@
         MARKET_PRICE, GOODS_ADDRESS,GOODS_PERSON, GOODS_TEL, GOODS_QQ,GOODS_EMP_ID, GOODS_SCHOOL_ID, GOODS_IS_USE
         ,GOODS_IS_DEL, UP_TIME, GOODS_COUNT, GOODS_POSITION,is_zhiying,manager_id,is_youhuo,daili_price)
         VALUES (#{id}, #{typeId}, #{name}, #{cover, jdbcType=VARCHAR},#{cont}, #{sellPrice}, #{marketPrice},
-        #{address}, #{person}, #{tel}, #{qq, jdbcType=VARCHAR}, #{empId}, #{schoolId}, #{isUse}, #{isDel}, #{upTime}, #{count}, 0, #{is_zhiying, jdbcType=VARCHAR}, #{manager_id, jdbcType=VARCHAR}, #{is_youhuo,jdbcType=VARCHAR}, #{daili_price,jdbcType=VARCHAR})
+        #{address, jdbcType=VARCHAR}, #{person, jdbcType=VARCHAR}, #{tel, jdbcType=VARCHAR}, #{qq, jdbcType=VARCHAR}, #{empId}, #{schoolId}, #{isUse}, #{isDel}, #{upTime}, #{count, jdbcType=VARCHAR}, 0, #{is_zhiying, jdbcType=VARCHAR}, #{manager_id, jdbcType=VARCHAR}, #{is_youhuo,jdbcType=VARCHAR}, #{daili_price,jdbcType=VARCHAR})
     </insert>
 
     <select id="listByEmpSchool" resultMap="my_paopao_goods" parameterType="String">
