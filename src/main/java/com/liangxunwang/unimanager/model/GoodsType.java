@@ -20,6 +20,16 @@ public class GoodsType {
     private String emp_id;
     private String schoolName;
 
+    private String istype;
+
+    public String getIstype() {
+        return istype;
+    }
+
+    public void setIstype(String istype) {
+        this.istype = istype;
+    }
+
     public String getSchoolName() {
         return schoolName;
     }

@@ -126,40 +126,7 @@
                                    title="Tooltip for name">
                         </div>
                     </div>
-                    <%--<div class="form-group">--%>
-                        <%--<label class="col-sm-2 control-label">宝贝地址</label>--%>
 
-                        <%--<div class="col-sm-4">--%>
-                            <%--<input type="text" id="goods_address" value="${goods.address}" class="form-control"--%>
-                                   <%--placeholder="宝贝地址" data-toggle="tooltip" data-placement="bottom"--%>
-                                   <%--title="Tooltip for name">--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">联系人</label>
-
-                        <div class="col-sm-4">
-                            <input type="text" id="goods_person" value="${goods.person}" class="form-control"
-                                   placeholder="联系人" data-toggle="tooltip" data-placement="bottom"
-                                   title="Tooltip for name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">电话</label>
-
-                        <div class="col-sm-4">
-                            <input type="text" id="goods_tel" value="${goods.tel}" class="form-control" placeholder="电话"
-                                   data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">QQ</label>
-
-                        <div class="col-sm-4">
-                            <input type="text" id="goods_qq" value="${goods.qq}" class="form-control" placeholder="qq"
-                                   data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">宝贝数量</label>
 
@@ -220,10 +187,6 @@
         var sellerPrice = $("#goods_seller_price").val();
         var marketPrice = $("#goods_market_price").val();
         var daili_price = $("#daili_price").val();
-//        var address = $("#goods_address").val();
-        var person = $("#goods_person").val();
-        var tel = $("#goods_tel").val();
-        var qq = $("#goods_qq").val();
         var count = $("#goods_count").val();
         var content = UE.getEditor('editor').getContent();
         if (goodsTitle.replace(/\s/g, '') == '') {
@@ -266,18 +229,7 @@
                 return;
             }
         }
-//        if (address.replace(/\s/g, '') == '') {
-//            alert("地址不能为空");
-//            return;
-//        }
-        if (person.replace(/\s/g, '') == '') {
-            alert("联系人不能为空");
-            return;
-        }
-        if (tel.replace(/\s/g, '') == '') {
-            alert("电话不能为空");
-            return;
-        }
+
         var regInt = /^([1-9]\d*)$/;
         if (count.replace(/\s/g, '') == '') {
             alert("商品数量不能为空");
@@ -311,9 +263,9 @@
                 "marketPrice": marketPrice,
                 "daili_price": daili_price,
                 "address": "",
-                "person": person,
-                "tel": tel,
-                "qq": qq,
+                "person": "",
+                "tel": "",
+                "qq": "",
                 "count": count,
                 "cont": content
             },

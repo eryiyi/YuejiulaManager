@@ -70,6 +70,19 @@
                                    data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">打开方式</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" id="istype">
+                                <option value="0">软件内部浏览器</option>
+                                <option value="1">软件外部浏览器</option>
+                            </select>
+                        </div>
+                    </div>
+
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">是否禁用</label>
 
@@ -186,6 +199,12 @@
             return;
         }
 
+        var istype = $("#istype").val()
+        if (istype.replace(/\s/g, '') == '') {
+            alert("第三方网址打开类型不能为空");
+            return;
+        }
+
         var isUse = '';
         if ($('#isUse').is(':checked')) {
             isUse = '1';
@@ -227,6 +246,7 @@
                 "lx_goods_type_type": '1',
                 "lx_goods_type_url": lx_goods_type_url,
                 "schools": schools,
+                "istype": istype,
                 "typeCover": imagePath
             },
             async: false,

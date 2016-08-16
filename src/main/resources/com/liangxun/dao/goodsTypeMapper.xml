@@ -16,11 +16,12 @@
         <result column="school_id" property="school_id"/>
         <result column="emp_id" property="emp_id"/>
         <result column="schoolName" property="schoolName"/>
+        <result column="istype" property="istype"/>
     </resultMap>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.GoodsType">
-        INSERT INTO lx_goods_type(type_id, type_name, type_cont, type_isuse, type_cover , type_is_business, lx_goods_type_type,lx_goods_type_url,school_id,emp_id )
-         VALUES (#{typeId}, #{typeName},#{typeContent},#{typeIsUse},#{typeCover}, #{typeIsBusiness},#{lx_goods_type_type, jdbcType=VARCHAR}, #{lx_goods_type_url, jdbcType=VARCHAR}, #{school_id, jdbcType=VARCHAR}, #{emp_id, jdbcType=VARCHAR})
+        INSERT INTO lx_goods_type(type_id, type_name, type_cont, type_isuse, type_cover , type_is_business, lx_goods_type_type,lx_goods_type_url,school_id,emp_id ,istype )
+         VALUES (#{typeId}, #{typeName},#{typeContent},#{typeIsUse},#{typeCover}, #{typeIsBusiness},#{lx_goods_type_type, jdbcType=VARCHAR}, #{lx_goods_type_url, jdbcType=VARCHAR}, #{school_id, jdbcType=VARCHAR}, #{emp_id, jdbcType=VARCHAR}, #{istype, jdbcType=VARCHAR})
     </insert>
 
     <select id="list" resultMap="my_goods_type">

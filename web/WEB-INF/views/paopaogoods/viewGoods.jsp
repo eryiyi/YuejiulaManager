@@ -39,13 +39,10 @@
         </div>
     </div>
     <!-- 商家信息 -->
-    <div class="seller-info">
-        <h3 class="name clearfix"><img src="/img/lianxiren.png"><span>${vo.person}</span></h3>
-
-        <%--<h3 class="address clearfix"><img src="/img/dizhi.png"><span>${vo.address}</span></h3>--%>
-
-        <p class="notice"></p>
-    </div>
+    <%--<div class="seller-info">--%>
+        <%--<h3 class="name clearfix"><img src="/img/lianxiren.png"><span>${vo.person}</span></h3>--%>
+        <%--<p class="notice"></p>--%>
+    <%--</div>--%>
     <div class="goods-detail">${vo.cont}</div>
     <div class="blank" style="height: 100px"><br></div>
 </div>
