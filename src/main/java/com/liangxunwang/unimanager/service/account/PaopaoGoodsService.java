@@ -85,6 +85,14 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
 //                        buffer.append(",");
 //                    }
                 }
+                if (!StringUtil.isNullOrEmpty(vo.getVideourl())) {
+                    if (vo.getEmpCover().startsWith("upload")) {
+                        vo.setVideourl(Constants.URL + vo.getVideourl());
+                    }else {
+                        vo.setVideourl(Constants.QINIU_URL + vo.getVideourl());
+                    }
+                }
+
             }
 //            vo.setCover(buffer.toString());
 
@@ -182,6 +190,13 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
                         vo.setEmpCover(Constants.QINIU_URL + vo.getEmpCover());
                     }
                 }
+                if (!StringUtil.isNullOrEmpty(vo.getVideourl())) {
+                    if (vo.getEmpCover().startsWith("upload")) {
+                        vo.setVideourl(Constants.URL + vo.getVideourl());
+                    }else {
+                        vo.setVideourl(Constants.QINIU_URL + vo.getVideourl());
+                    }
+                }
                 vo.setUpTime(RelativeDateFormat.format(Long.parseLong(vo.getUpTime())));
             }
             return list;
@@ -221,6 +236,13 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
                     }
                 }
                 vo.setCover(buffer.toString());
+                if (!StringUtil.isNullOrEmpty(vo.getVideourl())) {
+                    if (vo.getEmpCover().startsWith("upload")) {
+                        vo.setVideourl(Constants.URL + vo.getVideourl());
+                    }else {
+                        vo.setVideourl(Constants.QINIU_URL + vo.getVideourl());
+                    }
+                }
             }
             long count = paopaoGoodsDao.count(map);
             return new Object[]{list, count};

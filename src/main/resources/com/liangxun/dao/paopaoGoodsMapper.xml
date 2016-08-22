@@ -26,6 +26,8 @@
         <id column="manager_id" property="manager_id"/>
         <id column="is_youhuo" property="is_youhuo"/>
         <id column="daili_price" property="daili_price"/>
+        <id column="is_video" property="is_video"/>
+        <id column="videourl" property="videourl"/>
     </resultMap>
     <resultMap id="my_paopao_goods_vo" type="com.liangxunwang.unimanager.mvc.vo.PaopaoGoodsVO">
         <id column="goods_id" property="id"/>
@@ -50,6 +52,8 @@
         <id column="manager_id" property="manager_id"/>
         <id column="is_youhuo" property="is_youhuo"/>
         <id column="daili_price" property="daili_price"/>
+        <id column="is_video" property="is_video"/>
+        <id column="videourl" property="videourl"/>
 
         <result column="nick_name" property="nickName"/>
         <result column="emp_cover" property="empCover"/>
@@ -60,9 +64,12 @@
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.PaopaoGoods">
         INSERT INTO PAOPAO_GOODS (goods_id, GOODS_TYPE_ID, GOODS_NAME, GOODS_COVER, GOODS_CONT, SELL_PRICE,
         MARKET_PRICE, GOODS_ADDRESS,GOODS_PERSON, GOODS_TEL, GOODS_QQ,GOODS_EMP_ID, GOODS_SCHOOL_ID, GOODS_IS_USE
-        ,GOODS_IS_DEL, UP_TIME, GOODS_COUNT, GOODS_POSITION,is_zhiying,manager_id,is_youhuo,daili_price)
+        ,GOODS_IS_DEL, UP_TIME, GOODS_COUNT, GOODS_POSITION,is_zhiying,manager_id,is_youhuo,daili_price, is_video, videourl)
         VALUES (#{id}, #{typeId}, #{name}, #{cover, jdbcType=VARCHAR},#{cont}, #{sellPrice}, #{marketPrice},
-        #{address, jdbcType=VARCHAR}, #{person, jdbcType=VARCHAR}, #{tel, jdbcType=VARCHAR}, #{qq, jdbcType=VARCHAR}, #{empId}, #{schoolId}, #{isUse}, #{isDel}, #{upTime}, #{count, jdbcType=VARCHAR}, 0, #{is_zhiying, jdbcType=VARCHAR}, #{manager_id, jdbcType=VARCHAR}, #{is_youhuo,jdbcType=VARCHAR}, #{daili_price,jdbcType=VARCHAR})
+        #{address, jdbcType=VARCHAR}, #{person, jdbcType=VARCHAR}, #{tel, jdbcType=VARCHAR}, #{qq, jdbcType=VARCHAR},
+         #{empId}, #{schoolId}, #{isUse}, #{isDel}, #{upTime}, #{count, jdbcType=VARCHAR}, 0,
+         #{is_zhiying, jdbcType=VARCHAR}, #{manager_id, jdbcType=VARCHAR}, #{is_youhuo,jdbcType=VARCHAR},
+          #{daili_price,jdbcType=VARCHAR},#{is_video,jdbcType=VARCHAR},#{videourl,jdbcType=VARCHAR})
     </insert>
 
     <select id="listByEmpSchool" resultMap="my_paopao_goods" parameterType="String">

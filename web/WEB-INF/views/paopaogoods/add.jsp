@@ -290,6 +290,7 @@
                 "schools": schools,
                 "is_zhiying": "0",
                 "manager_id": "",
+                "is_video": "0",
                 "is_youhuo": "0"
             },
             async: false,

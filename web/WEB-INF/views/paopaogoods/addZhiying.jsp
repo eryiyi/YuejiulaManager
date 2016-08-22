@@ -261,6 +261,7 @@
                 "is_zhiying": "1",
                 "manager_id": "",
                 "empId": emp_ids,
+                "is_video": "0",
                 "is_youhuo": "0"
             },
             async: false,
