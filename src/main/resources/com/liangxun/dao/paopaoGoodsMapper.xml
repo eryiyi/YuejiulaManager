@@ -81,7 +81,7 @@
         FROM PAOPAO_GOODS pg
         LEFT JOIN lx_emp le ON pg.goods_emp_id=le.emp_id
         LEFT JOIN COLLEGE co ON pg.GOODS_SCHOOL_ID = co.COID
-        WHERE pg.goods_is_use='0' AND le.is_use='0'
+        WHERE  le.is_use='0'
         AND pg.goods_is_del='0'
         <if test="typeId != null and typeId != ''">
             AND pg.goods_type_id=#{typeId} AND  pg.is_zhiying='0'
@@ -113,7 +113,7 @@
     </select>
 
     <select id="count" resultType="Long">
-        SELECT count(GOODS_ID) FROM PAOPAO_GOODS WHERE GOODS_IS_USE='0' AND GOODS_IS_DEL='0'
+        SELECT count(GOODS_ID) FROM PAOPAO_GOODS WHERE  GOODS_IS_DEL='0'
         <if test="empId != null and empId != ''">
             AND goods_emp_id=#{empId}
         </if>
@@ -131,7 +131,7 @@
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.PaopaoGoods">
         UPDATE PAOPAO_GOODS SET GOODS_NAME=#{name}, GOODS_TYPE_ID=#{typeId},GOODS_COVER=#{cover}, SELL_PRICE=#{sellPrice}, MARKET_PRICE=#{marketPrice}, GOODS_ADDRESS=#{address},
-        GOODS_PERSON=#{person}, GOODS_TEL=#{tel}, GOODS_QQ=#{qq},GOODS_COUNT=#{count}, GOODS_CONT=#{cont}, daili_price=#{daili_price} WHERE GOODS_ID=#{id}
+        GOODS_PERSON=#{person}, GOODS_TEL=#{tel}, GOODS_QQ=#{qq},GOODS_COUNT=#{count}, GOODS_CONT=#{cont}, daili_price=#{daili_price}, goods_is_use=#{isUse} WHERE GOODS_ID=#{id}
     </update>
 
     <select id="findGoodsVO" parameterType="String" resultMap="my_paopao_goods_vo">
@@ -163,7 +163,7 @@
     </update>
 
     <update id="updatePostionById" parameterType="String">
-        UPDATE PAOPAO_GOODS SET GOODS_POSITION= #{goodsPosition} WHERE goods_id=#{id}
+        UPDATE PAOPAO_GOODS SET goods_is_use= #{goods_is_use} WHERE goods_id=#{id}
     </update>
     <update id="updateJiaById" parameterType="String">
         UPDATE PAOPAO_GOODS SET goods_is_use= #{status} WHERE goods_id=#{id}

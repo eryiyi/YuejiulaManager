@@ -20,4 +20,6 @@ public interface RelateDao {
     void deleteByRecordId(String recordId);
 
     void deleteByGoodsId(String goodsId);
+
+    void update(String id);
 }

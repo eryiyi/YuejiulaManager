@@ -13,6 +13,7 @@
         <result column="emptwo_id" property="empTwoId"/>
         <result column="cont" property="cont"/>
         <result column="dateline" property="dateline"/>
+        <result column="is_read" property="is_read"/>
     </resultMap>
     <resultMap id="my_relate_vo" type="com.liangxunwang.unimanager.mvc.vo.RelateVO">
         <id column="id" property="id"/>
@@ -24,6 +25,7 @@
         <result column="emptwo_id" property="empTwoId"/>
         <result column="cont" property="cont"/>
         <result column="dateline" property="dateline"/>
+        <result column="is_read" property="is_read"/>
         <result column="emp_name" property="empName"/>
         <result column="emp_cover" property="empCover"/>
     </resultMap>
@@ -49,5 +51,10 @@
     <delete id="deleteByGoodsId" parameterType="String">
         DELETE FROM SCHOOL_RELATE WHERE GOODS_ID=#{goodsId}
     </delete>
+
+    <update id="update" parameterType="String">
+        UPDATE SCHOOL_RELATE SET is_read='1' WHERE id=#{id}
+    </update>
+
 
 </mapper>

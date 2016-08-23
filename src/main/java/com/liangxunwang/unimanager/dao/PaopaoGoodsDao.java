@@ -56,7 +56,7 @@ public interface PaopaoGoodsDao {
 
     void deleteGoodsByEmp(@Param(value = "empId")String empId, @Param(value = "schoolId")String schoolId);
 
-    void updatePostionById(@Param(value = "id")String id, @Param(value = "goodsPosition")String goodsPosition);
+    void updatePostionById(@Param(value = "id")String id, @Param(value = "goods_is_use")String goodsPosition);
 
     void updateJiaById(@Param(value = "id")String id, @Param(value = "status")String goodsPosition);
 

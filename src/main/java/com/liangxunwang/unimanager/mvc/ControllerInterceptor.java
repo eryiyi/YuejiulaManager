@@ -177,6 +177,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                 +"|(^/saveDaili\\.do$)"
                 +"|(^/deleDaili\\.do$)"
                 +"|(^/getDefaultBigAreas\\.do$)"
+                +"|(^/updateRelateById\\.do$)"
                 +"|(^/paopaogoods/updatePaopaoGoodsJia\\.do$)"
                 +"|(^/paopaogoods/saveAppGoods\\.do$)"
                 +"|(^/getThemeApp\\.do$)"

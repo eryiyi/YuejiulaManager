@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -124,8 +125,20 @@ public class PaopaoGoodsController extends ControllerConstants {
             query.setIndex(page.getPage()==0?1:page.getPage());
             query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
             List<PaopaoGoodsVO> list = (List<PaopaoGoodsVO>) paopaoGoodsListService.list(query);
+            List<PaopaoGoodsVO> list1 = new ArrayList<PaopaoGoodsVO>();
+            if("1".equals(query.getIsMine())){
+                //说明查询我的
+                list1.addAll(list);
+            }else{
+                //说明不是查询我的
+                for(PaopaoGoodsVO paopaoGoodsVO:list){
+                    if("0".equals(paopaoGoodsVO.getIsUse())){
+                        list1.add(paopaoGoodsVO);//只查询有用的
+                    }
+                }
+            }
             DataTip tip = new DataTip();
-            tip.setData(list);
+            tip.setData(list1);
             return toJSONString(tip);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);

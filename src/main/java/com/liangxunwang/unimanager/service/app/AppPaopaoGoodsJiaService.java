@@ -24,8 +24,8 @@ public class AppPaopaoGoodsJiaService implements UpdateService {
     public Object update(Object object) {
         Map<String, String> map = (Map<String, String>) object;
         String id = map.get("id");
-        String status = map.get("status");
-        paopaoGoodsDao.updatePostionById(id, status);
+        String goods_is_use = map.get("status");
+        paopaoGoodsDao.updatePostionById(id, goods_is_use);
         return null;
     }
 }
