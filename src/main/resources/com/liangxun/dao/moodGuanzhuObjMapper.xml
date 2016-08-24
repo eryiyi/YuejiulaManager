@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.MoodGuanzhuObjDao">
+    <resultMap id="moodGuanzhu" type="com.liangxunwang.unimanager.model.MoodGuanzhuObj">
+        <id column="id" property="id"/>
+        <result column="school_record_mood_id" property="school_record_mood_id"/>
+        <result column="emp_id" property="emp_id"/>
+    </resultMap>
+
+    <resultMap id="moodGuanzhuVO" type="com.liangxunwang.unimanager.mvc.vo.MoodsGuanzhuVO">
+        <id column="id" property="id"/>
+        <result column="school_record_mood_id" property="school_record_mood_id"/>
+        <result column="emp_id" property="emp_id"/>
+        <result column="school_record_mood_name" property="school_record_mood_name"/>
+    </resultMap>
+
+    <select id="lists" resultMap="moodGuanzhuVO">
+        SELECT sn.*,lm.school_record_mood_name as school_record_mood_name from school_record_mood_gz sn
+        LEFT JOIN school_record_mood lm ON lm.school_record_mood_id = sn.school_record_mood_id
+        WHERE 1=1
+        <if test="emp_id != null and emp_id != ''">
+            AND sn.emp_id = #{emp_id}
+        </if>
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.AdObj">
+        INSERT INTO school_record_mood_gz(id, school_record_mood_id, emp_id)
+        VALUES (#{id}, #{school_record_mood_id}, #{emp_id})
+    </insert>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM school_record_mood_gz where id = #{id}
+    </delete>
+
+    <select id="findById" parameterType="String" resultMap="moodGuanzhuVO">
+        SELECT sn.*,lm.school_record_mood_name as school_record_mood_name FROM school_record_mood_gz sn
+            LEFT JOIN school_record_mood lm ON lm.school_record_mood_id = sn.school_record_mood_id
+        where sn.id=#{id}
+    </select>
+
+</mapper>

@@ -226,6 +226,13 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
                     }
                     vo.setRecordPicUrl(buffer.toString());
                 }
+                if (!StringUtil.isNullOrEmpty(vo.getRecordVideo())){
+                    if (vo.getRecordVideo().startsWith("upload")) {
+                        vo.setRecordVideo(Constants.URL + vo.getRecordVideo());
+                    }else {
+                        vo.setRecordVideo(Constants.QINIU_URL + vo.getRecordVideo());
+                    }
+                }
             }
             return vo;
         }else {
