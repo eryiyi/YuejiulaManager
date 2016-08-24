@@ -51,6 +51,18 @@ public class MoodsGuanzhuObjService implements ListService,SaveService,DeleteSer
         if(lists != null && lists.size() > 4){
             throw new ServiceException("adIsTooMuch");
         }
+        boolean flag = true;
+       for(MoodGuanzhuObj moodGuanzhuObj1:lists){
+           if(moodGuanzhuObj1.getSchool_record_mood_id().equals(moodGuanzhuObj.getSchool_record_mood_id()) && moodGuanzhuObj1.getEmp_id().equals(moodGuanzhuObj.getEmp_id())){
+               //说明添加了
+               flag = false;
+               break;
+           }
+       }
+        if(!flag){
+            //
+            throw new ServiceException("has_add");
+        }
         moodGuanzhuObj.setId(UUIDFactory.random());
         moodGuanzhuObjDao.save(moodGuanzhuObj);
         return null;

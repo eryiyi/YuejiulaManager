@@ -40,6 +40,9 @@ public interface MemberDao {
      */
     List<MemberVO> list(Map<String,Object> map);
 
+    //根据关注的心情标签查询会员
+    List<MemberVO> listByMoods(Map<String,Object> map);
+
     //查询店铺
     List<EmpDianpu> listDianPu(Map<String,Object> map);
 

@@ -1,11 +1,17 @@
 package com.liangxunwang.unimanager.service.member;
 
+import com.liangxunwang.unimanager.baidu.channel.auth.ChannelKeyPair;
+import com.liangxunwang.unimanager.baidu.channel.client.BaiduChannelClient;
+import com.liangxunwang.unimanager.baidu.channel.exception.ChannelClientException;
+import com.liangxunwang.unimanager.baidu.channel.exception.ChannelServerException;
+import com.liangxunwang.unimanager.baidu.channel.model.PushUnicastMessageRequest;
+import com.liangxunwang.unimanager.baidu.channel.model.PushUnicastMessageResponse;
+import com.liangxunwang.unimanager.baidu.log.YunLogEvent;
+import com.liangxunwang.unimanager.baidu.log.YunLogHandler;
 import com.liangxunwang.unimanager.dao.*;
-import com.liangxunwang.unimanager.model.Advert;
-import com.liangxunwang.unimanager.model.ContractSchool;
-import com.liangxunwang.unimanager.model.Member;
-import com.liangxunwang.unimanager.model.Record;
+import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.mvc.vo.FhFqObjVO;
+import com.liangxunwang.unimanager.mvc.vo.MemberVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -15,6 +21,8 @@ import com.qiniu.storage.BucketManager;
 import com.qiniu.util.Auth;
 import com.qiniu.util.StringMap;
 import com.qiniu.util.UrlSafeBase64;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -28,7 +36,7 @@ import java.util.Random;
  * Created by zhl on 2015/2/2.
  */
 @Service("recordService")
-public class RecordService implements ListService, SaveService,DeleteService, FindService{
+public class RecordService implements ListService, SaveService,DeleteService, FindService, Runnable{
 
     @Autowired
     @Qualifier("contractSchoolDao")
@@ -133,7 +141,7 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
         }
         return list;
     }
-
+    Record recordTmp = null;
     @Override
     public Object save(Object object) throws ServiceException {
         Record record = (Record) object;
@@ -186,9 +194,13 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
 //                    record.setRecordPicUrl("upload/video_fail.jpg");
                     }
                 }
+                recordTmp = record;
                 recordDao.save(record);
                 //更新积分分数
                 countDao.update(record.getRecordEmpId(), record.getRecordType());
+                //开启线程，处理关注标签通知
+                //todo
+                new Thread(RecordService.this).start();
             }else {
                 throw new ServiceException("NO_EMP");
             }
@@ -360,4 +372,93 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
 
         return picName;
     }
+
+    @Override
+    public void run() {
+        //recordTmp
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("school_record_mood_id", recordTmp.getSchool_record_mood_id());
+        map.put("school_id", recordTmp.getRecordSchoolId());
+        List<MemberVO> list = memberDao.listByMoods(map);//关注了这个标签的会员
+        if(list != null){
+            for(MemberVO memberVO:list){
+                String pushId =memberVO.getPushId();
+                String type = memberVO.getDeviceType();
+                if(!StringUtil.isNullOrEmpty(pushId) && !StringUtil.isNullOrEmpty(type) ){
+                    Relate relate1 = new Relate();
+                    relate1.setId(UUIDFactory.random());
+                    relate1.setEmpId(recordTmp.getRecordEmpId());
+                    relate1.setEmpTwoId(memberVO.getEmpId());//推送给谁
+                    relate1.setRecordId(recordTmp.getRecordId());
+                    relate1.setTypeId("0");
+                    relate1.setDateline(System.currentTimeMillis()+"");
+                    relate1.setCont("您关注的朋友圈有新动态");
+                    relateDao.save(relate1);
+                    pushZan(pushId, type, "您关注的朋友圈有新动态");
+                }
+            }
+        }
+    }
+
+    private static Logger logger = LogManager.getLogger(RecordService.class);
+
+    private void pushZan(final String pushId, final String type, final String content){
+        CommonUtil.getThreadPool().execute(new Runnable() {
+            @Override
+            public void run() {
+                ChannelKeyPair pair = null;
+                if (type.equals("3")) {
+                    pair = new ChannelKeyPair(Constants.API_KEY, Constants.SECRET_KEY);
+                } else {
+                    pair = new ChannelKeyPair(Constants.IOS_API_KEY, Constants.IOS_SECRET_KEY);
+                }
+
+                // 2. 创建BaiduChannelClient对象实例
+                BaiduChannelClient channelClient = new BaiduChannelClient(pair);
+                // 3. 若要了解交互细节，请注册YunLogHandler类
+                channelClient.setChannelLogHandler(new YunLogHandler() {
+                    @Override
+                    public void onHandle(YunLogEvent event) {
+                        System.out.println(event.getMessage());
+                    }
+                });
+                try {
+                    // 4. 创建请求类对象
+                    // 手机端的ChannelId， 手机端的UserId， 先用1111111111111代替，用户需替换为自己的
+                    PushUnicastMessageRequest request = new PushUnicastMessageRequest();
+                    request.setDeviceType(Integer.parseInt(type));
+                    if (type.equals("4")) {//如果是苹果手机端要设置这个
+                        request.setDeployStatus(2);
+                    }
+//            request.setDeviceType(3); // device_type => 1: web 2: pc 3:android  4:ios 5:wp
+//            request.setChannelId(Long.parseLong(pushId));
+//            request.setChannelId(5100663888284228047L);
+                    request.setUserId(pushId);
+
+                    request.setMessageType(1);
+                    request.setMessage("{\"title\":\"提醒\",\"description\":\"" + content + "\",\"custom_content\": {\"type\":\"2\"}}");
+
+                    logger.info("开始调用百度推送接口");
+                    // 5. 调用pushMessage接口
+                    PushUnicastMessageResponse response = channelClient.pushUnicastMessage(request);
+
+                    logger.info("推送成功----"+response.getSuccessAmount());
+                    // 6. 认证推送成功
+                    System.out.println("push amount : " + response.getSuccessAmount());
+
+                } catch (ChannelClientException e) {
+                    // 处理客户端错误异常
+                    e.printStackTrace();
+                    logger.info("处理客户端异常"+e.getMessage());
+                } catch (ChannelServerException e) {
+                    // 处理服务端错误异常
+                    System.out.println(String.format(
+                            "request_id: %d, error_code: %d, error_message: %s",
+                            e.getRequestId(), e.getErrorCode(), e.getErrorMsg()));
+                }
+            }
+        });
+
+    }
+
 }

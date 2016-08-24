@@ -10,6 +10,15 @@ public class MemberVO  extends Member{
     private String levelName;
     private String jfcount;//积分
     private String groupId;
+    private String school_record_mood_id;
+
+    public String getSchool_record_mood_id() {
+        return school_record_mood_id;
+    }
+
+    public void setSchool_record_mood_id(String school_record_mood_id) {
+        this.school_record_mood_id = school_record_mood_id;
+    }
 
     public String getGroupId() {
         return groupId;

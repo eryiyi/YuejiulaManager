@@ -69,7 +69,10 @@ public class AppMoodsGzController extends ControllerConstants {
         }catch (ServiceException e){
             if (e.getMessage().equals("adIsTooMuch")){
                 return toJSONString(ERROR_2);//超了
-            }else {
+            }else if(e.getMessage().equals("has_add")){
+                return toJSONString(ERROR_3);//已经添加了
+            }
+            else {
                 return toJSONString(ERROR_1);
             }
         }

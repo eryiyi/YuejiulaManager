@@ -51,6 +51,7 @@
 
         <result column="jfcount" property="jfcount"/>
         <result column="groupid" property="groupId"/>
+        <result column="school_record_mood_id" property="school_record_mood_id"/>
     </resultMap>
 
     <resultMap id="my_member_dianpu" type="com.liangxunwang.unimanager.mvc.vo.EmpDianpu">
@@ -363,7 +364,16 @@
         SELECT lemp.*
          FROM lx_emp lemp
            left join contract_school ls on ls.emp_id=lemp.emp_id
-        WHERE ls.school_id=#{school_id}
+        WHERE ls.school_id= #{school_id}
+    </select>
+
+
+    <select id="listByMoods" resultMap="my_member_vo">
+        SELECT le.*, ls.name as school_name
+        from lx_emp le
+        left join college ls on le.school_id=ls.coid
+        left join school_record_mood_gz lgz on lgz.emp_id=le.emp_id
+        WHERE 1=1 AND  lgz.school_record_mood_id = #{school_record_mood_id}  and le.school_id = #{school_id}
     </select>
 
 </mapper>
