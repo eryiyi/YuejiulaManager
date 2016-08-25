@@ -21,11 +21,13 @@
         <result column="emp_name" property="emp_name"/>
         <result column="emp_cover" property="emp_cover"/>
         <result column="emp_mobile" property="emp_mobile"/>
+        <result column="schoolName" property="schoolName"/>
     </resultMap>
 
     <select id="lists" resultMap="fhFqObjVO">
-        SELECT sn.*,le.emp_name as emp_name ,le.emp_cover as emp_cover ,le.emp_mobile as emp_mobile from school_fhfq sn
+        SELECT sn.*,le.emp_name as emp_name ,le.emp_cover as emp_cover ,le.emp_mobile as emp_mobile,lg.name as schoolName from school_fhfq sn
         LEFT JOIN lx_emp le ON sn.emp_id = le.emp_id
+        LEFT JOIN college lg ON sn.school_id = lg.coid
         WHERE 1=1
         <if test="emp_id != null and emp_id != ''">
             AND sn.emp_id = #{emp_id}
@@ -52,7 +54,7 @@
     </delete>
 
     <delete id="deleteByEmpid"  parameterType="com.liangxunwang.unimanager.model.FhFqObj">
-        DELETE FROM school_fhfq where emp_id = #{emp_id} AND emp_id_m = #{emp_id_m}  AND istype = #{istype}
+        DELETE FROM school_fhfq where emp_id = #{emp_id} AND emp_id_m = #{emp_id_m}  AND istype = #{istype} AND school_id = #{school_id}
     </delete>
 
     <select id="findById" parameterType="String" resultMap="fhfqobj">

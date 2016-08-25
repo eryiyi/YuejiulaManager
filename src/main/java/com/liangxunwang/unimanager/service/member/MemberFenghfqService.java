@@ -2,10 +2,12 @@ package com.liangxunwang.unimanager.service.member;
 
 import com.liangxunwang.unimanager.dao.FqfhObjDao;
 import com.liangxunwang.unimanager.dao.MemberDao;
+import com.liangxunwang.unimanager.model.FhFqObj;
 import com.liangxunwang.unimanager.mvc.vo.FhFqObjVO;
 import com.liangxunwang.unimanager.query.FenghaofengqunQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,16 +34,25 @@ public class MemberFenghfqService implements  ListService{
     public Object list(Object object) throws ServiceException {
         FenghaofengqunQuery query = (FenghaofengqunQuery) object;
         Map<String,Object> map = new HashMap<String, Object>();
-        if(StringUtil.isNullOrEmpty( query.getEmp_id())){
+        if(!StringUtil.isNullOrEmpty( query.getEmp_id())){
             map.put("emp_id", query.getEmp_id());
         }
-        if(StringUtil.isNullOrEmpty( query.getEmp_id_m())){
+        if(!StringUtil.isNullOrEmpty( query.getEmp_id_m())){
             map.put("emp_id_m", query.getEmp_id_m());
         }
-        if(StringUtil.isNullOrEmpty( query.getIstype())){
+        if(!StringUtil.isNullOrEmpty( query.getIstype())){
             map.put("istype", query.getIstype());
         }
         List<FhFqObjVO> list = fqfhObjDao.lists(map);
+        if(list != null){
+            for(FhFqObjVO fhFqObjVO:list){
+                if (fhFqObjVO.getEmp_cover().startsWith("upload")) {
+                    fhFqObjVO.setEmp_cover(Constants.URL + fhFqObjVO.getEmp_cover());
+                }else {
+                    fhFqObjVO.setEmp_cover(Constants.QINIU_URL + fhFqObjVO.getEmp_cover());
+                }
+            }
+        }
         return list ;
     }
 

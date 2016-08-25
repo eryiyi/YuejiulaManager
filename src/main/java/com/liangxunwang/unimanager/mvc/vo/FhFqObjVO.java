@@ -9,6 +9,15 @@ public class FhFqObjVO extends FhFqObj {
     private String emp_name;
     private String emp_cover;
     private String emp_mobile;
+    private String schoolName;
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
 
     public String getEmp_name() {
         return emp_name;
