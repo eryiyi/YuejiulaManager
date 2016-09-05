@@ -204,6 +204,7 @@
                 "typeIsUse": isUse,
                 "typeContent": typeContent,
                 "typeCover": imagePath,
+                "lx_goods_type_type": '0',
                 "typeId": '${type.typeId}'
             },
             async: false,
