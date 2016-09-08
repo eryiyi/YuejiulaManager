@@ -43,7 +43,7 @@ public interface WorkDao {
     PkWorkVO findWorkVo(String id);
 
     /**
-     * 查找各个学校的冠军
+     * 查找各个圈子的冠军
      * @param themeId
      * @return
      */

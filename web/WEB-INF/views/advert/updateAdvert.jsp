@@ -49,11 +49,11 @@
                     <input type="hidden" id="advert_id" value="${advert.adId}"/>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">学校名称</label>
+                        <label class="col-sm-2 control-label">圈子名称</label>
 
                         <div class="col-sm-4">
                             <select class="populate placeholder" name="university" id="s2_country">
-                                <option value="">-- 选择查询学校 --</option>
+                                <option value="">-- 选择查询圈子 --</option>
                                 <c:forEach items="${schools}" var="s">
                                     <option value="${s.schoolId}" ${advert.adSchoolId==s.schoolId?'selected':''} >${s.schoolName}</option>
                                 </c:forEach>
@@ -187,7 +187,7 @@
     function updateAdvert() {
         var schoolId = $("#s2_country").val();
         if (schoolId == "") {
-            alert("请选择学校");
+            alert("请选择圈子");
             return;
         }
         var isUse = '';

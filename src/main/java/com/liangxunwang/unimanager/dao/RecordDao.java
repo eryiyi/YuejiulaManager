@@ -36,7 +36,7 @@ public interface RecordDao {
     RecordVO findById(String id);
 
     /**
-     * 根据学校ID查找推广
+     * 根据圈子ID查找推广
      * @param schoolId
      * @return
      */
@@ -60,7 +60,7 @@ public interface RecordDao {
     void deletePromotion(String rmpId);
 
     /**
-     * 根据学校ID删除该学校下的推广
+     * 根据圈子ID删除该圈子下的推广
      * @param schoolId
      */
     void deleteBySchoolId(String schoolId);

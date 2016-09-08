@@ -164,7 +164,7 @@ public interface MemberDao {
     void setContractUser(@Param(value = "empId")String empId, @Param(value = "typeId")String typeId);
 
     /**
-     * 根据学校ID查询所有的会员信息
+     * 根据圈子ID查询所有的会员信息
      * @param schoolId
      * @return
      */
@@ -175,7 +175,7 @@ public interface MemberDao {
     //查询封群的
     List<MemberVO> getFengquns();
 
-    //更换学校
+    //更换圈子
     void updateCollegeById(@Param(value = "emp_id") String is_fengqun, @Param(value = "school_id") String emp_id);
 
     /**

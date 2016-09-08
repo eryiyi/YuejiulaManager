@@ -29,7 +29,7 @@
                     <i class="fa fa-table"></i>
           <span>
             <c:if test="${query.type==0}">全国冠军列表</c:if>
-            <c:if test="${query.type==1}">学校冠军列表</c:if>
+            <c:if test="${query.type==1}">圈子冠军列表</c:if>
           </span>
                 </div>
                 <div class="box-icons">
@@ -54,7 +54,7 @@
                         <th>活动主题</th>
                         <th>活动期次</th>
                         <th>冠军名称</th>
-                        <th>学校名称</th>
+                        <th>圈子名称</th>
                         <th>是否发奖</th>
                         <th>是否领奖</th>
                         <th>领奖图片</th>

@@ -165,7 +165,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">发布学校</label>
+                        <label class="col-sm-2 control-label">发布圈子</label>
                         <c:forEach items="${schools}" var="e">
                             <div class="col-sm-2">
                                 <input type="checkbox" value="${e.schoolId}" name="schools">${e.schoolName}
@@ -266,7 +266,7 @@
             return;
         }
         if (schools == null || schools == '') {
-            alert("请选择商品要发布的学校");
+            alert("请选择商品要发布的圈子");
             return;
         }
 

@@ -9,7 +9,7 @@ public class IncomeQuery {
 
     private String startTime;
     private String endTime;
-    private String schoolId;//根据学校查询
+    private String schoolId;//根据圈子查询
     private String empId;//根据商家查询
     private String empType;//账号登录类型
 

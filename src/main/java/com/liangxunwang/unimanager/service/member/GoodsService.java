@@ -110,7 +110,7 @@ public class GoodsService implements SaveService, ListService, FindService , Del
         }
         int[] schoolIds = null;
         if (!StringUtil.isNullOrEmpty(query.getType()) && !query.getIsMine().equals("1")) {
-            if (query.getType().equals("0")) {//查询会员学校下的商品
+            if (query.getType().equals("0")) {//查询会员圈子下的商品
                 schoolIds = new int[]{Integer.parseInt(query.getSchoolId())};
             } else if (query.getType().equals("2")) {//商家
                 List<SellerGoods> list = sellerGoodsDao.getSellerGoodsByEmpId(query.getEmpId());

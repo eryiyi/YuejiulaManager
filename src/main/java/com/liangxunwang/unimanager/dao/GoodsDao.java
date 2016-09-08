@@ -48,7 +48,7 @@ public interface GoodsDao {
     void deleteGoodsByEmp(@Param(value = "empId")String empId, @Param(value = "schoolId")String schoolId);
 
     /**
-     * 根据商家ID和学校ID删除该商家下的所有商品
+     * 根据商家ID和圈子ID删除该商家下的所有商品
      */
     void deleteGoodsById(Map<String, Object> map);
 

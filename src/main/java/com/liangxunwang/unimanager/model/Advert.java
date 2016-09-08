@@ -8,7 +8,7 @@ public class Advert {
     private String adPic;//图片链接
     private String adTypeId;//是否大图
     private String adIsUse;//是否可用
-    private String adSchoolId;//学校ID
+    private String adSchoolId;//圈子ID
     private String dateline;//创建时间
     private String adUrl;//广告链接
 //    private String startTime;//开始时间

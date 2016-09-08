@@ -212,7 +212,7 @@
             </c:if>
             <c:if test="${e.type == '1'}">
                 <div class="each">
-                    <h3 class="area">※ 学校本部 ※</h3>
+                    <h3 class="area">※ 圈子本部 ※</h3>
 
                     <div class="content">
                         <p>${e.content}</p>

@@ -158,7 +158,7 @@ public class AdvertController extends ControllerConstants {
     //圈主添加广告
     @RequestMapping("/ajax/toAddAdvertCheng")
     public String toAddAdvertCheng(ModelMap map,HttpSession session){
-        //查询当前圈主的学校
+        //查询当前圈主的圈子
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         List<ContractSchoolVO> contractSchoolVOs = (List<ContractSchoolVO>) contractSchoolListService.list(admin.getEmpId());
         map.put("schools", contractSchoolVOs);

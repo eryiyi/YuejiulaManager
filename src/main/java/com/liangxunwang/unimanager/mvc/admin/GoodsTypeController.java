@@ -57,7 +57,7 @@ public class GoodsTypeController extends ControllerConstants{
 
     @RequestMapping("/toAddGoodsTypeThree")
     public String toAddGoodsTypeThree(HttpSession session, ModelMap map){
-        //查询当前圈主的学校
+        //查询当前圈主的圈子
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         List<ContractSchoolVO> contractSchoolVOs = (List<ContractSchoolVO>) contractSchoolListService.list(admin.getEmpId());
         map.put("schools", contractSchoolVOs);

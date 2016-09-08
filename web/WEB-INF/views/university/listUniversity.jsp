@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javaScript:void(0)">学校管理</a></li>
-            <li><a href="javaScript:void(0)">学校列表</a></li>
+            <li><a href="javaScript:void(0)">圈子管理</a></li>
+            <li><a href="javaScript:void(0)">圈子列表</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name ui-draggable-handle">
                     <i class="fa fa-table"></i>
-                    <span>学校列表</span>
+                    <span>圈子列表</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -48,7 +48,7 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>学校名称</th>
+                        <th>圈子名称</th>
                         <th>所在地区</th>
                         <th>是否禁用</th>
                         <th>添加时间</th>
@@ -95,7 +95,7 @@
     }
 
     function deleteUniversity(_schoolId) {
-        if (!confirm("确定要删除该学校么？")) {
+        if (!confirm("确定要删除该圈子么？")) {
             return;
         }
         $.ajax({

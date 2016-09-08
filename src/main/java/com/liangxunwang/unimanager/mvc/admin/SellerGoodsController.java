@@ -174,7 +174,7 @@ public class SellerGoodsController extends ControllerConstants {
     }
 
     /**
-     * 根据商家ID和圈主ID查找该商家下的学校
+     * 根据商家ID和圈主ID查找该商家下的圈子
      * @param empId
      * @param contractId
      * @return
@@ -197,7 +197,7 @@ public class SellerGoodsController extends ControllerConstants {
     }
 
     /**
-     * 根据商家ID查找商家下的所有学校
+     * 根据商家ID查找商家下的所有圈子
      * @param empId
      * @return
      */
@@ -218,7 +218,7 @@ public class SellerGoodsController extends ControllerConstants {
     }
 
     /**
-     * 根据id删除商家下的某个学校
+     * 根据id删除商家下的某个圈子
      * @param id
      * @return
      */

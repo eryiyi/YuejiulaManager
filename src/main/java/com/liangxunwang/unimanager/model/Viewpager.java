@@ -10,7 +10,7 @@ public class Viewpager {
     private String picUrl;//图片链接
     private String desc;
 
-    private String schoolId;//哪个学校的
+    private String schoolId;//哪个圈子的
     private String goodsId;//产品的ID
     private String type;//1 PK  2 商品详情  3我们的广告
 

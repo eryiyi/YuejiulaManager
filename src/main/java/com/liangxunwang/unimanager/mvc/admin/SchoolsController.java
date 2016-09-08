@@ -64,7 +64,7 @@ public class SchoolsController extends ControllerConstants {
 
 
     /**
-     * 保存学校
+     * 保存圈子
      * @return
      */
     @RequestMapping("/saveSchools")

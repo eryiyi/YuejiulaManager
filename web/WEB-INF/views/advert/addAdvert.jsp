@@ -60,11 +60,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">学校名称</label>
+                        <label class="col-sm-2 control-label">圈子名称</label>
 
                         <div class="col-sm-4">
                             <select class="populate placeholder" name="university" id="s2_country">
-                                <option value="">-- 选择学校 --</option>
+                                <option value="">-- 选择圈子 --</option>
                             </select>
                         </div>
                     </div>
@@ -185,7 +185,7 @@
     function saveAdvert() {
         var schoolId = $("#s2_country").val();
         if (schoolId == "") {
-            alert("请选择学校");
+            alert("请选择圈子");
             return;
         }
         var isUse = '';

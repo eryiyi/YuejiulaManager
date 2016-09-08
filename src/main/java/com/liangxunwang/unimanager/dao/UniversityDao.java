@@ -14,46 +14,46 @@ public interface UniversityDao {
     public void save(University university);
 
     /**
-     * 根据学校名称查找数据
+     * 根据圈子名称查找数据
      * @param name
      * @return
      */
     public University findByName(String name);
 
     /**
-     * 查询所有的学校
+     * 查询所有的圈子
      * @return
      */
     public List<University> list();
 
     /**
-     * 查找所有可用学校
+     * 查找所有可用圈子
      * @return
      */
     public List<University> listAll();
 
     /**
-     * 查询附近的学校
+     * 查询附近的圈子
      * @param schoolId
      * @return
      */
     public List<University> listNearby(String schoolId);
 
     /**
-     * 根据ID查找学校
+     * 根据ID查找圈子
      * @param schoolId
      * @return
      */
     public University findById(String schoolId);
 
     /**
-     * 更新学校
+     * 更新圈子
      * @param university
      */
     public void update(University university);
 
     /**
-     * 根据ID删除学校
+     * 根据ID删除圈子
      * @param schoolId
      */
     public void deleteById(String schoolId);

@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javascript:void (0);">学校管理</a></li>
-            <li><a href="javascript:void (0);">学校列表</a></li>
+            <li><a href="javascript:void (0);">圈子管理</a></li>
+            <li><a href="javascript:void (0);">圈子列表</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name ui-draggable-handle">
                     <i class="fa fa-table"></i>
-                    <span>学校列表</span>
+                    <span>圈子列表</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -44,11 +44,11 @@
             </div>
             <div class="box-content">
                 <div class="col-sm-3 col-xs-3">
-                    <label class="col-sm-3 control-label">学校名</label>
+                    <label class="col-sm-3 control-label">圈子名</label>
 
                     <div class="col-sm-6">
                         <input class="form-control" id="keyWords" value="${query.keyWords}" type="text"
-                               placeholder="学校名">
+                               placeholder="圈子名">
                     </div>
                 </div>
                 <div class="col-sm-3 col-xs-3">
@@ -73,7 +73,7 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>学校</th>
+                        <th>圈子</th>
                         <th>所属省份</th>
                         <th>环信ID</th>
                         <th>操作</th>
@@ -142,7 +142,7 @@
 </div>
 <script type="text/javascript">
     function deleteCollege(id) {
-        if (!confirm("确定删除该学校？")) {
+        if (!confirm("确定删除该圈子？")) {
             return;
         }
         $.ajax({

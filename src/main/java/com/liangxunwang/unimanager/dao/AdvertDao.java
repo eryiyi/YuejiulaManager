@@ -58,7 +58,7 @@ public interface AdvertDao {
     public List<Advert> getBig(String typeId);
 
     /**
-     * 根据学校ID获得所有的小广告位
+     * 根据圈子ID获得所有的小广告位
      * @param schoolId
      * @return
      */

@@ -14,7 +14,7 @@ import java.util.Map;
 @Repository("collegeDao")
 public interface CollegeDao {
     /**
-     * 根据省份查找该省的所有学校
+     * 根据省份查找该省的所有圈子
      * @param map
      * @return
      */
@@ -29,12 +29,12 @@ public interface CollegeDao {
     public List<SchoolVO> lists(Map<String, Object> map);
     public long count(Map<String, Object> map);
 
-    //保存学校
+    //保存圈子
     void save(College college);
 
     void deleteById(String coid);
 
-    //查询所有学校
+    //查询所有圈子
 
 
 }

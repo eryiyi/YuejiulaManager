@@ -8,7 +8,7 @@ import com.liangxunwang.unimanager.model.SellerGoods;
 public class SellerGoodsVO extends SellerGoods {
     private String empName;//商家名称
     private String empCover;//商家头像
-    private String schoolName;//学校名称
+    private String schoolName;//圈子名称
     private String mobile;
 
     public String getMobile() {

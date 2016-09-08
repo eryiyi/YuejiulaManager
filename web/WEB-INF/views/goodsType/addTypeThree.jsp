@@ -122,7 +122,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">发布学校</label>
+                        <label class="col-sm-2 control-label">发布圈子</label>
                         <c:forEach items="${schools}" var="e">
                             <div class="col-sm-2">
                                 <input type="checkbox" value="${e.schoolId}" name="schools">${e.schoolName}
@@ -231,7 +231,7 @@
         var schools = schools_ary.join('|');//将数组元素连接起来以构建一个字符串
 
         if (schools == null || schools == '') {
-            alert("请选择要添加第三方网址的学校");
+            alert("请选择要添加第三方网址的圈子");
             return;
         }
         $.ajax({

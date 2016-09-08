@@ -60,8 +60,8 @@ public class IncomeService implements ListService {
                     }
                 }else if ("2".equals(query.getEmpType())){//圈主查询
                     if (!StringUtil.isNullOrEmpty(query.getSchoolId())) {
-                        map.put("schoolId", query.getSchoolId());//schoolId不为空，查询该学校的收入
-                    }else {//shcoolId为空，查询该圈主下所有学校的收入
+                        map.put("schoolId", query.getSchoolId());//schoolId不为空，查询该圈子的收入
+                    }else {//shcoolId为空，查询该圈主下所有圈子的收入
                         List<ContractSchoolVO> list = schoolDao.listByEmpId(query.getEmpId());//
                         String[] schools = new String[list.size()];
                         for (int i = 0; i < list.size(); i++) {

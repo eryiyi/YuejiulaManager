@@ -232,7 +232,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-list"></i>
-                            <span class="hidden-xs">商城管理</span>
+                            <span class="hidden-xs">商城网址管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('LIST_CLASS', sessionScope.powers)}">
@@ -386,7 +386,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('SCHOOL_LIST', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('listSchool','')">我的学校</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('listSchool','')">我的圈子</a></li>
                             </c:if>
                             <c:if test="${um:permission('MINE_MERCHANT', sessionScope.powers)}">
                                 <li><a href="javascript:void(0);" onclick="toPage('listSeller','')">我的商家</a></li>
@@ -450,10 +450,10 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-picture-o"></i>
-                            <span class="hidden-xs">直营商品</span>
+                            <span class="hidden-xs">推广商品</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);" onclick="toPage('/paopaogoods/listZhiying','1')">我的商品</a>
+                            <li><a href="javascript:void(0);" onclick="toPage('/paopaogoods/listZhiying','1')">已推商品</a>
                             </li>
                             <li><a href="javascript:void(0);" onclick="toPage('/paopaogoods/toAddZhiying','')">发布商品</a>
                             </li>
@@ -509,18 +509,18 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-picture-o"></i>
-                            <span class="hidden-xs">学校管理</span>
+                            <span class="hidden-xs">圈子管理</span>
                         </a>
                         <ul class="dropdown-menu">
 
                             <c:if test="${um:permission('ADD_SCHOOL_LIST', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('toAddSchools','')">添加学校</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('toAddSchools','')">添加圈子</a></li>
                             </c:if>
                             <c:if test="${um:permission('SCHOOLS_LIST_LIST', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('listSchools','1')">学校列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('listSchools','1')">圈子列表</a></li>
                             </c:if>
                                 <%--<c:if test="${um:permission('REG_HUANXIN_COLLEGE', sessionScope.powers)}">--%>
-                                <%--<li><a href="javascript:void(0);" onclick="toPage('regHxCollege','')">添加学校环信</a></li>--%>
+                                <%--<li><a href="javascript:void(0);" onclick="toPage('regHxCollege','')">添加圈子环信</a></li>--%>
                                 <%--</c:if>--%>
 
                         </ul>
@@ -583,11 +583,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-picture-o"></i>
-                            <span class="hidden-xs">圈主广告语</span>
+                            <span class="hidden-xs">圈子欢迎语</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_MAANGER_AD_LIST', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/msgAdController/list','1')">圈主广告语</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/msgAdController/list','1')">欢迎语</a></li>
                             </c:if>
                         </ul>
                     </li>

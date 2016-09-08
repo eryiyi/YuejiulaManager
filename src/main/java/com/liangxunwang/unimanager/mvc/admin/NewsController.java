@@ -47,7 +47,7 @@ public class NewsController extends ControllerConstants {
     private DeleteService deleteNewsService;
 
     /**
-     * 根据学校ID查询新闻
+     * 根据圈子ID查询新闻
      * @param query
      * @param page
      * @return

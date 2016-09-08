@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javascript:void(0)" onclick="toPage('mainPage','')">主页</a></li>
-            <li><a href="javascript:void(0)">圈主广告语管理</a></li>
-            <li><a href="javascript:void(0)">圈主广告语管理添加</a></li>
+            <li><a href="javascript:void(0)">圈主欢迎语管理</a></li>
+            <li><a href="javascript:void(0)">圈主欢迎语管理添加</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name">
                     <i class="fa fa-search"></i>
-                    <span>圈主广告语管理添加</span>
+                    <span>圈主欢迎语管理添加</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -43,20 +43,20 @@
                 <div class="no-move"></div>
             </div>
             <div class="box-content">
-                <h4 class="page-header">圈主广告语管理添加</h4>
+                <h4 class="page-header">圈主欢迎语管理添加</h4>
 
                 <form class="form-horizontal" role="form">
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">广告语</label>
+                        <label class="col-sm-2 control-label">欢迎语</label>
 
                         <div class="col-sm-4">
-                            <input type="text" id="msg_ad_title" class="form-control" placeholder="广告语"
+                            <input type="text" id="msg_ad_title" class="form-control" placeholder="欢迎语"
                                    data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">发布学校</label>
+                        <label class="col-sm-2 control-label">发布圈子</label>
                         <c:forEach items="${schools}" var="e">
                             <div class="col-sm-2">
                                 <input type="checkbox" value="${e.schoolId}" name="schools">${e.schoolName}
@@ -88,12 +88,12 @@
         var schools = schools_ary.join('|');//将数组元素连接起来以构建一个字符串
 
         if (msg_ad_title.replace(/\s/g, '') == '') {
-            alert("圈主广告语不能为空");
+            alert("圈主欢迎语不能为空");
             return;
         }
 
         if (schools == null || schools == '') {
-            alert("请选择广告语要发布的学校");
+            alert("请选择欢迎语要发布的圈子");
             return;
         }
         $.ajax({
@@ -111,7 +111,7 @@
                     alert("执行成功");
                     window.location.href = "#module=msgAdController/list"+ "&_t="+ new Date().getTime();
                 } else {
-                    var _case = {1: "添加失败，请检查", 2: "该学校已经添加广告语，请删除之后再添加！"};
+                    var _case = {1: "添加失败，请检查", 2: "该圈子已经添加欢迎语，请删除之后再添加！"};
                     alert(_case[data.code])
                 }
             }

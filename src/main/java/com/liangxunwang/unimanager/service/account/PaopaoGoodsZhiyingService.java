@@ -41,7 +41,7 @@ public class PaopaoGoodsZhiyingService implements SaveService,ListService,Update
             String str = "";
             Object[] params = (Object[]) object;
             PaopaoGoods goods = (PaopaoGoods) params[0];
-            String emp_ids_schools = goods.getEmpId();//商家id和学校id
+            String emp_ids_schools = goods.getEmpId();//商家id和圈子id
 
             String[] emp_ids_schoolsAry = emp_ids_schools.split("\\|");
 

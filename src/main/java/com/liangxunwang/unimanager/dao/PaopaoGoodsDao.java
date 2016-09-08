@@ -14,7 +14,7 @@ import java.util.Map;
 @Repository("paopaoGoodsDao")
 public interface PaopaoGoodsDao {
     /**
-     * 根据商家会员ID和学校ID查询该学校已经添加了几个商品
+     * 根据商家会员ID和圈子ID查询该圈子已经添加了几个商品
      * @param empId
      * @param schoolId
      * @return

@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javascript:void(0)" onclick="toPage('mainPage','')">主页</a></li>
-            <li><a href="javascript:void(0)">圈主广告语管理</a></li>
-            <li><a href="javascript:void(0)">圈主广告语管理</a></li>
+            <li><a href="javascript:void(0)">圈主欢迎语管理</a></li>
+            <li><a href="javascript:void(0)">圈主欢迎语管理</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name ui-draggable-handle">
                     <i class="fa fa-table"></i>
-                    <span>圈主广告语管理</span>
+                    <span>圈主欢迎语管理</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -50,8 +50,8 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>广告语</th>
-                        <th>学校</th>
+                        <th>欢迎语</th>
+                        <th>圈子</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -79,7 +79,7 @@
 <script type="text/javascript">
 
     function editRole(_id) {
-        if (confirm("确定要编辑该广告语么？")) {
+        if (confirm("确定要编辑该欢迎语么？")) {
             $.ajax({
                 type: "GET",
                 data: {"msg_ad_no": _id},
@@ -92,7 +92,7 @@
     }
 
     function deleteRole(_id) {
-        if (confirm("确定要删除该广告语么？")) {
+        if (confirm("确定要删除该欢迎语么？")) {
             $.ajax({
                 url: "/msgAdController/delete.do",
                 data: {"msg_ad_no": _id},

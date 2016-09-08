@@ -67,7 +67,7 @@ public class MemberController extends ControllerConstants {
                 vo.setEndTime(DateUtil.getDate(vo.getEndTime(), "yyyy-MM-dd"));
             }
             if(contractSchoolVOs != null && contractSchoolVOs.size()>0 && StringUtil.isNullOrEmpty(query.getSchool_id())){
-                //有学校  并且没有选择学校
+                //有圈子  并且没有选择圈子
                 query.setSchool_id(contractSchoolVOs.get(0).getSchoolId());
             }
             map.put("contractSchoolVOs", contractSchoolVOs);
@@ -202,7 +202,7 @@ public class MemberController extends ControllerConstants {
     public String toDetailEmp(String emp_mobile, ModelMap map){
         MemberVO member = (MemberVO) memberFindService.findById(emp_mobile);
         map.put("empVO", member);
-        //查询学校
+        //查询圈子
 
         return "/member/detail";
     }

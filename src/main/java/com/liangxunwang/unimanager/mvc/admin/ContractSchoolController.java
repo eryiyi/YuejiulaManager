@@ -95,7 +95,7 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 查找会员下面开通了几个学校
+     * 查找会员下面开通了几个圈子
      * @param empId
      * @return
      */
@@ -116,7 +116,7 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 根据当前登录圈主查询开通的学校
+     * 根据当前登录圈主查询开通的圈子
      * @param session
      * @param map
      * @return
@@ -130,7 +130,7 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 给圈主添加学校
+     * 给圈主添加圈子
      * @param contractSchool
      * @return
      */
@@ -151,14 +151,14 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 根据ID删除圈主下的学校
-     * 要删除该圈主下学校的所有商家
-     *      判断该商家是否是别的学校的商家，如果不是设置为普通会员
+     * 根据ID删除圈主下的圈子
+     * 要删除该圈主下圈子的所有商家
+     *      判断该商家是否是别的圈子的商家，如果不是设置为普通会员
      * 删除该商家下的所有商品
      * 删除该商家下的所有兼职
      * 删除该圈主下的所有商品
      * 删除该圈主下的所有兼职
-     * @param id  承包学校ID
+     * @param id  承包圈子ID
      * @return
      */
     @RequestMapping("/deleteContractSchool")
@@ -211,7 +211,7 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 定时查找所有圈主过期的学校
+     * 定时查找所有圈主过期的圈子
      * @return
      */
     public String update(){

@@ -48,7 +48,7 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
     private AdminDao adminDao;
 
     /**
-     * 设置商家为哪个学校的商家，批量保存
+     * 设置商家为哪个圈子的商家，批量保存
      * @param object
      * @return
      * @throws ServiceException
@@ -59,8 +59,8 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
             Object[] params = (Object[]) object;
             String contractId = (String) params[0];//圈主的ID
             String empId = (String) params[1];//商家的会员ID
-            String schools = (String) params[2];//圈主要给商家开通的学校
-            String dates = (String) params[3];//每个学校的过期时间
+            String schools = (String) params[2];//圈主要给商家开通的圈子
+            String dates = (String) params[3];//每个圈子的过期时间
 
             List<SellerGoods> checks = sellerGoodsDao.getSellerGoodsById(empId, contractId);
 //            if (checks.size() > 0) {
@@ -165,7 +165,7 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("empId", empId);
             map.put("schoolIds", schoolIds);
-            paopaoGoodsDao.deleteGoodsById(map);//删除该商家所在该圈主学校下的商品
+            paopaoGoodsDao.deleteGoodsById(map);//删除该商家所在该圈主圈子下的商品
 
             sellerGoodsDao.delete(empId, contractId);//删除圈主和商家的联系
             //如果不在是商家将其设为普通会员
@@ -265,16 +265,16 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
             List<SellerGoods> endSeller = sellerGoodsDao.getEndSeller(System.currentTimeMillis()+"");
             for (int i=0; i<endSeller.size(); i++){
                 SellerGoods sellerGoods = endSeller.get(i);
-                //查找该会员下还有没有其他的学校
+                //查找该会员下还有没有其他的圈子
                 List<SellerGoods> list = sellerGoodsDao.getCheckSeller(sellerGoods.getEmpId(), System.currentTimeMillis()+"");
-                //如果等于0说明该会员没有别的学校了
+                //如果等于0说明该会员没有别的圈子了
                 if (list.size() == 0){
                 //修改会员为普通会员
                     memberDao.changeBusiness(sellerGoods.getEmpId(), "0");
                     //删除该会员的后台登录账号
                     adminDao.delete(sellerGoods.getEmpId());
                 }
-                //删除商家和学校关联
+                //删除商家和圈子关联
                 sellerGoodsDao.deleteById(sellerGoods.getId());
                 //删除该商家发布的所有商品
                 paopaoGoodsDao.deleteGoodsByEmp(sellerGoods.getEmpId(), sellerGoods.getSchoolId());

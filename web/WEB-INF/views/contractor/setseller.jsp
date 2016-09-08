@@ -51,7 +51,7 @@
 
                 <div id="member_info" class="col-sm-12">
                 </div>
-                <h5 class="page-header">要开通学校</h5>
+                <h5 class="page-header">要开通圈子</h5>
                 <c:forEach items="${schools}" var="e" varStatus="st">
                     <div class="form-group">
                         <div class="col-sm-1"><input type="checkbox" name="school" value="${e.schoolId}"></div>
@@ -135,7 +135,7 @@
         var schools = school_ary.join('|');//将数组元素连接起来以构建一个字符串
         var date = time_ary.join("|");
         if (schools == null || schools == '') {
-            alert("请选择要开通的学校");
+            alert("请选择要开通的圈子");
             return;
         }
 

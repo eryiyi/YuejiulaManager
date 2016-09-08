@@ -46,7 +46,7 @@ public interface ContractSchoolDao {
     List<ContractSchool> findEndTime(String nowTime);
 
     /**
-     * 根据会员ID和时间查找该圈主还有没有没有到期的承包学校
+     * 根据会员ID和时间查找该圈主还有没有没有到期的承包圈子
      * @param empId
      * @param nowTime
      * @return
@@ -55,6 +55,6 @@ public interface ContractSchoolDao {
 
     long count(Map<String, Object> map);
 
-    //根据学校id查询圈主
+    //根据圈子id查询圈主
     List<ContractSchoolVO> getManagerById(String school_id);
 }

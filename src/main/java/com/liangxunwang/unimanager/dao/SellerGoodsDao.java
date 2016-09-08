@@ -40,7 +40,7 @@ public interface SellerGoodsDao {
     long count(Map<String, Object> map);
 
     /**
-     * 根据商家ID和圈主ID查找商家下面有几个学校
+     * 根据商家ID和圈主ID查找商家下面有几个圈子
      * @param empId
      * @param contractId
      * @return
@@ -48,14 +48,14 @@ public interface SellerGoodsDao {
     List<SellerSchoolList> findSellerSchoolList(@Param(value = "empId")String empId, @Param(value = "contractId")String contractId);
 
     /**
-     * 查找该商家下的所有学校
+     * 查找该商家下的所有圈子
      * @param empId
      * @return
      */
     List<SellerSchoolList> findSellerSchoolListById(@Param(value = "empId")String empId);
 
     /**
-     * 根据ID删除商家学校
+     * 根据ID删除商家圈子
      * @param id
      */
     void deleteById(String id);
@@ -75,7 +75,7 @@ public interface SellerGoodsDao {
     List<SellerGoods> getEndSeller(String nowTime);
 
     /**
-     * 根据会员ID，查找有没有没过期的学校
+     * 根据会员ID，查找有没有没过期的圈子
      * @param empId
      * @param time
      * @return
@@ -83,14 +83,14 @@ public interface SellerGoodsDao {
     List<SellerGoods> getCheckSeller(@Param(value = "empId")String empId, @Param(value = "time")String time);
 
     /**
-     * 根据学校ID查找该学校下的所有商家
+     * 根据圈子ID查找该圈子下的所有商家
      * @param schoolId
      * @return
      */
     List<SellerGoods> findBySchoolId(String schoolId);
 
     /**
-     * 查找该商家是不是其他学校的商家
+     * 查找该商家是不是其他圈子的商家
      * @param empId
      * @param schoolId
      * @return
@@ -98,7 +98,7 @@ public interface SellerGoodsDao {
     List<SellerGoods> getSellerByEmpAndSchool(@Param(value = "empId")String empId,@Param(value = "schoolId") String schoolId);
 
     /**
-     * 根据商家会员ID和学校ID查询该商家的详细信息
+     * 根据商家会员ID和圈子ID查询该商家的详细信息
      * @param empId
      * @param schoolId
      * @return

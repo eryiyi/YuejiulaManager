@@ -63,7 +63,7 @@
                     <dd>${vo.mobile}</dd>
                 </dl>
                 <dl class="dl-horizontal">
-                    <dt>经营学校</dt>
+                    <dt>经营圈子</dt>
                     <dd>${vo.schoolName}</dd>
                 </dl>
                 <dl class="dl-horizontal">

@@ -131,7 +131,7 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
             }
             int[] schoolIds = null;
             if (!StringUtil.isNullOrEmpty(query.getType()) && !"1".equals(query.getIsMine())) {
-                if (query.getType().equals("0")) {//正常状态，查询该学校下的宝贝
+                if (query.getType().equals("0")) {//正常状态，查询该圈子下的宝贝
                     if (!StringUtil.isNullOrEmpty(query.getSchoolId())) {
                         schoolIds = new int[]{Integer.parseInt(query.getSchoolId())};
                     }

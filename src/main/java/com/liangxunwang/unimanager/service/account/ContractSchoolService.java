@@ -96,20 +96,20 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
         String id = (String) object;
         ContractSchool contractSchool = schoolDao.findById(id);
         if (contractSchool != null){
-            //查找该圈主此学校下的所有商家
+            //查找该圈主此圈子下的所有商家
             List<SellerGoods> sellerGoodsList = sellerGoodsDao.findBySchoolId(contractSchool.getSchoolId());
             for (int i=0; i<sellerGoodsList.size(); i++){
                 SellerGoods sellerGoods = sellerGoodsList.get(i);
-                //查找该商家下还是不是其他的学校的商家
+                //查找该商家下还是不是其他的圈子的商家
                 List<SellerGoods> list = sellerGoodsDao.getSellerByEmpAndSchool(sellerGoods.getEmpId(), sellerGoods.getSchoolId());
-                //如果等于0说明该会员没有别的学校了
+                //如果等于0说明该会员没有别的圈子了
                 if (list.size() == 0){
                     //修改会员为普通会员
                     memberDao.changeBusiness(sellerGoods.getEmpId(), "0");
                     //删除该会员的后台登录账号
                     adminDao.delete(sellerGoods.getEmpId());
                 }
-                //删除商家和学校关联
+                //删除商家和圈子关联
                 sellerGoodsDao.deleteById(sellerGoods.getId());
                 //删除该商家发布的所有商品
                 goodsDao.deleteGoodsByEmp(sellerGoods.getEmpId(), sellerGoods.getSchoolId());
@@ -120,10 +120,10 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
             goodsDao.deleteGoodsByEmp(contractSchool.getEmpId(), contractSchool.getSchoolId());
             //删除该圈主下的所有兼职
             partTimeDao.deletePartTimeByEmp(contractSchool.getEmpId(), contractSchool.getSchoolId());
-            //删除圈主和学校的关联数据
+            //删除圈主和圈子的关联数据
             schoolDao.delete(id);
 
-            //删除该学校下的推广
+            //删除该圈子下的推广
             recordDao.deleteBySchoolId(contractSchool.getSchoolId());
         }
         return null;
@@ -137,23 +137,23 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
         if (empTypeId.equals("3")) {
             //把该用户设为普通会员
             memberDao.setContractUser(empId, "0");
-            //删除该用户下承包的学校
+            //删除该用户下承包的圈子
             List<ContractSchoolVO> schools = schoolDao.listByEmpId(empId);
             for (ContractSchoolVO vo : schools){
                 //删除该用户下的商家
                 List<SellerGoods> sellerGoodsList = sellerGoodsDao.findBySchoolId(vo.getSchoolId());
                 for (int i=0; i<sellerGoodsList.size(); i++){
                     SellerGoods sellerGoods = sellerGoodsList.get(i);
-                    //查找该商家下还是不是其他的学校的商家
+                    //查找该商家下还是不是其他的圈子的商家
                     List<SellerGoods> sellerGoodses = sellerGoodsDao.getSellerByEmpAndSchool(sellerGoods.getEmpId(), sellerGoods.getSchoolId());
-                    //如果等于0说明该会员没有别的学校了
+                    //如果等于0说明该会员没有别的圈子了
                     if (sellerGoodses.size() == 0){
                         //修改会员为普通会员
                         memberDao.changeBusiness(sellerGoods.getEmpId(), "0");
                         //删除该会员的后台登录账号
                         adminDao.delete(sellerGoods.getEmpId());
                     }
-                    //删除商家和学校关联
+                    //删除商家和圈子关联
                     sellerGoodsDao.deleteById(sellerGoods.getId());
                     //删除该商家发布的所有商品
                     goodsDao.deleteGoodsByEmp(sellerGoods.getEmpId(), sellerGoods.getSchoolId());
@@ -162,14 +162,14 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
                 }
 
                 //删除该用户下的商品和该用户下的商家的商品
-                //删除圈主和学校关联
+                //删除圈主和圈子关联
                 schoolDao.delete(vo.getId());
                 //删除该商家发布的所有商品
                 goodsDao.deleteGoodsByEmp(vo.getEmpId(), vo.getSchoolId());
                 //删除该商家下的所有兼职
                 partTimeDao.deletePartTimeByEmp(vo.getEmpId(), vo.getSchoolId());
 
-                //删除该学校下的推广
+                //删除该圈子下的推广
                 recordDao.deleteBySchoolId(vo.getSchoolId());
             }
             //删除该用户后台的登录账号数据
@@ -197,13 +197,13 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
 
     @Override
     public Object execute(Object object) throws ServiceException {
-        //查找要过期的学校
+        //查找要过期的圈子
         List<ContractSchool> list = schoolDao.findEndTime(System.currentTimeMillis()+"");
         if (list.size()==0){
             return null;
         }
         for (ContractSchool contractSchool : list){
-            //查找该圈主还有没有承包其他学校
+            //查找该圈主还有没有承包其他圈子
             List<ContractSchool> check = schoolDao.findByEmpAndEndTime(contractSchool.getEmpId(), System.currentTimeMillis()+"");
             if (check.size() == 0){
                 //将圈主设置成普通会员
@@ -211,20 +211,20 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
                 //删除该圈主的后台登录账号
                 adminDao.delete(contractSchool.getEmpId());
             }
-            //查找该圈主此学校下的所有商家
+            //查找该圈主此圈子下的所有商家
             List<SellerGoods> sellerGoodsList = sellerGoodsDao.findBySchoolId(contractSchool.getSchoolId());
             for (int i=0; i<sellerGoodsList.size(); i++){
                 SellerGoods sellerGoods = sellerGoodsList.get(i);
-                //查找该商家下还是不是其他的学校的商家
+                //查找该商家下还是不是其他的圈子的商家
                 List<SellerGoods> sellerGoodses = sellerGoodsDao.getSellerByEmpAndSchool(sellerGoods.getEmpId(), sellerGoods.getSchoolId());
-                //如果等于0说明该会员没有别的学校了
+                //如果等于0说明该会员没有别的圈子了
                 if (sellerGoodses.size() == 0){
                     //修改会员为普通会员
                     memberDao.changeBusiness(sellerGoods.getEmpId(), "0");
                     //删除该会员的后台登录账号
                     adminDao.delete(sellerGoods.getEmpId());
                 }
-                //删除商家和学校关联
+                //删除商家和圈子关联
                 sellerGoodsDao.deleteById(sellerGoods.getId());
                 //删除该商家发布的所有商品
                 goodsDao.deleteGoodsByEmp(sellerGoods.getEmpId(), sellerGoods.getSchoolId());
@@ -233,14 +233,14 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
             }
 
             //删除圈主下的所有发布商品和所有发布兼职
-            //删除圈主和学校关联
+            //删除圈主和圈子关联
             schoolDao.delete(contractSchool.getId());
             //删除该商家发布的所有商品
             goodsDao.deleteGoodsByEmp(contractSchool.getEmpId(), contractSchool.getSchoolId());
             //删除该商家下的所有兼职
             partTimeDao.deletePartTimeByEmp(contractSchool.getEmpId(), contractSchool.getSchoolId());
 
-            //删除该学校下的推广
+            //删除该圈子下的推广
             recordDao.deleteBySchoolId(contractSchool.getSchoolId());
         }
         return null;

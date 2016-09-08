@@ -61,7 +61,7 @@
                     </div>
                 </div>
                     <div class="col-sm-3 col-xs-3">
-                        <label class="col-sm-3 control-label">选择学校</label>
+                        <label class="col-sm-3 control-label">选择圈子</label>
                         <div class="col-sm-6">
                             <select class="form-control" id="school_id">
                                 <c:forEach items="${contractSchoolVOs}" var="e" varStatus="st">
@@ -94,7 +94,7 @@
                         <th>是否禁用</th>
                         <th>是否封号</th>
                         <th>是否封群</th>
-                        <th>所属学校</th>
+                        <th>所属圈子</th>
                         <th>注册时间</th>
                         <th>管理</th>
                     </tr>

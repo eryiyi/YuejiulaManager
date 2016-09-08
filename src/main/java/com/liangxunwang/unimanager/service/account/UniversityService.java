@@ -41,7 +41,7 @@ public class UniversityService implements SaveService, ListService, FindService,
     }
 
     /**
-     * 查找所有的学校
+     * 查找所有的圈子
      * @param object
      * @return
      */

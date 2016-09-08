@@ -75,10 +75,10 @@
                         <%--</div>--%>
                     <%--</div>--%>
                     <%--<div class="form-group">--%>
-                        <%--<label class="col-sm-2 control-label">广告语</label>--%>
+                        <%--<label class="col-sm-2 control-label">欢迎语</label>--%>
 
                         <%--<div class="col-sm-4">--%>
-                            <%--<input type="text" id="mm_ad_title" class="form-control" placeholder="广告语"--%>
+                            <%--<input type="text" id="mm_ad_title" class="form-control" placeholder="欢迎语"--%>
                                    <%--data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
                         <%--</div>--%>
                     <%--</div>--%>

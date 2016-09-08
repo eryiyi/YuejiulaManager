@@ -105,7 +105,7 @@
 
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">学校</label>
+                        <label class="col-sm-2 control-label">圈子</label>
 
                         <div class="col-sm-4">
                             <input type="text" readonly="true" class="form-control" value="${empVO.universityName}">

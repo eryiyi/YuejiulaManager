@@ -25,7 +25,7 @@
         <permission id="LEVEL_LIST" name="等级列表"/>
         <permission id="ADD_LEVEL" name="添加等级"/>
     </group>
-    <group id="MARKET_CLASS" name="商城管理">
+    <group id="MARKET_CLASS" name="网址管理">
         <permission id="LIST_CLASS" name="商城分类列表"/>
         <permission id="ADD_CLASS" name="添加商城分类"/>
         <permission id="GOODS_LIST_CLASS" name="商品列表"/>
@@ -60,7 +60,7 @@
         <permission id="ADD_RECORD" name="生成动态"/>
     </group>
     <group id="MINE_SCHOOL" name="我是圈主">
-        <permission id="SCHOOL_LIST" name="学校列表"/>
+        <permission id="SCHOOL_LIST" name="圈子列表"/>
         <permission id="MINE_MERCHANT" name="我的商家"/>
         <permission id="OPEN_MERCHANT" name="开通商家"/>
     </group>
@@ -87,10 +87,10 @@
     <!--<permission id="SELLERLIST_LIST" name="结算查询"/>-->
     <!--</group>-->
 
-    <group id="SCHOOLS_MANAGER" name="学校管理">
-        <permission id="ADD_SCHOOL_LIST" name="添加学校"/>
-        <permission id="SCHOOLS_LIST_LIST" name="学校列表"/>
-        <!--<permission id="REG_HUANXIN_COLLEGE" name="注册环信学校"/>-->
+    <group id="SCHOOLS_MANAGER" name="圈子管理">
+        <permission id="ADD_SCHOOL_LIST" name="添加圈子"/>
+        <permission id="SCHOOLS_LIST_LIST" name="圈子列表"/>
+        <!--<permission id="REG_HUANXIN_COLLEGE" name="注册环信圈子"/>-->
     </group>
 
     <group id="VIDEOS_MANAGER" name="视频上传">
@@ -107,8 +107,8 @@
         <permission id="GET_FIND_WWW_LIST" name="网址列表"/>
         <permission id="ADD_FIND_WWW_ADD" name="添加网址"/>
     </group>
-    <group id="MAANGER_AD_MANAGER" name="圈主广告语">
-        <permission id="ADD_MAANGER_AD_LIST" name="圈主广告语"/>
+    <group id="MAANGER_AD_MANAGER" name="圈子欢迎语">
+        <permission id="ADD_MAANGER_AD_LIST" name="欢迎语"/>
     </group>
     <group id="BIG_AREA_MANAGER" name="兴趣圈管理">
         <permission id="BIG_AREA_LIST" name="兴趣圈列表"/>

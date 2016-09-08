@@ -55,7 +55,7 @@ public class MsgAdObjService implements ListService,SaveService,DeleteService,Ex
 
                 List<MsgAd> lists = msgAdDao.lists(map);
                 if(lists != null && lists.size() > 0){
-                    //说明该学校有广告语 不能重复添加
+                    //说明该圈子有欢迎语 不能重复添加
                     throw new ServiceException("adIsTooMuch");
                 }else {
                     adObj.setMsg_ad_no(UUIDFactory.random());

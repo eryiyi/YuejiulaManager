@@ -90,7 +90,7 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
 //        if (!StringUtil.isNullOrEmpty(query.getSchoolIdEmp())){
 //            recordVO = recordDao.findBySchoolId(query.getSchoolIdEmp());
 //        }
-//        //查询我的学校和其他学校的推广
+//        //查询我的圈子和其他圈子的推广
 //        if (!StringUtil.isNullOrEmpty(schoolId)){
 //            recordVO = recordDao.findBySchoolId(schoolId);
 //        }
@@ -173,7 +173,7 @@ public class RecordService implements ListService, SaveService,DeleteService, Fi
             if(member != null){
                 if("1".equals(member.getIs_fenghao())){
                     //说明被封号了
-                    //查询是否封的这个学校
+                    //查询是否封的这个圈子
                     Map<String, Object> map = new HashMap<String, Object>();
                     map.put("emp_id", member.getEmpId());
                     map.put("istype", "0");

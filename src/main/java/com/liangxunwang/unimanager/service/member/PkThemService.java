@@ -130,7 +130,7 @@ public class PkThemService implements SaveService, ListService, DeleteService, U
                     championDao.save(champion);//保存全国冠军
                 }
 
-                //查找各个学校的冠军
+                //查找各个圈子的冠军
                 List<PkWorkVO> list = workDao.findAllSchoolQueue(theme.getId());
                 if (list.size()>0){
                     for (PkWorkVO vo : list){
@@ -143,7 +143,7 @@ public class PkThemService implements SaveService, ListService, DeleteService, U
                         cp.setThemeNumber(theme.getNumber() + "");
                         cp.setZpId(vo.getId());
                         cp.setType("1");
-                        championDao.save(cp);//各个学校的冠军
+                        championDao.save(cp);//各个圈子的冠军
                     }
                 }
 

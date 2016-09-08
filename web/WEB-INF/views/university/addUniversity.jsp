@@ -7,8 +7,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javaScript:void(0)">学校管理</a></li>
-            <li><a href="javaScript:void(0)">添加学校</a></li>
+            <li><a href="javaScript:void(0)">圈子管理</a></li>
+            <li><a href="javaScript:void(0)">添加圈子</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -26,7 +26,7 @@
             <div class="box-header">
                 <div class="box-name">
                     <i class="fa fa-search"></i>
-                    <span>添加学校表单</span>
+                    <span>添加圈子表单</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -42,15 +42,15 @@
                 <div class="no-move"></div>
             </div>
             <div class="box-content">
-                <h4 class="page-header">学校信息</h4>
+                <h4 class="page-header">圈子信息</h4>
 
                 <form id="save_form" class="form-horizontal" method="post" role="form">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">学校名称</label>
+                        <label class="col-sm-2 control-label">圈子名称</label>
 
                         <div class="col-sm-4">
                             <input type="text" id="universityName" name="universityName" class="form-control"
-                                   placeholder="学校名称" data-toggle="tooltip" data-placement="bottom"
+                                   placeholder="圈子名称" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>
                     </div>
@@ -106,11 +106,11 @@
             isUse = '0';
         }
         if (schoolName == '') {
-            alert("学校名称不能为空");
+            alert("圈子名称不能为空");
             return;
         }
         if (regionCode == '') {
-            alert("请选择学校所在地区");
+            alert("请选择圈子所在地区");
             return;
         }
         $.ajax({
@@ -125,7 +125,7 @@
                     alert("添加成功");
                     window.location.href = "#module=ajax/listUniversity&page=1"+ "&_t="+ new Date().getTime();
                 } else {
-                    var _case = {1: "学校名称不能为空", 2: "请选择学校地区", 3: "添加失败", 4: "该学校已添加"};
+                    var _case = {1: "圈子名称不能为空", 2: "请选择圈子地区", 3: "添加失败", 4: "该圈子已添加"};
                     alert(_case[data.code])
                 }
             }

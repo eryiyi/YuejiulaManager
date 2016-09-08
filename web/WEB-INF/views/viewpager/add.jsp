@@ -68,11 +68,11 @@
                     </c:if>
                     <c:if test="${sessionScope.account.type=='2' }">
                         <div class="form-group" id="select_school_div">
-                            <label class="col-sm-2 control-label">发布学校</label>
+                            <label class="col-sm-2 control-label">发布圈子</label>
 
                             <div class="col-sm-10">
                                 <select class="populate placeholder" id="viewpager_school">
-                                    <option value="">-- 选择学校 --</option>
+                                    <option value="">-- 选择圈子 --</option>
                                     <c:forEach items="${vo}" var="s">
                                         <option value="${s.schoolId}">${s.schoolName}</option>
                                     </c:forEach>
@@ -188,7 +188,7 @@
         var desc = $("#viewpager_desc").val();
         if (type == '1') {//PK活动
             if (schoolId == '' || schoolId == null) {
-                alert("请先选择发布学校");
+                alert("请先选择发布圈子");
                 return
             }
             $.ajax({
@@ -211,7 +211,7 @@
         }
         if (type == '2') {//商品详情
             if (schoolId == '' || schoolId == null) {
-                alert("请先选择发布学校");
+                alert("请先选择发布圈子");
                 return
             }
 
@@ -286,7 +286,7 @@
         }
         var schoolId = $("#viewpager_school").val();
         if (schoolId == '' || schoolId == null) {
-            alert("请先选择发布学校");
+            alert("请先选择发布圈子");
             return
         }
         var keyWords = $("#goods_keyWords").val();

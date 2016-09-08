@@ -110,7 +110,7 @@ public class MemberRegisterController extends ControllerConstants {
     }
 
     /**
-     * 根据省份ID获得该省份的所有学校
+     * 根据省份ID获得该省份的所有圈子
      * @param query
      * @return
      */

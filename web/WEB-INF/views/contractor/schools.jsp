@@ -9,7 +9,7 @@
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
             <li><a href="javaScript:void(0)">我是圈主</a></li>
-            <li><a href="javaScript:void(0)">我的学校</a></li>
+            <li><a href="javaScript:void(0)">我的圈子</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name ui-draggable-handle">
                     <i class="fa fa-table"></i>
-                    <span>学校列表</span>
+                    <span>圈子列表</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -48,7 +48,7 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>学校名字</th>
+                        <th>圈子名字</th>
                         <th>承包到期时间</th>
                         <%--<th>操作</th>--%>
                     </tr>

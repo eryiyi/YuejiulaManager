@@ -60,11 +60,11 @@
                         <%--</div>--%>
                     <%--</div>--%>
                     <%--<div class="form-group">--%>
-                        <%--<label class="col-sm-2 control-label">学校名称</label>--%>
+                        <%--<label class="col-sm-2 control-label">圈子名称</label>--%>
 
                         <%--<div class="col-sm-4">--%>
                             <%--<select class="populate placeholder" name="university" id="s2_country">--%>
-                                <%--<option value="">-- 选择学校 --</option>--%>
+                                <%--<option value="">-- 选择圈子 --</option>--%>
                             <%--</select>--%>
                         <%--</div>--%>
                     <%--</div>--%>
@@ -125,7 +125,7 @@
                     </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">发布学校</label>
+                            <label class="col-sm-2 control-label">发布圈子</label>
                             <c:forEach items="${schools}" var="e">
                                 <div class="col-sm-2">
                                     <input type="checkbox" value="${e.schoolId}" name="schools">${e.schoolName}
@@ -192,7 +192,7 @@
     function saveAdvert() {
 //        var schoolId = $("#s2_country").val();
 //        if (schoolId == "") {
-//            alert("请选择学校");
+//            alert("请选择圈子");
 //            return;
 //        }
 //        var isUse = '';
@@ -233,7 +233,7 @@
         var schools = schools_ary.join('|');//将数组元素连接起来以构建一个字符串
 
         if (schools == null || schools == '') {
-            alert("请选择要添加第三方网址的学校");
+            alert("请选择要添加第三方网址的圈子");
             return;
         }
 

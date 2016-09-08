@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javascript:void (0);">学校管理</a></li>
-            <li><a href="javascript:void (0);">添加学校</a></li>
+            <li><a href="javascript:void (0);">圈子管理</a></li>
+            <li><a href="javascript:void (0);">添加圈子</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name ui-draggable-handle">
                     <i class="fa fa-table"></i>
-                    <span>添加学校</span>
+                    <span>添加圈子</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -44,14 +44,14 @@
             </div>
             <div class="box-content">
 
-                <h4 class="page-header">添加学校</h4>
+                <h4 class="page-header">添加圈子</h4>
 
                 <form id="save_form" class="form-horizontal" method="post" role="form">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">学校名字</label>
+                        <label class="col-sm-2 control-label">圈子名字</label>
 
                         <div class="col-sm-4">
-                            <input type="text" id="name" name="name" class="form-control" placeholder="学校名字"
+                            <input type="text" id="name" name="name" class="form-control" placeholder="圈子名字"
                                    data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
                         </div>
                     </div>
@@ -89,7 +89,7 @@
         var name = $("#name").val();
         var s2_province = $("#s2_province").val();
         if (name.replace(/\s/g, '') == '') {
-            alert("学校名不能为空");
+            alert("圈子名不能为空");
             return;
         }
         if (s2_province.replace(/\s/g, '') == '') {

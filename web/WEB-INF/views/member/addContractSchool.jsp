@@ -78,7 +78,7 @@
                 <div class="no-move"></div>
             </div>
             <div class="box-content">
-                <h4 class="page-header">承包学校信息</h4>
+                <h4 class="page-header">承包圈子信息</h4>
 
                 <table class="table">
                     <thead>
@@ -87,7 +87,7 @@
                         <th>昵称</th>
                         <th>手机号</th>
                         <th>性别</th>
-                        <th>承包学校</th>
+                        <th>承包圈子</th>
                         <th>到期时间</th>
                         <th>管理</th>
                     </tr>
@@ -130,7 +130,7 @@
                 <div class="no-move"></div>
             </div>
             <div class="box-content">
-                <h4 class="page-header">添加学校</h4>
+                <h4 class="page-header">添加圈子</h4>
 
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
@@ -147,11 +147,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">学校名称</label>
+                        <label class="col-sm-2 control-label">圈子名称</label>
 
                         <div class="col-sm-4">
                             <select class="populate placeholder" name="university" id="s2_country">
-                                <option value="">-- 选择学校 --</option>
+                                <option value="">-- 选择圈子 --</option>
                             </select>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
     function saveContractSchool() {
         var schoolId = $("#s2_country").val();
         if (schoolId == "") {
-            alert("请选择学校");
+            alert("请选择圈子");
             return;
         }
         var endTime = $("#input_date").val();
@@ -204,7 +204,7 @@
                     alert("添加成功");
                     window.location.href = "#module=toAddContractSchool&empId=" + '${memberVo.empId}' + "&_time=" + new Date().getTime();
                 } else {
-                    var _case = {1: "添加失败", 2: "该学校已被承包"};
+                    var _case = {1: "添加失败", 2: "该圈子已被承包"};
                     alert(_case[data.code])
                 }
             }
@@ -225,7 +225,7 @@
     ;
 
     function deleteContractSchool(_id) {
-        if (!confirm("确实要删除该学校么？")) {
+        if (!confirm("确实要删除该圈子么？")) {
             return;
         }
         $.ajax({

@@ -12,7 +12,7 @@ public class RecordVO extends Record {
     private String zanNum;//赞数量
     private String plNum;//评论数量
     private int levelCount;//积分
-    private String schoolName;//学校名称
+    private String schoolName;//圈子名称
     private String school_record_mood_name;
 
     public String getSchool_record_mood_name() {

@@ -16,7 +16,7 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javaScript:void(0)">学校公告</a></li>
+            <li><a href="javaScript:void(0)">圈子公告</a></li>
             <li><a href="javaScript:void(0)">修改公告</a></li>
         </ol>
         <div id="social" class="pull-right">
