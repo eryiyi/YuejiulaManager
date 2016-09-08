@@ -5,15 +5,15 @@
         <permission id="ADD_ROLE" name="添加角色"/>
     </group>
     <group id="EMPLOYEE_MANAGE" name="会员管理">
-        <permission id="LIST_EMPLOYEE" name="会员列表(管/承)"/>
+        <permission id="LIST_EMPLOYEE" name="会员列表"/>
     </group>
     <group id="CONTRACT_MANAGE" name="圈主管理">
         <permission id="CONTRACT_LIST" name="圈主列表"/>
     </group>
     <group id="ADVERT_MANAGE" name="广告管理">
-        <permission id="ADVERT_LIST" name="广告列表(管/承)"/>
+        <permission id="ADVERT_LIST" name="广告列表"/>
         <permission id="ADD_ADVERT_MANAGER" name="添加广告"/>
-        <permission id="ADD_ADVERT_CHENGBAO" name="添加广告（承）"/>
+        <permission id="ADD_ADVERT_CHENGBAO" name="添加广告"/>
         <!--<permission id="LX_ADVERT" name="良讯广告"/>-->
     </group>
     <group id="PK_ACTIVE_MANAGE" name="PK活动管理">
@@ -29,8 +29,8 @@
         <permission id="LIST_CLASS" name="商城分类列表"/>
         <permission id="ADD_CLASS" name="添加商城分类"/>
         <permission id="GOODS_LIST_CLASS" name="商品列表"/>
-        <permission id="ADD_GOODS_SHOP_THREE" name="添加商城第三方网址（承）"/>
-        <permission id="LIST_GOODS_SHOP_THREE" name="商城第三方网址列表（承）"/>
+        <permission id="ADD_GOODS_SHOP_THREE" name="添加商城第三方网址"/>
+        <permission id="LIST_GOODS_SHOP_THREE" name="商城第三方网址列表"/>
     </group>
     <group id="NEWS_CLASS" name="新闻类别">
         <permission id="NEWS_LIST_CLASS" name="类别列表"/>
@@ -71,8 +71,8 @@
     <group id="SYSTEM_MANAGE" name="系统管理">
         <permission id="MODIFY_PASS" name="修改密码"/>
         <permission id="MANAGER_INFO" name="信息维护"/>
-        <permission id="MANAGER_DIANPU_INFO" name="店铺广告图(商)"/>
-        <permission id="MANAGER_DIANPU_PT_INFO" name="绑定第三方平台(商)"/>
+        <permission id="MANAGER_DIANPU_INFO" name="店铺广告图"/>
+        <permission id="MANAGER_DIANPU_PT_INFO" name="绑定第三方平台"/>
     </group>
     <group id="REMIT_MANAGER" name="汇款结算">
         <permission id="REMIT_SELLERLIST" name="商家结算"/>
