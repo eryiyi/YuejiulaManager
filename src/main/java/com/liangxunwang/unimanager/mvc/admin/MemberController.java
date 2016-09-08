@@ -61,7 +61,7 @@ public class MemberController extends ControllerConstants {
     public String listMember(ModelMap map, MemberQuery query, Page page, HttpSession session){
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         if("2".equals(admin.getType())){
-            //承包商
+            //圈主
             List<ContractSchoolVO> contractSchoolVOs = (List<ContractSchoolVO>) contractSchoolListService.list(admin.getEmpId());
             for (ContractSchoolVO vo : contractSchoolVOs){
                 vo.setEndTime(DateUtil.getDate(vo.getEndTime(), "yyyy-MM-dd"));

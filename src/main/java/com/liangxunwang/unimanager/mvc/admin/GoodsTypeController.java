@@ -57,7 +57,7 @@ public class GoodsTypeController extends ControllerConstants{
 
     @RequestMapping("/toAddGoodsTypeThree")
     public String toAddGoodsTypeThree(HttpSession session, ModelMap map){
-        //查询当前承包商的学校
+        //查询当前圈主的学校
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         List<ContractSchoolVO> contractSchoolVOs = (List<ContractSchoolVO>) contractSchoolListService.list(admin.getEmpId());
         map.put("schools", contractSchoolVOs);
@@ -105,7 +105,7 @@ public class GoodsTypeController extends ControllerConstants{
             return toJSONString(ERROR_3);//图片不能为空
         }
         if(!"2".equals(admin.getType())){
-            return toJSONString(ERROR_4);//不是承包商不能设置
+            return toJSONString(ERROR_4);//不是圈主不能设置
         }else {
             type.setEmp_id(admin.getEmpId());
         }
@@ -124,9 +124,9 @@ public class GoodsTypeController extends ControllerConstants{
     public String listType(ModelMap map, GoodsTypeThreeQuery query, HttpSession session){
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         if("2".equals(admin.getType())){
-           //说明是承包商
-            query.setLx_goods_type_type("1");//承包商可以查看第三方  自己的第三方
-            query.setEmp_id(admin.getEmpId());//承包商的id
+           //说明是圈主
+            query.setLx_goods_type_type("1");//圈主可以查看第三方  自己的第三方
+            query.setEmp_id(admin.getEmpId());//圈主的id
         }else {
             query.setLx_goods_type_type("0");//管理员用户只能查看商城分类
         }

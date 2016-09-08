@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javascript:void(0)" onclick="toPage('mainPage','')">主页</a></li>
-            <li><a href="javascript:void(0)">分区管理</a></li>
-            <li><a href="javascript:void(0)">修改分区信息</a></li>
+            <li><a href="javascript:void(0)">兴趣圈管理</a></li>
+            <li><a href="javascript:void(0)">修改兴趣圈信息</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name">
                     <i class="fa fa-search"></i>
-                    <span>修改分区信息</span>
+                    <span>修改兴趣圈信息</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -43,13 +43,13 @@
                 <div class="no-move"></div>
             </div>
             <div class="box-content">
-                <h4 class="page-header">修改分区信息</h4>
+                <h4 class="page-header">修改兴趣圈信息</h4>
 
                 <form class="form-horizontal" role="form">
                     <input type="hidden" value="${bigAreaObj.area_id}" id="area_id">
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">分区图片</label>
+                        <label class="col-sm-2 control-label">兴趣圈图片</label>
 
                         <div class="col-sm-10 col-md-2">
                             <img class="img-thumbnail" name="imagePath" id="imageDiv" src="${bigAreaObj.area_pic}"
@@ -66,21 +66,21 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">简介</label>
+                        <label class="col-sm-2 control-label">兴趣圈标题</label>
 
                         <div class="col-sm-4">
                             <input type="text" id="area_title" value="${bigAreaObj.area_title}" class="form-control"
-                                   placeholder="简介" data-toggle="tooltip" data-placement="bottom"
+                                   placeholder="标题" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">欢迎词</label>
+                        <label class="col-sm-2 control-label">兴趣圈介绍</label>
 
                         <div class="col-sm-4">
                             <input type="text" id="area_content" value="${bigAreaObj.area_content}" class="form-control"
-                                   placeholder="欢迎词" data-toggle="tooltip" data-placement="bottom"
+                                   placeholder="兴趣圈介绍" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>
                     </div>
@@ -115,11 +115,11 @@
         var area_url = $("#area_url").val();
 
         if (area_title.replace(/\s/g, '') == '') {
-            alert("请输入简介");
+            alert("请输入兴趣圈标题");
             return;
         }
         if (area_content.replace(/\s/g, '') == '') {
-            alert("请输入欢迎词");
+            alert("请输入兴趣圈介绍");
             return;
         }
         if (area_url.replace(/\s/g, '') == '') {

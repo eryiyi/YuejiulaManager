@@ -96,7 +96,7 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
         String id = (String) object;
         ContractSchool contractSchool = schoolDao.findById(id);
         if (contractSchool != null){
-            //查找该承包商此学校下的所有商家
+            //查找该圈主此学校下的所有商家
             List<SellerGoods> sellerGoodsList = sellerGoodsDao.findBySchoolId(contractSchool.getSchoolId());
             for (int i=0; i<sellerGoodsList.size(); i++){
                 SellerGoods sellerGoods = sellerGoodsList.get(i);
@@ -116,11 +116,11 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
                 //删除该商家下的所有兼职
                 partTimeDao.deletePartTimeByEmp(sellerGoods.getEmpId(), sellerGoods.getSchoolId());
             }
-            //删除该承包商发布的所有商品
+            //删除该圈主发布的所有商品
             goodsDao.deleteGoodsByEmp(contractSchool.getEmpId(), contractSchool.getSchoolId());
-            //删除该承包商下的所有兼职
+            //删除该圈主下的所有兼职
             partTimeDao.deletePartTimeByEmp(contractSchool.getEmpId(), contractSchool.getSchoolId());
-            //删除承包商和学校的关联数据
+            //删除圈主和学校的关联数据
             schoolDao.delete(id);
 
             //删除该学校下的推广
@@ -162,7 +162,7 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
                 }
 
                 //删除该用户下的商品和该用户下的商家的商品
-                //删除承包商和学校关联
+                //删除圈主和学校关联
                 schoolDao.delete(vo.getId());
                 //删除该商家发布的所有商品
                 goodsDao.deleteGoodsByEmp(vo.getEmpId(), vo.getSchoolId());
@@ -175,7 +175,7 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
             //删除该用户后台的登录账号数据
             adminDao.delete(empId);
         }else {
-            //把该用户设为承包商
+            //把该用户设为圈主
             memberDao.setContractUser(empId, "3");
             //给用户插入一条后台登录账号数据
             Member member = memberDao.findById(empId);
@@ -203,15 +203,15 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
             return null;
         }
         for (ContractSchool contractSchool : list){
-            //查找该承包商还有没有承包其他学校
+            //查找该圈主还有没有承包其他学校
             List<ContractSchool> check = schoolDao.findByEmpAndEndTime(contractSchool.getEmpId(), System.currentTimeMillis()+"");
             if (check.size() == 0){
-                //将承包商设置成普通会员
+                //将圈主设置成普通会员
                 memberDao.changeBusiness(contractSchool.getEmpId(), "0");
-                //删除该承包商的后台登录账号
+                //删除该圈主的后台登录账号
                 adminDao.delete(contractSchool.getEmpId());
             }
-            //查找该承包商此学校下的所有商家
+            //查找该圈主此学校下的所有商家
             List<SellerGoods> sellerGoodsList = sellerGoodsDao.findBySchoolId(contractSchool.getSchoolId());
             for (int i=0; i<sellerGoodsList.size(); i++){
                 SellerGoods sellerGoods = sellerGoodsList.get(i);
@@ -232,8 +232,8 @@ public class ContractSchoolService implements ListService , SaveService, DeleteS
                 partTimeDao.deletePartTimeByEmp(sellerGoods.getEmpId(), sellerGoods.getSchoolId());
             }
 
-            //删除承包商下的所有发布商品和所有发布兼职
-            //删除承包商和学校关联
+            //删除圈主下的所有发布商品和所有发布兼职
+            //删除圈主和学校关联
             schoolDao.delete(contractSchool.getId());
             //删除该商家发布的所有商品
             goodsDao.deleteGoodsByEmp(contractSchool.getEmpId(), contractSchool.getSchoolId());

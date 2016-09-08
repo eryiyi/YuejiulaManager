@@ -51,7 +51,7 @@ public class GoodsTypeThreeService implements SaveService, ListService, FindServ
         map.put("isUse", "0");
         List<GoodsType> list1 = goodsTypeDao.list(map);
 
-        //再查找第三方平台  承包商添加的
+        //再查找第三方平台  圈主添加的
         map.put("lx_goods_type_type", "1");
         map.put("school_id", query.getSchool_id());
         List<GoodsType> list2 = goodsTypeDao.list(map);

@@ -8,7 +8,7 @@ public class SettlementSellers {
     private String empName;//商家名称
     private String empMobile;//商家电话
     private String empId;//商家会员ID
-    private String contractId;//商家所属承包商的会员ID
+    private String contractId;//商家所属圈主的会员ID
     private float totalMoney;//总收入金额，某一天要结算的金额
     private String isAccount;//是否结算  0 是未结算  大于0就是结算
 

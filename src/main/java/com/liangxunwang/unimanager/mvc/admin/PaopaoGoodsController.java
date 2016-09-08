@@ -271,7 +271,7 @@ public class PaopaoGoodsController extends ControllerConstants {
 
 
     /**
-     * 后台查询我的商品--承包商
+     * 后台查询我的商品--圈主
      * @param query
      * @param page
      * @param session
@@ -282,7 +282,7 @@ public class PaopaoGoodsController extends ControllerConstants {
     public String listZhiying(PaopaoGoodsQuery query, Page page, HttpSession session, ModelMap map){
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         if(admin != null){
-            query.setManager_id(admin.getEmpId()==null?"":admin.getEmpId());//承包商id
+            query.setManager_id(admin.getEmpId()==null?"":admin.getEmpId());//圈主id
         }
         query.setIndex(page.getPage()==0?1:page.getPage());
         query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());

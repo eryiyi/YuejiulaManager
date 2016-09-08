@@ -8,7 +8,7 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javaScript:void(0)">承包商管理</a></li>
+            <li><a href="javaScript:void(0)">圈主管理</a></li>
             <li><a href="javaScript:void(0)">分配权限</a></li>
         </ol>
         <div id="social" class="pull-right">
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name ui-draggable-handle">
                     <i class="fa fa-table"></i>
-                    <span>承包商列表</span>
+                    <span>圈主列表</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">

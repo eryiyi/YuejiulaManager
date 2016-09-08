@@ -38,7 +38,7 @@ public interface PaopaoGoodsDao {
      * @param id
      * @return
      */
-    PaopaoGoods findById(String id);
+    PaopaoGoodsVO findById(String id);
 
     void update(PaopaoGoods goods);
 

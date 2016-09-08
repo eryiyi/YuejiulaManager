@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javaScript:void(0)">承包商管理</a></li>
-            <li><a href="javaScript:void(0)">承包商列表</a></li>
+            <li><a href="javaScript:void(0)">圈主管理</a></li>
+            <li><a href="javaScript:void(0)">圈主列表</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name ui-draggable-handle">
                     <i class="fa fa-table"></i>
-                    <span>承包商列表</span>
+                    <span>圈主列表</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -48,9 +48,9 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>承包商名字</th>
-                        <th>承包商电话</th>
-                        <th>承包商承包学校</th>
+                        <th>圈主名字</th>
+                        <th>圈主电话</th>
+                        <th>圈主承包学校</th>
                         <th>到期时间</th>
                         <th>操作</th>
                     </tr>

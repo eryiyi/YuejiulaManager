@@ -9,7 +9,7 @@
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
             <li><a href="#">会员管理</a></li>
-            <li><a href="#">添加承包商</a></li>
+            <li><a href="#">添加圈主</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -39,21 +39,21 @@
                 <div class="no-move"></div>
             </div>
             <div class="box-content">
-                <h4 class="page-header">承包商设置</h4>
+                <h4 class="page-header">圈主设置</h4>
 
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">承包商设置</label>
+                        <label class="col-sm-2 control-label">圈主设置</label>
 
                         <div class="col-sm-6">
                             <c:if test="${memberVo.empTypeId == '3'}"><a href="javascript:void(0);"
-                                                                         onclick="setContractUser('${memberVo.empId}', '${memberVo.empTypeId}')">取消为承包商</a></c:if>
+                                                                         onclick="setContractUser('${memberVo.empId}', '${memberVo.empTypeId}')">取消为圈主</a></c:if>
                             <c:if test="${memberVo.empTypeId == '0'}"><a href="javascript:void(0);"
-                                                                         onclick="setContractUser('${memberVo.empId}', '${memberVo.empTypeId}')">设置为承包商</a></c:if>
+                                                                         onclick="setContractUser('${memberVo.empId}', '${memberVo.empTypeId}')">设置为圈主</a></c:if>
                             <c:if test="${memberVo.empTypeId == '1'}"><a href="javascript:void(0);"
-                                                                         onclick="setContractUser('${memberVo.empId}', '${memberVo.empTypeId}')">设置为承包商</a></c:if>
+                                                                         onclick="setContractUser('${memberVo.empId}', '${memberVo.empTypeId}')">设置为圈主</a></c:if>
                             <c:if test="${memberVo.empTypeId == '2'}"><a href="javascript:void(0);"
-                                                                         onclick="setContractUser('${memberVo.empId}', '${memberVo.empTypeId}')">设置为承包商</a></c:if>
+                                                                         onclick="setContractUser('${memberVo.empId}', '${memberVo.empTypeId}')">设置为圈主</a></c:if>
                         </div>
                     </div>
                 </form>
@@ -250,11 +250,11 @@
 
     function setContractUser(_empId, _empTypeId) {
         if (_empTypeId == '3') {
-            if (confirm("确定取消该承包商吗？")) {
+            if (confirm("确定取消该圈主吗？")) {
                 setContract(_empId, _empTypeId);
             }
         } else {
-            if (confirm("确定将该用户设置为承包商吗？")) {
+            if (confirm("确定将该用户设置为圈主吗？")) {
                 setContract(_empId, _empTypeId);
             }
         }

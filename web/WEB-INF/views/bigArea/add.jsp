@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javascript:void(0)" onclick="toPage('mainPage','')">主页</a></li>
-            <li><a href="javascript:void(0)">分区管理</a></li>
-            <li><a href="javascript:void(0)">添加分区</a></li>
+            <li><a href="javascript:void(0)">兴趣圈管理</a></li>
+            <li><a href="javascript:void(0)">添加兴趣圈</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name">
                     <i class="fa fa-search"></i>
-                    <span>添加分区</span>
+                    <span>添加兴趣圈</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -43,11 +43,11 @@
                 <div class="no-move"></div>
             </div>
             <div class="box-content">
-                <h4 class="page-header">添加分区</h4>
+                <h4 class="page-header">添加兴趣圈</h4>
 
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">分区图片</label>
+                        <label class="col-sm-2 control-label">兴趣圈图片</label>
 
                         <div class="col-sm-10 col-md-2">
                             <img class="img-thumbnail" name="imagePath" src="" id="imageDiv" style="cursor: pointer"/>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">简介</label>
+                        <label class="col-sm-2 control-label">兴趣圈标题</label>
 
                         <div class="col-sm-4">
                             <input type="text" id="area_title" class="form-control" placeholder="简介"
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">欢迎词</label>
+                        <label class="col-sm-2 control-label">兴趣圈介绍</label>
 
                         <div class="col-sm-4">
                             <input type="text" id="area_content" class="form-control" placeholder="欢迎词"
@@ -109,11 +109,11 @@
         var imagePath = $("img[name='imagePath']").attr("src");
 
         if (area_title.replace(/\s/g, '') == '') {
-            alert("请输入简介");
+            alert("请输入兴趣圈标题");
             return;
         }
         if (area_content.replace(/\s/g, '') == '') {
-            alert("请输入欢迎词");
+            alert("请输入兴趣圈介绍");
             return;
         }
         if (area_url.replace(/\s/g, '') == '') {

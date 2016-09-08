@@ -65,7 +65,7 @@ public class AdvertController extends ControllerConstants {
     public String listAdvert(ModelMap map, AdvertQuery query, Page page, HttpSession session){
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         if(!"2".equals(admin.getType())){
-            //不是承包商不能设置
+            //不是圈主不能设置
         }else {
            query.setEmp_id(admin.getEmpId());
         }
@@ -155,10 +155,10 @@ public class AdvertController extends ControllerConstants {
     @Qualifier("contractSchoolService")
     private ListService contractSchoolListService;
 
-    //承包商添加广告
+    //圈主添加广告
     @RequestMapping("/ajax/toAddAdvertCheng")
     public String toAddAdvertCheng(ModelMap map,HttpSession session){
-        //查询当前承包商的学校
+        //查询当前圈主的学校
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         List<ContractSchoolVO> contractSchoolVOs = (List<ContractSchoolVO>) contractSchoolListService.list(admin.getEmpId());
         map.put("schools", contractSchoolVOs);
@@ -180,7 +180,7 @@ public class AdvertController extends ControllerConstants {
         }
         Admin admin = (Admin) session.getAttribute(ACCOUNT_KEY);
         if(!"2".equals(admin.getType())){
-            //不是承包商不能设置
+            //不是圈主不能设置
             return toJSONString(ERROR_4);
         }else {
             advert.setEmp_id(admin.getEmpId());

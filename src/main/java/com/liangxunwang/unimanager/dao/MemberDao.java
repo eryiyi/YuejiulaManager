@@ -158,7 +158,7 @@ public interface MemberDao {
     void updateHx(String empId);
 
     /**
-     * 根据会员ID设置为承包商
+     * 根据会员ID设置为圈主
      * @param empId
      */
     void setContractUser(@Param(value = "empId")String empId, @Param(value = "typeId")String typeId);

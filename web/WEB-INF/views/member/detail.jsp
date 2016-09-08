@@ -140,7 +140,7 @@
                                 <option value="0" ${empVO.empTypeId=='0'?'selected':''}>管理员</option>
                                 <option value="1" ${empVO.empTypeId=='1'?'selected':''}>会员</option>
                                 <option value="2" ${empVO.empTypeId=='2'?'selected':''}>商家</option>
-                                <option value="3" ${empVO.empTypeId=='3'?'selected':''}>承包商</option>
+                                <option value="3" ${empVO.empTypeId=='3'?'selected':''}>圈主</option>
                             </select>
                         </div>
                     </div>

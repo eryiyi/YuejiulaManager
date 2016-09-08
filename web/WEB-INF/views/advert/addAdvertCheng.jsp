@@ -257,7 +257,7 @@
                     alert("添加成功");
                     window.location.href = "#module=ajax/listAdvert&page=1"+ "&_t="+ new Date().getTime();
                 } else {
-                    var _case = {1: "添加失败", 2: "请上传图片", 3: "广告链接地址不能为空", 4: "您不是承包商，不能设置！"};
+                    var _case = {1: "添加失败", 2: "请上传图片", 3: "广告链接地址不能为空", 4: "您不是圈主，不能设置！"};
                     alert(_case[data.code])
                 }
             }

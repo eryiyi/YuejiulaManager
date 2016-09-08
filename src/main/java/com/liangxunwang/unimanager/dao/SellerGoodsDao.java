@@ -29,7 +29,7 @@ public interface SellerGoodsDao {
     List<SellerGoods> findByEmpId(String empId);
 
     /**
-     * 根据承包商的会员ID查找该承包商有多少商家
+     * 根据圈主的会员ID查找该圈主有多少商家
      * @param map
      * @return
      */
@@ -40,7 +40,7 @@ public interface SellerGoodsDao {
     long count(Map<String, Object> map);
 
     /**
-     * 根据商家ID和承包商ID查找商家下面有几个学校
+     * 根据商家ID和圈主ID查找商家下面有几个学校
      * @param empId
      * @param contractId
      * @return

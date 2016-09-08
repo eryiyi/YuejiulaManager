@@ -69,7 +69,7 @@ public class GoodsService implements SaveService, ListService, FindService , Del
                     goodsDao.save(goods);
                 }
                 break;
-            case 3://承包商
+            case 3://圈主
                 List<ContractSchool> contractSchools = contractSchoolDao.findContractSchoolByEmpId(goods.getEmpId());
                 for (int i=0; i<contractSchools.size(); i++) {
                     goods.setSchoolId(contractSchools.get(i).getSchoolId());
@@ -125,7 +125,7 @@ public class GoodsService implements SaveService, ListService, FindService , Del
                 if (!StringUtil.isNullOrEmpty(query.getSchoolId())){
                     schoolIds[list.size()] = Integer.parseInt(query.getSchoolId());
                 }
-            } else if (query.getType().equals("3")) {//承包商
+            } else if (query.getType().equals("3")) {//圈主
                 List<ContractSchool> list = contractSchoolDao.findContractSchoolByEmpId(query.getEmpId());
                 schoolIds = new int[list.size()];
                 for (int i = 0; i < list.size(); i++) {

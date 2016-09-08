@@ -57,9 +57,9 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
     public Object save(Object object) throws ServiceException {
         if (object instanceof Object[]){
             Object[] params = (Object[]) object;
-            String contractId = (String) params[0];//承包商的ID
+            String contractId = (String) params[0];//圈主的ID
             String empId = (String) params[1];//商家的会员ID
-            String schools = (String) params[2];//承包商要给商家开通的学校
+            String schools = (String) params[2];//圈主要给商家开通的学校
             String dates = (String) params[3];//每个学校的过期时间
 
             List<SellerGoods> checks = sellerGoodsDao.getSellerGoodsById(empId, contractId);
@@ -116,7 +116,7 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
                     admin.setId(UUIDFactory.random());
                     admin.setUsername(member.getEmpMobile());
                     admin.setPassword(member.getEmpPass());
-                    admin.setType("3");//3是商家   2是承包商  1是管理员
+                    admin.setType("3");//3是商家   2是圈主  1是管理员
                     admin.setEmpId(member.getEmpId());
                     admin.setIsUse("0");//可用状态
                     admin.setGoodsCount("3");//默认是三个商品
@@ -156,7 +156,7 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
         }else {
             Object[] params = (Object[]) object;
             String empId = (String) params[0];//商家会员ID
-            String contractId = (String) params[1];//承包商ID
+            String contractId = (String) params[1];//圈主ID
             List<SellerGoods> list = sellerGoodsDao.getSellerGoodsById(empId, contractId);
             int[] schoolIds = new int[list.size()];
             for (int i=0; i<list.size(); i++){
@@ -165,9 +165,9 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("empId", empId);
             map.put("schoolIds", schoolIds);
-            paopaoGoodsDao.deleteGoodsById(map);//删除该商家所在该承包商学校下的商品
+            paopaoGoodsDao.deleteGoodsById(map);//删除该商家所在该圈主学校下的商品
 
-            sellerGoodsDao.delete(empId, contractId);//删除承包商和商家的联系
+            sellerGoodsDao.delete(empId, contractId);//删除圈主和商家的联系
             //如果不在是商家将其设为普通会员
             List<SellerGoods> sellerGoodses = sellerGoodsDao.findByEmpId(empId);
             if (sellerGoodses.size() == 0) {
@@ -235,7 +235,7 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
         if (object instanceof  SellerGoods) {
             SellerGoods sellerGoods = (SellerGoods) object;
             String id = sellerGoods.getId();
-            //校验商家是不是属于该承包商
+            //校验商家是不是属于该圈主
             List<SellerGoods> goods = sellerGoodsDao.getSellerGoodsById(sellerGoods.getEmpId(), sellerGoods.getContractId());
             if (goods.size() == 0) {
                 throw new ServiceException("ERROR_EXISTS");
@@ -244,7 +244,7 @@ public class SellerGoodsService implements SaveService, DeleteService, ListServi
 
             ContractSchool school = schoolDao.findBySchoolId(schoolId);
             long endTime = DateUtil.getMs(sellerGoods.getEndTime(), "yyyy-MM-dd");
-            //校验承包商的到期时间是否大于商家的到期时间
+            //校验圈主的到期时间是否大于商家的到期时间
             if (Long.parseLong(school.getEndTime()) < endTime) {
                 throw new ServiceException("ERROR_TIME");
             }

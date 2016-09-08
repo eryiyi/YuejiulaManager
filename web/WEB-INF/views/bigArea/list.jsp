@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javascript:void(0)" onclick="toPage('mainPage','')">主页</a></li>
-            <li><a href="javascript:void(0)">分区管理</a></li>
-            <li><a href="javascript:void(0)">分区列表</a></li>
+            <li><a href="javascript:void(0)">兴趣圈管理</a></li>
+            <li><a href="javascript:void(0)">兴趣圈列表</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name ui-draggable-handle">
                     <i class="fa fa-table"></i>
-                    <span>分区列表</span>
+                    <span>兴趣圈列表</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -50,9 +50,9 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>分区图片</th>
-                        <th>分区简介</th>
-                        <th>分区欢迎语</th>
+                        <th>兴趣圈图片</th>
+                        <th>兴趣圈标题</th>
+                        <th>兴趣圈介绍</th>
                         <th>地址</th>
                         <th>操作</th>
                     </tr>
@@ -80,7 +80,7 @@
 <script type="text/javascript">
 
     function editRole(_id) {
-        if (confirm("确定要编辑该分区么？")) {
+        if (confirm("确定要编辑该兴趣圈么？")) {
             $.ajax({
                 type: "GET",
                 data: {"area_id": _id},

@@ -7,8 +7,8 @@
     <group id="EMPLOYEE_MANAGE" name="会员管理">
         <permission id="LIST_EMPLOYEE" name="会员列表(管/承)"/>
     </group>
-    <group id="CONTRACT_MANAGE" name="承包商管理">
-        <permission id="CONTRACT_LIST" name="承包商列表"/>
+    <group id="CONTRACT_MANAGE" name="圈主管理">
+        <permission id="CONTRACT_LIST" name="圈主列表"/>
     </group>
     <group id="ADVERT_MANAGE" name="广告管理">
         <permission id="ADVERT_LIST" name="广告列表(管/承)"/>
@@ -59,7 +59,7 @@
     <group id="GENERATE_RECORD" name="生成动态">
         <permission id="ADD_RECORD" name="生成动态"/>
     </group>
-    <group id="MINE_SCHOOL" name="我是承包商">
+    <group id="MINE_SCHOOL" name="我是圈主">
         <permission id="SCHOOL_LIST" name="学校列表"/>
         <permission id="MINE_MERCHANT" name="我的商家"/>
         <permission id="OPEN_MERCHANT" name="开通商家"/>
@@ -76,7 +76,7 @@
     </group>
     <group id="REMIT_MANAGER" name="汇款结算">
         <permission id="REMIT_SELLERLIST" name="商家结算"/>
-        <permission id="REMIT_CONTRACTLIST" name="承包商结算"/>
+        <permission id="REMIT_CONTRACTLIST" name="圈主结算"/>
     </group>
     <group id="RATE_MANAGER" name="费率管理">
         <permission id="MODIFY_RATE" name="修改费率"/>
@@ -107,11 +107,11 @@
         <permission id="GET_FIND_WWW_LIST" name="网址列表"/>
         <permission id="ADD_FIND_WWW_ADD" name="添加网址"/>
     </group>
-    <group id="MAANGER_AD_MANAGER" name="承包商广告语">
-        <permission id="ADD_MAANGER_AD_LIST" name="承包商广告语"/>
+    <group id="MAANGER_AD_MANAGER" name="圈主广告语">
+        <permission id="ADD_MAANGER_AD_LIST" name="圈主广告语"/>
     </group>
-    <group id="BIG_AREA_MANAGER" name="分区管理">
-        <permission id="BIG_AREA_LIST" name="分区列表"/>
-        <permission id="BIG_AREA_ADD" name="添加分区"/>
+    <group id="BIG_AREA_MANAGER" name="兴趣圈管理">
+        <permission id="BIG_AREA_LIST" name="兴趣圈列表"/>
+        <permission id="BIG_AREA_ADD" name="添加兴趣圈"/>
     </group>
 </permissions>

@@ -125,8 +125,12 @@
         UPDATE PAOPAO_GOODS SET GOODS_IS_DEL='1' WHERE GOODS_ID=#{id}
     </update>
 
-    <select id="findById" resultMap="my_paopao_goods" parameterType="String">
-        SELECT * FROM PAOPAO_GOODS WHERE GOODS_ID=#{id}
+    <select id="findById" resultMap="my_paopao_goods_vo" parameterType="String">
+        SELECT pg.*, le.emp_name as nick_name, le.emp_cover as emp_cover, le.emp_mobile as mobile, co.NAME as school_name
+        FROM PAOPAO_GOODS pg
+        LEFT JOIN lx_emp le ON pg.goods_emp_id=le.emp_id
+        LEFT JOIN COLLEGE co ON pg.GOODS_SCHOOL_ID = co.COID
+        WHERE  pg.GOODS_ID=#{id}
     </select>
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.PaopaoGoods">

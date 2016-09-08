@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javascript:void(0)" onclick="toPage('mainPage','')">主页</a></li>
-            <li><a href="javascript:void(0)">承包商广告语管理</a></li>
-            <li><a href="javascript:void(0)">承包商广告语管理添加</a></li>
+            <li><a href="javascript:void(0)">圈主广告语管理</a></li>
+            <li><a href="javascript:void(0)">圈主广告语管理添加</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name">
                     <i class="fa fa-search"></i>
-                    <span>承包商广告语管理添加</span>
+                    <span>圈主广告语管理添加</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -43,7 +43,7 @@
                 <div class="no-move"></div>
             </div>
             <div class="box-content">
-                <h4 class="page-header">承包商广告语管理添加</h4>
+                <h4 class="page-header">圈主广告语管理添加</h4>
 
                 <form class="form-horizontal" role="form">
 
@@ -88,7 +88,7 @@
         var schools = schools_ary.join('|');//将数组元素连接起来以构建一个字符串
 
         if (msg_ad_title.replace(/\s/g, '') == '') {
-            alert("承包商广告语不能为空");
+            alert("圈主广告语不能为空");
             return;
         }
 

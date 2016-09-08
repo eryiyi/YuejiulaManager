@@ -57,7 +57,7 @@ public class SellerGoodsController extends ControllerConstants {
     private FindService sellerGoodsFindService;
 
     /**
-     * 承包商设置商家
+     * 圈主设置商家
      * @param list
      * @return
      */
@@ -79,7 +79,7 @@ public class SellerGoodsController extends ControllerConstants {
     }
 
     /**
-     * 承包商在后台设置商家
+     * 圈主在后台设置商家
      * @param empId
      * @param schools
      * @param date
@@ -118,7 +118,7 @@ public class SellerGoodsController extends ControllerConstants {
      * 删除商家
      * @return
      * @param empId 会员id
-     * @param contractId 承包商会员ID
+     * @param contractId 圈主会员ID
      */
     @RequestMapping("/deleteSeller")
     @ResponseBody
@@ -134,7 +134,7 @@ public class SellerGoodsController extends ControllerConstants {
 
 
     /**
-     * 根据承包商的会员ID查找该承包商的商家  分页查询
+     * 根据圈主的会员ID查找该圈主的商家  分页查询
      * @param query
      * @param page
      * @return
@@ -174,7 +174,7 @@ public class SellerGoodsController extends ControllerConstants {
     }
 
     /**
-     * 根据商家ID和承包商ID查找该商家下的学校
+     * 根据商家ID和圈主ID查找该商家下的学校
      * @param empId
      * @param contractId
      * @return

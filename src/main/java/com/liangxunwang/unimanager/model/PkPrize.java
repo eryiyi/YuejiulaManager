@@ -10,7 +10,7 @@ public class PkPrize {
     private String content;
     private String pic;
     private String schoolId;
-    private String type;//0是我们   1是承包商
+    private String type;//0是我们   1是圈主
     private String dateline;
 
     public String getId() {

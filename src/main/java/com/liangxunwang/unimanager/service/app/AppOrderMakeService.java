@@ -14,6 +14,7 @@ import com.liangxunwang.unimanager.dao.PaopaoGoodsDao;
 import com.liangxunwang.unimanager.dao.RelateDao;
 import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.mvc.vo.OrderVo;
+import com.liangxunwang.unimanager.mvc.vo.PaopaoGoodsVO;
 import com.liangxunwang.unimanager.query.OrdersQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.*;
@@ -57,7 +58,7 @@ public class AppOrderMakeService implements SaveService,UpdateService,ListServic
         for(Order order:lists){
             order.getGoods_count();//订单数量
             //根据商品ID查询商品数量
-            PaopaoGoods paopaoGoods = paopaoGoodsDao.findById(order.getGoods_id());
+            PaopaoGoodsVO paopaoGoods = paopaoGoodsDao.findById(order.getGoods_id());
             if(Integer.parseInt(paopaoGoods.getCount()) < Integer.parseInt(order.getGoods_count())){
                 throw new ServiceException("outOfNum");//超出数量限制
             }
@@ -100,7 +101,7 @@ public class AppOrderMakeService implements SaveService,UpdateService,ListServic
         //商品数量要减去已购买的数量
         for(Order order:lists){
             order.getGoods_count();//订单数量
-            PaopaoGoods paopaoGoods = paopaoGoodsDao.findById(order.getGoods_id());
+//            PaopaoGoodsVO paopaoGoods = paopaoGoodsDao.findById(order.getGoods_id());
             paopaoGoodsDao.updateCountById(order.getGoods_id(), order.getGoods_count());
         }
 

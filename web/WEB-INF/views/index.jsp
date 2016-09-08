@@ -119,14 +119,14 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-table"></i>
-                            <span class="hidden-xs">分区管理</span>
+                            <span class="hidden-xs">兴趣圈管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('BIG_AREA_ADD', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/bigAreaObjController/toAdd','')">添加分区</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/bigAreaObjController/toAdd','')">添加兴趣圈</a></li>
                             </c:if>
                             <c:if test="${um:permission('BIG_AREA_LIST', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/bigAreaObjController/list','')">分区列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/bigAreaObjController/list','')">兴趣圈列表</a></li>
                             </c:if>
                         </ul>
                     </li>
@@ -163,10 +163,10 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-table"></i>
-                            <span class="hidden-xs">承包商管理</span>
+                            <span class="hidden-xs">圈主管理</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);" onclick="toPage('listContracts','1')">承包商列表</a></li>
+                            <li><a href="javascript:void(0);" onclick="toPage('listContracts','1')">圈主列表</a></li>
                         </ul>
                     </li>
                 </c:if>
@@ -382,7 +382,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-picture-o"></i>
-                            <span class="hidden-xs">我是承包商</span>
+                            <span class="hidden-xs">我是圈主</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('SCHOOL_LIST', sessionScope.powers)}">
@@ -482,7 +482,7 @@
                                        onclick="toPage('/settlement/sellerlist','1')">商家结算</a></li>
                             </c:if>
                                 <%--<c:if test="${um:permission('REMIT_CONTRACTLIST', sessionScope.powers)}">--%>
-                                <%--<li><a href="javascript:void(0);" onclick="toPage('','')">承包商结算</a></li>--%>
+                                <%--<li><a href="javascript:void(0);" onclick="toPage('','')">圈主结算</a></li>--%>
                                 <%--</c:if>--%>
                         </ul>
                     </li>
@@ -583,11 +583,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-picture-o"></i>
-                            <span class="hidden-xs">承包商广告语</span>
+                            <span class="hidden-xs">圈主广告语</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_MAANGER_AD_LIST', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/msgAdController/list','1')">承包商广告语</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/msgAdController/list','1')">圈主广告语</a></li>
                             </c:if>
                         </ul>
                     </li>

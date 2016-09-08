@@ -9,8 +9,8 @@ public class Admin {
     private String password;
     private String isUse;//是否禁用   0否  1 是
     private String permissions;
-    private String type; //1 管理员  2 承包商  3商家
-    private String empId;//承包商和商家在后台登录时用得到
+    private String type; //1 管理员  2 圈主  3商家
+    private String empId;//圈主和商家在后台登录时用得到
     private String goodsCount;
 
     public String getGoodsCount() {

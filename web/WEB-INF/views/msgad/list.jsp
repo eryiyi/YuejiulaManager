@@ -8,8 +8,8 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javascript:void(0)" onclick="toPage('mainPage','')">主页</a></li>
-            <li><a href="javascript:void(0)">承包商广告语管理</a></li>
-            <li><a href="javascript:void(0)">承包商广告语管理</a></li>
+            <li><a href="javascript:void(0)">圈主广告语管理</a></li>
+            <li><a href="javascript:void(0)">圈主广告语管理</a></li>
         </ol>
         <div id="social" class="pull-right">
             <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
             <div class="box-header">
                 <div class="box-name ui-draggable-handle">
                     <i class="fa fa-table"></i>
-                    <span>承包商广告语管理</span>
+                    <span>圈主广告语管理</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">

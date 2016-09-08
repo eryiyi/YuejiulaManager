@@ -120,8 +120,8 @@ public class GoodsController extends ControllerConstants {
     @RequestMapping(value = "/viewGoods",  produces = "text/plain;charset=UTF-8;")
     public String viewGoods(String goodsId, ModelMap map){
         try {
-            Object[] params = new Object[]{goodsId};
-            PaopaoGoodsVO goods = (PaopaoGoodsVO) paopaoGoodsFindService.findById(params);
+//            Object[] params = new Object[]{goodsId};
+            PaopaoGoodsVO goods = (PaopaoGoodsVO) paopaoGoodsFindService.findById(goodsId);
             map.put("vo", goods);
             return "/paopaogoods/viewGoods";
         }catch (ServiceException e){

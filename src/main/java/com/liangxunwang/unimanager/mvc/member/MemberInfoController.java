@@ -83,7 +83,6 @@ public class MemberInfoController extends ControllerConstants {
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);
-
         }
     }
 

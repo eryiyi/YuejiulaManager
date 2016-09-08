@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * Created by zhl on 2015/3/24.
- * 承包商主要接口
+ * 圈主主要接口
  */
 @Controller("contractSchoolController")
 public class ContractSchoolController extends ControllerConstants{
@@ -64,7 +64,7 @@ public class ContractSchoolController extends ControllerConstants{
     private ListService roleListService;
 
     /**
-     * 跳转到承包商添加页面
+     * 跳转到圈主添加页面
      * @param empId
      * @param map
      * @return
@@ -116,7 +116,7 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 根据当前登录承包商查询开通的学校
+     * 根据当前登录圈主查询开通的学校
      * @param session
      * @param map
      * @return
@@ -130,7 +130,7 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 给承包商添加学校
+     * 给圈主添加学校
      * @param contractSchool
      * @return
      */
@@ -151,13 +151,13 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 根据ID删除承包商下的学校
-     * 要删除该承包商下学校的所有商家
+     * 根据ID删除圈主下的学校
+     * 要删除该圈主下学校的所有商家
      *      判断该商家是否是别的学校的商家，如果不是设置为普通会员
      * 删除该商家下的所有商品
      * 删除该商家下的所有兼职
-     * 删除该承包商下的所有商品
-     * 删除该承包商下的所有兼职
+     * 删除该圈主下的所有商品
+     * 删除该圈主下的所有兼职
      * @param id  承包学校ID
      * @return
      */
@@ -173,7 +173,7 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 将用户设置为承包商
+     * 将用户设置为圈主
      * @param empId  用户的会员ID
      * @return
      */
@@ -190,7 +190,7 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 分页查询所有的承包商
+     * 分页查询所有的圈主
      * @param query
      * @param page
      * @return
@@ -211,7 +211,7 @@ public class ContractSchoolController extends ControllerConstants{
     }
 
     /**
-     * 定时查找所有承包商过期的学校
+     * 定时查找所有圈主过期的学校
      * @return
      */
     public String update(){

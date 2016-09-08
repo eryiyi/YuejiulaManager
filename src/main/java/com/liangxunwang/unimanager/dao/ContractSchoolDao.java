@@ -32,21 +32,21 @@ public interface ContractSchoolDao {
     List<ContractSchool> findContractSchoolByEmpId(String empId);
 
     /**
-     * 查找所有的承包商
+     * 查找所有的圈主
      * @param map
      * @return
      */
     List<ContractSchoolVO> listAllContract(Map<String,Object> map);
 
     /**
-     * 根据当前时间查找有没有过期的承包商
+     * 根据当前时间查找有没有过期的圈主
      * @param nowTime
      * @return
      */
     List<ContractSchool> findEndTime(String nowTime);
 
     /**
-     * 根据会员ID和时间查找该承包商还有没有没有到期的承包学校
+     * 根据会员ID和时间查找该圈主还有没有没有到期的承包学校
      * @param empId
      * @param nowTime
      * @return
@@ -55,6 +55,6 @@ public interface ContractSchoolDao {
 
     long count(Map<String, Object> map);
 
-    //根据学校id查询承包商
+    //根据学校id查询圈主
     List<ContractSchoolVO> getManagerById(String school_id);
 }

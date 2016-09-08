@@ -5,7 +5,7 @@ package com.liangxunwang.unimanager.query;
  */
 public class ViewpagerQuery {
     private String schoolId;
-    private String type;//登录者的类型  1管理员  2承包商  3 商家
+    private String type;//登录者的类型  1管理员  2圈主  3 商家
     private String empId;//后台登陆者的会员ID
 
     public String getEmpId() {

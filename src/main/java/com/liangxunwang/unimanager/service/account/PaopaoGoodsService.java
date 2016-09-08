@@ -148,7 +148,7 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
                     if (!StringUtil.isNullOrEmpty(query.getSchoolId())){
                         schoolIds[list.size()] = Integer.parseInt(query.getSchoolId());
                     }
-                } else if (query.getType().equals("3")) {//承包商
+                } else if (query.getType().equals("3")) {//圈主
                     List<ContractSchool> list = contractSchoolDao.findContractSchoolByEmpId(query.getEmpId());
                     schoolIds = new int[list.size()];
 

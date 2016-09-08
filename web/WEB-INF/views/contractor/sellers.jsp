@@ -8,7 +8,7 @@
         </a>
         <ol class="breadcrumb pull-left">
             <li><a href="javaScript:void(0)">主页</a></li>
-            <li><a href="javaScript:void(0)">我是承包商</a></li>
+            <li><a href="javaScript:void(0)">我是圈主</a></li>
             <li><a href="javaScript:void(0)">我的商家</a></li>
         </ol>
         <div id="social" class="pull-right">
