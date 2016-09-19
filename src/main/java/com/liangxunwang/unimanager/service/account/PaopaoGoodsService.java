@@ -259,8 +259,9 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
             String schools = (String) params[1];
             String count = (String) params[2];
 
-            String[] schoolAry = schools.split("\\|");
-            for (int i=0; i<schoolAry.length; i++){
+            if(schools.contains("\\|")){
+                String[] schoolAry = schools.split("\\|");
+                for (int i=0; i<schoolAry.length; i++){
 //                List<PaopaoGoods> list = paopaoGoodsDao.listByEmpSchool(goods.getEmpId(), schoolAry[i]);
 //                if (list.size()< Integer.parseInt(count)) {//如果小于限制数量让发布
                     goods.setId(UUIDFactory.random());
@@ -273,7 +274,16 @@ public class PaopaoGoodsService implements ListService, SaveService, DeleteServi
 //                    College college = collegeDao.getGroupId(schoolAry[i]);
 //                    str+= college.getName()+"  ";
 //                }
+                }
+            }else {
+                goods.setId(UUIDFactory.random());
+                goods.setIsUse("0");
+                goods.setIsDel("0");
+                goods.setUpTime(System.currentTimeMillis() + "");
+                goods.setSchoolId(schools);
+                paopaoGoodsDao.save(goods);
             }
+
             return str;
         }
         return null;
