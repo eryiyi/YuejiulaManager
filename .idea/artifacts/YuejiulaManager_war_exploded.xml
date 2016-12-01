@@ -73,6 +73,7 @@
           <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.0.10" />
           <element id="library" level="project" name="Maven: com.squareup.okhttp:okhttp:2.7.1" />
           <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.6.0" />
+          <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.0.11" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="YuejiulaManager/web/Web" />

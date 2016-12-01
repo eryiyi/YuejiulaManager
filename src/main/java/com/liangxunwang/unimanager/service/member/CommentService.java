@@ -104,12 +104,13 @@ public class CommentService implements SaveService, ListService {
         Member pushMember =  memberDao.findById(comment.getSendEmpId());
         String pushId =pushMember.getPushId();
         String type = pushMember.getDeviceType();
+        String channelId = pushMember.getChannelId();
 
         if (!StringUtil.isNullOrEmpty(comment.getFplid()) && !"".equals(comment.getFplid()) && !"0".equals(comment.getFplid())){
             //有父评论
             if (!comment.getSendEmpId().equals(comment.getEmpId())) {
                 //动态所有者发通知
-                pushZan(pushId,type, member.getEmpName() + " 评论了你的动态");
+                pushZan(pushId,type, member.getEmpName() + " 评论了你的动态",channelId);
             }
 
             if (!comment.getFplempid().equals(member.getEmpId()) && !comment.getFplempid().equals(comment.getSendEmpId())) {
@@ -117,12 +118,12 @@ public class CommentService implements SaveService, ListService {
                 Member pushMember1 =  memberDao.findById(comment.getFplempid());
                 String pushId1 =pushMember1.getPushId();
                 String type1 = pushMember1.getDeviceType();
-                pushZan(pushId1, type1, member.getEmpName() + " 回复了你的评论");
+                pushZan(pushId1, type1, member.getEmpName() + " 回复了你的评论",channelId);
             }
         }else {
             //没有父评论
             if (!comment.getSendEmpId().equals(comment.getEmpId())) {
-                pushZan(pushId,type, member.getEmpName() + " 评论了你的动态");
+                pushZan(pushId,type, member.getEmpName() + " 评论了你的动态",channelId);
             }
         }
         return null;
@@ -151,7 +152,7 @@ public class CommentService implements SaveService, ListService {
         return list;
     }
 
-    private void pushZan(final String pushId, final String type, final String content){
+    private void pushZan(final String pushId, final String type, final String content, final String channelId){
         CommonUtil.getThreadPool().execute(new Runnable() {
             @Override
             public void run() {
@@ -183,7 +184,9 @@ public class CommentService implements SaveService, ListService {
 //            request.setChannelId(Long.parseLong(pushId));
 //            request.setChannelId(5100663888284228047L);
                     request.setUserId(pushId);
-
+                    if(!StringUtil.isNullOrEmpty(channelId)){
+                        request.setChannelId(Long.valueOf(channelId));
+                    }
                     request.setMessageType(1);
                     request.setMessage("{\"title\":\"提醒\",\"description\":\"" + content + "\",\"custom_content\": {\"type\":\"2\"}}");
 

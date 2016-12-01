@@ -21,11 +21,20 @@ public class Member {
     private String hxUsername;
     private String isInGroup;
     private String deviceType;
+    private String channelId;
 
     private String lat;
     private String lng;
     private String is_fenghao;
     private String is_fengqun;
+
+    public String getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(String channelId) {
+        this.channelId = channelId;
+    }
 
     public String getIs_fenghao() {
         return is_fenghao;

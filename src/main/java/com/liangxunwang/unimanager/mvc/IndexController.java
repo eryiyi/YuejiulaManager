@@ -45,12 +45,28 @@ public class IndexController extends ControllerConstants {
         Long memberCount = (Long) list.get(0);
         //被关禁闭会员数量
         Long closeMemberCount = (Long) list.get(1);
-        //广告数量
-        Long advertCont = (Long) list.get(2);
+        Long memberCountNoDay = (Long) list.get(2);
+        Long countGoodsAll = (Long) list.get(3);
+        Long countOrderAll = (Long) list.get(4);
+        Long countOrderDone = (Long) list.get(5);
+        Long countOrderDay = (Long) list.get(6);
 
         map.put("memberCount", memberCount);
         map.put("closeMemberCount", closeMemberCount);
-        map.put("advertCont", advertCont);
+        map.put("memberCountNoDay", memberCountNoDay);
+        map.put("countOrderAll", countOrderAll);
+        map.put("countOrderDone", countOrderDone);
+        map.put("countOrderDay", countOrderDay);
+
+
+        list.add(memberCount);
+        list.add(closeMemberCount);
+        list.add(memberCountNoDay);
+
+        list.add(countGoodsAll);
+        list.add(countOrderAll);
+        list.add(countOrderDone);
+        list.add(countOrderDay);
 
         return "/main";
     }

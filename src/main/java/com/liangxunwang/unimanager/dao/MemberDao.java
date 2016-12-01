@@ -108,7 +108,7 @@ public interface MemberDao {
      * @param id
      * @param pushId
      */
-    void updatePushId(@Param(value = "id") String id, @Param(value = "pushId") String pushId, @Param(value = "type")String type);
+    void updatePushId(@Param(value = "id") String id, @Param(value = "pushId") String pushId, @Param(value = "type")String type, @Param(value = "channelId")String channelId );
 
     //封号 解封号
     void updateFenghao(@Param(value = "is_fenghao") String is_fenghao, @Param(value = "emp_id") String emp_id);
@@ -150,6 +150,11 @@ public interface MemberDao {
      * @return
      */
     long closeMemberCount();
+    //今日注册会员数量
+    long countDay(Map<String, Object> map);
+
+
+
 
     /**
      * 更改环信是否在组

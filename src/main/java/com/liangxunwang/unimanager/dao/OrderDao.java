@@ -24,7 +24,7 @@ public interface OrderDao {
     List<OrdersVO> listOrders(Map<String,Object> map);
 
     long count(Map<String,Object> map);
-
+    long countDay(Map<String,Object> map);
     /**
      * 根据订单号
      * @param id

@@ -90,7 +90,8 @@ public class MemberInfoService implements ExecuteService, FindService, UpdateSer
         String id = (String) params[0];
         String pushId = (String) params[1];
         String type = (String) params[2];
-        memberDao.updatePushId(id, pushId, type);
+        String channelId = (String) params[3];
+        memberDao.updatePushId(id, pushId, type, channelId);
         return null;
     }
 

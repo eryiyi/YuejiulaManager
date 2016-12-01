@@ -73,11 +73,11 @@ public class MemberInfoController extends ControllerConstants {
 
     @RequestMapping("/updatePushId")
     @ResponseBody
-    public String updatePushId(@RequestParam String id, @RequestParam String pushId, @RequestParam String type){
-        if (StringUtil.isNullOrEmpty(id) || StringUtil.isNullOrEmpty(pushId) || StringUtil.isNullOrEmpty(type)){
+    public String updatePushId(@RequestParam String id, @RequestParam String pushId, @RequestParam String type, @RequestParam String channelId){
+        if (StringUtil.isNullOrEmpty(id) || StringUtil.isNullOrEmpty(pushId) || StringUtil.isNullOrEmpty(type)|| StringUtil.isNullOrEmpty(channelId)){
             return toJSONString(ERROR_1);
         }
-        Object[] params = new Object[]{id, pushId, type};
+        Object[] params = new Object[]{id, pushId, type, channelId};
         try {
             updateMemberService.update(params);
             return toJSONString(SUCCESS);

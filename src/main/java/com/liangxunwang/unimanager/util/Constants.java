@@ -5,8 +5,9 @@ package com.liangxunwang.unimanager.util;
  */
 public class Constants {
         //服务器地址
-//        public static final String URL = "http://120.27.108.66:8084/";
-        public static final String URL = "http://smilekyle.xicp.net:42765/";
+//        public static final String URL = "http://120.27.108.66:8081/";
+        public static final String URL = "http://192.168.0.224:8080/";
+//        public static final String URL = "http://smilekyle.xicp.net:42765/";
 
         //七牛云存储
         public static final String QINIU_URL = "http://7xt74j.com1.z0.glb.clouddn.com/";
@@ -16,8 +17,8 @@ public class Constants {
         //百度推送
         public static final String API_KEY = "ncthb8SBWQXKh80vGeGfkcHT";
         public static final String SECRET_KEY = "8PZUr37HZrvynvXeu1k6R1IyBtfraQRh";
-        public static final String IOS_API_KEY = "";
-        public static final String IOS_SECRET_KEY = "";
+        public static final String IOS_API_KEY = "oFAPP60s1BGjNwxBhiN1p11w";
+        public static final String IOS_SECRET_KEY = "qLAkcKObGIbb2iXLG1iifW2V4DxpARlw";
 
         public static final String SAVE_ERROR = "save_error";
 

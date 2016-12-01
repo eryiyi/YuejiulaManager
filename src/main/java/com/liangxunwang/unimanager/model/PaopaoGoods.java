@@ -2,7 +2,7 @@ package com.liangxunwang.unimanager.model;
 
 /**
  * Created by liuzh on 2015/8/16.
- * 童心堂商城宝贝表
+ * 约酒啦商城宝贝表
  */
 public class PaopaoGoods {
     private String id;

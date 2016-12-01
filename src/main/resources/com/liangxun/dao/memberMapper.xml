@@ -24,6 +24,7 @@
 
         <result column="is_fenghao" property="is_fenghao"/>
         <result column="is_fengqun" property="is_fengqun"/>
+        <result column="channelId" property="channelId"/>
     </resultMap>
 
     <resultMap id="my_member_vo" type="com.liangxunwang.unimanager.mvc.vo.MemberVO">
@@ -48,6 +49,7 @@
         <result column="device_type" property="deviceType"/>
         <result column="is_fenghao" property="is_fenghao"/>
         <result column="is_fengqun" property="is_fengqun"/>
+        <result column="channelId" property="channelId"/>
 
         <result column="jfcount" property="jfcount"/>
         <result column="groupid" property="groupId"/>
@@ -285,7 +287,7 @@
 
 
     <update id="updatePushId" parameterType="String">
-        UPDATE lx_emp set push_id=#{pushId}, device_type=#{type} WHERE emp_id=#{id}
+        UPDATE lx_emp set push_id=#{pushId}, device_type=#{type}, channelId=#{channelId}  WHERE emp_id=#{id}
     </update>
 
     <update id="updateFenghao" parameterType="String">
@@ -317,6 +319,13 @@
          AND emp_mobile=#{keyWords} or emp_name like CONCAT('%',#{keyWords},'%')
         </if>
         limit #{index},#{size}
+    </select>
+
+    <select id="countDay" resultType="Long">
+        SELECT count(sn.emp_id) FROM lx_emp sn
+        WHERE 1=1
+        AND sn.dateline &gt; #{startTime}
+        AND sn.dateline &lt; #{endTime}
     </select>
 
     <update id="updateHx" parameterType="String">

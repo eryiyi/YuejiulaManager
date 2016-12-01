@@ -405,7 +405,7 @@
 
 
 <a href="http://www.liangxunwang.com/paopao/index.html">
-    <img class="download-button" src="/img/share_download.png" alt="下载童心堂手机客户端">
+    <img class="download-button" src="/img/share_download.png" alt="下载约酒啦手机客户端">
 </a>
 
 </body>

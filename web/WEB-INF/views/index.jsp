@@ -5,13 +5,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>童心堂后台管理系统</title>
+    <title>约酒啦后台管理系统</title>
     <meta name="description" content="description">
     <meta name="author" content="DevOOPS">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/plugins/bootstrap/bootstrap.css" rel="stylesheet">
     <link href="/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link href="/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
     <link href="/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
     <link href="/plugins/xcharts/xcharts.min.css" rel="stylesheet">
@@ -20,13 +20,20 @@
     <link href="/css/style_v2.css" rel="stylesheet">
     <link href="/plugins/chartist/chartist.min.css" rel="stylesheet">
 
+
+    <link href="/plugins/icon/css/style.css" rel="stylesheet">
+
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <%--CHART-JS--%>
+    <script type="text/javascript" charset="utf-8" src="/js/Chart.bundle.min.js"></script>
+
+
     <link rel="stylesheet" href="/ueditor/themes/default/css/ueditor.css" type="text/css">
 
-    <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
-    <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
+    <%--<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>--%>
+    <%--<script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>--%>
 
     <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0"/>
     <script type="text/javascript"
@@ -61,7 +68,7 @@
     <div class="container-fluid expanded-panel">
         <div class="row">
             <div id="logo" class="col-xs-12 col-sm-2">
-                <a href="javascript:void(0);">童心堂</a>
+                <a href="javascript:void(0);"><img src="/img/logo.png" alt="约酒啦"/></a>
             </div>
             <div id="top-panel" class="col-xs-12 col-sm-10">
                 <div class="row">
@@ -78,7 +85,7 @@
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle account" data-toggle="dropdown">
                                     <div class="avatar">
-                                        <img src="/img/avatar.jpg" class="img-circle" alt="avatar"/>
+                                        <img src="/img/avatar.png" class="img-circle" alt="avatar"/>
                                     </div>
                                     <i class="fa fa-angle-down pull-right"></i>
 
@@ -621,17 +628,12 @@
         <!--End Content-->
     </div>
 </div>
-<!--End Container-->
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<%--<!--<script src="http://code.jquery.com/jquery.js"></script>-->--%>
 <script src="/plugins/jquery/jquery.min.js"></script>
 <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
 <script src="/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
 <script src="/plugins/tinymce/tinymce.min.js"></script>
 <script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
-<!-- All functions for this theme + document.ready processing -->
 <script src="/js/devoops.js"></script>
 <script src="/js/china2.js"></script>
 <script type="text/javascript" src="/js/md5.js"></script>
@@ -657,7 +659,7 @@
         function checkHash() {
             var newHash = window.location.hash;
             if (newHash == "") {
-//                window.location.hash = "#module=main";
+                window.location.hash = "#module=mainPage";
                 return;
             }
             if (newHash == currentHash) return;
@@ -687,21 +689,15 @@
     })(window);
     function toPage(_url, _page) {
         if (_page != '') {
-            window.location.href = "#module=" + _url + "&page=" + _page;
+            window.location.href = "#module=" + _url + "&page=" + _page + "&_t="+ new Date().getTime();
         } else {
-            window.location.href = "#module=" + _url;
+            window.location.href = "#module=" + _url+ "&_t="+ new Date().getTime();
         }
+    }
 
-//		$.ajax({
-//			type: "post",
-//			url: _url,
-//			data:{"page":_page},
-//			success: function(response){
-//				$("#content").html(response);
-//			}
-//
-//		});
-//		history.pushState('', 'New URL: '+_url, "/#"+_url);
+
+    function toPageOne(_url, _page, is_zhiying) {
+        window.location.href = "#module=" + _url + "&page=" + _page + "&is_zhiying=" + is_zhiying + "&_t="+ new Date().getTime();
     }
 
     function loadNotice() {

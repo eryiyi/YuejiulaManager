@@ -232,4 +232,12 @@
         AND COMPLETION_TIME &gt; #{startTime}
         AND COMPLETION_TIME &lt; #{endTime}
     </update>
+
+    <select id="countDay" resultType="Long">
+        SELECT count(pso.ORDER_NO) FROM PAOPAO_SHOPPING_ORDER pso
+        WHERE '1'='1'
+        AND pso.create_time &gt; #{startTime}
+        AND pso.create_time &lt; #{endTime}
+    </select>
+
 </mapper>
